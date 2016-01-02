@@ -28,7 +28,7 @@
         "boot_command" : [
             "<esc><esc><enter><wait>",
             "/install/vmlinuz noapic ",
-            "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+            "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
             "hostname=ubuntu ",
             "fb=false debconf/frontend=noninteractive ",
@@ -42,11 +42,11 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "post_install_consul.sh"
+    "script": "scripts/post_install_consul.sh"
   },
    {
   "type": "file",
-  "source": "insert.sh",
+  "source": "scripts/insert.sh",
   "destination": "/tmp/insert.sh"
 },
 {
