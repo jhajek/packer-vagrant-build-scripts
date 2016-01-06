@@ -25,6 +25,7 @@
         "hard_drive_interface": "sata",
         "disk_size": 20000,
         "boot_wait": "5s",
+        "output_directory": "output",
         "boot_command" : [
             "<esc><esc><enter><wait>",
             "/install/vmlinuz noapic ",
