@@ -18,7 +18,9 @@ Vagrant.configure(2) do |config|
 config.ssh.username = "vagrant"
 config.ssh.password = "vagrant"
 
-
+config.vm.network "forwarded_port", guest: 8080, host: 8081
+config.vm.network "forwarded_port", guest: 80, host: 8080
+config.vm.network "forwarded_port", guest: 8010, host: 8010
 #config.vbguest.iso_path = "http://download.virtualbox.org/virtualbox/%{version}/VBoxGuestAdditions_%{version}.iso"
 
 # et auto_update to false, if you do NOT want to check the correct 
