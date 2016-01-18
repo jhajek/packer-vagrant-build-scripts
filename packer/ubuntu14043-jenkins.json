@@ -42,9 +42,9 @@
   }],
 "post-processors": [
  {
-  "type": "vagrant"
+  "type": "vagrant",
+  "output": "../vagrant/vagrant-jenkins/packer_{{.BuildName}}_{{.Provider}}.box",
+  "compression_level": 9
  }]
-
-
 }
 

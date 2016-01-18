@@ -58,7 +58,9 @@
 ],
 "post-processors": [
  {
-  "type": "vagrant"
+  "type": "vagrant",
+   "output": "../vagrant/vagrant-consol/packer_{{.BuildName}}_{{.Provider}}.box",
+  "compression_level": 9
  }]
 
 }
