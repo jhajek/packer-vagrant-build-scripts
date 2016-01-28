@@ -10,13 +10,16 @@ wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key 
 
 echo "deb http://pkg.jenkins-ci.org/debian binary/" | sudo tee -a /etc/apt/sources.list
 
+sudo echo 'vagrant ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers.d/vagrant
+sudo echo 'Defaults:vagrant !requiretty' >> /etc/sudoers.d/vagrant
+
+
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install -y apache2
 sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y jenkins
-sudo apt-get install -y rsyslog
-
+sudo apt-get install -y rsyslog dkms linux-headers-$(uname -r)
 # Install Ganglia as a client to the central server
 #sudo apt-get install -y ganglia-monitor 
 
