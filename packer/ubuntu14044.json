@@ -1,11 +1,11 @@
 {
     "builders": [{
-        "name": "ubuntu-vbox",
+        "name": "ubuntu-logging-server",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
-        "iso_url": "http://mirrors3.kernel.org/ubuntu-releases/14.04.3/ubuntu-14.04.3-server-amd64.iso",
-        "iso_checksum": "a3b345908a826e262f4ea1afeb357fd09ec0558cf34e6c9112cead4bb55ccdfb",
+        "iso_url": "http://mirrors3.kernel.org/ubuntu-releases/14.04.4/ubuntu-14.04.4-server-amd64.iso",
+        "iso_checksum": "07e4bb5569814eab41fafac882ba127893e3ff0bdb7ec931c9b2d040e3e94e7a",
         "iso_checksum_type": "sha256",
  "http_directory" : ".",
   "http_port_min" : 9001,
@@ -17,14 +17,14 @@
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-        "vm_name": "ubuntu-clean",
+        "vm_name": "ubuntu-server",
         "hard_drive_interface": "sata",
         "disk_size": 20000,
         "boot_wait": "5s",
  "boot_command" : [
             "<esc><esc><enter><wait>",
             "/install/vmlinuz noapic ",
-            "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+            "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
             "hostname=ubuntu ",
             "fb=false debconf/frontend=noninteractive ",
@@ -38,8 +38,14 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "post_install_vagrant.sh"
-  }]
-
+    "script": "scripts/post_install_log_server.sh"
+  }
+],
+  "post-processors": [
+ {
+  "type": "vagrant",
+ "keep_input_artifact": true
+  }
+]
 }
 
