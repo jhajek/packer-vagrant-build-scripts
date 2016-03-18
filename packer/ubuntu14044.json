@@ -31,9 +31,18 @@
             "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
             "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
             "initrd=/install/initrd.gz -- <enter>"
-        ]  
-  }
- ],
+        ],  
+ "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "2048"
+        ]
+
+    ]
+  }],
+ 
   "provisioners": [
   {
     "type": "shell",
