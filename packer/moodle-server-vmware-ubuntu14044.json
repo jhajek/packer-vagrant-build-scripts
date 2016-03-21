@@ -19,7 +19,7 @@
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
         "vm_name": "ubuntu-server",
         "hard_drive_interface": "sata",
-        "disk_size": 20000,
+        "disk_size": 60000,
         "boot_wait": "5s",
  "boot_command" : [
             "<esc><esc><enter><wait>",
