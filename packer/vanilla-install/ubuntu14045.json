@@ -47,14 +47,14 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "scripts/post_install_riemann_setup.sh"
+    "script": "../scripts/post_install_riemann_setup.sh"
   }
 ],
   "post-processors": [
  {
   "type": "vagrant",
  "keep_input_artifact": true,
- "output": "build/{{.BuildName}}-{{.Provider}}-{{user `version`}}.box"  
+ "output": "../build/{{.BuildName}}-{{.Provider}}-{{user `version`}}.box"  
  }
 ]
 }
