@@ -43,8 +43,7 @@
   "post-processors": [
   {
   "type": "vagrant",
-  "output": "packer-vagrant-build-{{timestamp}}.box",
-  "compression_level": 5 
+  "output": "build/packer-vagrant-build-{{timestamp}}.box"
   }]
 
 }
