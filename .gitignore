@@ -4,3 +4,5 @@ packer_cache/
 *.vdi
 output*/
 *~
+*.vmdk
+*.ovf
