@@ -53,8 +53,9 @@
   "post-processors": [
  {
   "type": "vagrant",
- "keep_input_artifact": true
-  }
+ "keep_input_artifact": true,
+ "output": "build/{{.BuildName}}-{{.Provider}}-{{user `version`}}.box"  
+ }
 ]
 }
 
