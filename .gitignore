@@ -6,3 +6,4 @@ output*/
 *~
 *.vmdk
 *.ovf
+build/*
