@@ -1,6 +1,6 @@
 {
     "builders": [{
-        "name": "ubuntu-riemann-server",
+        "name": "ubuntu-riemann-server-mc",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
@@ -17,7 +17,7 @@
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-        "vm_name": "ubuntu-riemann-server",
+        "vm_name": "ubuntu-riemann-server-mc",
         "hard_drive_interface": "sata",
         "disk_size": 20000,
         "boot_wait": "5s",
@@ -47,14 +47,14 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "scripts/post_install_riemann_setup.sh"
+    "script": "../scripts/post_install_riemannmc_setup.sh"
   }
 ],
   "post-processors": [
  {
   "type": "vagrant",
  "keep_input_artifact": true,
- "output": "build/{{.BuildName}}-{{.Provider}}-{{user `version`}}.box"  
+ "output": "../build/{{.BuildName}}-{{.Provider}}-{{user `version`}}.box"  
  }
 ]
 }
