@@ -38,7 +38,19 @@
           "{{.Name}}",
           "--memory",
           "2048"
-        ]
+        ],
+	[ 
+		"modifyvm", 
+		"{{.Name}}", 
+		"--nic2", 
+		"bridged", 
+		"--bridgeadapter2", 
+		"D-Link DFE-530TX+ PCI Adapter", 
+		"--nictype2", 
+		"82540EM", 
+		"--cableconnected2", 
+		"on" 
+	] 
 
     ]
   }],
