@@ -25,8 +25,8 @@ sudo gem install --no-ri --no-rdoc riemann-tools
 # Installing vagrant keys 
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'  
 sudo mkdir -p /home/vagrant/.ssh
-sudo chown vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
+sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 
 #Setting the /etc/hosts entry
 # http://serverfault.com/questions/46645/shell-command-for-getting-ip-address
