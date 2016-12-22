@@ -18,10 +18,19 @@ sudo gem install --no-ri --no-rdoc riemann-tools
 
 # http://stackoverflow.com/questions/5171901/sed-command-find-and-replace-in-file-and-overwrite-file-doesnt-work-it-empties
 
-sudo sed -i 's/ubuntu/riemanna/g' /etc/hostname; sudo service hostname restart; exec bash
+sudo sed -i 's/ubuntu/riemanna/g' /etc/hostname 
+sudo service hostname restart
+#exec bash
 
 # Installing vagrant keys 
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'  
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 
+#Setting the /etc/hosts entry
+# http://serverfault.com/questions/46645/shell-command-for-getting-ip-address
 
+IP=`hostname -I | cut -d' ' -f2`
+hname=`cat /etc/hostname`
+domain=".example.org"
+echo "$IP     $hname$domain" >> /etc/hosts
+cat /etc/hosts
