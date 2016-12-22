@@ -25,6 +25,7 @@ sudo gem install --no-ri --no-rdoc riemann-tools
 # Installing vagrant keys 
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'  
 sudo mkdir -p /home/vagrant/.ssh
+sudo chown vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 
 #Setting the /etc/hosts entry
