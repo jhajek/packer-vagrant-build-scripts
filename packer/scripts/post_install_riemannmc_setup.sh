@@ -22,6 +22,6 @@ sudo sed -i 's/ubuntu/riemanna/g' /etc/hostname; sudo service hostname restart; 
 
 # Installing vagrant keys 
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'  
-cat ./vagrant.pub >> /home/vagrant/authorized_keys
+cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 
 
