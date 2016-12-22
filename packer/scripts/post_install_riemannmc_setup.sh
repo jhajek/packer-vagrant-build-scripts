@@ -35,5 +35,5 @@ IP=`hostname -I | cut -d' ' -f3`
 HNAME=`cat /etc/hostname`
 DOM='.example.org'
 # http://unix.stackexchange.com/questions/20573/sed-insert-something-to-the-last-line
-sudo sed -i -e "\$a$IP      $HNAME$DOM" /etc/hosts 
+sudo sed -i "\$a$IP      $HNAME$DOM" /etc/hosts 
 cat /etc/hosts
