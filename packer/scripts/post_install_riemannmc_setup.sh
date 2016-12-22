@@ -32,5 +32,6 @@ cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 IP=`hostname -I | cut -d' ' -f2`
 hname=`cat /etc/hostname`
 domain=".example.org"
-echo "$IP     $hname$domain" >> /etc/hosts
+# http://unix.stackexchange.com/questions/20573/sed-insert-something-to-the-last-line
+sudo sed -i -e "\$a$IP      $hname$domain" /etc/hosts 
 cat /etc/hosts
