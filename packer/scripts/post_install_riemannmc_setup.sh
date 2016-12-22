@@ -18,8 +18,8 @@ sudo gem install --no-ri --no-rdoc riemann-tools
 
 # http://stackoverflow.com/questions/5171901/sed-command-find-and-replace-in-file-and-overwrite-file-doesnt-work-it-empties
 
-sudo sed -i 's/ubuntu/riemanna/g' /etc/hostname 
-sudo service hostname restart
+#sudo sed -i 's/ubuntu/riemannmc/g' /etc/hostname 
+#sudo service hostname restart
 #exec bash
 
 # Installing vagrant keys 
