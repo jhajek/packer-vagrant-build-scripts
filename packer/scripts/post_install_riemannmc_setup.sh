@@ -24,6 +24,7 @@ sudo service hostname restart
 
 # Installing vagrant keys 
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'  
+sudo mkdir -p /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 
 #Setting the /etc/hosts entry
