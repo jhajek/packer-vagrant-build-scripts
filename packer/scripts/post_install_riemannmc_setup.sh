@@ -30,9 +30,9 @@ cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 #Setting the /etc/hosts entry
 # http://serverfault.com/questions/46645/shell-command-for-getting-ip-address
 
-IP=`hostname -I | cut -d' ' -f2`
-hname=`cat /etc/hostname`
-domain=".example.org"
+IP=`hostname -I | cut -d' ' -f3`
+HNAME=`cat /etc/hostname`
+DOM='.example.org'
 # http://unix.stackexchange.com/questions/20573/sed-insert-something-to-the-last-line
-sudo sed -i -e "\$a$IP      $hname$domain" /etc/hosts 
+sudo sed -i -e "\$a$IP      $HNAME$DOM" /etc/hosts 
 cat /etc/hosts
