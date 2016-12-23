@@ -16,7 +16,7 @@ sudo service riemann start
 sudo gem install --no-ri --no-rdoc riemann-tools
 
 # http://superuser.com/questions/196848/how-do-i-create-an-administrator-user-on-ubuntu
-sudo usermod -a -G sudo vagrant
+#sudo usermod -a -G sudo vagrant
 
 
 
