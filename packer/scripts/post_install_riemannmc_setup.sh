@@ -16,17 +16,10 @@ sudo service riemann start
 sudo gem install --no-ri --no-rdoc riemann-tools
 
 # http://superuser.com/questions/196848/how-do-i-create-an-administrator-user-on-ubuntu
-#sudo usermod -a -G sudo vagrant
 # http://unix.stackexchange.com/questions/1416/redirecting-stdout-to-a-file-you-dont-have-write-permission-on
 echo "vagrant ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/init-users
 sudo cat /etc/sudoers.d/init-users
 
-
-# http://stackoverflow.com/questions/5171901/sed-command-find-and-replace-in-file-and-overwrite-file-doesnt-work-it-empties
-
-#sudo sed -i 's/ubuntu/riemannmc/g' /etc/hostname 
-#sudo service hostname restart
-#exec bash
 
 # Installing vagrant keys 
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'  
@@ -34,12 +27,3 @@ sudo mkdir -p /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 
-#Setting the /etc/hosts entry
-# http://serverfault.com/questions/46645/shell-command-for-getting-ip-address
-
-#IP=`hostname -I | cut -d' ' -f2`
-#HNAME=`cat /etc/hostname`
-#DOM='.example.org'
-# http://unix.stackexchange.com/questions/20573/sed-insert-something-to-the-last-line
-#sudo sed -i "\$a$IP      $HNAME$DOM" /etc/hosts 
-#cat /etc/hosts
