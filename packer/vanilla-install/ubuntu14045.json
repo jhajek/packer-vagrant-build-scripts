@@ -54,7 +54,7 @@
  {
   "type": "vagrant",
  "keep_input_artifact": true,
- "output": "../build/{{.BuildName}}-{{.Provider}}-{{timesstamp}}.box"  
+ "output": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"  
  }
 ]
 }
