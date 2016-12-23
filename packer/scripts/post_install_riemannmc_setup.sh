@@ -15,6 +15,11 @@ sudo service riemann start
 # P. 44  Install ruby gem tools
 sudo gem install --no-ri --no-rdoc riemann-tools
 
+# http://superuser.com/questions/196848/how-do-i-create-an-administrator-user-on-ubuntu
+sudo usermod -a -G sudo vagrant
+
+
+
 
 # http://stackoverflow.com/questions/5171901/sed-command-find-and-replace-in-file-and-overwrite-file-doesnt-work-it-empties
 
@@ -31,9 +36,9 @@ sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 #Setting the /etc/hosts entry
 # http://serverfault.com/questions/46645/shell-command-for-getting-ip-address
 
-IP=`hostname -I | cut -d' ' -f3`
-HNAME=`cat /etc/hostname`
-DOM='.example.org'
+#IP=`hostname -I | cut -d' ' -f2`
+#HNAME=`cat /etc/hostname`
+#DOM='.example.org'
 # http://unix.stackexchange.com/questions/20573/sed-insert-something-to-the-last-line
-sudo sed -i "\$a$IP      $HNAME$DOM" /etc/hosts 
-cat /etc/hosts
+#sudo sed -i "\$a$IP      $HNAME$DOM" /etc/hosts 
+#cat /etc/hosts
