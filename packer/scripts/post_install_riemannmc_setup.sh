@@ -17,8 +17,8 @@ sudo gem install --no-ri --no-rdoc riemann-tools
 
 # http://superuser.com/questions/196848/how-do-i-create-an-administrator-user-on-ubuntu
 #sudo usermod -a -G sudo vagrant
-sudo touch /etc/sudoers.d/init-users
-sudo sed -i "\$avagrant ALL=(ALL) NOPASSWD:ALL" /etc/sudoers.d/init-users
+# http://unix.stackexchange.com/questions/1416/redirecting-stdout-to-a-file-you-dont-have-write-permission-on
+echo "vagrant ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/init-users
 sudo cat /etc/sudoers.d/init-users
 
 
