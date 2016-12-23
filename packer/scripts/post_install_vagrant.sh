@@ -13,6 +13,7 @@ sudo cat /etc/sudoers.d/init-users
 # Installing vagrant keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
 sudo mkdir -p /home/vagrant/.ssh
-cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
-~
+cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
+
+echo "All Done!"
