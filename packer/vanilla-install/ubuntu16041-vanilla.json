@@ -1,11 +1,11 @@
 {
     "builders": [{
-        "name": "ubuntu-vanilla-14045-server",
+        "name": "ubuntu-vanilla-16011-server",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
-        "iso_url": "http://mirrors3.kernel.org/ubuntu-releases/14.04.5/ubuntu-14.04.5-server-amd64.iso",
-        "iso_checksum": "dde07d37647a1d2d9247e33f14e91acb10445a97578384896b4e1d985f754cc1",
+        "iso_url": "http://mirrors3.kernel.org/ubuntu-releases/16.04.1/ubuntu-16.04.1-server-amd64.iso",
+        "iso_checksum": "b8b172cbdf04f5ff8adc8c2c1b4007ccf66f00fc6a324a6da6eba67de71746f6",
         "iso_checksum_type": "sha256",
  "http_directory" : ".",
   "http_port_min" : 9001,
@@ -17,7 +17,7 @@
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-        "vm_name": "ubuntu-vanilla-14045-server",
+        "vm_name": "ubuntu-vanilla-16011-server",
         "hard_drive_interface": "sata",
         "disk_size": 20000,
         "boot_wait": "5s",
