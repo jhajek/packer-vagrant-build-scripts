@@ -16,15 +16,14 @@ sudo service riemann start
 sudo gem install --no-ri --no-rdoc riemann-tools
 
 
-# http://stackoverflow.com/questions/5171901/sed-command-find-and-replace-in-file-and-overwrite-file-doesnt-work-it-empties
+# http://superuser.com/questions/196848/how-do-i-create-an-administrator-user-on-ubuntu
+# http://unix.stackexchange.com/questions/1416/redirecting-stdout-to-a-file-you-dont-have-write-permission-on
+echo "vagrant ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/init-users
+sudo cat /etc/sudoers.d/init-users
 
-sudo sed -i 's/ubuntu/riemannb/g' /etc/hostname; sudo service hostname restart; exec bash
 
-# Installing vagrant keys 
-mkdir ~/.ssh 
-chmod 700 ~/.ssh 
-cd ~/.ssh 
-wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub' -O authorized_keys 
-chmod 600 ~/.ssh/authorized_keys 
-chown -R vagrant ~/.ssh
-
+# Installing vagrant keys
+wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
+sudo mkdir -p /home/vagrant/.ssh
+cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
+sudo chown -R vagrant:vagrant /home/vagrant/.ssh
