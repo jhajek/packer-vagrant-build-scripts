@@ -17,7 +17,8 @@ sudo gem install --no-ri --no-rdoc riemann-tools
 
 # http://superuser.com/questions/196848/how-do-i-create-an-administrator-user-on-ubuntu
 #sudo usermod -a -G sudo vagrant
-
+sudo mkdir -p /etc/sudoers.d/90-cloud-init-users
+sudo sed -i "ubuntu ALL=(ALL) NOPASSWD:ALL" /etc/sudoers.d/90-cloud-init-users
 
 
 
