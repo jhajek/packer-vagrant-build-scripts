@@ -1,12 +1,12 @@
 {
     "builders": [{
-        "name": "ubuntu-vbox",
+        "name": "ubuntu-consul",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable", 
-        "iso_url": "http://mirrors3.kernel.org/ubuntu-releases/14.04.3/ubuntu-14.04.3-server-amd64.iso",
-        "iso_checksum": "a3b345908a826e262f4ea1afeb357fd09ec0558cf34e6c9112cead4bb55ccdfb",
-        "iso_checksum_type": "sha256",
+       "iso_url": "http://mirrors3.kernel.org/ubuntu-releases/14.04.5/ubuntu-14.04.5-server-amd64.iso",
+              "iso_checksum": "dde07d37647a1d2d9247e33f14e91acb10445a97578384896b4e1d985f754cc1",
+	"iso_checksum_type": "sha256",
  "http_directory" : ".",
   "http_port_min" : 9001,
   "http_port_max" : 9001,
@@ -21,17 +21,16 @@
            ["modifyvm", "{{.Name}}", "--usb", "off"],
            ["modifyvm", "{{.Name}}", "--audio", "none"]
         ],
-        "vm_name": "ubuntu-clean",
+        "vm_name": "ubuntu-consul",
         "hard_drive_interface": "sata",
         "disk_size": 20000,
         "boot_wait": "5s",
-        "output_directory": "output",
         "boot_command" : [
             "<esc><esc><enter><wait>",
             "/install/vmlinuz noapic ",
             "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-            "hostname=ubuntu ",
+            "hostname=ubuntu-consul ",
             "fb=false debconf/frontend=noninteractive ",
             "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
             "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
@@ -43,25 +42,17 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "scripts/post_install_consul.sh"
+    "script": "../scripts/post_install_consul.sh"
   },
-   {
-  "type": "file",
-  "source": "scripts/insert.sh",
-  "destination": "/tmp/insert.sh"
-},
-{
-  "type": "shell",
-  "inline": ["sudo sh /tmp/insert.sh"]
-}  
  
 ],
 "post-processors": [
  {
   "type": "vagrant",
-   "output": "../vagrant/vagrant-consol/packer_{{.BuildName}}_{{.Provider}}.box",
-  "compression_level": 9
+ "keep_input_artifact": true,
+  "output": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"
  }]
+
 
 }
 
