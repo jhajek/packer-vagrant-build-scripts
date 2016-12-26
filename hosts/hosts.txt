@@ -1,3 +1,6 @@
-192.168.1.213  riemannb riemannb.example.org
-192.168.1.211  riemannmc riemannmc.example.org
-192.168.1.212  riemanna riemanna.example.org
+192.168.1.216  riemannb riemannb.example.org
+192.168.1.215  riemannmc riemannmc.example.org
+192.168.1.218  riemanna riemanna.example.org
+
+
+
