@@ -12,4 +12,3 @@ echo "deb https://pkg.jenkins.io/debian-stable binary/" | sudo tee -a /etc/apt/s
 
 sudo apt-get update -y
 sudo apt-get install -y jenkins
-sudo apt-get install -y dkms linux-headers-$(uname -r)
