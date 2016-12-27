@@ -2,7 +2,7 @@
   "builders": [{
       "name": "centos-vanilla-1611-server",
         "type": "virtualbox-iso",
-        "guest_os_type": "Centos_64",
+        "guest_os_type": "RedHat_64",
         "guest_additions_mode": "disable",
 
     "iso_url": "http://mirrors.kernel.org/centos/7.3.1611/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
