@@ -21,7 +21,7 @@
     "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
     "hard_drive_interface": "sata",
     "disk_size": 20000,
-    "boot_wait": "40s",
+    "boot_wait": "5s",
     "boot_command": [
         "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
     ],"vboxmanage": [
