@@ -20,7 +20,8 @@ sudo yum install -y wget git gcc java-1.7.0-openjdk daemonize
 # Installing vagrant keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
 mkdir -p /home/vagrant/.ssh
-chown -R vagrant:vagrant /home/vagrant/.ssh
+touch /home/vagrant/.ssh/authorized_keys
+sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 
 # Fetch the riemann RPM
