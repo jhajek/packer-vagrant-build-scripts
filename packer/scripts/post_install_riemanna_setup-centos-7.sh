@@ -8,6 +8,11 @@ set -v
 echo "vagrant ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/init-users
 sudo cat /etc/sudoers.d/init-users
 
+# Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
+sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/Repositories
+
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
 sudo yum install -y wget git java-1.7.0-openjdk daemonize
@@ -18,12 +23,7 @@ sudo mkdir -p /home/vagrant/.ssh
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 
-# Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
-sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
-sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
-sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/Repositories
-
-# Fetch the riemann RPM
+#Fetch the riemann RPM
 wget https://aphyr.com/riemann/riemann-0.2.11-1.noarch.rpm
 sudo rpm -Uvh riemann-0.2.11-1.noarch.rpm
 
