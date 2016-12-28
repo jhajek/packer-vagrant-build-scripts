@@ -10,7 +10,7 @@ sudo cat /etc/sudoers.d/init-users
 
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
-sudo yum install -y wget git gcc java-1.7.0-openjdk daemonize
+sudo yum install -y wget git java-1.7.0-openjdk daemonize
 
 # Installing vagrant keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
