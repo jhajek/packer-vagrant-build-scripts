@@ -1,0 +1,53 @@
+{
+  "builders": [{
+      "name": "centos-riemann-server-mc",
+        "type": "virtualbox-iso",
+        "guest_os_type": "RedHat_64",
+        "guest_additions_mode": "disable",
+
+    "iso_url": "http://mirrors.kernel.org/centos/7.3.1611/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
+    "iso_checksum": "27bd866242ee058b7a5754e83d8ee8403e216b93d130d800852a96f41c34d86a",
+    "iso_checksum_type": "sha256",
+
+    "vm_name": "centos-riemann-server-mc",
+    "http_directory" : ".",
+    "http_port_min" : 9001,
+    "http_port_max" : 9001,
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_wait_timeout": "30m",
+    "communicator": "ssh", 
+    "ssh_pty": "true", 
+    "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
+    "hard_drive_interface": "sata",
+    "disk_size": 20000,
+    "boot_wait": "5s",
+    "boot_command": [
+        "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
+    ],"vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "2048"
+        ]
+
+    ]
+  }],
+ 
+  "provisioners": [
+  {
+    "type": "shell",
+  "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+    "script": "../scripts/post_install_riemannmc_setup-centos-7.sh"
+  }
+],
+  "post-processors": [
+ {
+  "type": "vagrant",
+ "keep_input_artifact": true,
+ "output": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"  
+ }
+]
+}
+
