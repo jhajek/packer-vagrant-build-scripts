@@ -9,11 +9,14 @@ set -v
 echo "vagrant ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/init-users
 sudo cat /etc/sudoers.d/init-users
 
-sudo yum install -y wget git gcc
-
 # Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/Repositories
+
+# Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
+sudo yum update -y
+sudo yum install -y wget git gcc
 
 # Installing vagrant keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
