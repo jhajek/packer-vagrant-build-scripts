@@ -27,6 +27,7 @@ cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 wget https://aphyr.com/riemann/riemann-0.2.11-1.noarch.rpm
 sudo rpm -Uvh riemann-0.2.11-1.noarch.rpm
 
+sudo systemctl enable riemann
 sudo systemctl start riemann
 
 # P. 44  Install ruby gem tool, Centos 7 has Ruby 2.x as the default
