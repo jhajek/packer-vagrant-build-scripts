@@ -6,8 +6,8 @@ set -v
 # http://unix.stackexchange.com/questions/1416/redirecting-stdout-to-a-file-you-dont-have-write-permission-on
 # This line assumes the user you created in the preseed directory is vagrant
 # http://chrisbalmer.io/vagrant/2015/07/02/build-rhel-centos-7-vagrant-box.html
-sudo sed -i 's/^Defaults\s*requiretty/# Defaults requiretty/g' /etc/sudoers
-echo "%admin  ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+echo "Defaults requiretty" | sudo tee -a /etc/sudoers.d/init-users
+echo "%admin  ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/init-users
 sudo groupadd admin
 sudo usermod -G admin vagrant
 
