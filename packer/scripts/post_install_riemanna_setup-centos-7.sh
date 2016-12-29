@@ -22,7 +22,6 @@ sudo yum update -y
 sudo yum install -y wget git java-1.7.0-openjdk daemonize
 
 # Installing vagrant keys
-# Installing vagrant keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
 mkdir -p /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
