@@ -36,7 +36,7 @@ sudo yum install -y wget git java-1.7.0-openjdk daemonize
 
 cd ~/
 mkdir .ssh
-curl https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub > .ssh/authorized_keys`
+curl https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub > .ssh/authorized_keys
 chmod 700 .ssh/
 sudo chmod 600 .ssh/authorized_keys
 sudo chown -R vagrant:vagrant .ssh/
