@@ -19,6 +19,7 @@ sudo usermod -G admin vagrant
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
 sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/Repositories
+sudo yum makecache fast
 
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
