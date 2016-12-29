@@ -9,7 +9,7 @@ set -v
 echo "Defaults requiretty" | sudo tee -a /etc/sudoers.d/init-users
 echo "%admin  ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/init-users
 sudo groupadd admin
-sudo usermod -G -a admin vagrant
+sudo usermod -a -G admin vagrant
 
 # Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
