@@ -22,7 +22,9 @@ wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/key
 mkdir -p /home/vagrant/.ssh
 touch /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
+sudo chmod 700 /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
+sudo chmod 600 /home/vagrant/.ssh/authorized_keys
 
 #Fetch the riemann RPM
 wget https://aphyr.com/riemann/riemann-0.2.11-1.noarch.rpm
