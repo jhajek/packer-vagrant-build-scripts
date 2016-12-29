@@ -26,13 +26,21 @@ sudo yum update -y
 sudo yum install -y wget git java-1.7.0-openjdk daemonize
 
 # Installing vagrant keys
-wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
-mkdir -p /home/vagrant/.ssh
-touch /home/vagrant/.ssh/authorized_keys
-sudo chown -R vagrant:vagrant /home/vagrant/.ssh
-sudo chmod 700 /home/vagrant/.ssh
-cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
-sudo chmod 600 /home/vagrant/.ssh/authorized_keys
+#wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
+#mkdir -p /home/vagrant/.ssh
+#touch /home/vagrant/.ssh/authorized_keys
+#sudo chown -R vagrant:vagrant /home/vagrant/.ssh
+#sudo chmod 700 /home/vagrant/.ssh
+#cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
+#sudo chmod 600 /home/vagrant/.ssh/authorized_keys
+
+cd ~/
+mkdir .ssh
+curl https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub > .ssh/authorized_keys`
+chmod 700 .ssh/
+sudo chmod 600 .ssh/authorized_keys
+sudo chown -R vagrant:vagrant .ssh/
+
 
 #Fetch the riemann RPM
 wget https://aphyr.com/riemann/riemann-0.2.11-1.noarch.rpm
