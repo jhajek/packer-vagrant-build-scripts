@@ -5,8 +5,15 @@ set -v
 # http://superuser.com/questions/196848/how-do-i-create-an-administrator-user-on-ubuntu
 # http://unix.stackexchange.com/questions/1416/redirecting-stdout-to-a-file-you-dont-have-write-permission-on
 # This line assumes the user you created in the preseed directory is vagrant
-echo "vagrant ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/init-users
-sudo cat /etc/sudoers.d/init-users
+# http://chrisbalmer.io/vagrant/2015/07/02/build-rhel-centos-7-vagrant-box.html
+sudo sed -i 's/^Defaults\s*requiretty/# Defaults requiretty/g' /etc/sudoers
+echo "%admin  ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+sudo groupadd admin
+sudo usermod -G admin vagrant
+
+
+#echo "vagrant ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/init-users
+#sudo cat /etc/sudoers.d/init-users
 
 # Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
