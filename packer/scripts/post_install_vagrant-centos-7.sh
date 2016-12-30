@@ -14,9 +14,12 @@ sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
 sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/Repositories
 
+# Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
+sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
+
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
-sudo yum install -y wget git gcc
+sudo yum install -y wget git vim gcc
 
 # Installing vagrant keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
