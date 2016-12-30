@@ -30,6 +30,9 @@ wget --no-check-certificate \
 chown -R vagrant /home/vagrant/.ssh
 chmod -R go-rwsx /home/vagrant/.ssh
 
+# Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
+sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
+
 # Fetch and install the Riemann RPM
 wget https://aphyr.com/riemann/riemann-0.2.11-1.noarch.rpm
 sudo rpm -Uvh riemann-0.2.11-1.noarch.rpm
