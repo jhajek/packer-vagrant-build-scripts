@@ -19,14 +19,7 @@ sudo yum makecache fast
 
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
-sudo yum install -y wget unzip git java-1.7.0-openjdk daemonize
-
-# Installing vagrant keys
-#wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
-#mkdir -p /home/vagrant/.ssh
-#cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
-#sudo chown -R vagrant:vagrant /home/vagrant/.ssh
-#chmod 600 /home/vagrant/.ssh/authorized_keys
+sudo yum install -y wget unzip vim git java-1.7.0-openjdk daemonize
 
 #http://superuser.com/questions/745881/how-to-authenticate-to-a-vm-using-vagrant-up
 mkdir /home/vagrant/.ssh
