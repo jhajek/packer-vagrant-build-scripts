@@ -27,3 +27,11 @@ wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/key
 sudo mkdir -p /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
+
+
+# Adding firewall rules for riemann - Centos 7 uses firewalld (Thanks Lennart...)
+# http://serverfault.com/questions/616435/centos-7-firewall-configuration
+sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=5556/udp --permanent
+# Websockets are TCP... for now - http://stackoverflow.com/questions/4657033/javascript-websockets-with-udp
+sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
