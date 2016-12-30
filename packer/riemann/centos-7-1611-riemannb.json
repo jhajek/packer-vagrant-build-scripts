@@ -23,7 +23,7 @@
     "disk_size": 20000,
     "boot_wait": "5s",
     "boot_command": [
-        "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
+        "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-riemannb.cfg<enter><wait>"
     ],"vboxmanage": [
         [
           "modifyvm",
