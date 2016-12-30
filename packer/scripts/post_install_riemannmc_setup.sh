@@ -5,6 +5,8 @@ set -v
 sudo apt-add-repository -y ppa:brightbox/ruby-ng
 sudo apt-get update -y
 sudo apt-get install -y ruby2.2 ruby2.2-dev build-essential zlib1g-dev openjdk-7-jre
+# Needed only on Mission Control in order to send email out
+sudo apt-get install mailutils 
 
 # P.42 The Art of Monitoring
 wget http://aphyr.com/riemann/riemann_0.2.11_all.deb
