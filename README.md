@@ -9,3 +9,6 @@ Operating systems used and tested:
 *  MacOS 10.12.2
 *  Windows 10 
 *  Ubuntu Linux 16.04 
+
+# Build everything
+There is a build-everything-riemann.sh and .ps1 (powershell) script that can be run from the **scripts** folder (needs to be run from their due to relative paths hardcoded.  This will build riemann a, b, an mc for Ubuntu and for Centos)
