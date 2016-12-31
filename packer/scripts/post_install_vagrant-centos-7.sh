@@ -22,7 +22,7 @@ sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
 
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
-sudo yum install -y wget git vim gcc
+sudo yum install -y wget git vim unzip
 
 # Installing vagrant keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
