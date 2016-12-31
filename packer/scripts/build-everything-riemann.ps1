@@ -1,0 +1,1 @@
+packer build centos-7-1611-riemanna.json ; packer build centos-7-1611-riemannb.json ; packer build centos-7-1611-riemannmc.json
