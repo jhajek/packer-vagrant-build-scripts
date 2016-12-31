@@ -13,6 +13,9 @@ sudo cat /etc/sudoers.d/init-users
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
 sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/Repositories
+sudo yum makecache fast
+# Added to reduce bandwidth 
+sudo yum -y install applydeltarpm
 
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
 sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
