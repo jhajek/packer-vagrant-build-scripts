@@ -12,3 +12,4 @@ Operating systems used and tested:
 
 # Build everything
 There is a build-everything-riemann.sh and .ps1 (powershell) script that can be run from the **scripts** folder (needs to be run from their due to relative paths hardcoded.  This will build riemann a, b, an mc for Ubuntu and for Centos)
+There is also a build-everything-vanilla.sh and .ps1 for building Ubuntu 14.04.5, 16.04.1, and Centos 7-1611 vanilla VirtualBox .ovf and Vagrant box 
