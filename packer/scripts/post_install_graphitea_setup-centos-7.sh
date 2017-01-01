@@ -37,14 +37,34 @@ sudo userdel carbon
 
 # P.135 - Listing 4.14: Install Graphite-API prerequisite packages on RedHat
 sudo yum install -y python-pip gcc libffi-devel cairo-devel libtool libyaml-devel python-devel
+
 # P.135 - Listing 4.15: Installing Graphite-API via pip
-pip install -U six pyparsing websocket urllib3 
+sudo pip install -U six pyparsing websocket urllib3 
 sudo pip install graphite-api gunicorn
 
-# P. 137 - Listing4.19: CreatingtheGrafanaYumrepository
+# P. 137 - Listing 4.19: Creating the Grafana Yum repository
 sudo touch /etc/yum.repos.d/grafana.repo
 
+# P.138 - Listing 4.20: Yum repository definition for Grafana
+# http://superuser.com/questions/351193/echo-multiple-lines-of-text-to-a-file-in-bash
+cat > grafana.repo <<'EOT'
+[grafana]
+name=grafana
+baseurl=https://packagecloud.io/grafana/stable/el/7/$basearch
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://packagecloud.io/gpg.key
+https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+EOT
 
+# NOTE Repace the 6 above with your RedHat version, for example 7 for RHEL 7.
+cat grafana.repo | sudo tee -a /etc/yum.repos.d/grafana.repo
+
+# p.138 - Listing 4.21: Installing Grafana via Yum
+sudo yum install -y grafana
 
 #http://superuser.com/questions/745881/how-to-authenticate-to-a-vm-using-vagrant-up
 mkdir /home/vagrant/.ssh
@@ -56,18 +76,6 @@ chmod -R go-rwsx /home/vagrant/.ssh
 
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
 sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
-
-# Fetch and install the Riemann RPM
-wget https://aphyr.com/riemann/riemann-0.2.11-1.noarch.rpm
-sudo rpm -Uvh riemann-0.2.11-1.noarch.rpm
-
-# Enable to Riemann service to start on boot and start the service
-sudo systemctl enable riemann
-sudo systemctl start riemann
-
-# P. 44  Install ruby gem tool, Centos 7 has Ruby 2.x as the default
-sudo yum install -y ruby ruby-devel gcc libxml2-devel
-sudo gem install --no-ri --no-rdoc riemann-tools
 
 # Adding firewall rules for riemann - Centos 7 uses firewalld (Thanks Lennart...)
 # http://serverfault.com/questions/616435/centos-7-firewall-configuration
