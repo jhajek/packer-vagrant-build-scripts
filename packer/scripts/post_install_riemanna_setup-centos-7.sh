@@ -45,4 +45,11 @@ sudo systemctl start riemann
 sudo yum install -y ruby ruby-devel gcc libxml2-devel
 sudo gem install --no-ri --no-rdoc riemann-tools
 
+# Adding firewall rules for riemann - Centos 7 uses firewalld (Thanks Lennart...)
+# http://serverfault.com/questions/616435/centos-7-firewall-configuration
+sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=5556/udp --permanent
+# Websockets are TCP... for now - http://stackoverflow.com/questions/4657033/javascript-websockets-with-udp
+sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
+
 echo "All Done!"
