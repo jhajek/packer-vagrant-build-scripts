@@ -20,7 +20,31 @@ sudo yum makecache fast
 
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
-sudo yum install -y wget unzip vim git java-1.7.0-openjdk daemonize
+sudo yum install -y wget unzip vim git java-1.7.0-openjdk daemonize python-setuptools
+
+# Installing Graphite packages on Centos P.131
+sudo yum install -y python-whisper python-carbon
+
+# P. 132 - Creating new graphite users
+sudo groupadd _graphite 
+sudo useradd -c "Carbon daemons" -g _graphite -d /var/lib/graphite -M -s /sbin/nologin _graphite
+
+sudo mv /var/lib/carbon /var/lib/graphite 
+sudo chown -R _graphite:_graphite /var/lib/graphite
+
+sudo chown -R _graphite:_graphite /var/log/carbon
+sudo userdel carbon
+
+# P.135 - Listing 4.14: Install Graphite-API prerequisite packages on RedHat
+sudo yum install -y python-pip gcc libffi-devel cairo-devel libtool libyaml-devel python-devel
+# P.135 - Listing 4.15: Installing Graphite-API via pip
+pip install -U six pyparsing websocket urllib3 
+sudo pip install graphite-api gunicorn
+
+# P. 137 - Listing4.19: CreatingtheGrafanaYumrepository
+sudo touch /etc/yum.repos.d/grafana.repo
+
+
 
 #http://superuser.com/questions/745881/how-to-authenticate-to-a-vm-using-vagrant-up
 mkdir /home/vagrant/.ssh

@@ -1,19 +1,27 @@
 #!/bin/bash 
 set -e
 set -v
-# http://stackoverflow.com/questions/26595620/how-to-install-ruby-2-1-4-on-ubuntu-14-04
-sudo apt-add-repository -y ppa:brightbox/ruby-ng
+
+
 sudo apt-get update -y
-sudo apt-get install -y ruby2.2 ruby2.2-dev build-essential zlib1g-dev openjdk-7-jre
+sudo apt-get install -y install graphite-carbon 
 
-# P.42 The Art of Monitoring
-wget http://aphyr.com/riemann/riemann_0.2.11_all.deb
-dpkg -i riemann_0.2.11_all.deb
+# P.134 - Listing4.10: AddingtheGraphite-APIPackageCloudkey
+curl https://packagecloud.io/gpg.key | sudo apt-key add 
+# P.134 - Listing4.11: AddingthePackageCloudexoscalerepositorylisting
+sudo sh -c "echo deb https://packagecloud.io/exoscale/community/ubuntu/ trusty main > /etc/apt/sources.list.d/exoscale_community.list"
+sudo apt-get install apt-transport-https 
+sudo apt-get update
+# P. 135 - Listing 4.13: Installing the graphite-api package on Ubuntu
+sudo apt-get install graphite-api
 
-sudo service riemann start
-
-# P. 44  Install ruby gem tools
-sudo gem install --no-ri --no-rdoc riemann-tools
+# P.136 - Listing4.16: Adding the Grafana repository listing
+sudo sh -c "echo deb https://packagecloud.io/grafana/stable/debian/ wheezy main > /etc/apt/sources.list.d/packagecloud_grafana.list"
+# p.137 - Listing4.17: AddingthePackageCloudkey
+curl https://packagecloud.io/gpg.key | sudo apt-key add 
+# p .137 - Listing4.18: InstallingtheGrafanapackage
+sudo apt-get update 
+sudo apt-get install -y apt-transport-https grafana
 
 
 # http://superuser.com/questions/196848/how-do-i-create-an-administrator-user-on-ubuntu
