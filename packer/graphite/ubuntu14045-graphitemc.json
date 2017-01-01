@@ -42,12 +42,7 @@
     ]
   }],
  
-  "provisioners": [
-  {
-    "type": "shell",
-  "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-  }
-],
+
   "post-processors": [
  {
   "type": "vagrant",
