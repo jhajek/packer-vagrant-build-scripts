@@ -2,12 +2,11 @@
 set -e
 set -v
 
-
 sudo apt-get update -y
-sudo apt-get install -y install graphite-carbon 
+sudo apt-get install -y graphite-carbon 
 
 # P.134 - Listing 4.10: Adding the Graphite-API Package Cloudkey
-curl https://packagecloud.io/gpg.key | sudo apt-key add 
+curl https://packagecloud.io/gpg.key | sudo apt-key add -
 
 # P.134 - Listing 4.11: Adding the Package Cloud exoscale repository listing
 sudo sh -c "echo deb https://packagecloud.io/exoscale/community/ubuntu/ trusty main > /etc/apt/sources.list.d/exoscale_community.list"
@@ -21,11 +20,11 @@ sudo apt-get install -y graphite-api
 sudo sh -c "echo deb https://packagecloud.io/grafana/stable/debian/ wheezy main > /etc/apt/sources.list.d/packagecloud_grafana.list"
 
 # P.137 - Listing 4.17: Adding the Package Cloudkey
-curl https://packagecloud.io/gpg.key | sudo apt-key add 
+curl https://packagecloud.io/gpg.key | sudo apt-key add -
 
 # P.137 - Listing 4.18: Installing the Grafana package
 sudo apt-get update -y
-sudo apt-get install -y apt-transport-https grafana
+sudo apt-get install -y grafana
 
 # http://superuser.com/questions/196848/how-do-i-create-an-administrator-user-on-ubuntu
 # http://unix.stackexchange.com/questions/1416/redirecting-stdout-to-a-file-you-dont-have-write-permission-on
