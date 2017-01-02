@@ -61,7 +61,7 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 EOT
 
 # NOTE Repace the 6 above with your RedHat version, for example 7 for RHEL 7.
-cat grafana.repo | sudo tee -a /etc/yum.repos.d/grafana.repo
+cat ./grafana.repo | sudo tee -a /etc/yum.repos.d/grafana.repo
 
 # p.138 - Listing 4.21: Installing Grafana via Yum
 sudo yum install -y grafana
