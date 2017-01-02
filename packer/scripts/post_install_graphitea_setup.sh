@@ -3,7 +3,9 @@ set -e
 set -v
 
 sudo apt-get update -y
-sudo apt-get install -y graphite-carbon apt-transport-https 
+#http://askubuntu.com/questions/549550/installing-graphite-carbon-via-apt-unattended
+sudo DEBIAN_FRONTEND=noninteractive apt-get -q -y --force-no install graphite-carbon
+sudo apt-get install -y apt-transport-https 
 
 # P.134 - Listing 4.10: Adding the Graphite-API Package Cloudkey
 curl https://packagecloud.io/gpg.key | sudo apt-key add -
