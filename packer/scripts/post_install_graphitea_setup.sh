@@ -3,14 +3,13 @@ set -e
 set -v
 
 sudo apt-get update -y
-sudo apt-get install -y graphite-carbon 
+sudo apt-get install -y graphite-carbon apt-transport-https 
 
 # P.134 - Listing 4.10: Adding the Graphite-API Package Cloudkey
 curl https://packagecloud.io/gpg.key | sudo apt-key add -
 
 # P.134 - Listing 4.11: Adding the Package Cloud exoscale repository listing
 sudo sh -c "echo deb https://packagecloud.io/exoscale/community/ubuntu/ trusty main > /etc/apt/sources.list.d/exoscale_community.list"
-sudo apt-get install -y apt-transport-https 
 sudo apt-get update -y 
 
 # P.135 - Listing 4.13: Installing the graphite-api package on Ubuntu
