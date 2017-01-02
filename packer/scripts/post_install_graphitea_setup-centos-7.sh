@@ -20,7 +20,7 @@ sudo yum makecache fast
 
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
-sudo yum install -y wget unzip vim git java-1.7.0-openjdk daemonize python-setuptools
+sudo yum install -y wget unzip vim git java-1.7.0-openjdk daemonize python-setuptools curl
 
 # Installing Graphite packages on Centos P.131
 sudo yum install -y python-whisper python-carbon
@@ -62,6 +62,10 @@ EOT
 
 # NOTE Repace the 6 above with your RedHat version, for example 7 for RHEL 7.
 cat grafana.repo | sudo tee -a /etc/yum.repos.d/grafana.repo
+
+curl https://packagecloud.io/gpg.key 
+
+sudo rpm --import gpg.key
 
 # p.138 - Listing 4.21: Installing Grafana via Yum
 sudo yum install -y grafana
