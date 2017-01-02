@@ -63,10 +63,6 @@ EOT
 # NOTE Repace the 6 above with your RedHat version, for example 7 for RHEL 7.
 cat grafana.repo | sudo tee -a /etc/yum.repos.d/grafana.repo
 
-curl https://packagecloud.io/gpg.key 
-
-sudo rpm --import gpg.key
-
 # p.138 - Listing 4.21: Installing Grafana via Yum
 sudo yum install -y grafana
 
