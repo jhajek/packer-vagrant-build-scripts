@@ -29,9 +29,11 @@ sudo yum install -y python-whisper python-carbon
 sudo groupadd _graphite 
 sudo useradd -c "Carbon daemons" -g _graphite -d /var/lib/graphite -M -s /sbin/nologin _graphite
 
+# Listing4.8: Changingtheownershipof/var/log/carbon
 sudo mv /var/lib/carbon /var/lib/graphite 
 sudo chown -R _graphite:_graphite /var/lib/graphite
 
+# Listing4.9: Removingthecarbonuser
 sudo chown -R _graphite:_graphite /var/log/carbon
 sudo userdel carbon
 
