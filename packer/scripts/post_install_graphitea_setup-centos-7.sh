@@ -47,17 +47,17 @@ sudo touch /etc/yum.repos.d/grafana.repo
 
 # P.138 - Listing 4.20: Yum repository definition for Grafana
 # http://superuser.com/questions/351193/echo-multiple-lines-of-text-to-a-file-in-bash
+# http://docs.grafana.org/installation/rpm/
 cat > grafana.repo <<'EOT'
 [grafana]
 name=grafana
-baseurl=https://packagecloud.io/grafana/stable/el/7/$basearch
+baseurl=https://packagecloud.io/grafana/stable/el/6/$basearch
 repo_gpgcheck=1
 enabled=1
 gpgcheck=1
-gpgkey=https://packagecloud.io/gpg.key
-https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
+gpgkey=https://packagecloud.io/gpg.key https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
 sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt  
 EOT
 
 # NOTE Repace the 6 above with your RedHat version, for example 7 for RHEL 7.
