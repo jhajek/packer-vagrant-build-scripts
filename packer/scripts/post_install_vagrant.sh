@@ -15,5 +15,5 @@ wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/key
 sudo mkdir -p /home/vagrant/.ssh
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
-
+sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 echo "All Done!"
