@@ -1,11 +1,11 @@
 {
     "builders": [{
-        "name": "ubuntu-16041-itmd521",
+        "name": "ubuntu-16042-itmd521",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
-        "iso_url": "http://mirrors3.kernel.org/ubuntu-releases/16.04.1/ubuntu-16.04.1-server-amd64.iso",
-        "iso_checksum": "29a8b9009509b39d542ecb229787cdf48f05e739a932289de9e9858d7c487c80",
+        "iso_url": "http://mirrors.kernel.org/ubuntu-releases/16.04.2/ubuntu-16.04.2-server-amd64.iso",
+        "iso_checksum": "737ae7041212c628de5751d15c3016058b0e833fdc32e7420209b76ca3d0a535",
         "iso_checksum_type": "sha256",
  "http_directory" : ".",
   "http_port_min" : 9001,
@@ -17,7 +17,7 @@
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-        "vm_name": "ubuntu-16041-server",
+        "vm_name": "ubuntu-16042-server",
         "hard_drive_interface": "sata",
         "disk_size": 60000,
         "boot_wait": "5s",
