@@ -4,7 +4,7 @@
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
-        "iso_url": "http://mirrors3.kernel.org/ubuntu-releases/16.04.1/ubuntu-16.04.1-server-amd64.iso",
+        "iso_url": "http://mirrors.kernel.org/ubuntu-releases/16.04.1/ubuntu-16.04.1-server-amd64.iso",
         "iso_checksum": "29a8b9009509b39d542ecb229787cdf48f05e739a932289de9e9858d7c487c80",
         "iso_checksum_type": "sha256",
  "http_directory" : ".",
