@@ -8,9 +8,31 @@ set -v
 # Read this bug track to see why this line below was the source of a lot of trouble.... 
 # https://github.com/mitchellh/vagrant/issues/1482
 #echo "Defaults requiretty" | sudo tee -a /etc/sudoers.d/init-users
+#################################################################################################################
+# code needed to allow for vagrant to function seamlessly
+#################################################################################################################
 echo "%admin  ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/init-users
 sudo groupadd admin
 sudo usermod -a -G admin vagrant
+
+#http://superuser.com/questions/745881/how-to-authenticate-to-a-vm-using-vagrant-up
+mkdir /home/vagrant/.ssh
+wget --no-check-certificate \
+    'https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub' \
+    -O /home/vagrant/.ssh/authorized_keys
+chown -R vagrant /home/vagrant/.ssh
+chmod -R go-rwsx /home/vagrant/.ssh
+
+###############################################################################################################
+# firewalld additions to make CentOS and riemann to work
+###############################################################################################################
+# Adding firewall rules for riemann - Centos 7 uses firewalld (Thanks Lennart...)
+# http://serverfault.com/questions/616435/centos-7-firewall-configuration
+sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=5556/udp --permanent
+# Websockets are TCP... for now - http://stackoverflow.com/questions/4657033/javascript-websockets-with-udp
+sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
+###############################################################################################################
 
 # Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
@@ -21,6 +43,8 @@ sudo yum makecache fast
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
 sudo yum install -y wget unzip vim git java-1.7.0-openjdk daemonize python-setuptools curl
+# Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
+sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
 
 # Installing Graphite packages on Centos P.131
 sudo yum install -y python-whisper python-carbon
@@ -67,23 +91,5 @@ cat ./grafana.repo | sudo tee -a /etc/yum.repos.d/grafana.repo
 
 # p.138 - Listing 4.21: Installing Grafana via Yum
 sudo yum install -y grafana
-
-#http://superuser.com/questions/745881/how-to-authenticate-to-a-vm-using-vagrant-up
-mkdir /home/vagrant/.ssh
-wget --no-check-certificate \
-    'https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub' \
-    -O /home/vagrant/.ssh/authorized_keys
-chown -R vagrant /home/vagrant/.ssh
-chmod -R go-rwsx /home/vagrant/.ssh
-
-# Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
-sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
-
-# Adding firewall rules for riemann - Centos 7 uses firewalld (Thanks Lennart...)
-# http://serverfault.com/questions/616435/centos-7-firewall-configuration
-sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=5556/udp --permanent
-# Websockets are TCP... for now - http://stackoverflow.com/questions/4657033/javascript-websockets-with-udp
-sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
 
 echo "All Done!"
