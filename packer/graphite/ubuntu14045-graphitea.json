@@ -46,7 +46,7 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_graphitea_setup.sh"
+    "script": "../scripts/post_install_vagrant.sh"
   }
 ],
   "post-processors": [
