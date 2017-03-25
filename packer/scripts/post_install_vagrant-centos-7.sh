@@ -41,7 +41,6 @@ sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/R
 sudo yum makecache fast
 
 
-
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
 sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
 
