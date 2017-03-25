@@ -1,0 +1,1 @@
+ packer build ./ubuntu14045-riemanna.json ; packer build ./centos-7-1611-riemannb.json ; packer build ./ubuntu14045-riemannmc.json
