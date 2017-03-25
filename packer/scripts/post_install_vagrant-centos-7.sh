@@ -9,6 +9,8 @@ set -v
 # Read this bug track to see why this line below was the source of a lot of trouble.... 
 # https://github.com/mitchellh/vagrant/issues/1482
 #echo "Defaults requiretty" | sudo tee -a /etc/sudoers.d/init-users
+# Need to add this first as wget not part of the base package...
+sudo yum install -y wget
 #################################################################################################################
 # code needed to allow for vagrant to function seamlessly
 #################################################################################################################
