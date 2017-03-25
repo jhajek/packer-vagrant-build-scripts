@@ -41,13 +41,11 @@ sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/R
 sudo yum makecache fast
 
 
-# Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
-sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
-
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
-sudo yum install -y wget git vim unzip
-
+sudo yum install -y wget unzip vim git java-1.7.0-openjdk daemonize python-setuptools curl
+# Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
+sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
 
 
 echo "All Done!"
