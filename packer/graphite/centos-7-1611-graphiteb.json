@@ -35,18 +35,17 @@
     ]
   }],
 
-    "provisioners": [
-	      {
-		          "type": "shell",
-			    "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
-			        "script": "../scripts/post_install_graphiteb_setup-centos-7.sh"
-				  }
-    ],
-
+  "provisioners": [
+  {
+    "type": "shell",
+  "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+    "script": "../scripts/post_install_vagrant-centos-7.sh"
+  }
+],
   "post-processors": [
  {
   "type": "vagrant",
- "keep_input_artifact": false,
+ "keep_input_artifact": false, 
  "output": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"  
  }
 ]
