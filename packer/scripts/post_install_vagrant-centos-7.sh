@@ -34,6 +34,8 @@ sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=5556/udp --permanent
 # Websockets are TCP... for now - http://stackoverflow.com/questions/4657033/javascript-websockets-with-udp
 sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=2003/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=2004/tcp --permanent
 ###############################################################################################################
 
 # Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
