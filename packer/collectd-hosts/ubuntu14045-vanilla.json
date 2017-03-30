@@ -25,7 +25,7 @@
             "/install/vmlinuz noapic ",
             "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-            "hostname=pleasechangeme ",
+            "hostname=hosta ",
             "fb=false debconf/frontend=noninteractive ",
             "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
             "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
@@ -46,7 +46,7 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_vagrant.sh"
+    "script": "../scripts/post_install_collectd.sh"
   }
 ],
   "post-processors": [
