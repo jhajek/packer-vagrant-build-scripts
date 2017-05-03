@@ -8,3 +8,4 @@ output*/
 *.ovf
 build/*
 .vagrant/*
+.cfg.*
