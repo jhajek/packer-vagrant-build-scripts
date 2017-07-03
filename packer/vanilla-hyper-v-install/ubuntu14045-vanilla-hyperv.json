@@ -1,0 +1,45 @@
+{
+    "builders": [{
+        "vm_name": "ubuntu-14045-server-android",
+        "type": "hyperv-iso",
+        "guest_additions_mode": "enabled",
+        "generation": 2, 
+	"iso_url": "http://mirrors.kernel.org/ubuntu-releases/14.04.5/ubuntu-14.04.5-server-amd64.iso",
+        "iso_checksum": "dde07d37647a1d2d9247e33f14e91acb10445a97578384896b4e1d985f754cc1",
+        "iso_checksum_type": "sha256",
+ "http_directory" : ".",
+  "http_port_min" : 9001,
+  "http_port_max" : 9001,
+        "ssh_username": "vagrant",
+        "ssh_password": "vagrant",
+        "communicator": "ssh", 
+        "ssh_pty": "true", 
+        "shutdown_command": "echo 'vagrant' | sudo -S -E shutdown -P now", 
+        "disk_size": 80000,
+         "ssh_timeout" : "4h",
+        "boot_wait": "5s",
+        "ram_size": "8192",
+        "switch_name": "Project",
+ "boot_command" : [
+     "<esc><wait10><esc><esc><enter><wait>",
+        "set gfxpayload=1024x768<enter>",
+        "linux /install/vmlinuz ",
+        "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/preseed/preseed.cfg  ",
+        "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+        "hostname=android ",
+        "fb=false debconf/frontend=noninteractive ",
+        "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+        "keyboard-configuration/variant=USA console-setup/ask_detect=false <enter>",
+        "initrd /install/initrd.gz<enter>",
+        "boot<enter>"
+        ]  
+    }], 
+  "provisioners": [
+  {
+    "type": "shell",
+  "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+    "script": "../scripts/post_install_vagrant.sh"
+  }
+]
+}
+
