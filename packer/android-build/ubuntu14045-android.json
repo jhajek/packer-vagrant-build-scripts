@@ -1,6 +1,6 @@
 {
     "builders": [{
-        "name": "ubuntu-vanilla-14045-server",
+        "name": "ubuntu-android-14045-server",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
@@ -18,14 +18,14 @@
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
         "vm_name": "ubuntu-vanilla-14045-server",
         "hard_drive_interface": "sata",
-        "disk_size": 20000,
+        "disk_size": 50000,
         "boot_wait": "5s",
  "boot_command" : [
             "<esc><esc><enter><wait>",
             "/install/vmlinuz noapic ",
             "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-            "hostname=pleasechangeme ",
+            "hostname=android ",
             "fb=false debconf/frontend=noninteractive ",
             "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
             "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
