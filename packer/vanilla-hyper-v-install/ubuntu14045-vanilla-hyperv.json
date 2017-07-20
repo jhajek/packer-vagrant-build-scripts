@@ -19,7 +19,7 @@
          "ssh_timeout" : "4h",
         "boot_wait": "5s",
         "ram_size": "8192",
-        "switch_name": "Project",
+        "switch_name": "NATSwitch",
  "boot_command" : [
      "<esc><wait10><esc><esc><enter><wait>",
         "set gfxpayload=1024x768<enter>",
