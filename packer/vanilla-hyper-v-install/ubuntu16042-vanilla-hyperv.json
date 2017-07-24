@@ -2,8 +2,8 @@
     "builders": [{
         "name": "ubuntu-16042-android-server",
         "type": "hyperv-iso",
-        "guest_os_type": "Ubuntu_64",
-        "guest_additions_mode": "disable",
+        "guest_additions_mode": "enabled",
+        "generation": 2, 
         "iso_url": "http://mirrors.kernel.org/ubuntu-releases/16.04.2/ubuntu-16.04.2-server-amd64.iso",
         "iso_checksum": "737ae7041212c628de5751d15c3016058b0e833fdc32e7420209b76ca3d0a535",
         "iso_checksum_type": "sha256",
@@ -13,14 +13,14 @@
         "ssh_username": "vagrant",
         "ssh_password": "vagrant",
         "ssh_wait_timeout": "30m",
-      	"type" : "virtualbox-iso",
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-        "vm_name": "ubuntu-vanilla-16042-server",
         "hard_drive_interface": "sata",
-        "disk_size": 20000,
+        "disk_size": 200000,
         "boot_wait": "5s",
+        "ram_size": "8192",
+        "switch_name": "NATSwitch",
  "boot_command" : [
             "<enter><f6><esc>",
 	    "<bs><bs><bs><bs><bs>",
@@ -48,16 +48,7 @@
             "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
             "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
             "initrd=/install/initrd.gz -- <enter>"
-        ],  
- "vboxmanage": [
-        [
-          "modifyvm",
-          "{{.Name}}",
-          "--memory",
-          "2048"
         ]
-
-    ]
   }],
  
   "provisioners": [
@@ -66,13 +57,6 @@
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
     "script": "../scripts/post_install_vagrant.sh"
   }
-],
-  "post-processors": [
- {
-  "type": "vagrant",
- "keep_input_artifact": false,
- "output": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"  
- }
 ]
 }
 
