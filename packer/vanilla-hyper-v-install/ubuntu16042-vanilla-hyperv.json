@@ -1,7 +1,7 @@
 {
     "builders": [{
-        "name": "ubuntu-vanilla-16042-server",
-        "type": "virtualbox-iso",
+        "name": "ubuntu-16042-android-server",
+        "type": "hyperv-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
         "iso_url": "http://mirrors.kernel.org/ubuntu-releases/16.04.2/ubuntu-16.04.2-server-amd64.iso",
