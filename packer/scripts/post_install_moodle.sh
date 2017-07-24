@@ -31,7 +31,9 @@ sudo apt-get install -y nginx php7.0 mariadb-server graphviz aspell php7.0-pspel
 sudo git clone git://git.moodle.org/moodle.git
 cd moodle
 sudo git branch -a
+sudo git branch --track MOODLE_32_STABLE origin/MOODLE_32_STABLE
 sudo git checkout MOODLE_32_STABLE
+
 
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
 sudo sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
