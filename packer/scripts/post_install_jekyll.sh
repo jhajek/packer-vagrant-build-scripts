@@ -21,4 +21,4 @@ echo "All Done!"
 
 sudo apt-get update -y
 sudo apt-get install -y ruby ruby-dev gems 
-sudo gem install  -y jekyll bundler 
+sudo gem install jekyll bundler 
