@@ -18,3 +18,7 @@ sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 echo "All Done!"
+
+
+sudo apt-get install ruby ruby-dev gems 
+sudo gem install jekyll bundler 
