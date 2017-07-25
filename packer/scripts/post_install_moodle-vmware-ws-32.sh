@@ -28,6 +28,11 @@ sudo git branch -a
 sudo git branch --track MOODLE_32_STABLE origin/MOODLE_32_STABLE
 sudo git checkout MOODLE_32_STABLE
 
+mkdir /var/moodledata
+chown -R www-data /var/moodledata
+chown -R www-data /var/www/html/moodle
+chmod -R 777 /var/moodledata
+
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
 sudo sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
 sudo service fail2ban restart
