@@ -30,6 +30,17 @@ sudo apt-get install -y mariadb-server fail2ban
 # Create empty database
 #https://docs.moodle.org/33/en/Installation_quick_guide#Create_a_database
 
+#inject the username and password for autologin later in a ~/.my.cnf file
+# http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423#103423
+
+echo -e "[client] \n user = root \n password = $MARIADBPASSWORD" > ~/.my.cnf
+echo -e "\n port = 3306 \n socket          = /var/run/mysqld/mysqld.sock" >> ~/.my.cnf
+
+
+#auto run or source a script
+# http://dev.mysql.com/doc/refman/5.0/en/batch-mode.html
+mysql -u root < commands.sql
+
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
 sudo sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
 sudo service fail2ban restart

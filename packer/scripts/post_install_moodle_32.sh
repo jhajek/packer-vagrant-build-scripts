@@ -21,9 +21,11 @@ echo "All Done!"
 sudo apt-get update -y && sudo apt-get -y dist-upgrade
 
 # https://dba.stackexchange.com/questions/59317/install-mariadb-10-on-ubuntu-without-prompt-and-no-root-password
-export DEBIAN_FRONTEND=noninteractive
-sudo debconf-set-selections <<< 'mariadb-server mysql-server/root_password password PASS'
-sudo debconf-set-selections <<< 'mariadb-server mysql-server/root_password_again password PASS'
+# http://dba.stackexchange.com/questions/35866/install-mariadb-without-password-prompt-in-ubuntu?newreg=426e4e37d5a2474795c8b1c911f0fb9f
+# From <http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423> 
+echo "mariadb-server mysql-server/root_password password PASS" | sudo  debconf-set-selections
+echo "mariadb-server mysql-server/root_password_again password PASS" | sudo debconf-set-selections
+echo "Mdbpw $MARIADBPASSWORD"
 
 sudo apt-get install -y nginx php7.0 mariadb-server graphviz aspell php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xml php7.0-xmlrpc php7.0-ldap php7.0-zip php7.0-soap php7.0-mbstring fail2ban
 
