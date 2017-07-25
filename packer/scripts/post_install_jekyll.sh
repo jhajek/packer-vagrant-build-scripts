@@ -21,6 +21,7 @@ echo "All Done!"
 
 sudo apt-get update -y
 sudo apt-get install -y ruby ruby-dev gems 
-sudo gem install jekyll bundler 
+sudo gen install bundler
+sudo gem install jekyll 
 
 git clone https://github.com/jhajek/forge.git /home/vagrant/Documents
