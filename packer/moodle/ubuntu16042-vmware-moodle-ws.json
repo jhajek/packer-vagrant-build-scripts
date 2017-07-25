@@ -63,7 +63,7 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "scripts/post_install_moodle-ws-32.sh"
+    "script": "scripts/post_install_moodle-vmware-ws-32.sh"
   }
 ],
   "post-processors": [
