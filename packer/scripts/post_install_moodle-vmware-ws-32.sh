@@ -20,12 +20,7 @@ echo "All Done!"
 
 sudo apt-get update -y && sudo apt-get -y dist-upgrade
 
-# https://dba.stackexchange.com/questions/59317/install-mariadb-10-on-ubuntu-without-prompt-and-no-root-password
-export DEBIAN_FRONTEND=noninteractive
-sudo debconf-set-selections <<< 'mariadb-server mysql-server/root_password password PASS'
-sudo debconf-set-selections <<< 'mariadb-server mysql-server/root_password_again password PASS'
-
-sudo apt-get install -y nginx php7.0 mariadb-server graphviz aspell php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xml php7.0-xmlrpc php7.0-ldap php7.0-zip php7.0-soap php7.0-mbstring 
+sudo apt-get install -y nginx php7.0 mariadb-client graphviz aspell php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xml php7.0-xmlrpc php7.0-ldap php7.0-zip php7.0-soap php7.0-mbstring fail2ban
 
 sudo git clone git://git.moodle.org/moodle.git
 cd moodle
