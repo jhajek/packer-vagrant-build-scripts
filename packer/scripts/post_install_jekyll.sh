@@ -23,5 +23,6 @@ sudo apt-get update -y
 sudo apt-get install -y ruby ruby-dev gems 
 sudo gem install bundler
 sudo gem install jekyll 
+sudo gem install sass --version 3.4.24
 
 git clone https://github.com/jhajek/forge.git /home/vagrant/Documents
