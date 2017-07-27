@@ -18,6 +18,13 @@ cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 echo "All Done!"
 
+
+# Adding latest stable Repo for Nginx install - ubuntu seems to tail behind
+# https://www.linuxbabe.com/nginx/nginx-latest-version-ubuntu-16-04-16-10
+sudo touch /etc/apt/sources.list.d/nginx.list
+echo "deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx\ndeb-src http://nginx.org/packages/mainline/ubuntu/ xenial nginx" | sudo tee /etc/apt/sources.list.d/nginx.list 
+
+
 sudo apt-get update -y && sudo apt-get -y dist-upgrade
 
 # https://dba.stackexchange.com/questions/59317/install-mariadb-10-on-ubuntu-without-prompt-and-no-root-password
