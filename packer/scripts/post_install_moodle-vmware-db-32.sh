@@ -27,8 +27,8 @@ sudo debconf-set-selections <<< 'mariadb-server mysql-server/root_password_again
 
 sudo apt-get install -y mariadb-server fail2ban
 
-sudo systemctl enable mariadb.service
-sudo systemctl start mariadb.service
+sudo systemctl enable mysql.service
+sudo systemctl start mysql.service
 
 # Create empty database
 #https://docs.moodle.org/33/en/Installation_quick_guide#Create_a_database
