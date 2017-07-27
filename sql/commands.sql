@@ -14,3 +14,8 @@ flush privileges;
 -- Create a user/password combination with appropriate permissions for the database. For example (MySQL again):
 -- GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON moodle.* TO 'moodleuser'@'localhost' IDENTIFIED BY 'yourpassword';
 -- flush privileges;
+
+-- Code to create a user only to be used for mysqldump with limited privilleges
+-- CREATE USER 'backup'@'localhost' IDENTIFIED BY 'secret';
+CREATE USER 'backup'@'localhost' IDENTIFIED BY 'CHANGEME';
+GRANT SELECT, SHOW VIEW, RELOAD, REPLICATION CLIENT, EVENT, TRIGGER ON *.* TO 'backup'@'localhost';

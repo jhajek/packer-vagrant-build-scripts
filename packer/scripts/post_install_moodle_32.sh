@@ -58,3 +58,15 @@ sudo service fail2ban restart
 sudo ufw enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
 ufw allow proto tcp to 0.0.0.0/0 port 80
+
+# How to create a user that only has mysqldump privilleges
+# https://stackoverflow.com/questions/8658996/minimum-grants-needed-by-mysqldump-for-dumping-a-full-schema-triggers-are-miss
+
+# Mariadb create user and tables commands
+
+# Inject the username and password for autologin later in a ~/.my.cnf file
+# http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423#103423
+
+echo -e "[client] \n user = root \n password = $MARIADBPASSWORD" > ~/.my.cnf
+echo -e "\n port = 3306 \n socket          = /var/run/mysqld/mysqld.sock" >> ~/.my.cnf
+
