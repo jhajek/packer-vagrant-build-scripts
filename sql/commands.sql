@@ -17,5 +17,6 @@ flush privileges;
 
 -- Code to create a user only to be used for mysqldump with limited privilleges
 -- CREATE USER 'backup'@'localhost' IDENTIFIED BY 'secret';
+-- http://www.fromdual.com/privileges-of-mysql-backup-user-for-mysqldump
 CREATE USER 'backup'@'localhost' IDENTIFIED BY 'CHANGEME';
 GRANT SELECT, SHOW VIEW, RELOAD, REPLICATION CLIENT, EVENT, TRIGGER ON *.* TO 'backup'@'localhost';
