@@ -55,7 +55,7 @@ git checkout MOODLE_32_STABLE
 #https://docs.moodle.org/33/en/Installation_quick_guide#Create_a_database
 
 # sudo rm /var/www/html/index.html
-sudo mv ./moodle/* /var/www/html
+sudo mv ./moodle/* /usr/share/nginx/html
 
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
 sudo sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
