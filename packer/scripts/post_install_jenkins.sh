@@ -16,7 +16,7 @@ sudo mkdir -p /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 
-wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+wget http://mirrors.jenkins.io/war-stable/2.60.1/jenkins.war
 
 sudo apt-get update -y
 sudo apt-get install -y openjdk-7-jre
