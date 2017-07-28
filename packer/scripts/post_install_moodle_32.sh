@@ -2,9 +2,6 @@
 set -e
 set -v
 
-# Set your Root Database password here: Recommended to be at least 15 characters long
-DBPASSWD="thisisvertimportanttochange"
-
 # http://superuser.com/questions/196848/how-do-i-create-an-administrator-user-on-ubuntu
 # http://unix.stackexchange.com/questions/1416/redirecting-stdout-to-a-file-you-dont-have-write-permission-on
 # This line assumes the user you created in the preseed directory is vagrant
@@ -35,8 +32,8 @@ sudo apt-get update -y && sudo apt-get -y dist-upgrade
 # http://dba.stackexchange.com/questions/35866/install-mariadb-without-password-prompt-in-ubuntu?newreg=426e4e37d5a2474795c8b1c911f0fb9f
 # From <http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423> 
 export DEBIAN_FRONTEND=noninteractive
-echo "mariadb-server mysql-server/root_password password $DBPASSWD" | sudo  debconf-set-selections
-echo "mariadb-server mysql-server/root_password_again password $DBPASSWD" | sudo debconf-set-selections
+echo "mariadb-server mysql-server/root_password password $DBPASS" | sudo  debconf-set-selections
+echo "mariadb-server mysql-server/root_password_again password $DBPASS" | sudo debconf-set-selections
 
 sudo apt-get install -y nginx php7.0 php-fpm mariadb-server graphviz aspell php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xml php7.0-xmlrpc php7.0-ldap php7.0-zip php7.0-soap php7.0-mbstring fail2ban
 
@@ -73,7 +70,7 @@ ufw allow proto tcp to 0.0.0.0/0 port 80
 
 # Inject the username and password for autologin later in a ~/.my.cnf file
 # http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423#103423
-echo -e "[client] \n user = root \n password = $DBPASSWD" > ~/.my.cnf
+echo -e "[client] \n user = root \n password = $DBPASS" > ~/.my.cnf
 echo -e "\n port = 3306 \n socket = /var/run/mysqld/mysqld.sock" >> ~/.my.cnf
 
 # Mariadb create user and tables commands
