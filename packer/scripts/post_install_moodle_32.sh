@@ -65,12 +65,13 @@ ufw allow proto tcp to 0.0.0.0/0 port 80
 # Inject the username and password for autologin later in a ~/.my.cnf file
 # http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423#103423
 # https://stackoverflow.com/questions/8020297/mysql-my-cnf-file-found-option-without-preceding-group
-echo -e "[mysqld] \n\n" > ~/.my.cnf
-echo -e "[client] \n user = root \n password = $DBPASS" >> ~/.my.cnf
-echo -e "\n port = 3306 \n socket = /var/run/mysqld/mysqld.sock" >> ~/.my.cnf
+#echo -e "[mysqld] \n\n" > ~/.my.cnf
+#echo -e "[client] \n user = root \n password = $DBPASS" >> ~/.my.cnf
+#echo -e "\n port = 3306 \n socket = /var/run/mysqld/mysqld.sock" >> ~/.my.cnf
 
 # Mariadb create user and tables commands
 cd ~
 git clone https://github.com/jhajek/commands
 cd commands/sql
+cp ./my.cnf ~/.my.cnf
 mysql -u root < commands.sql
