@@ -19,4 +19,10 @@ sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 wget http://mirrors.jenkins.io/war-stable/2.60.1/jenkins.war
 
 sudo apt-get update -y
-sudo apt-get install -y openjdk-7-jre
+sudo apt-get install -y openjdk-8-jre
+
+sudo ufw enable
+sudo ufw allow 8080
+
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
