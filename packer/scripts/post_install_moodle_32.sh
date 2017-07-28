@@ -73,7 +73,8 @@ ufw allow proto tcp to 0.0.0.0/0 port 80
 cd ~
 git clone https://github.com/jhajek/commands
 cd commands/cnf
+chmod +x ./cnf.sh
 ./cnf.sh
 cd ../sql
-sudo chmod +x commands.sql 
+chmod +x commands.sql 
 mysql -u root < commands.sql
