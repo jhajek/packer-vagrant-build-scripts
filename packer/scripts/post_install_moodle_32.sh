@@ -49,11 +49,6 @@ git branch -a
 git branch --track MOODLE_32_STABLE origin/MOODLE_32_STABLE
 git checkout MOODLE_32_STABLE
 
-# Move the cloned files to /var/www/html which is where Nginx on Ubuntu serves web pages.
-
-# Create empty database
-#https://docs.moodle.org/33/en/Installation_quick_guide#Create_a_database
-
 # sudo rm /var/www/html/index.html
 sudo mv ./moodle/* /usr/share/nginx/html
 
