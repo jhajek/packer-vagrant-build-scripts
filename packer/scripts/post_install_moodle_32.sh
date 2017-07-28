@@ -41,11 +41,11 @@ sudo systemctl start mysql.service
 sudo systemctl enable nginx.service
 sudo systemctl start nginx.service
 
-sudo git clone git://git.moodle.org/moodle.git
+git clone git://git.moodle.org/moodle.git
 cd moodle
-sudo git branch -a
-sudo git branch --track MOODLE_32_STABLE origin/MOODLE_32_STABLE
-sudo git checkout MOODLE_32_STABLE
+git branch -a
+git branch --track MOODLE_32_STABLE origin/MOODLE_32_STABLE
+git checkout MOODLE_32_STABLE
 
 # Move the cloned files to /var/www/html which is where Nginx on Ubuntu serves web pages.
 
@@ -76,3 +76,4 @@ echo -e "[client] \n user = root \n password = PASS" > ~/.my.cnf
 echo -e "\n port = 3306 \n socket = /var/run/mysqld/mysqld.sock" >> ~/.my.cnf
 
 # Mariadb create user and tables commands
+git clone
