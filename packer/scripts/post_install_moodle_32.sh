@@ -68,6 +68,7 @@ echo -e "[client] \n user = root \n password = $DBPASS" > ~/.my.cnf
 echo -e "\n port = 3306 \n socket = /var/run/mysqld/mysqld.sock" >> ~/.my.cnf
 
 # Mariadb create user and tables commands
+cd ~
 git clone https://github.com/jhajek/commands
 cd commands/sql
 mysql -u root < commands.sql
