@@ -1,4 +1,7 @@
 {
+    "variables": {  
+      "database_pass": "{{env `DB_PASS}}" 
+    },
     "builders": [{
         "name": "ubuntu-16042-moodle-server",
         "type": "virtualbox-iso",
@@ -7,9 +10,9 @@
         "iso_url": "http://mirrors.kernel.org/ubuntu-releases/16.04.2/ubuntu-16.04.2-server-amd64.iso",
         "iso_checksum": "737ae7041212c628de5751d15c3016058b0e833fdc32e7420209b76ca3d0a535",
         "iso_checksum_type": "sha256",
- "http_directory" : ".",
-  "http_port_min" : 9001,
-  "http_port_max" : 9001,
+        "http_directory" : ".",
+        "http_port_min" : 9001,
+        "http_port_max" : 9001,
         "ssh_username": "vagrant",
         "ssh_password": "vagrant",
         "ssh_wait_timeout": "30m",
@@ -19,16 +22,16 @@
         "hard_drive_interface": "sata",
         "disk_size": 20000,
         "boot_wait": "5s",
- "boot_command" : [
+        "boot_command" : [
             "<enter><f6><esc>",
-	    "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>", 
-	    "<bs><bs><bs><bs><bs>",
-	    "<bs><bs><bs><bs><bs>",
-	    "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
-	    "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
@@ -38,7 +41,7 @@
             "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs>",
-	    "/install/vmlinuz noapic ",
+	          "/install/vmlinuz noapic ",
             "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
             "hostname=moodle32 ",
