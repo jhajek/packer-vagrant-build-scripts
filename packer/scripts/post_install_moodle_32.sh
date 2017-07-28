@@ -45,12 +45,11 @@ sudo systemctl start nginx.service
 
 git clone git://git.moodle.org/moodle.git
 cd moodle
-git branch -a
 git branch --track MOODLE_32_STABLE origin/MOODLE_32_STABLE
 git checkout MOODLE_32_STABLE
 
 # sudo rm /var/www/html/index.html
-sudo mv ./moodle/* /usr/share/nginx/html
+sudo mv ~/moodle/* /usr/share/nginx/html
 
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
 sudo sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
