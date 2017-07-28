@@ -23,6 +23,8 @@ echo "All Done!"
 # https://www.linuxbabe.com/nginx/nginx-latest-version-ubuntu-16-04-16-10
 sudo touch /etc/apt/sources.list.d/nginx.list
 echo "deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx\ndeb-src http://nginx.org/packages/mainline/ubuntu/ xenial nginx" | sudo tee /etc/apt/sources.list.d/nginx.list 
+wget http://nginx.org/keys/nginx_signing.key
+sudo apt-key add nginx_signing.key
 
 # Update the system and distribution
 sudo apt-get update -y && sudo apt-get -y dist-upgrade
