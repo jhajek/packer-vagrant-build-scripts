@@ -62,7 +62,6 @@ sudo ufw enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
 ufw allow proto tcp to 0.0.0.0/0 port 80
 
-
 # Inject the username and password for autologin later in a ~/.my.cnf file
 # http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423#103423
 echo -e "[client] \n user = root \n password = $DBPASS" > ~/.my.cnf
