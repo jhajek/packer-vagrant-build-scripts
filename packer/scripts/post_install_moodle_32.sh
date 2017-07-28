@@ -74,3 +74,5 @@ chmod +x ./cnf.sh
 cd ../sql
 chmod +x commands.sql 
 mysql -u root < commands.sql
+
+echo "DBPASS: $DBPASS\n"
