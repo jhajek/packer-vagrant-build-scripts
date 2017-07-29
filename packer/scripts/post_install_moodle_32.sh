@@ -41,7 +41,7 @@ sudo apt-get install -y nginx php7.0 php-fpm mariadb-server graphviz aspell php7
 sudo systemctl enable mysql.service
 sudo systemctl start mysql.service
 sudo systemctl enable nginx.service
-sudo systemctl start nginx.service
+sudo systemctl restart nginx.service
 
 git clone git://git.moodle.org/moodle.git
 cd moodle
