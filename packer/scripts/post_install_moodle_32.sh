@@ -73,6 +73,4 @@ chmod +x ./cnf.sh
 ./cnf.sh
 cd ../sql
 chmod +x commands.sql 
-mysql -u root < commands.sql
-# https://github.com/suraj2410/autowordpressinstall/blob/master/installer.sh
-echo "DBPASS: $DBPASS\n"
+sudo mysql -u root < commands.sql
