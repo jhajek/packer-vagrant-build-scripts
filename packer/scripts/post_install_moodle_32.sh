@@ -71,3 +71,5 @@ chmod +x ./cnf.sh
 cd ../sql
 chmod +x commands.sql 
 mysql -u root < commands.sql
+
+# https://stackoverflow.com/questions/17413526/nginx-missing-sites-available-directory
