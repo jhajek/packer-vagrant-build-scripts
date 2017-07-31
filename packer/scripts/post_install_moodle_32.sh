@@ -65,10 +65,10 @@ chmod +x commands.sql
 mysql -u root < commands.sql
 
 # Copy the pre-configured nginx conf to the right location
-sudo cp ~/commands/moodle/nginx/default /etc/nginx/sites-enabled/
+sudo cp -v ~/commands/moodle/nginx/default /etc/nginx/sites-enabled/
 # Copy the pre-configured php.ini to the correct location
-sudo cp ~/commands/moodle/php-fpm/php.ini /etc/php/7.0/fpm/
+sudo cp -v ~/commands/moodle/php-fpm/php.ini /etc/php/7.0/fpm/
 sudo systemctl restart nginx
 
 # Setting etc/cron.dailey for moodle
-sudo cp ~/commands/backup/moodle-daily-cron /etc/cron.daily/
+sudo cp -v ~/commands/backup/moodle-daily-cron /etc/cron.daily/
