@@ -64,6 +64,8 @@ cd ../sql
 chmod +x commands.sql 
 mysql -u root < commands.sql
 
+# Copy the pre-configured nginx conf to the right location
 sudo cp ~/commands/moodle/nginx/default /etc/nginx/sites-enabled/
+# Copy the pre-configured php.ini to the correct location
+sudo cp ~/commands/php-fpm/php.ini /etc/php/7.0/fpm/
 sudo systemctl restart nginx
-
