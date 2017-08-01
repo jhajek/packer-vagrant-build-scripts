@@ -20,13 +20,16 @@ cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 echo "All Done!"
 
-wget http://mirrors.jenkins.io/war-stable/2.60.1/jenkins.war
-
 sudo apt-get update -y
-sudo apt-get install -y openjdk-8-jre
+sudo apt-get install -y openjdk-8-jdk-headless
+
+# Install Jenkins deb package
+wget https://pkg.jenkins.io/debian-stable/binary/jenkins_2.60.2_all.deb
+sudo dpkg -i jenkins_2.60.2_all.deb
+
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
 
 sudo ufw enable
 sudo ufw allow 8080
 
-sudo systemctl enable jenkins
-sudo systemctl start jenkins
