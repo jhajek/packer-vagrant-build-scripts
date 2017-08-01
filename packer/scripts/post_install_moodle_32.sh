@@ -69,8 +69,8 @@ chmod +x ~/commands/cnf/cnf.sh
 # Restart mariadb service after adding custom .my.cnf
 sudo systemctl restart mysql.service
 # Copy the pre-configured config.php file in place
-sudo rm /var/www/html/config-dist.php  
-sudo cp ~/commands/moodle/config/config.php /var/www/html
+#sudo rm /var/www/html/config-dist.php  
+#sudo cp ~/commands/moodle/config/config.php /var/www/html
 # Using sed to inline replace the placeholder password for user database with the one supplied via the packer user env variables 
 sudo sed -i "s/REPLACEME/$USERPASS/g" /var/www/html/config.php
 
@@ -87,6 +87,12 @@ sudo mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY
 # Create a user that has privilleges just to do a mysqldump backup
 # http://www.fromdual.com/privileges-of-mysql-backup-user-for-mysqldump
 sudo mysql -u root -e "CREATE USER 'backup'@'localhost' IDENTIFIED BY '$BKPASS'; GRANT SELECT, SHOW VIEW, RELOAD, REPLICATION CLIENT, EVENT, TRIGGER ON *.* TO 'backup'@'localhost';"
+
+# Running CLI config setup of Moodle
+sudo -u www-data /usr/bin/php /var/www/html/admin/cli/install.php --chmod=2770 --lang=en --wwwroot=/var/www/html --dataroot=/var/moodledata --dbtype=mariadb --dbhost=127.0.0.1 --dbuser=moodleuser --dbpass=$USERPASS --fullname="Moodle Research Project" --shortname="M2" --adminuser=adminjrh --adminpass=$ADMINPASS --non-interactive --agree-licesnse
+
+# Running Database setup and config
+sudo -u www-data /usr/bin/php /var/www/html/admin/cli/install_database.php --lang=en --adminpass=$DBPASS --agree-license
 
 # Copy the pre-configured nginx conf to the right location
 sudo cp -v ~/commands/moodle/nginx/default /etc/nginx/sites-enabled/
