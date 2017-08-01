@@ -40,6 +40,10 @@ cd moodle
 git branch --track MOODLE_32_STABLE origin/MOODLE_32_STABLE
 git checkout MOODLE_32_STABLE
 
+# Create datadir in a not web-accessible directory
+sudo mkdir /var/moodledata
+sudo chown www-data:www-data /var/moodledata
+
 # Delete default welcome page
 sudo rm /var/www/html/index.nginx-debian.html
 # Copy files from Git Repo to default /var/www/html/moodle
