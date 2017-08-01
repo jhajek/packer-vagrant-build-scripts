@@ -1,6 +1,8 @@
 {
     "variables": {  
-      "database_pass": "{{env `DB_PASS`}}" 
+      "database_pass": "{{env `DB_PASS`}}", 
+      "user_pass": "{{env `USER_PASS`}}",
+      "bkup_pass": "{{env `BK_PASS`}}"
     },
     "builders": [{
         "name": "ubuntu-16042-moodle-server",
