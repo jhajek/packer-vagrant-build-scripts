@@ -68,7 +68,11 @@
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
     "script": "../scripts/post_install_moodle_32.sh",
-     "environment_vars": [ "DBPASS={{user `database_pass`}}" ]
+     "environment_vars": [ 
+       "DBPASS={{user `database_pass`}}",
+       "USERPASS={{user `user_pass`}}",
+       "BKUPPASS={{user `bkup_pass`}}" 
+      ]
   }
 ],
   "post-processors": [
