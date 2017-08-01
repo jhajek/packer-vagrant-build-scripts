@@ -72,10 +72,7 @@ sudo systemctl restart mysql.service
 #sudo rm /var/www/html/config-dist.php  
 #sudo cp ~/commands/moodle/config/config.php /var/www/html
 # Using sed to inline replace the placeholder password for user database with the one supplied via the packer user env variables 
-sudo sed -i "s/REPLACEME/$USERPASS/g" /var/www/html/config.php
-
-# Chown webserver files
-sudo chown -R www-data:www-data /var/www/html/
+# sudo sed -i "s/REPLACEME/$USERPASS/g" /var/www/html/config.php
 
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
 # This section uses the user environment variables declared in packer json build template
@@ -93,6 +90,9 @@ sudo -u www-data /usr/bin/php /var/www/html/admin/cli/install.php --chmod=2770 -
 
 # Running Database setup and config
 sudo -u www-data /usr/bin/php /var/www/html/admin/cli/install_database.php --lang=en --adminpass=$DBPASS --agree-license
+
+# Chown webserver files
+sudo chown -R www-data:www-data /var/www/html/
 
 # Copy the pre-configured nginx conf to the right location
 sudo cp -v ~/commands/moodle/nginx/default /etc/nginx/sites-enabled/
