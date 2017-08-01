@@ -43,7 +43,7 @@ git checkout MOODLE_32_STABLE
 # Delete default welcome page
 sudo rm /var/www/html/index.nginx-debian.html
 # Copy files from Git Repo to default /var/www/html/moodle
-sudo mv ~/moodle/* /var/www/html/moodle/
+sudo mv ~/moodle/* /var/www/html/
 
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
 sudo sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
