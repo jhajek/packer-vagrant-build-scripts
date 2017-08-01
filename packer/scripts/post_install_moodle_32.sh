@@ -63,9 +63,11 @@ ufw allow proto tcp to 0.0.0.0/0 port 80
 # Mariadb create user and tables commands from https://github.com/jhajek/commands.git
 cd ~
 git clone https://github.com/jhajek/commands
-cd commands/cnf
-chmod +x ./cnf.sh
-./cnf.sh
+chmod +x ~/commands/cnf/cnf.sh
+~/commands/cnf/cnf.sh
+# Copy the pre-configured config.php file in place
+sudo rm /var/www/html/config-dist.php  
+sudo cp ~/commands/moodle/config/config.php /var/www/html 
 
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
 # This section uses the user environment variables declared in packer json build template
