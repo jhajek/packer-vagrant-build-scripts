@@ -71,6 +71,9 @@ sudo cp ~/commands/moodle/config/config.php /var/www/html
 # Using sed to inline replace the placeholder password for user database with the one supplied via the packer user env variables 
 sudo sed -i "s/REPLACEME/$USERPASS/g" /var/www/html/config.php
 
+# Chown webserver files
+sudo chown -R www-data:www-data /var/www/html/
+
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
 # This section uses the user environment variables declared in packer json build template
 # #USERPASS and $BKPASS
