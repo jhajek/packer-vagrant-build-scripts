@@ -60,6 +60,8 @@ sudo ufw enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
 ufw allow proto tcp to 0.0.0.0/0 port 80
 
+
+
 # Mariadb create user and tables commands from https://github.com/jhajek/commands.git
 cd ~
 git clone https://github.com/jhajek/commands
