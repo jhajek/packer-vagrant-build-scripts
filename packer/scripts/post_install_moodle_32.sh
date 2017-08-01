@@ -66,9 +66,6 @@ git clone https://github.com/jhajek/commands
 cd commands/cnf
 chmod +x ./cnf.sh
 ./cnf.sh
-cd ../sql
-chmod +x commands.sql 
-mysql -u root < commands.sql
 
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
 # This section uses the user environment variables declared in packer json build template
