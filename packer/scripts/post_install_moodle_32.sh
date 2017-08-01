@@ -65,6 +65,8 @@ cd ~
 git clone https://github.com/jhajek/commands
 chmod +x ~/commands/cnf/cnf.sh
 ~/commands/cnf/cnf.sh
+# Restart mariadb service after adding custom .my.cnf
+sudo systemctl restart mysql.service
 # Copy the pre-configured config.php file in place
 sudo rm /var/www/html/config-dist.php  
 sudo cp ~/commands/moodle/config/config.php /var/www/html
