@@ -43,6 +43,7 @@ git checkout MOODLE_32_STABLE
 # Create datadir in a not web-accessible directory
 sudo mkdir /var/moodledata
 sudo chown www-data:www-data /var/moodledata
+sudo chmod 0777 /var/moodledata
 
 # Delete default welcome page
 sudo rm /var/www/html/index.nginx-debian.html
