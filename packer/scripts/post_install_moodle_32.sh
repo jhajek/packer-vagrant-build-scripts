@@ -68,6 +68,7 @@ chmod +x ~/commands/cnf/cnf.sh
 # Copy the pre-configured config.php file in place
 sudo rm /var/www/html/config-dist.php  
 sudo cp ~/commands/moodle/config/config.php /var/www/html 
+sudo sed -i "s/\$CFG->dbpass    = 'REPLACEME';/\$CFG->dbpass    = '$USERPASS';" /var/www/html/config.php
 
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
 # This section uses the user environment variables declared in packer json build template
