@@ -103,3 +103,8 @@ sudo systemctl restart nginx
 # Setting etc/cron.dailey for moodle
 sudo cp -v ~/commands/backup/moodle-daily-cron /etc/cron.daily/
 sudo cp -v ~/commands/backup/mysqldump-daily /etc/cron.daily/
+
+# Change the timezone in php.ini
+# http://php.net/manual/en/timezones.america.php
+sudo sed -i "s/;date.timezone =/date.timezone = America/Chicago/g" /etc/php/7.0/fpm/php.ini 
+sudo sed -i "s/;security.limit_extensions = .php .php3 .php4 .php5 .php7/security.limit_extensions = .php/g" /etc/php/7.0/fpm/pool.d/www.conf
