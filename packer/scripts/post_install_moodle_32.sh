@@ -60,8 +60,6 @@ sudo ufw enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
 ufw allow proto tcp to 0.0.0.0/0 port 80
 
-
-
 # Mariadb create user and tables commands from https://github.com/jhajek/commands.git
 cd ~
 git clone https://github.com/jhajek/commands
@@ -71,6 +69,17 @@ chmod +x ./cnf.sh
 cd ../sql
 chmod +x commands.sql 
 mysql -u root < commands.sql
+
+# https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
+# This section uses the user environment variables declared in packer json build template
+# #USERPASS and $BKPASS
+sudo mysql -u root -e "CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+sudo mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON moodle.* TO moodleuser@localhost IDENTIFIED BY '$USERPASS'; flush privileges;"
+
+# Create a user that has privilleges just to do a mysqldump backup
+# http://www.fromdual.com/privileges-of-mysql-backup-user-for-mysqldump
+sudo mysql -u root -e "CREATE USER 'backup'@'localhost' IDENTIFIED BY '$BKPASS'; GRANT SELECT, SHOW VIEW, RELOAD, REPLICATION CLIENT, EVENT, TRIGGER ON *.* TO 'backup'@'localhost';"
 
 # Copy the pre-configured nginx conf to the right location
 sudo cp -v ~/commands/moodle/nginx/default /etc/nginx/sites-enabled/
