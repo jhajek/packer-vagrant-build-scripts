@@ -8,4 +8,4 @@ This is how we are passing passwords in securely.
 ### What we need to set
 ```packer build -var 'DB_PASS=rootpasswordhere' -var 'USER_PASS=moodledatabaseuserpasswordhere' -var 'BK_PASS=backupuserdatabasepasswordhere' -var 'ADMIN_PASS=moodleadminpasswordhere' ubuntu-16042-moodle-32.json```
 
-This way we can securely build the entire moodle system, deploy it and when building it pass in passwords via environment variables
+This way we can securely build the entire [Moodle](http://moodle.org "Moodle") system, deploy it and when building it pass in passwords via environment variables
