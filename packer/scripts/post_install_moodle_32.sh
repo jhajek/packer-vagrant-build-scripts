@@ -111,7 +111,7 @@ sudo cp -v ~/commands/backup/mysqldump-daily /etc/cron.daily/
 # http://php.net/manual/en/timezones.america.php
 sudo sed -i "s/\;date.timezone =/date.timezone = America\/Chicago/g" /etc/php/7.0/fpm/php.ini
 # https://docs.moodle.org/33/en/Nginx 
-sudo sed -i "s/\;security.limit_extensions = .php .php3 .php4 .php5 .php7\/security.limit_extensions = .php/g" /etc/php/7.0/fpm/pool.d/www.conf
+sudo sed -i "s/\;security.limit_extensions = .php .php3 .php4 .php5 .php7/security.limit_extensions = .php/g" /etc/php/7.0/fpm/pool.d/www.conf
 
 # Restart Nginx after making changes to PHP
 sudo systemctl restart nginx.service
