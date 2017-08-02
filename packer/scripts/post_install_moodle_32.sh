@@ -35,10 +35,9 @@ sudo systemctl start mysql.service
 sudo systemctl enable nginx.service
 sudo systemctl restart nginx.service
 
-git clone git://git.moodle.org/moodle.git
-cd moodle
-git branch --track MOODLE_32_STABLE 
-git checkout MOODLE_32_STABLE
+# Streamlined the git cloning and tracking of Moodle into one line
+# https://docs.moodle.org/32/en/Installation_quick_guide#Install_Moodle
+git clone -b MOODLE_32_STABLE git://git.moodle.org/moodle.git
 
 # Create datadir in a not web-accessible directory
 sudo mkdir /var/moodledata
