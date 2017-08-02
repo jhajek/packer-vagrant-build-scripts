@@ -1,5 +1,5 @@
 # Pre-steps to take
-In order for the host system to send envoronment variables to the guest Vm being built you have to explicitly declare them on the command line before you issue a ```Packer build``` command.
+In order for the host system to send environment variables to the guest Vm being built you have to explicitly declare them on the command line before you issue a ```Packer build``` command.
 
 This is how we are passing passwords in securely.
 
