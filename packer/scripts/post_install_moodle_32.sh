@@ -94,7 +94,7 @@ sudo chown -R www-data:www-data /var/www/html/
 sudo -u www-data /usr/bin/php /var/www/html/admin/cli/install.php --chmod=2770 --lang=en --wwwroot=http://192.168.1.123 --dataroot=/var/moodledata/ --dbtype=mariadb --dbhost=127.0.0.1 --dbuser=moodleuser --dbpass=$USERPASS --fullname="Moodle Research Project" --shortname="M2" --adminuser=adminjrh --adminpass=ADMINPASS --non-interactive --agree-license
 
 # Running Database setup and config
-sudo -u www-data /usr/bin/php /var/www/html/admin/cli/install_database.php --lang=en --adminpass=$DBPASS --agree-license
+# sudo -u www-data /usr/bin/php /var/www/html/admin/cli/install_database.php --lang=en --adminpass=$DBPASS --agree-license
 
 
 # Copy the pre-configured nginx conf to the right location
@@ -109,6 +109,10 @@ sudo cp -v ~/commands/backup/mysqldump-daily /etc/cron.daily/
 
 # Change the timezone in php.ini
 # http://php.net/manual/en/timezones.america.php
-sudo sed -i "s/;date.timezone =/date.timezone = America/Chicago/g" /etc/php/7.0/fpm/php.ini
+sudo sed -i "s/\;date.timezone =/date.timezone = America\/Chicago/g" /etc/php/7.0/fpm/php.ini
 # https://docs.moodle.org/33/en/Nginx 
-sudo sed -i "s/;security.limit_extensions = .php .php3 .php4 .php5 .php7/security.limit_extensions = .php/g" /etc/php/7.0/fpm/pool.d/www.conf
+sudo sed -i "s/\;security.limit_extensions = .php .php3 .php4 .php5 .php7\/security.limit_extensions = .php/g" /etc/php/7.0/fpm/pool.d/www.conf
+
+# Restart Nginx after making changes to PHP
+sudo systemctl restart nginx.service
+
