@@ -64,6 +64,7 @@ ufw allow proto tcp to 0.0.0.0/0 port 80
 cd ~
 git clone https://github.com/jhajek/commands
 chmod +x ~/commands/cnf/cnf.sh
+chomd +x ~/commands/cnf/db.sh
 ~/commands/cnf/cnf.sh
 # Added the mariadb my.cnf configs for creating Barracuda
 sudo ~/commands/cnf/db.sh
