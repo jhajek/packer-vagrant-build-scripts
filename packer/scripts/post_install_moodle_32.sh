@@ -83,18 +83,21 @@ sudo mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY
 # Create a user that has privilleges just to do a mysqldump backup
 # http://www.fromdual.com/privileges-of-mysql-backup-user-for-mysqldump
 sudo mysql -u root -e "CREATE USER 'backup'@'localhost' IDENTIFIED BY '$BKPASS'; GRANT SELECT, SHOW VIEW, RELOAD, REPLICATION CLIENT, EVENT, TRIGGER ON *.* TO 'backup'@'localhost';"
+
 echo -e "\n ADMINPASS: $ADMINPASS\n"
 echo -e "\n DBPASS: $DBPASS\n"
 echo -e "\n USERPASS: $UESRPASS\n"
 echo -e "\n BKPASS: $BKPASS\n"
+
+# Chown webserver files
+sudo chown -R www-data:www-data /var/www/html/
+
 # Running CLI config setup of Moodle
 sudo -u www-data /usr/bin/php /var/www/html/admin/cli/install.php --chmod=2770 --lang=en --wwwroot=http://192.168.1.123 --dataroot=/var/moodledata/ --dbtype=mariadb --dbhost=127.0.0.1 --dbuser=moodleuser --dbpass=$USERPASS --fullname="Moodle Research Project" --shortname="M2" --adminuser=adminjrh --adminpass=ADMINPASS --non-interactive --agree-license
 
 # Running Database setup and config
 sudo -u www-data /usr/bin/php /var/www/html/admin/cli/install_database.php --lang=en --adminpass=$DBPASS --agree-license
 
-# Chown webserver files
-sudo chown -R www-data:www-data /var/www/html/
 
 # Copy the pre-configured nginx conf to the right location
 sudo cp -v ~/commands/moodle/nginx/default /etc/nginx/sites-enabled/
