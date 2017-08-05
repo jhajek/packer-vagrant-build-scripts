@@ -92,6 +92,8 @@ sudo -u www-data /usr/bin/php /var/www/html/admin/cli/install.php --chmod=2770 -
 sudo cp -v ~/commands/moodle/nginx/default /etc/nginx/sites-enabled/
 # Copy the pre-configured php.ini to the correct location
 sudo cp -v ~/commands/moodle/php-fpm/php.ini /etc/php/7.0/fpm/
+# Add xsendfile directive to the moodle config.php
+sudo ~/commands/moodle/config/add-xsendfile.sh
 sudo systemctl restart nginx
 
 # Setting etc/cron.dailey for moodle
