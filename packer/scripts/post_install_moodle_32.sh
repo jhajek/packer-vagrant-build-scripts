@@ -93,6 +93,7 @@ sudo cp -v ~/commands/moodle/nginx/default /etc/nginx/sites-enabled/
 # Copy the pre-configured php.ini to the correct location
 sudo cp -v ~/commands/moodle/php-fpm/php.ini /etc/php/7.0/fpm/
 # Add xsendfile directive to the moodle config.php
+chmod +x ~/commands/moodle/nginx/add-xsendfile.sh
 sudo ~/commands/moodle/config/add-xsendfile.sh
 sudo systemctl restart nginx
 
