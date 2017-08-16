@@ -14,8 +14,6 @@ sudo mkdir -p /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 
-
-# http://stackoverflow.com/questions/26595620/how-to-install-ruby-2-1-4-on-ubuntu-14-04
 sudo apt-get update -y
 sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre
 
