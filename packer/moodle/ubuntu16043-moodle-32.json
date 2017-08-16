@@ -1,9 +1,9 @@
 {
     "variables": {  
-      "database_pass": "{{env `DB_PASS`}}", 
-      "user_pass": "{{env `USER_PASS`}}",
-      "bkup_pass": "{{env `BK_PASS`}}",
-      "admin_pass": "{{env `ADMIN_PASS`}}"
+      "database_pass": "{{env `database-root-password`}}", 
+      "user_pass": "{{env `moodle-database-user-password`}}",
+      "bkup_pass": "{{env `backup-user-database-password`}}",
+      "admin_pass": "{{env `moodle-admin-password`}}"
     },
     "builders": [{
         "name": "ubuntu-16043-moodle-server",
