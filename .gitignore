@@ -9,3 +9,5 @@ output*/
 build/*
 .vagrant/*
 .cfg.*
+variables.json
+variables-sample.json
