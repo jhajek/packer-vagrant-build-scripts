@@ -99,8 +99,10 @@ sudo ~/commands/moodle/config/add-xsendfile.sh
 sudo systemctl restart nginx
 
 # Setting etc/cron.dailey for moodle
-sudo cp -v ~/commands/backup/moodle-daily-cron /etc/cron.daily/
+sudo cp -v ~/commands/backup/moodle-five-min-cron /etc/cron.d/
 sudo cp -v ~/commands/backup/mysqldump-daily /etc/cron.daily/
+sudo cp -v ~/commands/backup/moodle-data-dir-backup /etc/cron.daily/
+sudo cp -v ~/commands/backup/moodle-www-backup /etc/cron.daily/
 
 # Change the timezone in php.ini
 # http://php.net/manual/en/timezones.america.php

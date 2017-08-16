@@ -1,6 +1,6 @@
 {
     "builders": [{
-        "name": "ubuntu-16042-moodle-server",
+        "name": "ubuntu-16043-moodle-server",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
