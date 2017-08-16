@@ -16,9 +16,8 @@ sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 
 
 # http://stackoverflow.com/questions/26595620/how-to-install-ruby-2-1-4-on-ubuntu-14-04
-sudo apt-add-repository -y ppa:brightbox/ruby-ng
 sudo apt-get update -y
-sudo apt-get install -y ruby2.2 ruby2.2-dev build-essential zlib1g-dev openjdk-7-jre
+sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre
 
 # P.42 The Art of Monitoring
 wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_all.deb
