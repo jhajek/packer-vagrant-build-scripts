@@ -1,10 +1,5 @@
 {
-    "variables": {  
-      "database_pass": "{{env `database-root-password`}}", 
-      "user_pass": "{{env `moodle-database-user-password`}}",
-      "bkup_pass": "{{env `backup-user-database-password`}}",
-      "admin_pass": "{{env `moodle-admin-password`}}"
-    },
+    
     "builders": [{
         "name": "ubuntu-16043-moodle-server",
         "type": "virtualbox-iso",
@@ -70,10 +65,10 @@
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
     "script": "../scripts/post_install_moodle_32.sh",
      "environment_vars": [ 
-       "DBPASS={{user `database_pass`}}",
-       "USERPASS={{user `user_pass`}}",
-       "BKPASS={{user `bkup_pass`}}",
-       "ADMINPASS={{user `admin_pass`}}" 
+       "DBPASS={{user `database-root-password`}}",
+       "USERPASS={{user `moodle-database-user-password`}}",
+       "BKPASS={{user `backup-user-database-password`}}",
+       "ADMINPASS={{user `moodle-admin-password`}}" 
       ]
   }
 ],
