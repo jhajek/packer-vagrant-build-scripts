@@ -6,7 +6,11 @@ This is how we are passing passwords in securely.
 [https://www.packer.io/docs/templates/user-variables.html](https://www.packer.io/docs/templates/user-variables.html)
 
 ### What we need to set
-```packer build -var 'DB_PASS=rootpasswordhere' -var 'USER_PASS=moodledatabaseuserpasswordhere' -var 'BK_PASS=backupuserdatabasepasswordhere' -var 'ADMIN_PASS=moodleadminpasswordhere' ubuntu16043-moodle-32.json```
+```packer build --var-file=./variables.json ubuntu16043-moodle-32.json```
+
+Rename the file variables-sample.json to variables.json (there is an entry in the .gitignore so you cannot accidentially git push your passwords)
+
+This file contains key value pairs of variables and passwords to be passed into the provisioner shell script.
 
 This way we can securely build the entire [Moodle](http://moodle.org "Moodle") system, deploy it and when building it pass in passwords via environment variables
 
