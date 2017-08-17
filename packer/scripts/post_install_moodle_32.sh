@@ -100,9 +100,17 @@ sudo systemctl restart nginx
 
 # Setting etc/cron.dailey for moodle
 sudo cp -v ~/commands/backup/moodle-five-min-cron /etc/cron.d/
+sudo chmod +x /etc/cron.d/moodle-five-min-cron
+sudo /etc/cron.d/moodle-five-min-cron
 sudo cp -v ~/commands/backup/mysqldump-daily /etc/cron.daily/
+sudo chmod +x /etc/cron.daily/mysqldump-daily
+sudo /etc/cron.daily/mysqldump-daily
 sudo cp -v ~/commands/backup/moodle-data-dir-backup /etc/cron.daily/
+sudo chmod +x /etc/cron.daily/moodle-data-dir-backup
+sudo /etc/cron.daily/moodle-data-dir-backup
 sudo cp -v ~/commands/backup/moodle-www-backup /etc/cron.daily/
+sudo chmod +x /etc/cron.daily/moodle-www-backup
+sudo /etc/cron.daily/moodle-www-backup
 
 # Change the timezone in php.ini
 # http://php.net/manual/en/timezones.america.php
