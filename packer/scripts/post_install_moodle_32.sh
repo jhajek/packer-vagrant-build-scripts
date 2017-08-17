@@ -101,7 +101,6 @@ sudo systemctl restart nginx
 # Setting etc/cron.dailey for moodle
 sudo cp -v ~/commands/backup/moodle-five-min-cron /etc/cron.d/
 sudo chmod +x /etc/cron.d/moodle-five-min-cron
-sudo /etc/cron.d/moodle-five-min-cron
 sudo cp -v ~/commands/backup/mysqldump-daily /etc/cron.daily/
 sudo chmod +x /etc/cron.daily/mysqldump-daily
 sudo /etc/cron.daily/mysqldump-daily
