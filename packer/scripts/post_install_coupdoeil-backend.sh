@@ -10,7 +10,6 @@ echo "%admin  ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/init-users
 sudo groupadd admin
 sudo usermod -a -G admin vagrant
 
-
 # Installing vagrant keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
 sudo mkdir -p /home/vagrant/.ssh
@@ -28,10 +27,15 @@ echo "mariadb-server mysql-server/root_password password $DBPASS" | sudo  debcon
 echo "mariadb-server mysql-server/root_password_again password $DBPASS" | sudo debconf-set-selections
 
 sudo apt-get -y update && sudo apt-get -y dist-upgrade 
-sudo apt-get -y install nodejs npm
+sudo apt-get -y install nodejs npm fail2ban
 sudo apt-get -y install mariadb-server
 
 git clone https://github.com/illinoistech-itm/coup-doeil /home/vagrant/coup-doeil
 
 cd /home/vagrant/coup-doeil
 sudo npm install
+
+#http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
+sudo sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
+sudo systemctl enable fail2ban
+sudo service fail2ban restart
