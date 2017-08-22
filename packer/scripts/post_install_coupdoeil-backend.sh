@@ -23,6 +23,10 @@ echo "All Done!"
 # Install instructions https://github.com/illinoistech-itm/coup-doeil
 
 sudo apt-get -y update && sudo apt-get -y dist-upgrade 
-sudo apt-get install nodejs npm
+sudo apt-get -y install nodejs npm
+sudo apt-get -y install mariadb-server
 
 git clone https://github.com/illinoistech-itm/coup-doeil /home/vagrant/coup-doeil
+
+cd /home/vagrant/coup-doeil
+sudo npm install
