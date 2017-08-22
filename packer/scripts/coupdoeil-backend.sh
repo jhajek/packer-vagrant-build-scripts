@@ -21,3 +21,8 @@ echo "All Done!"
 
 
 # Install instructions https://github.com/illinoistech-itm/coup-doeil
+
+sudo apt-get -y update && sudo apt-get -y dist-upgrade 
+sudo apt-get install nodejs npm
+
+git clone https://github.com/illinoistech-itm/coup-doeil /home/vagrant/coup-doeil
