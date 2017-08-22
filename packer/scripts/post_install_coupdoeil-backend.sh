@@ -35,6 +35,12 @@ git clone https://github.com/illinoistech-itm/coup-doeil /home/vagrant/coup-doei
 cd /home/vagrant/coup-doeil
 sudo npm install
 
+cd ~
+git clone https://github.com/jhajek/commands
+chmod +x ~/commands/cnf/cnf.sh
+chmod +x ~/commands/cnf/db.sh
+~/commands/cnf/cnf.sh
+
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
 sudo sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
 sudo systemctl enable fail2ban
