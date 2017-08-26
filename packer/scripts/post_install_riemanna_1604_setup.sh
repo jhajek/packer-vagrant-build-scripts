@@ -43,7 +43,10 @@ sudo mkdir /etc/collectd.d
 sudo systemctl enable collectd
 sudo systemctl start collectd 
 
+git clone https://github.com/jhajek/commands
+sudo cp ~/commands/cnf/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d/
+sudo cp ~/commands/cnf/collectd/collectd.conf /etc/collectd/
+sudo cp -R ~/commands/cnf/riemann/* /etc/riemann
 
-
-
+sudo systemctl restart riemann
 
