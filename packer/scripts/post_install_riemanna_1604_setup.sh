@@ -25,7 +25,7 @@ sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre
 
 # P.42 The Art of Monitoring
 wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_all.deb
-dpkg -i riemann_0.2.14_all.deb
+sudo dpkg -i riemann_0.2.14_all.deb
 
 sudo service riemann start
 
