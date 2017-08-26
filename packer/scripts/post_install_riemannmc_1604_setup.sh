@@ -13,6 +13,11 @@ sudo mkdir -p /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 
+#http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
+sudo sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
+sudo systemctl enable fail2ban
+sudo service fail2ban restart
+
 sudo apt-get update -y
 sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre
 
