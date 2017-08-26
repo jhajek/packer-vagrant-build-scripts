@@ -38,15 +38,13 @@ sudo gem install --no-ri --no-rdoc riemann-tools
 sudo sudo add-apt-repository -y ppa:collectd/collectd-5.5
 sudo apt-get update
 sudo apt-get -y install collectd
-sudo mkdir /etc/collectd.d
-
-sudo systemctl enable collectd
-sudo systemctl start collectd 
 
 git clone https://github.com/jhajek/commands
 sudo cp ~/commands/cnf/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d/
 sudo cp ~/commands/cnf/collectd/collectd.conf /etc/collectd/
 sudo cp -R ~/commands/cnf/riemann/* /etc/riemann
 
+sudo systemctl enable collectd
+sudo systemctl start collectd
 sudo systemctl restart riemann
 
