@@ -37,5 +37,3 @@ wget https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.2.1-1-
 sudo dpkg -i pandoc-1.19.2.1-1-amd64.deb
 
 wget http://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz
-
-git clone https://github.com/jhajek/Linux-text-book-part-1.git
