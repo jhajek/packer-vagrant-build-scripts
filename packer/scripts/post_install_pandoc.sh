@@ -35,3 +35,5 @@ sudo apt-get -y install fonts-sil-charis
 
 wget https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.2.1-1-amd64.deb
 sudo dpkg -i pandoc-1.19.2.1-1-amd64.deb
+
+git clone https://github.com/jhajek/Linux-text-book-part-1.git
