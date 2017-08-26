@@ -30,7 +30,6 @@ sudo systemctl enable riemann
 sudo systemctl start riemann 
 
 # P. 44  Install ruby gem tools
-sudo gem install --no-ri --no-rdoc riemann-tools
-
+sudo gem install --no-ri --no-rdoc riemann-tools riemann-client riemann-dash
 
 
