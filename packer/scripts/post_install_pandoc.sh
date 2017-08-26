@@ -32,3 +32,6 @@ sudo apt-key -y add sil.gpg
 sudo apt-add-repository -y "deb http://packages.sil.org/ubuntu/ $(lsb_release -sc) main"
 sudo apt-get update
 sudo apt-get -y install fonts-sil-charis
+
+wget https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.2.1-1-amd64.deb
+sudo dpkg -i pandoc-1.19.2.1-1-amd64.deb
