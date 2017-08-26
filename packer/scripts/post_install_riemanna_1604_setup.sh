@@ -32,6 +32,16 @@ sudo service riemann start
 # P. 44  Install ruby gem tools
 sudo gem install --no-ri --no-rdoc riemann-tools
 
+# epub 34%
+# Installing collectd basic plugins for metric collection
+sudo sudo add-apt-repository -y ppa:collectd/collectd-5.5
+sudo apt-get update
+sudo apt-get -y install collectd
+sudo mkdir /etc/collectd.d
+
+sudo systemctl enable collectd
+sudo service collectd start
+
 
 
 
