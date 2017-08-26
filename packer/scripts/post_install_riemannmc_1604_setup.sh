@@ -26,7 +26,8 @@ sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre
 wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_all.deb
 dpkg -i riemann_0.2.14_all.deb
 
-sudo service riemann start
+sudo systemctl enable riemann
+sudo systemctl start riemann 
 
 # P. 44  Install ruby gem tools
 sudo gem install --no-ri --no-rdoc riemann-tools
