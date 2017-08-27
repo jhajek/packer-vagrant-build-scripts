@@ -54,7 +54,7 @@ sudo touch /etc/carbon/storage-aggregation.conf
 sudo cp ~/commands/cnf/graphite/carbon-cache-ubuntu.init /etc/init.d/carbon-cache
 sudo chmod 0755 /etc/init.d/carbon-cache
 sudo update-rc.d carbon-cache defaults
-sudo cp carbon-relay-ubuntu.init /etc/init.d/carbon-relay
+sudo cp ~/commands/cnf/graphite/carbon-relay-ubuntu.init /etc/init.d/carbon-relay
 sudo chmod 0755 /etc/init.d/carbon-relay
 sudo update-rc.d carbon-relay defaults
 sudo cp ~/commands/cnf/graphite/graphite-carbon /etc/default/
