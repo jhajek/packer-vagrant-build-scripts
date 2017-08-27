@@ -14,7 +14,14 @@ sudo mkdir -p /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 
+#http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
+sudo sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
+sudo systemctl enable fail2ban
+sudo service fail2ban restart
 
+##################################################
+# Add User customizations below here
+##################################################
 sudo apt-get update
 #http://askubuntu.com/questions/549550/installing-graphite-carbon-via-apt-unattended
 sudo DEBIAN_FRONTEND=noninteractive apt-get -q -y --force-yes install graphite-carbon
