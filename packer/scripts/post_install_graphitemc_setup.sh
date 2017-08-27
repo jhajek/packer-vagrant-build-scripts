@@ -15,7 +15,7 @@ cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 
 
-sudo apt-get update -y
+sudo apt-get update
 #http://askubuntu.com/questions/549550/installing-graphite-carbon-via-apt-unattended
 sudo DEBIAN_FRONTEND=noninteractive apt-get -q -y --force-yes install graphite-carbon
 sudo apt-get install -y apt-transport-https 
