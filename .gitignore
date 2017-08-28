@@ -11,3 +11,4 @@ build/*
 .cfg.*
 variables.json
 variables-sample.json
+*.swp
