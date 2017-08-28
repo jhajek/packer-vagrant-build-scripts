@@ -58,7 +58,7 @@ sudo cp ~/commands/cnf/graphite/carbon-relay-ubuntu.init /etc/init.d/carbon-rela
 sudo chmod 0755 /etc/init.d/carbon-relay
 sudo update-rc.d carbon-relay defaults
 sudo cp ~/commands/cnf/graphite/graphite-carbon /etc/default/
-
+ 
 sudo systemctl start carbon-relay
 sudo systemctl start carbon-cache
 
@@ -67,6 +67,5 @@ sudo touch /var/lib/graphite/api_search_index
 sudo chown _graphite:_graphite /var/lib/graphite/api_search_index
 
 sudo systemctl start graphite-api
-
 sudo systemctl start grafana-server
 
