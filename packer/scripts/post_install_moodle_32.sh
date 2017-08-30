@@ -42,6 +42,22 @@ sudo systemctl start riemann
 # P. 44  Install ruby gem tools
 sudo gem install --no-ri --no-rdoc riemann-tools
 
+# epub 34%
+# Installing collectd basic plugins for metric collection
+sudo sudo add-apt-repository -y ppa:collectd/collectd-5.5
+sudo apt-get update
+sudo apt-get -y install collectd
+
+git clone https://github.com/jhajek/commands
+sudo cp ~/commands/cnf/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d/
+sudo cp ~/commands/cnf/collectd/collectd.conf /etc/collectd/
+sudo cp -R ~/commands/cnf/riemann/* /etc/riemann
+
+sudo systemctl enable collectd
+sudo systemctl start collectd
+sudo systemctl restart riemann
+# End of collectd and riemann install
+
 sudo systemctl enable mysql.service
 sudo systemctl start mysql.service
 sudo systemctl enable nginx.service
