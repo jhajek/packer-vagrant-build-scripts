@@ -30,6 +30,34 @@ echo "mariadb-server mysql-server/root_password_again password $DBPASS" | sudo d
 
 sudo apt-get install -y nginx php7.0 php7.0-fpm php7.0-mysql mariadb-server graphviz aspell php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xml php7.0-xmlrpc php7.0-ldap php7.0-zip php7.0-soap php7.0-mbstring fail2ban php7.0-json php7.0-iconv php7.0-tokenizer pcre2-utils
 
+sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre
+
+# P.42 The Art of Monitoring
+wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_all.deb
+sudo dpkg -i riemann_0.2.14_all.deb
+
+sudo systemctl enable riemann
+sudo systemctl start riemann 
+
+# P. 44  Install ruby gem tools
+sudo gem install --no-ri --no-rdoc riemann-tools
+
+# epub 34%
+# Installing collectd basic plugins for metric collection
+sudo sudo add-apt-repository -y ppa:collectd/collectd-5.5
+sudo apt-get update
+sudo apt-get -y install collectd
+
+git clone https://github.com/jhajek/commands
+sudo cp ~/commands/cnf/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d/
+sudo cp ~/commands/cnf/collectd/collectd.conf /etc/collectd/
+sudo cp -R ~/commands/cnf/riemann/* /etc/riemann
+
+sudo systemctl enable collectd
+sudo systemctl start collectd
+sudo systemctl restart riemann
+# End of collectd and riemann install
+
 sudo systemctl enable mysql.service
 sudo systemctl start mysql.service
 sudo systemctl enable nginx.service
