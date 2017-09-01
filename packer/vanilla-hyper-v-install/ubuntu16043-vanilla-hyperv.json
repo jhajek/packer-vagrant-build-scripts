@@ -16,11 +16,11 @@
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
         "disk_size": 20000,
-        "boot_wait": "5s",
+        "boot_wait": "20s",
         "ram_size": "2048",
         "switch_name": "Default Switch",
  "boot_command" : [
-            "<enter><f6><esc>",
+            "<enter><enter><f6><esc>",
 	    "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>", 
