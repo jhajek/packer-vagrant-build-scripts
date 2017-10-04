@@ -12,3 +12,4 @@ build/*
 variables.json
 variables-sample.json
 *.swp
+data/
