@@ -13,3 +13,4 @@ variables.json
 variables-sample.json
 *.swp
 data/
+*console.log
