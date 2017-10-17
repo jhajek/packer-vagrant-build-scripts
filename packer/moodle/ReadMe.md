@@ -19,6 +19,8 @@ This is how we are passing passwords in securely.
 * Fully automated non-privilleged users (non-root) for database access and for database backup
 * Fully baked in cronjob for database backup script, and initial database backup for clean Moodle system install
 * Timezone set to US/Central by default
+* Metrics and Monitoring
+    + collectd metric pre-installed and configured to write events to Riemann and Graphite 
 * Security preset
     + UFW firewall enabled and access allowed for port 80, 443, and 22 
     + Fail2ban brute force SSH tool set to ban brute force attempts from IPs 
