@@ -91,7 +91,6 @@ ufw allow proto tcp to 0.0.0.0/0 port 443
 
 # Mariadb create user and tables commands from https://github.com/jhajek/commands.git
 cd ~
-git clone https://github.com/jhajek/commands
 chmod +x ~/commands/cnf/cnf.sh
 chmod +x ~/commands/cnf/db.sh
 chmod +x ~/commands/cnf/cnf.sh
