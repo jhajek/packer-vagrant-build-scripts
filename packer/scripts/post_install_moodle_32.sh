@@ -94,7 +94,7 @@ cd ~
 git clone https://github.com/jhajek/commands
 chmod +x ~/commands/cnf/cnf.sh
 chmod +x ~/commands/cnf/db.sh
-~/commands/cnf/cnf.sh
+chmod +x ~/commands/cnf/cnf.sh
 # Added the mariadb my.cnf configs for creating Barracuda
 sudo ~/commands/cnf/db.sh
 # Restart mariadb service after adding custom .my.cnf
