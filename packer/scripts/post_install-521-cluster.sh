@@ -12,7 +12,7 @@ sudo usermod -a -G admin controller
 
 
 # Installing controller keys
-wget --no-check-certificate 'https://raw.github.com/mitchellh/controller/master/keys/vagrant.pub'
+wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
 sudo mkdir -p /home/controller/.ssh
 sudo chown -R controller:controller /home/controller/.ssh
 cat ./vagrant.pub >> /home/controller/.ssh/authorized_keys
