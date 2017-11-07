@@ -63,7 +63,7 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_521-cluster.sh"
+    "script": "../scripts/post_install-521-cluster.sh"
   }
 ],
   "post-processors": [
