@@ -1,6 +1,6 @@
 {
     "builders": [{
-        "name": "itmd521",
+        "name": "itmd521-cluster",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
@@ -42,7 +42,7 @@
 	    "/install/vmlinuz noapic ",
             "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-cluster.cfg ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-            "hostname=itmd521 ",
+            "hostname=itmd521-cluster ",
             "fb=false debconf/frontend=noninteractive ",
             "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
             "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
@@ -62,7 +62,7 @@
   "provisioners": [
   {
     "type": "shell",
-  "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+  "execute_command" : "echo 'controller' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
     "script": "../scripts/post_install-521-cluster.sh"
   }
 ],
