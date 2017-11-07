@@ -40,7 +40,7 @@
             "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs>",
 	    "/install/vmlinuz noapic ",
-            "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
+            "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-cluster.cfg ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
             "hostname=itmd521 ",
             "fb=false debconf/frontend=noninteractive ",
