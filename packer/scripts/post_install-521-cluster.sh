@@ -28,7 +28,7 @@ sudo service fail2ban restart
 # Add User customizations below here
 ##################################################
 
-cat << EOT >> ~/.bashrc 
+cat << EOT >> /home/controller/.bashrc 
 
 ########## Inserted by Jeremy
 export JAVA_HOME=/usr
