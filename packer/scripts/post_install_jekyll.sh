@@ -28,7 +28,7 @@ sudo gem install sass --version 3.4.24
 git clone https://github.com/jhajek/forge.git /home/vagrant/Documents
 sudo chown -R vagrant:vagrant /home/vagrant/Documents
 
-sudo gem install -y jekyll-theme-clean-blog
+sudo gem install jekyll-theme-clean-blog
 
 cd ~/forge
 bundle update jekyll 
