@@ -1,3 +1,4 @@
 data/*
 *console.log
 Vagrantfile
+*.tar
