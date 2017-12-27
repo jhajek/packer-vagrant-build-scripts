@@ -7,5 +7,15 @@
     "provisioners": [{
         "type": "shell",
         "script": "../scripts/docker-install.sh"
-    }]
+    }],
+    "post-processors": [
+        [
+            {
+                "type": "docker-tag",
+                "repository": "localhost:5000",
+                "tag": "0.1"
+            },
+            "docker-push"
+        ]
+    ]
 }
