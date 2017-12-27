@@ -27,3 +27,6 @@ sudo service fail2ban restart
 ##################################################
 # Add User customizations below here
 ##################################################
+
+git config --global user.email "hajek@iit.edu"
+git config --global user.name "Jeremy R Hajek"
