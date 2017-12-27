@@ -12,7 +12,7 @@
         [
             {
                 "type": "docker-tag",
-                "repository": "localhost:5000",
+                "repository": "localhost:5000/ubuntu16-04",
                 "tag": "0.1"
             },
             "docker-push"
