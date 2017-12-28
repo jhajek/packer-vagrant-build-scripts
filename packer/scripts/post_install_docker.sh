@@ -39,3 +39,6 @@ sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/u
 sudo apt-get update
 sudo apt-get install -y docker-ce
 sudo systemctl enable docker
+
+wget https://releases.hashicorp.com/packer/1.1.3/packer_1.1.3_linux_amd64.zip
+sudo unzip -d /usr/local/bin packer_1.1.3_linux_amd64.zip
