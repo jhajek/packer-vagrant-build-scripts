@@ -1,0 +1,7 @@
+{
+    "builders": [{
+        "type": "docker",
+        "image": "alpine",
+        "export_path": "docker-basic-alpine.tar"
+    }]
+}
