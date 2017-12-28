@@ -12,7 +12,7 @@
         [
             {
                 "type": "docker-tag",
-                "repository": "l92.168.1.132:5000/ubuntu16-04",
+                "repository": "l92.168.1.132:5001/ubuntu16-04",
                 "tag": "0.2"
             },
             "docker-push"
