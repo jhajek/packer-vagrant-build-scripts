@@ -24,8 +24,8 @@ sudo apt-get update -y
 sudo apt-get install -y openjdk-8-jdk-headless
 
 # Install Jenkins deb package
-wget https://pkg.jenkins.io/debian-stable/binary/jenkins_2.60.2_all.deb
-sudo dpkg -i jenkins_2.60.2_all.deb
+wget https://pkg.jenkins.io/debian-stable/binary/jenkins_2.89.2_all.deb 
+sudo dpkg -i jenkins_2.89.2_all.deb
 
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
