@@ -4,7 +4,7 @@ set -v
 
 
 # Update the system and distribution
- apt-get update -y &&  apt-get -y dist-upgrade
+ apt-get update -y &&  apt-get -y upgrade
 
 # https://dba.stackexchange.com/questions/59317/install-mariadb-10-on-ubuntu-without-prompt-and-no-root-password
 # http://dba.stackexchange.com/questions/35866/install-mariadb-without-password-prompt-in-ubuntu?newreg=426e4e37d5a2474795c8b1c911f0fb9f
