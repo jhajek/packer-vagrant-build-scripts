@@ -29,8 +29,8 @@ wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_
 
 # epub 34%
 # Installing collectd basic plugins for metric collection
-  add-apt-repository -y ppa:collectd/collectd-5.5
- apt-get update
+#  add-apt-repository -y ppa:collectd/collectd-5.5
+# apt-get update
  apt-get -y install collectd
 
 git clone https://github.com/jhajek/commands
