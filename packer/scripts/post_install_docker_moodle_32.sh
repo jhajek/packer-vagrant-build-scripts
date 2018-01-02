@@ -84,10 +84,10 @@ sudo service fail2ban restart
 
 # Enable Firewall
 # https://serverfault.com/questions/809643/how-do-i-use-ufw-to-open-ports-on-ipv4-only
-sudo ufw enable
-ufw allow proto tcp to 0.0.0.0/0 port 22
-ufw allow proto tcp to 0.0.0.0/0 port 80
-ufw allow proto tcp to 0.0.0.0/0 port 443
+# sudo ufw enable
+# ufw allow proto tcp to 0.0.0.0/0 port 22
+# ufw allow proto tcp to 0.0.0.0/0 port 80
+# ufw allow proto tcp to 0.0.0.0/0 port 443
 
 # Mariadb create user and tables commands from https://github.com/jhajek/commands.git
 cd ~
