@@ -1,7 +1,7 @@
 {
     "builders": [{
         "type": "docker",
-        "image": "ubuntu:16.04",
+        "image": "ubuntu:latest",
         "commit": true,
         "changes": [
             "USER www-data",
