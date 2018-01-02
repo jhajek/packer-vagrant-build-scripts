@@ -22,7 +22,7 @@ wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_
  dpkg -i riemann_0.2.14_all.deb
 
  systemctl enable riemann
- systemctl start riemann 
+ start riemann start 
 
 # P. 44  Install ruby gem tools
  gem install --no-ri --no-rdoc riemann-tools
