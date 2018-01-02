@@ -12,7 +12,7 @@
         [
             {
                 "type": "docker-tag",
-                "repository": "jeremyhajek/ubuntu16-04",
+                "repository": "jeremyhajek/moodle",
                 "tag": "0.1"
             },
             "docker-push"
