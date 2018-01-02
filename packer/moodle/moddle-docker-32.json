@@ -21,7 +21,12 @@
                 "repository": "jeremyhajek/moodle",
                 "tag": "0.1"
             },
-            "docker-push"
+            {
+                "type": "docker-push",
+                "login": true,
+                "login_username": "{{user `hub_username`}}",
+                "login_password": "{{user `hub_password`}}"
+            }
         ]
     ]
 }
