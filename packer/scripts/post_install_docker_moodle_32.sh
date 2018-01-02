@@ -34,9 +34,9 @@ wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_
  apt-get -y install collectd
 
 git clone https://github.com/jhajek/commands
- cp ~/commands/cnf/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d/
- cp ~/commands/cnf/collectd/collectd.conf /etc/collectd/
- cp -R ~/commands/cnf/riemann/* /etc/riemann
+ cp /root/commands/cnf/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d/
+ cp /root/commands/cnf/collectd/collectd.conf /etc/collectd/
+ cp -R /root/commands/cnf/riemann/* /etc/riemann
 
  systemctl enable collectd
  systemctl start collectd
