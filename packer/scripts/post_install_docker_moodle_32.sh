@@ -39,7 +39,7 @@ wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_
  cp -R /tmp/commands/cnf/riemann/* /etc/riemann
 
  systemctl enable collectd
- systemctl start collectd
+ service collectd start
  systemctl restart riemann
 # End of collectd and riemann install
 
