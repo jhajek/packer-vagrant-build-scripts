@@ -44,9 +44,9 @@ wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_
 # End of collectd and riemann install
 
  systemctl enable mysql.service
- systemctl start mysql.service
+ service mysql start
  systemctl enable nginx.service
- systemctl restart nginx.service
+ service nginx start
 
 # Streamlined the git cloning and tracking of Moodle into one line
 # https://docs.moodle.org/32/en/Installation_quick_guide#Install_Moodle
