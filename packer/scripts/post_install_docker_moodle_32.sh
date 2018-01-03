@@ -81,7 +81,7 @@ chmod +x /tmp/commands/cnf/cnf.sh
 # Added the mariadb my.cnf configs for creating Barracuda
  /tmp/commands/cnf/db.sh
 # Restart mariadb service after adding custom .my.cnf
- systemctl restart mysql.service
+ service mysql restart
 
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
 # This section uses the user environment variables declared in packer json build template
@@ -107,7 +107,7 @@ chmod +x /tmp/commands/cnf/cnf.sh
 # Add xsendfile directive to the moodle config.php
 chmod +x /tmp/commands/moodle/config/add-xsendfile.sh
  /tmp/commands/moodle/config/add-xsendfile.sh
- systemctl restart nginx
+ service nginx restart
 
 # Setting etc/cron.dailey for moodle
  cp -v /tmp/commands/backup/moodle-five-min-cron /etc/cron.d/
