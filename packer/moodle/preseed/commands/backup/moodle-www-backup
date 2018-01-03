@@ -1,0 +1,5 @@
+#!/bin/bash
+# the captiol "J" is what will automaitically xzip the tar file see man tar for other options.
+
+EPOCH=`date +%s`
+sudo tar -cvJf ~/moodle-$EPOCH.tar.xz /var/www/html 

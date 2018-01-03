@@ -1,0 +1,6 @@
+#!/bin/bash
+# http://go2linux.garron.me/mysql-backup-mysqldump/
+# https://stackoverflow.com/questions/18870244/can-i-have-multiple-mysqldump-sections-in-my-cnf
+
+EPOCH=`date +%s`
+sudo mysqldump --defaults-file="~/.my.cnf.backup" -v -u backup --databases moodle | sudo xz -v > ~/moodle-db-backup-$EPOCH.dump.xz

@@ -10,10 +10,17 @@
             "EXPOSE 443"
         ]
     }],
-    "provisioners": [{
+    "provisioners": [
+        {
+            "type": "file",
+            "source": "commands",
+            "destination": "/tmp"
+        },
+        {
         "type": "shell",
         "script": "../scripts/post_install_docker_moodle_32.sh"
-    }],
+        }
+],
     "post-processors": [
         [
             {
