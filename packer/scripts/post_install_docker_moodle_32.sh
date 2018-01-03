@@ -50,7 +50,7 @@ wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_
 
 # Streamlined the git cloning and tracking of Moodle into one line
 # https://docs.moodle.org/32/en/Installation_quick_guide#Install_Moodle
-git clone -b MOODLE_32_STABLE git://git.moodle.org/moodle.git
+git clone -b MOODLE_32_STABLE git://git.moodle.org/moodle.git /tmp
 
 # Create datadir in a not web-accessible directory
  mkdir /var/moodledata
@@ -60,7 +60,7 @@ git clone -b MOODLE_32_STABLE git://git.moodle.org/moodle.git
 # Delete default welcome page
  rm /var/www/html/index.nginx-debian.html
 # Copy files from Git Repo to default /var/www/html/moodle
- mv -v /tmp/commands/moodle/* /var/www/html/
+ mv -v /tmp/moodle/* /var/www/html/
 
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
 # sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
