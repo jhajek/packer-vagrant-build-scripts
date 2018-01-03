@@ -63,9 +63,9 @@ git clone -b MOODLE_32_STABLE git://git.moodle.org/moodle.git
  mv -v /tmp/commands/moodle/* /var/www/html/
 
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
- sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
- systemctl enable fail2ban
- service fail2ban restart
+# sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
+# systemctl enable fail2ban
+# service fail2ban restart
 
 # Enable Firewall
 # https://serverfault.com/questions/809643/how-do-i-use-ufw-to-open-ports-on-ipv4-only
