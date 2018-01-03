@@ -33,10 +33,9 @@ wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_
 # apt-get update
  apt-get -y install collectd
 
-git clone https://github.com/jhajek/commands
- cp /root/commands/cnf/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d/
- cp /root/commands/cnf/collectd/collectd.conf /etc/collectd/
- cp -R /root/commands/cnf/riemann/* /etc/riemann
+ cp /tmp/commands/cnf/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d/
+ cp /tmp/commands/cnf/collectd/collectd.conf /etc/collectd/
+ cp -R /tmp/commands/cnf/riemann/* /etc/riemann
 
  systemctl enable collectd
  systemctl start collectd
@@ -75,12 +74,11 @@ git clone -b MOODLE_32_STABLE git://git.moodle.org/moodle.git
 # ufw allow proto tcp to 0.0.0.0/0 port 443
 
 # Mariadb create user and tables commands from https://github.com/jhajek/commands.git
-cd ~
-chmod +x ~/commands/cnf/cnf.sh
-chmod +x ~/commands/cnf/db.sh
-chmod +x ~/commands/cnf/cnf.sh
+chmod +x /tmp/commands/cnf/cnf.sh
+chmod +x /tmp/commands/cnf/db.sh
+chmod +x /tmp/commands/cnf/cnf.sh
 # Added the mariadb my.cnf configs for creating Barracuda
- ~/commands/cnf/db.sh
+ /tmp/commands/cnf/db.sh
 # Restart mariadb service after adding custom .my.cnf
  systemctl restart mysql.service
 
@@ -102,24 +100,24 @@ chmod +x ~/commands/cnf/cnf.sh
  -u www-data /usr/bin/php /var/www/html/admin/cli/install.php --chmod=2770 --lang=en --wwwroot=http://127.0.0.1 --dataroot=/var/moodledata/ --dbtype=mariadb --dbhost=127.0.0.1 --dbuser=moodleuser --dbpass=$USERPASS --fullname="Moodle Research Project" --shortname="M2" --adminuser=adminjrh --adminpass=$ADMINPASS --non-interactive --agree-license
 
 # Copy the pre-configured nginx conf to the right location
- cp -v ~/commands/moodle/nginx/default /etc/nginx/sites-enabled/
+ cp -v /tmp/commands/moodle/nginx/default /etc/nginx/sites-enabled/
 # Copy the pre-configured php.ini to the correct location
- cp -v ~/commands/moodle/php-fpm/php.ini /etc/php/7.0/fpm/
+ cp -v /tmp/commands/moodle/php-fpm/php.ini /etc/php/7.0/fpm/
 # Add xsendfile directive to the moodle config.php
-chmod +x ~/commands/moodle/config/add-xsendfile.sh
- ~/commands/moodle/config/add-xsendfile.sh
+chmod +x /tmp/commands/moodle/config/add-xsendfile.sh
+ /tmp/commands/moodle/config/add-xsendfile.sh
  systemctl restart nginx
 
 # Setting etc/cron.dailey for moodle
- cp -v ~/commands/backup/moodle-five-min-cron /etc/cron.d/
+ cp -v /tmp/commands/backup/moodle-five-min-cron /etc/cron.d/
  chmod +x /etc/cron.d/moodle-five-min-cron
- cp -v ~/commands/backup/mysqldump-daily /etc/cron.daily/
+ cp -v /tmp/commands/backup/mysqldump-daily /etc/cron.daily/
  chmod +x /etc/cron.daily/mysqldump-daily
  /etc/cron.daily/mysqldump-daily
- cp -v ~/commands/backup/moodle-data-dir-backup /etc/cron.daily/
+ cp -v /tmp/commands/backup/moodle-data-dir-backup /etc/cron.daily/
  chmod +x /etc/cron.daily/moodle-data-dir-backup
  /etc/cron.daily/moodle-data-dir-backup
- cp -v ~/commands/backup/moodle-www-backup /etc/cron.daily/
+ cp -v /tmp/commands/backup/moodle-www-backup /etc/cron.daily/
  chmod +x /etc/cron.daily/moodle-www-backup
  /etc/cron.daily/moodle-www-backup
 
