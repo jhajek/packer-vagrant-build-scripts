@@ -98,7 +98,7 @@ chmod +x /tmp/commands/cnf/cnf.sh
  chown -R www-data:www-data /var/www/html/
 
 # Running CLI config setup of Moodle
- www-data /usr/bin/php /var/www/html/admin/cli/install.php --chmod=2770 --lang=en --wwwroot=http://127.0.0.1 --dataroot=/var/moodledata/ --dbtype=mariadb --dbhost=127.0.0.1 --dbuser=moodleuser --dbpass=$USERPASS --fullname="Moodle Research Project" --shortname="M2" --adminuser=adminjrh --adminpass=$ADMINPASS --non-interactive --agree-license
+ /usr/bin/php /var/www/html/admin/cli/install.php --chmod=2770 --lang=en --wwwroot=http://127.0.0.1 --dataroot=/var/moodledata/ --dbtype=mariadb --dbhost=127.0.0.1 --dbuser=moodleuser --dbpass=$USERPASS --fullname="Moodle Research Project" --shortname="M2" --adminuser=adminjrh --adminpass=$ADMINPASS --non-interactive --agree-license
 
 # Copy the pre-configured nginx conf to the right location
  cp -v /tmp/commands/moodle/nginx/default /etc/nginx/sites-enabled/
