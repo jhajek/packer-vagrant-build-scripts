@@ -40,7 +40,7 @@ wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_
 
  systemctl enable collectd
  service collectd start
- systemctl restart riemann
+ systemctl start riemann
 # End of collectd and riemann install
 
  systemctl enable mysql.service
