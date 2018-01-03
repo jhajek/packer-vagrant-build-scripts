@@ -13,7 +13,7 @@
     "provisioners": [
         {
             "type": "file",
-            "source": "pressed/commands",
+            "source": "preseed/commands",
             "destination": "/tmp"
         },
         {
