@@ -14,7 +14,7 @@ export DEBIAN_FRONTEND=noninteractive
 echo "mariadb-server mysql-server/root_password password $DBPASS" |   debconf-set-selections
 echo "mariadb-server mysql-server/root_password_again password $DBPASS" |  debconf-set-selections
 
- apt-get install -y nginx php7.0 php7.0-fpm php7.0-mysql mariadb-server graphviz aspell php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xml php7.0-xmlrpc php7.0-ldap php7.0-zip php7.0-soap php7.0-mbstring fail2ban php7.0-json php7.0-iconv php7.0-tokenizer pcre2-utils wget git
+ apt-get install -y nginx php7.0 php7.0-fpm php7.0-mysql mariadb-server graphviz aspell php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xml php7.0-xmlrpc php7.0-ldap php7.0-zip php7.0-soap php7.0-mbstring php7.0-json php7.0-iconv php7.0-tokenizer pcre2-utils wget git
 
  apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre
 
