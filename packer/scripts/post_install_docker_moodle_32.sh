@@ -50,7 +50,7 @@ wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_
 
 # Streamlined the git cloning and tracking of Moodle into one line
 # https://docs.moodle.org/32/en/Installation_quick_guide#Install_Moodle
-git clone -b MOODLE_32_STABLE git://git.moodle.org/moodle.git /tmp
+git clone -b MOODLE_32_STABLE git://git.moodle.org/moodle.git /tmp/moodle
 
 # Create datadir in a not web-accessible directory
  mkdir /var/moodledata
