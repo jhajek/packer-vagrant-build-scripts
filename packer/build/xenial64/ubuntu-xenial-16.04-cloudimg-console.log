@@ -716,3 +716,170 @@ ubuntu-xenial login: [  277.290411] e1000 0000:00:03.0 enp0s3: Detected Tx Unit 
 [ 2309.070236]   jiffies              <10007a3f6>
 [ 2309.070236]   next_to_watch.status <0>
 [ 2309.973802] e1000 0000:00:03.0 enp0s3: Reset adapter
+[ 3049.206022] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 3049.206022]   Tx Queue             <0>
+[ 3049.206022]   TDH                  <39>
+[ 3049.206022]   TDT                  <3b>
+[ 3049.206022]   next_to_use          <3b>
+[ 3049.206022]   next_to_clean        <39>
+[ 3049.206022] buffer_info[next_to_clean]
+[ 3049.206022]   time_stamp           <1000a74ab>
+[ 3049.206022]   next_to_watch        <3a>
+[ 3049.206022]   jiffies              <1000a771c>
+[ 3049.206022]   next_to_watch.status <0>
+[ 3051.309654] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 3051.309654]   Tx Queue             <0>
+[ 3051.309654]   TDH                  <39>
+[ 3051.309654]   TDT                  <3b>
+[ 3051.309654]   next_to_use          <3b>
+[ 3051.309654]   next_to_clean        <39>
+[ 3051.309654] buffer_info[next_to_clean]
+[ 3051.309654]   time_stamp           <1000a74ab>
+[ 3051.309654]   next_to_watch        <3a>
+[ 3051.309654]   jiffies              <1000a792a>
+[ 3051.309654]   next_to_watch.status <0>
+[ 3053.401852] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 3053.401852]   Tx Queue             <0>
+[ 3053.401852]   TDH                  <39>
+[ 3053.401852]   TDT                  <3b>
+[ 3053.401852]   next_to_use          <3b>
+[ 3053.401852]   next_to_clean        <39>
+[ 3053.401852] buffer_info[next_to_clean]
+[ 3053.401852]   time_stamp           <1000a74ab>
+[ 3053.401852]   next_to_watch        <3a>
+[ 3053.401852]   jiffies              <1000a7b35>
+[ 3053.401852]   next_to_watch.status <0>
+[ 3055.442133] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 3055.442133]   Tx Queue             <0>
+[ 3055.442133]   TDH                  <39>
+[ 3055.442133]   TDT                  <3b>
+[ 3055.442133]   next_to_use          <3b>
+[ 3055.442133]   next_to_clean        <39>
+[ 3055.442133] buffer_info[next_to_clean]
+[ 3055.442133]   time_stamp           <1000a74ab>
+[ 3055.442133]   next_to_watch        <3a>
+[ 3055.442133]   jiffies              <1000a7d33>
+[ 3055.442133]   next_to_watch.status <0>
+[ 3056.613607] e1000 0000:00:03.0 enp0s3: Reset adapter
+[ 4427.554755] e1000 0000:00:08.0 enp0s8: Reset adapter
+[ 5195.959378] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 5195.959378]   Tx Queue             <0>
+[ 5195.959378]   TDH                  <4>
+[ 5195.959378]   TDT                  <6>
+[ 5195.959378]   next_to_use          <6>
+[ 5195.959378]   next_to_clean        <4>
+[ 5195.959378] buffer_info[next_to_clean]
+[ 5195.959378]   time_stamp           <10012a650>
+[ 5195.959378]   next_to_watch        <5>
+[ 5195.959378]   jiffies              <10012a897>
+[ 5195.959378]   next_to_watch.status <0>
+[ 5198.149614] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 5198.149614]   Tx Queue             <0>
+[ 5198.149614]   TDH                  <4>
+[ 5198.149614]   TDT                  <6>
+[ 5198.149614]   next_to_use          <6>
+[ 5198.149614]   next_to_clean        <4>
+[ 5198.149614] buffer_info[next_to_clean]
+[ 5198.149614]   time_stamp           <10012a650>
+[ 5198.149614]   next_to_watch        <5>
+[ 5198.149614]   jiffies              <10012aabb>
+[ 5198.149614]   next_to_watch.status <0>
+[ 5200.624147] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 5200.624147]   Tx Queue             <0>
+[ 5200.624147]   TDH                  <4>
+[ 5200.624147]   TDT                  <6>
+[ 5200.624147]   next_to_use          <6>
+[ 5200.624147]   next_to_clean        <4>
+[ 5200.624147] buffer_info[next_to_clean]
+[ 5200.624147]   time_stamp           <10012a650>
+[ 5200.624147]   next_to_watch        <5>
+[ 5200.624147]   jiffies              <10012ad26>
+[ 5200.624147]   next_to_watch.status <0>
+[ 5202.534800] e1000 0000:00:03.0 enp0s3: Reset adapter
+         Stopping Session 1 of user ubuntu.
+         Stopping Authenticate and Authorize Users to Re[[0;32m  OK  [0m] Unmounted /var/lib/lxcfs.
+[[0;32m  OK  [0m] Stopped Accounts Service.
+[[0;32m  OK  [0m] Stopped System Logging Service.
+[[0;32m  OK  [0m] Stopped ACPI event daemon.
+[[0;32m  OK  [0m] Stopped Snappy daemon.
+[[0;32m  OK  [0m] Stopped Deferred execution scheduler.
+[[0;32m  OK  [0m] Stopped Regular background program processing daemon.
+[[0;32m  OK  [0m] Stopped OpenBSD Secure Shell server.
+[[0;32m  OK  [0m] Stopped Authenticate and Authorize Users to Run Privileged Tasks.
+[[0;32m  OK  [0m] Stopped Getty on tty1.
+[[0;32m  OK  [0m] Stopped Serial Getty on ttyS0.
+[[0;32m  OK  [0m] Stopped User Manager for UID 1000.
+[[0;32m  OK  [0m] Stopped Session 1 of user ubuntu.
+[[0;32m  OK  [0m] Stopped Statistics collection and monitoring daemon.
+[[0;32m  OK  [0m] Stopped Session 4 of user ubuntu.
+[[0;32m  OK  [0m] Stopped D-Bus System Message Bus.
+[[0;32m  OK  [0m] Stopped Unattended Upgrades Shutdown.
+[[0;32m  OK  [0m] Stopped vboxadd-service.service.
+[[0;32m  OK  [0m] Stopped vboxadd-x11.service.
+[[0;32m  OK  [0m] Stopped FUSE filesystem for LXC.
+[[0;32m  OK  [0m] Stopped LSB: MD monitoring daemon.
+[[0;32m  OK  [0m] Stopped LSB: Set the CPU Frequency Scaling governor to "ondemand".
+[[0;32m  OK  [0m] Stopped LSB: daemon to balance interrupts for SMP systems.
+[[0;32m  OK  [0m] Stopped LSB: Record successful boot for GRUB.
+[[0;32m  OK  [0m] Stopped LXD - container startup/shutdown.
+[[0;32m  OK  [0m] Stopped LSB: automatic crash report generation.
+         Stopping vboxadd.service...
+[[0;32m  OK  [0m] Removed slice User Slice of ubuntu.
+         Stopping Login Service...
+[[0;32m  OK  [0m] Removed slice system-serial\x2dgetty.slice.
+[[0;32m  OK  [0m] Stopped /etc/rc.local Compatibility.
+         Stopping Permit User Sessions...
+[[0;32m  OK  [0m] Removed slice system-getty.slice.
+[[0;32m  OK  [0m] Unmounted /vagrant_data.
+[[0;32m  OK  [0m] Unmounted /vagrant.
+[[0;32m  OK  [0m] Stopped Login Service.
+[[0;32m  OK  [0m] Stopped vboxadd.service.
+[[0;32m  OK  [0m] Stopped Permit User Sessions.
+[[0;32m  OK  [0m] Stopped target User and Group Name Lookups.
+[[0;32m  OK  [0m] Stopped LSB: Apache2 web server.
+[[0;32m  OK  [0m] Stopped target Basic System.
+[[0;32m  OK  [0m] Stopped target Slices.
+[[0;32m  OK  [0m] Removed slice User and Session Slice.
+[[0;32m  OK  [0m] Stopped target Sockets.
+[[0;32m  OK  [0m] Closed Socket activation for snappy daemon.
+[[0;32m  OK  [0m] Closed Syslog Socket.
+[[0;32m  OK  [0m] Closed D-Bus System Message Bus Socket.
+[[0;32m  OK  [0m] Closed UUID daemon activation socket.
+[[0;32m  OK  [0m] Closed ACPID Listen Socket.
+[[0;32m  OK  [0m] Closed LXD - unix socket.
+[[0;32m  OK  [0m] Stopped target Paths.
+[[0;32m  OK  [0m] Stopped ACPI Events Check.
+[[0;32m  OK  [0m] Stopped Dispatch Password Requests to Console Directory Watch.
+[[0;32m  OK  [0m] Stopped Forward Password Requests to Wall Directory Watch.
+[[0;32m  OK  [0m] Stopped target System Initialization.
+[[0;32m  OK  [0m] Stopped target Encrypted Volumes.
+[[0;32m  OK  [0m] Stopped target Swap.
+         Stopping Load/Save Random Seed...
+         Stopping Update UTMP about System Boot/Shutdown...
+[[0;32m  OK  [0m] Stopped target Remote File Systems.
+[[0;32m  OK  [0m] Stopped target Remote File Systems (Pre).
+         Stopping Login to default iSCSI targets...
+[[0;32m  OK  [0m] Stopped Load/Save Random Seed.
+[[0;32m  OK  [0m] Stopped Update UTMP about System Boot/Shutdown.
+[[0;32m  OK  [0m] Stopped Create Volatile Files and Directories.
+[[0;32m  OK  [0m] Stopped Login to default iSCSI targets.
+         Stopping iSCSI initiator daemon (iscsid)...
+[[0;32m  OK  [0m] Stopped iSCSI initiator daemon (iscsid).
+[[0;32m  OK  [0m] Stopped target Network is Online.
+[[0;32m  OK  [0m] Stopped Initial cloud-init job (metadata service crawler).
+[[0;32m  OK  [0m] Stopped target Network.
+         Stopping Raise network interfaces...
+[[0;32m  OK  [0m] Stopped Raise network interfaces.
+[[0;32m  OK  [0m] Stopped target Network (Pre).
+[[0;32m  OK  [0m] Stopped Initial cloud-init job (pre-networking).
+[[0;32m  OK  [0m] Stopped target Local File Systems.
+         Unmounting /run/user/1000...
+[[0;32m  OK  [0m] Stopped Apply Kernel Variables.
+[[0;32m  OK  [0m] Stopped Load Kernel Modules.
+[[0;32m  OK  [0m] Unmounted /run/user/1000.
+[[0;32m  OK  [0m] Reached target Unmount All Filesystems.
+[[0;32m  OK  [0m] Stopped target Local File Systems (Pre).
+[[0;32m  OK  [0m] Stopped Create Static Device Nodes in /dev.
+[[0;32m  OK  [0m] Stopped Remount Root and Kernel File Systems.
+[[0;32m  OK  [0m] Reached target Shutdown.
+[ 5294.313269] reboot: Power down
