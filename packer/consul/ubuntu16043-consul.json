@@ -1,0 +1,77 @@
+{
+    "builders": [{
+        "name": "ubuntu-consul",
+        "type": "virtualbox-iso",
+        "guest_os_type": "Ubuntu_64",
+        "guest_additions_mode": "disable",
+        "iso_url": "https://mirrors.kernel.org/ubuntu-releases/16.04.3/ubuntu-16.04.3-server-amd64.img",
+        "iso_checksum": "a06cd926f5855d4f21fb4bc9978a35312f815fbda0d0ef7fdc846861f4fc4600",
+        "iso_checksum_type": "sha256",
+ "http_directory" : ".",
+  "http_port_min" : 9001,
+  "http_port_max" : 9001,
+        "ssh_username": "vagrant",
+        "ssh_password": "vagrant",
+        "ssh_wait_timeout": "30m",
+        "communicator": "ssh", 
+        "ssh_pty": "true", 
+        "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
+        "vm_name": "ubuntu-consul",
+        "hard_drive_interface": "sata",
+        "disk_size": 20000,
+        "boot_wait": "5s",
+ "boot_command" : [
+            "<enter><f6><esc>",
+	          "<bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs>", 
+	          "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs>",
+            "<bs><bs><bs><bs><bs>",
+            "<bs><bs><bs>",
+	          "/install/vmlinuz noapic ",
+            "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
+            "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+            "hostname=ubuntu-consul ",
+            "fb=false debconf/frontend=noninteractive ",
+            "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+            "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+            "initrd=/install/initrd.gz -- <enter>"
+        ],  
+ "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "2048"
+        ]
+
+    ]
+  }],
+ 
+  "provisioners": [
+  {
+    "type": "shell",
+  "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+    "script": "../scripts/post_install_consul.sh"
+  }
+],
+  "post-processors": [
+ {
+  "type": "vagrant",
+ "keep_input_artifact": false,
+ "output": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"  
+ }
+]
+}
+
