@@ -39,17 +39,9 @@ EOT
 
 # http://askubuntu.com/questions/493460/how-to-install-add-apt-repository-using-the-terminal
 sudo apt-get update ; sudo apt-get install -y software-properties-common 
-sudo add-apt-repository -y ppa:webupd8team/java
-# Oracle JDK needed for version 1.8 as openJDK is not backported for Ubuntu 14.04.5 - http://askubuntu.com/questions/521145/how-to-install-oracle-java-on-ubuntu-14-04
-# It has a license you need to accpet - here is how to auto do that
-# http://askubuntu.com/questions/190582/installing-java-automatically-with-silent-option
-
-sudo echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
-
-#http://www.himpfen.com/install-java-ubuntu/
 #http://blog.cloudera.com/blog/2009/11/hadoop-at-twitter-part-1-splittable-lzo-compression/
 sudo apt-get -y update; 
-sudo apt-get install -y oracle-java8-installer
+sudo apt-get install -y 
 
 sudo apt-get -y update ; sudo apt-get -y install pkgconf wget liblzo2-dev sysstat iotop vim libssl-dev libsnappy-dev libsnappy-java libbz2-dev libgcrypt11-dev zlib1g-dev lzop htop fail2ban
 
