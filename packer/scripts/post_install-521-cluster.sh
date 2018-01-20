@@ -44,6 +44,5 @@ sudo apt-get -y install pkgconf wget liblzo2-dev sysstat iotop vim libssl-dev li
 
 # Download Hadoop 2.6.5 source and extract tarbal
 wget http://mirror.cc.columbia.edu/pub/software/apache/hadoop/common/hadoop-2.6.5/hadoop-2.6.5.tar.gz
-mv ./hadoop-2.6.5.tar.gz ~
 tar -xvzf ~/hadoop-2.6.5.tar.gz
 
