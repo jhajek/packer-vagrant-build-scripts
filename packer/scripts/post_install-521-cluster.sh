@@ -11,12 +11,12 @@ sudo groupadd admin
 sudo usermod -a -G admin controller 
 
 
-# Installing controller keys
+# Installing vagrant keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
-sudo mkdir -p /home/controller/.ssh
-sudo chown -R controller:controller /home/controller/.ssh
-cat ./vagrant.pub >> /home/controller/.ssh/authorized_keys
-sudo chown -R controller:controller /home/controller/.ssh/authorized_keys
+sudo mkdir -p /home/vagrant/.ssh
+sudo chown -R vagrant:vagrant /home/vagrant/.ssh
+cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
+sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 echo "All Done!"
 
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
