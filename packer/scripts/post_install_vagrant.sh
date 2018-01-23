@@ -24,6 +24,11 @@ sudo sed -i "s/bantime = 600/bantime = -1/g" /etc/fail2ban/jail.conf
 sudo systemctl enable fail2ban
 sudo service fail2ban restart
 
+##################################################
+# Add User customizations below here
+##################################################
+
+
 
 ##################################################
 # Add Microsoft Powershell preview for Ubuntu

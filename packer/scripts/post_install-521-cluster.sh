@@ -11,12 +11,12 @@ sudo groupadd admin
 sudo usermod -a -G admin controller 
 
 
-# Installing vagrant keys
+# Installing controller keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
-sudo mkdir -p /home/vagrant/.ssh
-sudo chown -R vagrant:vagrant /home/vagrant/.ssh
-cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
-sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
+sudo mkdir -p /home/controller/.ssh
+sudo chown -R controller:controller /home/controller/.ssh
+cat ./vagrant.pub >> /home/controller/.ssh/authorized_keys
+sudo chown -R controller:controller /home/controller/.ssh/authorized_keys
 echo "All Done!"
 
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
@@ -32,8 +32,8 @@ cat << EOT >> /home/controller/.bashrc
 
 ########## Inserted by Jeremy
 export JAVA_HOME=/usr
-export HADOOP_HOME=/home/vagrant/hadoop-2.6.5
-export PATH=/sbin:/usr/sbin:/bin:/usr/bin:/home/vagrant/hadoop-2.6.5/bin:/home/vagrant/hadoop-2.6.5/sbin:/usr/local/bin
+export HADOOP_HOME=/home/controller/hadoop-2.6.5
+export PATH=/sbin:/usr/sbin:/bin:/usr/bin:/home/controller/hadoop-2.6.5/bin:/home/controller/hadoop-2.6.5/sbin:/usr/local/bin
 export HADOOP_CLASSPATH=/usr/lib/jvm/java-8-oracle/lib/tools.jar
 EOT
 
