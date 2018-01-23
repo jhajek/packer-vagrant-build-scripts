@@ -15,7 +15,7 @@
         "ssh_wait_timeout": "30m",
         "communicator": "ssh", 
         "ssh_pty": "true", 
-        "shutdown_command": "echo 'controller' | sudo -S shutdown -P now", 
+        "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
         "vm_name": "itmd521",
         "hard_drive_interface": "sata",
         "disk_size": 60000,
@@ -62,7 +62,7 @@
   "provisioners": [
   {
     "type": "shell",
-  "execute_command" : "echo 'controller' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+  "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
     "script": "../scripts/post_install-521-cluster.sh"
   }
 ],
