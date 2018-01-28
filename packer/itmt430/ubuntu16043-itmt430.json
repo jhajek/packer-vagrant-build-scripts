@@ -72,7 +72,7 @@
     {
     "type": "file",
     "source": "./id_rsa_github_deploy_key",
-    "destination": "~/.ssh"
+    "destination": "~/.ssh/"
     }
 ],
   "post-processors": [
