@@ -36,7 +36,7 @@ StrictHostChecking no
 EOF
 
 # You need to change the permission of the private key 
-chmod 600 id_rsa_github_deploy_key
+chmod 600 ~/.ssh/id_rsa_github_deploy_key
 
 # clone a private repo with the key
 git clone git@github.com:illinoistech-itm/hajek.git
