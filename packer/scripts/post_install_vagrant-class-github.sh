@@ -34,7 +34,7 @@ Hostname github.com
 IdentityFile  ~/.ssh/id_rsa_github_deploy_key
 EOF
 
-cat $KEYCONTENT > ~/.ssh/id_rsa_github_deploy_key
+cat $KEY > ~/.ssh/id_rsa_github_deploy_key
 
 # You need to change the permission of the private key 
 chmod 600 id_rsa_github_deploy_key
