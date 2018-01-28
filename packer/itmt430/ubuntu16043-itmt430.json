@@ -68,7 +68,10 @@
       "KEY={{user `rsa-key-content`}}",
       "DBPASS={{user `database-root-password`}}",
       "USERPASS={{user `moodle-database-user-password`}}"
-    ]
+    ],
+    "type": "file",
+    "source": "id_rsa_github_deploy_key",
+    "destination": "~/.ssh"
   }
 ],
   "post-processors": [
