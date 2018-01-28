@@ -1,6 +1,6 @@
 {
   "builders": [{
-      "name": "centos-vanilla-1611-server",
+      "name": "centos-vanilla-1708-server",
         "type": "virtualbox-iso",
         "guest_os_type": "RedHat_64",
         "guest_additions_mode": "disable",
