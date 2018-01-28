@@ -71,7 +71,7 @@
   },
     {
     "type": "file",
-    "source": "id_rsa_github_deploy_key",
+    "source": "./id_rsa_github_deploy_key",
     "destination": "~/.ssh"
     }
 ],
