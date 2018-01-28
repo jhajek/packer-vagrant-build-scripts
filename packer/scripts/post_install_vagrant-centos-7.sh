@@ -53,7 +53,5 @@ sudo yum install -y wget unzip vim git java-1.7.0-openjdk daemonize python-setup
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
 sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
 
-git config --global user.email "hajek@iit.edu"
-git config --global user.name "Jeremy R Hajek"
 
 echo "All Done!"
