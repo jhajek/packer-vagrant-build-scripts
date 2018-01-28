@@ -41,6 +41,6 @@ cat $KEY > ~/.ssh/id_rsa_github_deploy_key
 chmod 600 id_rsa_github_deploy_key
 
 # clone a private repo with the key
-git 
+git clone git@github.com:illinoistech-itm/hajek.git
 
 
