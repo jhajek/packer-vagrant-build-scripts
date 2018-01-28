@@ -35,8 +35,6 @@ IdentityFile  ~/.ssh/id_rsa_github_deploy_key
 StrictHostChecking no
 EOF
 
-cat $KEY > ~/.ssh/id_rsa_github_deploy_key
-
 # You need to change the permission of the private key 
 chmod 600 id_rsa_github_deploy_key
 
