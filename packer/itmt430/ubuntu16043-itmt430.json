@@ -63,7 +63,7 @@
     {
     "type": "file",
     "source": "./id_rsa_github_deploy_key",
-    "destination": "/home/vagrant/"
+    "destination": "/home/vagrant/.ssh/"
     },
   {
     "type": "shell",
