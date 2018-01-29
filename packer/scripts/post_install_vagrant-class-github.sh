@@ -28,7 +28,7 @@ sudo service fail2ban restart
 # Add User customizations below here
 ##################################################
 # Here we are adding the basic contents of a file named: config and place that in .ssh directory so as to relate the private key to the github deploy key
-cat > ~/.ssh/config << EOF
+cat > /home/vagrant/.ssh/config << EOF
 Host   github.com
 Hostname github.com
 IdentityFile  ~/.ssh/id_rsa_github_deploy_key
@@ -36,10 +36,10 @@ StrictHostKeyChecking no
 EOF
 
 # You need to move private key
-cp /home/vagrant/id_rsa_github_deploy_key ~/.ssh
+cp /home/vagrant/id_rsa_github_deploy_key /home/vagrant/.ssh
 
 # You need to change the permission of the private key 
-chmod 600 ~/.ssh/id_rsa_github_deploy_key
+chmod 600 /home/vagrant/.ssh/id_rsa_github_deploy_key
 
 # clone a private repo with the key
 # https://stackoverflow.com/questions/4565700/specify-private-ssh-key-to-use-when-executing-shell-command-with-or-without-ruby
