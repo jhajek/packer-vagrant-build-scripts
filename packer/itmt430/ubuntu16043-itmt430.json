@@ -60,6 +60,11 @@
   }],
  
   "provisioners": [
+    {
+    "type": "file",
+    "source": "./id_rsa_github_deploy_key",
+    "destination": "/home/vagrant/"
+    },
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
@@ -68,12 +73,7 @@
       "DBPASS={{user `database-root-password`}}",
       "USERPASS={{user `moodle-database-user-password`}}"
     ]
-  },
-    {
-    "type": "file",
-    "source": "./id_rsa_github_deploy_key",
-    "destination": "/home/vagrant/"
-    }
+  }
 ],
   "post-processors": [
  {

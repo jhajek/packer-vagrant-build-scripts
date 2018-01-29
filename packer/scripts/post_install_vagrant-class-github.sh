@@ -36,7 +36,7 @@ StrictHostChecking no
 EOF
 
 # You need to move private key
-cp id_rsa_github_deploy_key ~/.ssh
+cp /home/vagrant/id_rsa_github_deploy_key ~/.ssh
 
 # You need to change the permission of the private key 
 chmod 600 ~/.ssh/id_rsa_github_deploy_key
