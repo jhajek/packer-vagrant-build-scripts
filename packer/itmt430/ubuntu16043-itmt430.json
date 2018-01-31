@@ -65,6 +65,11 @@
     "source": "./id_rsa_github_deploy_key",
     "destination": "/home/vagrant/"
     },
+    {
+      "type": "file",
+      "source": "./config",
+      "destination": "/home/vagrant/"     
+    },
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
