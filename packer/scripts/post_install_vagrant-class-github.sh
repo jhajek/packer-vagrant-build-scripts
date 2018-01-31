@@ -28,19 +28,16 @@ sudo service fail2ban restart
 # Add User customizations below here
 ##################################################
 # Here we are adding the basic contents of a file named: config and place that in .ssh directory so as to relate the private key to the github deploy key
-cat > /home/vagrant/.ssh/config << EOF
-Host   github.com
-Hostname github.com
-IdentityFile  ~/.ssh/id_rsa_github_deploy_key
-StrictHostKeyChecking no
-EOF
 
-# You need to move private key
-cp /home/vagrant/id_rsa_github_deploy_key /home/vagrant/.ssh
+# You need to move private key to the correct directory location
+mv /home/vagrant/id_rsa_github_deploy_key /home/vagrant/.ssh/
+# You need to move the ssh config file to the correct directory location
+mv /home/vagrant/config /home/vagrant/.ssh/
 
-# Change ownership of the file as packer inserts this as root
+# Change ownership of these files as packer inserts this as root
 chown vagrant:vagrant /home/vagrant/.ssh/id_rsa_github_deploy_key
-ls -l /home/vagrant/.ssh/id_rsa_github_deploy_key
+chown vagrant:vagrant /home/vagrant/.ssh/config
+
 # You need to change the permission of the private key 
 chmod 600 /home/vagrant/.ssh/id_rsa_github_deploy_key
 
