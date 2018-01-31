@@ -38,8 +38,9 @@ EOF
 # You need to move private key
 cp /home/vagrant/id_rsa_github_deploy_key /home/vagrant/.ssh
 
+# Change ownership of the file as packer inserts this as root
 chown vagrant:vagrant /home/vagrant/.ssh/id_rsa_github_deploy_key
-
+ls -l /home/vagrant/.ssh/id_rsa_github_deploy_key
 # You need to change the permission of the private key 
 chmod 600 /home/vagrant/.ssh/id_rsa_github_deploy_key
 
