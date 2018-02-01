@@ -1,5 +1,0 @@
-data/*
-*.log
-Vagrantfile
-*.tar
-id_rsa_github_deploy_key
