@@ -13,7 +13,7 @@ sudo usermod -a -G admin vagrant
 
 # Installing vagrant keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
-sudo mkdir -p /home/vagrant/.ssh
+#sudo mkdir -p /home/vagrant/.ssh
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
@@ -30,15 +30,15 @@ sudo service fail2ban restart
 # Here we are adding the basic contents of a file named: config and place that in .ssh directory so as to relate the private key to the github deploy key
 
 # You need to move private key to the correct directory location - place the location in the root user's home directory because these commands are executed not as the user but as root...
-sudo mv /home/vagrant/id_rsa_github_deploy_key /root/.ssh/
+#mv /home/vagrant/id_rsa_github_deploy_key /home/vagrant/.ssh/
 # You need to move the ssh config file to the correct directory location
-sudo mv /home/vagrant/config /root/.ssh/
+#mv /home/vagrant/config /home/vagrant/.ssh/
 
 # You need to change the permission of the private key 
-chmod 600 /root/.ssh/id_rsa_github_deploy_key
+#chmod 600 /home/vagrant/.ssh/id_rsa_github_deploy_key
 
 # clone a private repo with the key
 # https://stackoverflow.com/questions/4565700/specify-private-ssh-key-to-use-when-executing-shell-command-with-or-without-ruby
-git clone git@github.com:illinoistech-itm/hajek.git
+#git clone git@github.com:illinoistech-itm/hajek.git
 
 
