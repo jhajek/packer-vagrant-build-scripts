@@ -35,7 +35,7 @@ sudo mv /home/vagrant/id_rsa_github_deploy_key /home/vagrant/.ssh/
 sudo mv /home/vagrant/config /home/vagrant/.ssh/
 
 # You need to change the permission of the private key 
-chmod 600 /root/.ssh/id_rsa_github_deploy_key
+chmod 600 /home/vagrant/.ssh/id_rsa_github_deploy_key
 
 # clone a private repo with the key
 # https://stackoverflow.com/questions/4565700/specify-private-ssh-key-to-use-when-executing-shell-command-with-or-without-ruby
