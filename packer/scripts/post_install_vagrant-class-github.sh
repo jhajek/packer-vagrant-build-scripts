@@ -50,4 +50,4 @@ echo "mariadb-server mysql-server/root_password_again password $DBPASS" | sudo d
 
 
 sudo apt-get update
-sudo apt-get -y mariadb-server
+sudo apt-get install -y mariadb-server
