@@ -41,4 +41,13 @@ sudo service fail2ban restart
 # https://stackoverflow.com/questions/4565700/specify-private-ssh-key-to-use-when-executing-shell-command-with-or-without-ruby
 #git clone git@github.com:illinoistech-itm/hajek.git
 
+# https://dba.stackexchange.com/questions/59317/install-mariadb-10-on-ubuntu-without-prompt-and-no-root-password
+# http://dba.stackexchange.com/questions/35866/install-mariadb-without-password-prompt-in-ubuntu?newreg=426e4e37d5a2474795c8b1c911f0fb9f
+# From <http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423> 
+export DEBIAN_FRONTEND=noninteractive
+echo "mariadb-server mysql-server/root_password password $DBPASS" | sudo  debconf-set-selections
+echo "mariadb-server mysql-server/root_password_again password $DBPASS" | sudo debconf-set-selections
 
+
+sudo apt-get update
+sudo apt-get -y mariadb-server
