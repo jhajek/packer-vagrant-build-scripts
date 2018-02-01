@@ -39,6 +39,6 @@ chmod 600 /home/vagrant/.ssh/id_rsa_github_deploy_key
 
 # clone a private repo with the key
 # https://stackoverflow.com/questions/4565700/specify-private-ssh-key-to-use-when-executing-shell-command-with-or-without-ruby
-sudo git clone git@github.com:illinoistech-itm/hajek.git
+git clone git@github.com:illinoistech-itm/hajek.git
 
 
