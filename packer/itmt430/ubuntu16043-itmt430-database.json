@@ -1,6 +1,6 @@
 {
     "builders": [{
-        "name": "ubuntu-vanilla-16043-server",
+        "name": "itmt430",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
@@ -16,7 +16,7 @@
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-        "vm_name": "ubuntu-vanilla-16043-server",
+        "vm_name": "itmt430",
         "hard_drive_interface": "sata",
         "disk_size": 20000,
         "boot_wait": "5s",
@@ -42,7 +42,7 @@
 	          "/install/vmlinuz noapic ",
             "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-            "hostname=changethis ",
+            "hostname=itmt430-db ",
             "fb=false debconf/frontend=noninteractive ",
             "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
             "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
@@ -89,7 +89,7 @@
     "script": "../scripts/post_install_vagrant-class-github.sh",
     "environment_vars": [ 
       "DBPASS={{user `database-root-password`}}",
-      "USERPASS={{user `moodle-database-user-password`}}"
+      "USERPASS={{user `database-user-password`}}"
     ]
   }
 ],

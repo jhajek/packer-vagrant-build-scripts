@@ -1,0 +1,5 @@
+{
+    "rsa-key-content": "",
+    "database-root-password": "foo",
+    "moodle-database-user-password": "bar"
+}
