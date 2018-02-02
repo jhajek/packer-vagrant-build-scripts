@@ -86,7 +86,7 @@
     {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_vagrant-class-github.sh",
+    "script": "../scripts/post_install_vagrant-class-github-db.sh",
     "environment_vars": [ 
       "DBPASS={{user `database-root-password`}}",
       "USERPASS={{user `database-user-password`}}"
