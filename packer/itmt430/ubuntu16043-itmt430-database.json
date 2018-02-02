@@ -1,6 +1,6 @@
 {
     "builders": [{
-        "name": "itmt430",
+        "name": "itmt430-db",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
@@ -16,7 +16,7 @@
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-        "vm_name": "itmt430",
+        "vm_name": "itmt430-db",
         "hard_drive_interface": "sata",
         "disk_size": 20000,
         "boot_wait": "5s",

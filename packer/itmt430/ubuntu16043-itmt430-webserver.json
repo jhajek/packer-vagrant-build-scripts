@@ -1,6 +1,6 @@
 {
     "builders": [{
-        "name": "itmt430",
+        "name": "itmt430-ws",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
@@ -16,7 +16,7 @@
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-        "vm_name": "itmt430",
+        "vm_name": "itmt430-ws",
         "hard_drive_interface": "sata",
         "disk_size": 20000,
         "boot_wait": "5s",
@@ -42,7 +42,7 @@
 	          "/install/vmlinuz noapic ",
             "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-            "hostname=itmt430 ",
+            "hostname=itmt430-ws ",
             "fb=false debconf/frontend=noninteractive ",
             "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
             "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
