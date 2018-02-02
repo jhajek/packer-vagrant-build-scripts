@@ -27,29 +27,22 @@ sudo service fail2ban restart
 ##################################################
 # Add User customizations below here
 ##################################################
-# Here we are adding the basic contents of a file named: config and place that in .ssh directory so as to relate the private key to the github deploy key
-
-# You need to move private key to the correct directory location - place the location in the root user's home directory because these commands are executed not as the user but as root...
-#mv /home/vagrant/id_rsa_github_deploy_key /home/vagrant/.ssh/
-# You need to move the ssh config file to the correct directory location
-#mv /home/vagrant/config /home/vagrant/.ssh/
-
-# You need to change the permission of the private key 
-#chmod 600 /home/vagrant/.ssh/id_rsa_github_deploy_key
-
-# clone a private repo with the key
-# https://stackoverflow.com/questions/4565700/specify-private-ssh-key-to-use-when-executing-shell-command-with-or-without-ruby
-#git clone git@github.com:illinoistech-itm/hajek.git
-
-# https://dba.stackexchange.com/questions/59317/install-mariadb-10-on-ubuntu-without-prompt-and-no-root-password
-# http://dba.stackexchange.com/questions/35866/install-mariadb-without-password-prompt-in-ubuntu?newreg=426e4e37d5a2474795c8b1c911f0fb9f
-# From <http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423> 
-echo $DBPASS
 
 export DEBIAN_FRONTEND=noninteractive
 echo "mariadb-server mysql-server/root_password password $DBPASS" | sudo  debconf-set-selections
 echo "mariadb-server mysql-server/root_password_again password $DBPASS" | sudo debconf-set-selections
 
-
 sudo apt-get update
-sudo apt-get install -y mariadb-server
+sudo apt-get install -y mariadb-server 
+
+# chown the cloned github repo files so the user owns it 
+sudo chown -R vagrant:vagrant ~/hajek
+# copying the php code to the /var/www/html directory to serve php files
+
+
+# Enable the service and start the service
+sudo systemctl enable mysql
+sudo systemctl start mysql
+
+./~/hajek/itmt-430/cnf/db.sh
+./~/hajek/itmt-430/cnf/cnf.sh

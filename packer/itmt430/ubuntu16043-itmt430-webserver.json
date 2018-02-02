@@ -87,10 +87,6 @@
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
     "script": "../scripts/post_install_vagrant-class-github.sh",
-    "environment_vars": [ 
-      "DBPASS={{user `database-root-password`}}",
-      "USERPASS={{user `moodle-database-user-password`}}"
-    ]
   }
 ],
   "post-processors": [
