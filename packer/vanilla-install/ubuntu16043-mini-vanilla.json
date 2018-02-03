@@ -30,7 +30,7 @@
   "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
   "linux initrd=initrd.gz",
   " auto=true",
-  " url={{.HTTPIP}}:{{.HTTPPort}}/preseed/pressed.cfg",
+  " url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
   " hostname=ubuntu-mini-server",
   " net.ifnames=0",
   " DEBCONF_DEBUG=5",
