@@ -86,7 +86,7 @@
     {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_vagrant-class-github-ws.sh"
+    "script": "../scripts/post_install_itmt430-github-ws.sh"
   }
 ],
   "post-processors": [
