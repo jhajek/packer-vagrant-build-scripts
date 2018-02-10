@@ -49,7 +49,7 @@ echo -e "[mysqld]" > ~/.my.cnf
 echo -e "\n\n[client]\nuser = root\npassword = $DBPASS" >> ~/.my.cnf
 echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> ~/.my.cnf
 
-echo -e "[mysqld]\n\n" > ~/.my.cnf.backup
+echo -e "[mysqld]\n\n" > ~/.my.cnf.worker
 echo -e "[client]\nuser = worker\npassword = $USERPASS" >> ~/.my.cnf.worker
 echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> ~/.my.cnf.worker
 echo -e "\ndefault-character-set = utf8mb4\n" >> ~/.my.cnf.worker
