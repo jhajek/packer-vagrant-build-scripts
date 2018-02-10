@@ -41,5 +41,33 @@ sudo chown -R vagrant:vagrant ~/hajek
 sudo systemctl enable mysql
 sudo systemctl start mysql
 
-./~/hajek/itmt-430/cnf/db.sh
-./~/hajek/itmt-430/cnf/cnf.sh
+# Inject the username and password for autologin later in a ~/.my.cnf file
+# http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423#103423
+# https://stackoverflow.com/questions/8020297/mysql-my-cnf-file-found-option-without-preceding-group
+
+echo -e "[mysqld]" > ~/.my.cnf
+echo -e "\n\n[client]\nuser = root\npassword = $DBPASS" >> ~/.my.cnf
+echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> ~/.my.cnf
+
+echo -e "[mysqld]\n\n" > ~/.my.cnf.backup
+echo -e "[client]\nuser = worker\npassword = $USERPASS" >> ~/.my.cnf.worker
+echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> ~/.my.cnf.worker
+echo -e "\ndefault-character-set = utf8mb4\n" >> ~/.my.cnf.worker
+
+# Enable Firewall
+# https://serverfault.com/questions/809643/how-do-i-use-ufw-to-open-ports-on-ipv4-only
+sudo ufw enable
+ufw allow proto tcp to 0.0.0.0/0 port 22
+ufw allow proto tcp to 0.0.0.0/0 port 80
+ufw allow proto tcp to 0.0.0.0/0 port 443
+
+# https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
+# This section uses the user environment variables declared in packer json build template
+# #USERPASS and $BKPASS
+sudo mysql -u root -e "CREATE DATABASE mydb DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+sudo mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON mydb.* TO worker@localhost IDENTIFIED BY '$USERPASS'; flush privileges;"
+
+# Create a user that has privilleges just to do a mysqldump backup
+# http://www.fromdual.com/privileges-of-mysql-backup-user-for-mysqldump
+#sudo mysql -u root -e "CREATE USER 'backup'@'localhost' IDENTIFIED BY '$BKPASS'; GRANT SELECT, SHOW VIEW, RELOAD, REPLICATION CLIENT, EVENT, TRIGGER, LOCK TABLES ON *.* TO 'backup'@'localhost';"
