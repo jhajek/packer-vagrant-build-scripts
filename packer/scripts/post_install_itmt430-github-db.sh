@@ -45,14 +45,14 @@ sudo systemctl start mysql
 # http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423#103423
 # https://stackoverflow.com/questions/8020297/mysql-my-cnf-file-found-option-without-preceding-group
 
-echo -e "[mysqld]" > /home/vagrant/.my.cnf
-echo -e "\n\n[client]\nuser = root\npassword = $DBPASS" >> ~/.my.cnf
-echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> ~/.my.cnf
+echo -e "[mysqld]" > /root/.my.cnf
+echo -e "\n\n[client]\nuser = root\npassword = $DBPASS" >> /root/.my.cnf
+echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> /root/.my.cnf
 
-echo -e "[mysqld]\n\n" > /home/vagrant/.my.cnf.backup
-echo -e "[client]\nuser = worker\npassword = $USERPASS" >> ~/.my.cnf.worker
-echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> ~/.my.cnf.worker
-echo -e "\ndefault-character-set = utf8mb4\n" >> ~/.my.cnf.worker
+echo -e "[mysqld]\n\n" > /home/vagrant/.my.cnf
+echo -e "[client]\nuser = worker\npassword = $USERPASS" >> /home/vagrant/.my.cnf
+echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> /home/vagrant/.my.cnf
+echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf
 
 # Enable Firewall
 # https://serverfault.com/questions/809643/how-do-i-use-ufw-to-open-ports-on-ipv4-only
