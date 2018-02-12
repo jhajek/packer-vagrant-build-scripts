@@ -45,13 +45,10 @@ echo -e "[mysqld]" > /root/.my.cnf
 echo -e "\n\n[client]\nuser = root\npassword = $DBPASS" >> /root/.my.cnf
 echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> /root/.my.cnf
 
-echo -e "[mysqld]" > /home/vagrant/.my.cnf
-echo -e "\n\n[client]\nuser = worker\npassword = $USERPASS" >> /home/vagrant/.my.cnf
-echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> /home/vagrant/.my.cnf
-echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf
-
-# Need to change permissions of the .my/.cnf file as root is the owner in this shell script upon creation
-sudo chown vagrant:vagrant /home/vagrant/.my.cnf
+echo -e "[mysqld]" > /home/vagrant/.my.cnf.user
+echo -e "\n\n[client]\nuser = worker\npassword = $USERPASS" >> /home/vagrant/.my.cnf.user
+echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> /home/vagrant/.my.cnf.user
+echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf.user
 
 # Enable the service and start the service
 sudo systemctl enable mysql
