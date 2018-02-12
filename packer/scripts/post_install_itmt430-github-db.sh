@@ -64,9 +64,9 @@ ufw allow proto tcp to 0.0.0.0/0 port 443
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
 # This section uses the user environment variables declared in packer json build template
 # #USERPASS and $BKPASS
-sudo mysql -u root -e "CREATE DATABASE mydb DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -u root -e "CREATE DATABASE mydb DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
-sudo mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON mydb.* TO worker@localhost IDENTIFIED BY '$USERPASS'; flush privileges;"
+mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON mydb.* TO worker@localhost IDENTIFIED BY '$USERPASS'; flush privileges;"
 
 # Create a user that has privilleges just to do a mysqldump backup
 # http://www.fromdual.com/privileges-of-mysql-backup-user-for-mysqldump
