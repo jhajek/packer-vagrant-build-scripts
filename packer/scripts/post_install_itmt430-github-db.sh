@@ -50,25 +50,25 @@ echo -e "\n\n[client]\nuser = worker\npassword = $USERPASS" >> /home/vagrant/.my
 echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> /home/vagrant/.my.cnf.user
 echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf.user
 
+# Need to change owndership of .my.cnf.worker file, can't have two .my.cnf files need to put root in one and worker in anoter
+sudo chown vagrant:vagrant /home/vagrant/.my.cnf.user
+
 # Enable the service and start the service
 sudo systemctl enable mysql
 sudo systemctl restart mysql
 
 # Enable Firewall
 # https://serverfault.com/questions/809643/how-do-i-use-ufw-to-open-ports-on-ipv4-only
+# DBIP is configured in the packer environment variables to allow access from a variable IP
 sudo ufw enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
 ufw allow proto tcp to 0.0.0.0/0 port 80
 ufw allow proto tcp to 0.0.0.0/0 port 443
-ufw allow proto tcp to 0.0.0.0/0 port 3306
 
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
 # This section uses the user environment variables declared in packer json build template
 # #USERPASS and $BKPASS
 mysql -u root -e "CREATE DATABASE mydb DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
-mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON mydb.* TO worker@localhost IDENTIFIED BY '$USERPASS'; flush privileges;"
+mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON mydb.* TO worker@'$ACCESSFROMIP' IDENTIFIED BY '$USERPASS'; flush privileges;"
 
-# Create a user that has privilleges just to do a mysqldump backup
-# http://www.fromdual.com/privileges-of-mysql-backup-user-for-mysqldump
-#sudo mysql -u root -e "CREATE USER 'backup'@'localhost' IDENTIFIED BY '$BKPASS'; GRANT SELECT, SHOW VIEW, RELOAD, REPLICATION CLIENT, EVENT, TRIGGER, LOCK TABLES ON *.* TO 'backup'@'localhost';"

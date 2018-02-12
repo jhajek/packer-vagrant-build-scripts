@@ -1,4 +1,5 @@
 {
     "database-root-password": "foo",
-    "database-user-password": "bar"
+    "database-user-password": "bar",
+    "database-access-from-ip": "127.0.0.1"
 }

@@ -89,7 +89,8 @@
     "script": "../scripts/post_install_itmt430-github-db.sh",
     "environment_vars": [ 
       "DBPASS={{user `database-root-password`}}",
-      "USERPASS={{user `database-user-password`}}"
+      "USERPASS={{user `database-user-password`}}",
+      "ACCESSFROMIP={{user `database-access-from-ip`}}"
     ]
   }
 ],
