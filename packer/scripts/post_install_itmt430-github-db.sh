@@ -37,10 +37,6 @@ sudo apt-get install -y mariadb-server
 sudo chown -R vagrant:vagrant ~/hajek
 # copying the php code to the /var/www/html directory to serve php files
 
-# Enable the service and start the service
-sudo systemctl enable mysql
-sudo systemctl start mysql
-
 # Inject the username and password for autologin later in a ~/.my.cnf file
 # http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423#103423
 # https://stackoverflow.com/questions/8020297/mysql-my-cnf-file-found-option-without-preceding-group
@@ -53,6 +49,10 @@ echo -e "[mysqld]\n\n" > /home/vagrant/.my.cnf
 echo -e "[client]\nuser = worker\npassword = $USERPASS" >> /home/vagrant/.my.cnf
 echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> /home/vagrant/.my.cnf
 echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf
+
+# Enable the service and start the service
+sudo systemctl enable mysql
+sudo systemctl start mysql
 
 # Enable Firewall
 # https://serverfault.com/questions/809643/how-do-i-use-ufw-to-open-ports-on-ipv4-only
