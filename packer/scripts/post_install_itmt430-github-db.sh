@@ -50,8 +50,6 @@ echo -e "\n\n[client]\nuser = worker\npassword = $USERPASS" >> /home/vagrant/.my
 echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> /home/vagrant/.my.cnf.user
 echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf.user
 
-# Need to change owndership of .my.cnf.worker file, can't have two .my.cnf files need to put root in one and worker in anoter
-sudo chown vagrant:vagrant /home/vagrant/.my.cnf.user
 
 # Enable the service and start the service
 sudo systemctl enable mysql
