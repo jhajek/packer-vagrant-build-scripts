@@ -41,14 +41,15 @@ sudo chown -R vagrant:vagrant ~/hajek
 # http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423#103423
 # https://stackoverflow.com/questions/8020297/mysql-my-cnf-file-found-option-without-preceding-group
 
-echo -e "[mysqld]" > ~/.my.cnf
-echo -e "\n\n[client]\nuser = root\npassword = $DBPASS" >> ~/.my.cnf
-echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> ~/.my.cnf
+echo -e "[mysqld]" > /root/.my.cnf
+echo -e "\n\n[client]\nuser = root\npassword = $DBPASS" >> /root/.my.cnf
+echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> /root/.my.cnf
 
-echo -e "[mysqld]\n\n" > ~/.my.cnf.worker
-echo -e "[client]\nuser = worker\npassword = $USERPASS" >> ~/.my.cnf.worker
-echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> ~/.my.cnf.worker
-echo -e "\ndefault-character-set = utf8mb4\n" >> ~/.my.cnf.worker
+echo -e "[mysqld]" > /home/vagrant/.my.cnf.user
+echo -e "\n\n[client]\nuser = worker\npassword = $USERPASS" >> /home/vagrant/.my.cnf.user
+echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> /home/vagrant/.my.cnf.user
+echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf.user
+
 
 # Enable the service and start the service
 sudo systemctl enable mysql
@@ -56,18 +57,17 @@ sudo systemctl start mysql
 
 # Enable Firewall
 # https://serverfault.com/questions/809643/how-do-i-use-ufw-to-open-ports-on-ipv4-only
+# DBIP is configured in the packer environment variables to allow access from a variable IP
 sudo ufw enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
 ufw allow proto tcp to 0.0.0.0/0 port 80
 ufw allow proto tcp to 0.0.0.0/0 port 443
+ufw allow proto tcp to $ACCESSFROMIP port 3306
 
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
 # This section uses the user environment variables declared in packer json build template
 # #USERPASS and $BKPASS
-sudo mysql -u root -e "CREATE DATABASE mydb DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -u root -e "CREATE DATABASE mydb DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
-sudo mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON mydb.* TO worker@localhost IDENTIFIED BY '$USERPASS'; flush privileges;"
+mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON mydb.* TO worker@'$ACCESSFROMIP' IDENTIFIED BY '$USERPASS'; flush privileges;"
 
-# Create a user that has privilleges just to do a mysqldump backup
-# http://www.fromdual.com/privileges-of-mysql-backup-user-for-mysqldump
-#sudo mysql -u root -e "CREATE USER 'backup'@'localhost' IDENTIFIED BY '$BKPASS'; GRANT SELECT, SHOW VIEW, RELOAD, REPLICATION CLIENT, EVENT, TRIGGER, LOCK TABLES ON *.* TO 'backup'@'localhost';"
