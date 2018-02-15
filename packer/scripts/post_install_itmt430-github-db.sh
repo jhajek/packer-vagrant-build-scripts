@@ -56,7 +56,7 @@ sudo sed -i "s/.*bind-address.*/bind-address = $DATABASEIP/" /etc/mysql/my.cnf
 
 # Enable the service and start the service
 sudo systemctl enable mysql
-sudo systemctl restart mysql
+sudo systemctl start mysql
 
 # Enable Firewall
 # https://serverfault.com/questions/809643/how-do-i-use-ufw-to-open-ports-on-ipv4-only
