@@ -52,6 +52,7 @@ echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf.user
 
 # Changing the mysql bind address with a script
 # https://serverfault.com/questions/584607/changing-the-mysql-bind-address-within-a-script
+# https://stackoverflow.com/questions/23670282/bind-address-missing-in-my-cnf-in-mysql-centos
 sudo sed -i "s/.*bind-address.*/bind-address = $DATABASEIP/" /etc/mysql/mysql.conf.d/my.cnf 
 
 # Enable the service and start the service
