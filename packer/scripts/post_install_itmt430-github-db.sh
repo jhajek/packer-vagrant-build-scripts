@@ -50,6 +50,9 @@ echo -e "\n\n[client]\nuser = worker\npassword = $USERPASS" >> /home/vagrant/.my
 echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> /home/vagrant/.my.cnf.user
 echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf.user
 
+# Changing the mysql bind address with a script
+# https://serverfault.com/questions/584607/changing-the-mysql-bind-address-within-a-script
+sudo sed -i "s/.*bind-address.*/bind-address = $DATABASEIP/" /etc/mysql/my.cnf 
 
 # Enable the service and start the service
 sudo systemctl enable mysql
@@ -60,8 +63,8 @@ sudo systemctl restart mysql
 # DBIP is configured in the packer environment variables to allow access from a variable IP
 sudo ufw enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
-ufw allow proto tcp to 0.0.0.0/0 port 80
-ufw allow proto tcp to 0.0.0.0/0 port 443
+#ufw allow proto tcp to 0.0.0.0/0 port 80
+#ufw allow proto tcp to 0.0.0.0/0 port 443
 ufw allow proto tcp to $ACCESSFROMIP port 3306
 
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
@@ -70,4 +73,5 @@ ufw allow proto tcp to $ACCESSFROMIP port 3306
 mysql -u root -e "CREATE DATABASE mydb DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
 mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON mydb.* TO worker@'$ACCESSFROMIP' IDENTIFIED BY '$USERPASS'; flush privileges;"
+
 

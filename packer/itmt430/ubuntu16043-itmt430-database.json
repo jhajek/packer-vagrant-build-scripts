@@ -90,7 +90,8 @@
     "environment_vars": [ 
       "DBPASS={{user `database-root-password`}}",
       "USERPASS={{user `database-user-password`}}",
-      "ACCESSFROMIP={{user `database-access-from-ip`}}"
+      "ACCESSFROMIP={{user `database-access-from-ip`}}",
+      "DATABASEIP={{user `database-ip`}}"
     ]
   }
 ],
