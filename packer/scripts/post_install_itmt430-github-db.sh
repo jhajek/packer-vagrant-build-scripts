@@ -52,7 +52,7 @@ echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf.user
 
 # Changing the mysql bind address with a script
 # https://serverfault.com/questions/584607/changing-the-mysql-bind-address-within-a-script
-sudo sed -i "s/.*bind-address.*/bind-address = $DATABASEIP/" /etc/mysql/my.cnf 
+sudo sed -i "s/.*bind-address.*/bind-address = $DATABASEIP/" /etc/mysql/mysql.conf.d/my.cnf 
 
 # Enable the service and start the service
 sudo systemctl enable mysql
