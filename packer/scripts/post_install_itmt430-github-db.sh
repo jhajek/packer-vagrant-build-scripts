@@ -76,4 +76,9 @@ mysql -u root -e "CREATE DATABASE mydb DEFAULT CHARACTER SET utf8mb4 COLLATE utf
 
 mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON mydb.* TO worker@'$ACCESSFROMIP' IDENTIFIED BY '$USERPASS'; flush privileges;"
 
+# Exectue sql file from repo cloned to create database and table and schema
+mysql -u root < ./hajek/itmt-430/db-samples/create-new.sql 
+
+# Execute sql file from repo cloned to insert 3 records into the table to seed it with valid data
+mysql -u root < ./hajek/itmt-430/db-samples/insert-new.sql
 
