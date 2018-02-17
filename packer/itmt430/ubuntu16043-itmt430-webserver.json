@@ -86,7 +86,15 @@
     {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_itmt430-github-ws.sh"
+    "script": "../scripts/post_install_itmt430-github-ws.sh",
+    "environment_vars": [ 
+      "DBPASS={{user `database-root-password`}}",
+      "USERPASS={{user `database-user-password`}}",
+      "ACCESSFROMIP={{user `database-access-from-ip`}}",
+      "DATABASEIP={{user `database-ip`}}",
+      "DATABASENAME={{user `database-name`}}",
+      "DATABASEUSERNAME={{user `database-user-name`}}"
+    ]
   }
 ],
   "post-processors": [
