@@ -65,8 +65,6 @@ sudo systemctl start mysql
 # DBIP is configured in the packer environment variables to allow access from a variable IP
 sudo ufw enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
-#ufw allow proto tcp to 0.0.0.0/0 port 80
-#ufw allow proto tcp to 0.0.0.0/0 port 443
 ufw allow proto tcp to $ACCESSFROMIP port 3306
 
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
