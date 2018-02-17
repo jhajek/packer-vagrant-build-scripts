@@ -31,7 +31,7 @@ sudo apt-get install -y apache2 mysql-client php7.0
 # chown the cloned github repo files so the user owns it 
 sudo chown -R vagrant:vagrant ~/hajek
 # copying the php code to the /var/www/html directory to serve php files
-sudo cp ~/hajek/itmt-430/db-samples/*.php /var/www/html
+sudo cp ./hajek/itmt-430/db-samples/*.php /var/www/html
 
 # Enable the service and start the service
 sudo systemctl enable apache2
