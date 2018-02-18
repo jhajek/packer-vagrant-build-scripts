@@ -24,6 +24,9 @@ sudo sed -i "s/bantime = 600/bantime = -1/g" /etc/fail2ban/jail.conf
 sudo systemctl enable fail2ban
 sudo service fail2ban restart
 
+# set the /etc/hosts file to match hostname
+echo "$WEBSERVERIP     ws  ws.sat.iit.edu" | sudo tee -a /etc/hosts
+
 # enable and allow ports in firewall
 sudo ufw enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
