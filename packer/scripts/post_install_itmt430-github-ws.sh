@@ -26,6 +26,7 @@ sudo service fail2ban restart
 
 # enable and allow ports in firewall
 sudo ufw enable
+ufw allow proto tcp to 0.0.0.0/0 port 22
 ufw allow proto tcp to 0.0.0.0/0 port 80
 ufw allow proto tcp to 0.0.0.0/0 port 443
 
