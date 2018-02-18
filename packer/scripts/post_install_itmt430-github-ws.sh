@@ -35,7 +35,7 @@ ufw allow proto tcp to 0.0.0.0/0 port 443
 
 #Install apache2 webserver
 sudo apt-get update
-sudo apt-get install -y apache2 mysql-client php7.0 libapache2-mod-php7.0
+sudo apt-get install -y apache2 mysql-client php7.0 libapache2-mod-php7.0 php7.0-mysql
 
 # chown the cloned github repo files so the user owns it 
 sudo chown -R vagrant:vagrant ~/hajek
