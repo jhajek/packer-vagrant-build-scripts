@@ -92,6 +92,7 @@
       "USERPASS={{user `database-user-password`}}",
       "ACCESSFROMIP={{user `database-access-from-ip`}}",
       "DATABASEIP={{user `database-ip`}}",
+      "WEBSERVERIP={{user `webserver-ip`}}",
       "DATABASENAME={{user `database-name`}}",
       "DATABASEUSERNAME={{user `database-user-name`}}"
     ]
