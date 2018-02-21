@@ -28,6 +28,7 @@ sudo service fail2ban restart
 echo "$WEBSERVERIP     ws  ws.sat.iit.edu" | sudo tee -a /etc/hosts
 
 # enable and allow ports in firewall
+# https://serverfault.com/questions/790143/ufw-enable-requires-y-prompt-how-to-automate-with-bash-script
 ufw --force enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
 ufw allow proto tcp to 0.0.0.0/0 port 80

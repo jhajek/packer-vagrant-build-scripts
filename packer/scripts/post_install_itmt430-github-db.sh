@@ -63,6 +63,7 @@ sudo systemctl start mysql
 # Enable Firewall
 # https://serverfault.com/questions/809643/how-do-i-use-ufw-to-open-ports-on-ipv4-only
 # DBIP is configured in the packer environment variables to allow access from a variable IP
+# https://serverfault.com/questions/790143/ufw-enable-requires-y-prompt-how-to-automate-with-bash-script
 ufw --force enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
 ufw allow from $ACCESSFROMIP to any port 3306
