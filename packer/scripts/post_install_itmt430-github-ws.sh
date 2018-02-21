@@ -45,10 +45,10 @@ sudo cp ./hajek/itmt-430/db-samples/*.php /var/www/html
 # include statement to place values into an include file for the connection string in test-select.php
 # https://unix.stackexchange.com/questions/4335/how-to-insert-text-into-a-root-owned-file-using-sudo
 echo "<?php" | sudo tee -a /var/www/html/connection-info.php
-echo "\$endpoint="$DATABASEIP";  // this is the public IP of the database server" | sudo tee -a /var/www/html/connection-info.php
-echo "\$user="$DATABASEUSERNAME"; //this is the same username that you created in the create-user-with-grants.sql file, change this from root as root is not allowed to make remote connections at all in mysql anymore" | sudo tee -a /var/www/html/connection-info.php
-echo "\$password="$USERPASS";  //this is the password that you entered in the create-user-with-grants.sql file after the IDENTIFIED BY string" | sudo tee -a /var/www/html/connection-info.php
-echo "\$dbname="$DATABASENAME"; //this is the name of the database you created in create.sql -- store if you keep the default setting" | sudo tee -a /var/www/html/connection-info.php 
+echo "\$endpoint=\"$DATABASEIP\";  // this is the public IP of the database server" | sudo tee -a /var/www/html/connection-info.php
+echo "\$user=\"$DATABASEUSERNAME\"; //this is the same username that you created in the create-user-with-grants.sql file, change this from root as root is not allowed to make remote connections at all in mysql anymore" | sudo tee -a /var/www/html/connection-info.php
+echo "\$password=\"$USERPASS\";  //this is the password that you entered in the create-user-with-grants.sql file after the IDENTIFIED BY string" | sudo tee -a /var/www/html/connection-info.php
+echo "\$dbname=\"$DATABASENAME\"; //this is the name of the database you created in create.sql -- store if you keep the default setting" | sudo tee -a /var/www/html/connection-info.php 
 echo "?>" | sudo tee -a /var/www/html/connection-info.php
 
 # Enable the service and start the service
