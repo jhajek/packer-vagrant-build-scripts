@@ -58,8 +58,7 @@ echo "?>" | sudo tee -a /var/www/html/connection-info.php
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt -subj "/C=US/ST=Illinois/L=Chicago/O=IIT-Company/OU=Org/CN=www.school.com"
 # While we are using OpenSSL, we should also create a strong Diffie-Hellman group, which is used in negotiating Perfect Forward Secrecy with clients.
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
-# Create an Apache Configuration Snippet with Strong Encryption Settings
-sudo mkdir /etc/apache2/conf-available/ssl-params.conf
+
 
 
 # Enable the service and start the service
