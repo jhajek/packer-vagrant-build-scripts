@@ -52,6 +52,10 @@ echo "\$password=\"$USERPASS\";  //this is the password that you entered in the 
 echo "\$dbname=\"$DATABASENAME\"; //this is the name of the database you created in create.sql -- store if you keep the default setting" | sudo tee -a /var/www/html/connection-info.php 
 echo "?>" | sudo tee -a /var/www/html/connection-info.php
 
+# Create Ubuntu 16.04 Self-Signed Cert for Apache2
+# https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-16-04
+
+
 # Enable the service and start the service
 sudo systemctl enable apache2
 sudo systemctl restart apache2
