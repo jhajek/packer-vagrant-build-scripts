@@ -6,7 +6,7 @@ This is how we are passing passwords/RSA keys securely.
 [https://www.packer.io/docs/templates/user-variables.html](https://www.packer.io/docs/templates/user-variables.html)
 
 ### What we need to set username and passwords securely in Packer
-1) Issue the command inside of the moodle folder, ```cp variables-sample.json variables.json```
+1) Issue the command inside of the folder, ```cp variables-sample.json variables.json```
     1) The ```variables.json``` file contains key value pairs of variables and passwords to be passed into the provisioner shell script.
     1) This renames the file ```variables-sample.json``` to ```variables.json```  (there is an entry in the .gitignore so you cannot accidentially git push your passwords).
 1) Edit the ```variables.json``` file replacing default values with your own    
