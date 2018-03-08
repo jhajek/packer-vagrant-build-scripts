@@ -54,7 +54,7 @@ echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf.user
 # https://serverfault.com/questions/584607/changing-the-mysql-bind-address-within-a-script
 # https://stackoverflow.com/questions/23670282/bind-address-missing-in-my-cnf-in-mysql-centos
 # https://en.wikipedia.org/wiki/Sed
-sudo sed -i "s/.*bind-address.*/bind-address = $DATABASEIP/" /etc/mysql/mariadb.conf.d/50-server.cnf 
+sudo sed -i "s/.*bind-address.*/#bind-address = $DATABASEIP/" /etc/mysql/mariadb.conf.d/50-server.cnf 
 
 # Enable the service and start the service
 sudo systemctl enable mysql
@@ -63,9 +63,10 @@ sudo systemctl start mysql
 # Enable Firewall
 # https://serverfault.com/questions/809643/how-do-i-use-ufw-to-open-ports-on-ipv4-only
 # DBIP is configured in the packer environment variables to allow access from a variable IP
-sudo ufw enable
+# https://serverfault.com/questions/790143/ufw-enable-requires-y-prompt-how-to-automate-with-bash-script
+ufw --force enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
-ufw allow proto tcp to $ACCESSFROMIP port 3306
+ufw allow from $ACCESSFROMIP to any port 3306
 
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
 # This section uses the user environment variables declared in packer json build template
