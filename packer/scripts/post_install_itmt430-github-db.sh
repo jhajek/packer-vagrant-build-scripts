@@ -76,8 +76,10 @@ mysql -u root -e "CREATE DATABASE comments DEFAULT CHARACTER SET utf8mb4 COLLATE
 mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON comments.* TO worker@'$ACCESSFROMIP' IDENTIFIED BY '$USERPASS'; flush privileges;"
 
 # Exectue sql file from repo cloned to create database and table and schema
+# These *.sql files can be found for reference here: https://github.com/illinoistech-itm/jhajek/tree/master/itmt-430/db-samples
 mysql -u root < ./hajek/itmt-430/db-samples/create-new.sql 
 
 # Execute sql file from repo cloned to insert 3 records into the table to seed it with valid data
+# These *.sql files can be found for reference here: https://github.com/illinoistech-itm/jhajek/tree/master/itmt-430/db-samples
 mysql -u root < ./hajek/itmt-430/db-samples/insert-new.sql
 
