@@ -1,11 +1,11 @@
 {
     "builders": [{
-        "name": "itmd521",
+        "name": "docker-ce",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
-        "iso_url": "https://mirrors.kernel.org/ubuntu-releases/16.04.3/ubuntu-16.04.3-server-amd64.img",
-        "iso_checksum": "a06cd926f5855d4f21fb4bc9978a35312f815fbda0d0ef7fdc846861f4fc4600",
+        "iso_url": "https://mirrors.kernel.org/ubuntu-releases/16.04.4/ubuntu-16.04.4-server-amd64.iso",
+        "iso_checksum": "0a03608988cfd2e50567990dc8be96fb3c501e198e2e6efcb846d89efc7b89f2",
         "iso_checksum_type": "sha256",
  "http_directory" : ".",
   "http_port_min" : 9001,
@@ -16,9 +16,9 @@
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-        "vm_name": "itmd521",
+        "vm_name": "docker-ce",
         "hard_drive_interface": "sata",
-        "disk_size": 60000,
+        "disk_size": 30000,
         "boot_wait": "5s",
  "boot_command" : [
             "<enter><f6><esc>",
@@ -42,7 +42,7 @@
 	    "/install/vmlinuz noapic ",
             "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-            "hostname=itmd521 ",
+            "hostname=docker-ce ",
             "fb=false debconf/frontend=noninteractive ",
             "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
             "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
@@ -63,7 +63,7 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_vagrant.sh"
+    "script": "../scripts/post_install_docker.sh"
   }
 ],
   "post-processors": [
