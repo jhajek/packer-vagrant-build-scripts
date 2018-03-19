@@ -46,3 +46,5 @@ sudo unzip -d /usr/local/bin packer_1.1.3_linux_amd64.zip
 
 # clone packer build scripts ahead of time
 git clone https://github.com/jhajek/packer-vagrant-build-scripts.git
+
+sudo chown -R vagrant:vagrant ./packer-vagrant-build-scripts/
