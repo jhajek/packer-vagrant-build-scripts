@@ -11,6 +11,6 @@
     }],
     "provisioners": [{
         "type": "shell",
-        "script": "../scripts/docker-install.sh"
+        "script": "../scripts/docker-install-ws.sh"
     }]
 }
