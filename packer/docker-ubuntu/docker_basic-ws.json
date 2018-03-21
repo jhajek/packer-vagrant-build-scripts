@@ -1,0 +1,25 @@
+{
+    "builders": [{
+        "type": "docker",
+        "image": "ubuntu:16.04",
+        "commit": true,
+        "changes": [
+            "USER www-data",
+            "WORKDIR /var/www/html",
+            "EXPOSE 80 443"
+        ]
+    }],
+    "provisioners": [{
+        "type": "shell",
+        "script": "../scripts/docker-install-ws.sh",
+        "environment_vars": [ 
+            "DBPASS={{user `database-root-password`}}",
+            "USERPASS={{user `database-user-password`}}",
+            "ACCESSFROMIP={{user `database-access-from-ip`}}",
+            "DATABASEIP={{user `database-ip`}}",
+            "WEBSERVERIP={{user `webserver-ip`}}",
+            "DATABASENAME={{user `database-name`}}",
+            "DATABASEUSERNAME={{user `database-user-name`}}"
+          ]
+    }]
+}
