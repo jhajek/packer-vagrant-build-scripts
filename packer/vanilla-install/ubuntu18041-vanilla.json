@@ -1,6 +1,6 @@
 {
     "builders": [{
-        "name": "ubuntu-vanilla-16044-server",
+        "name": "ubuntu-vanilla-18041-server",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
@@ -16,7 +16,7 @@
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-        "vm_name": "ubuntu-vanilla-16044-server",
+        "vm_name": "ubuntu-vanilla-18041-server",
         "hard_drive_interface": "sata",
         "disk_size": 20000,
         "boot_wait": "5s",
