@@ -23,14 +23,13 @@
         " netcfg/get_hostname=vagrant<wait>",
         " grub-installer/bootdev=/dev/sda<wait>",
         " noapic<wait>",
-        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<wait>",
+        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg<wait>",
         " -- <wait>",
         "<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": 20000,
       "guest_os_type": "Ubuntu_64",
-      "headless": true,
       "http_directory": "http",
       "iso_urls": [
         "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04-server-amd64.iso"
@@ -51,9 +50,10 @@
           "{{.Name}}",
           "--memory",
           "2048"
-    ],
-
- 
+        ]
+      ]
+      }],
+      
   "provisioners": [
   {
     "type": "shell",
