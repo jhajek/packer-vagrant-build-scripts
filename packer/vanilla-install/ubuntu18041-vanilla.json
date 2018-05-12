@@ -1,6 +1,8 @@
 {
   "builders": [
     {
+      "name": "ubuntu-vanilla-18041-server",
+      "vm_name": "ubuntu-vanilla-18041-server",
       "type": "virtualbox-iso",
       "boot_command": [
         "<esc><wait>",
@@ -45,7 +47,6 @@
       "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
-      "vm_name": "packer-ubuntu-18.04-amd64",
       "vboxmanage": [
         [
           "modifyvm",
