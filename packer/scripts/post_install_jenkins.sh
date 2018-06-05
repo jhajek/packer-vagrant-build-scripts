@@ -21,7 +21,7 @@ sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 echo "All Done!"
 
 sudo apt-get update -y
-sudo apt-get install -y openjdk-8-jdk-headless
+sudo apt-get install -y openjdk-8-jdk-headless daemon
 
 # Install Jenkins deb package
 wget https://pkg.jenkins.io/debian-stable/binary/jenkins_2.89.2_all.deb 
