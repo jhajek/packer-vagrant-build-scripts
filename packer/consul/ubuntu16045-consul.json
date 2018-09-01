@@ -1,11 +1,11 @@
 {
     "builders": [{
-        "name": "ubuntu-16044-moodle-server",
+        "name": "ubuntu-consul",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
-        "iso_url": "https://mirrors.kernel.org/ubuntu-releases/16.04.4/ubuntu-16.04.4-server-amd64.iso",
-        "iso_checksum": "0a03608988cfd2e50567990dc8be96fb3c501e198e2e6efcb846d89efc7b89f2",
+        "iso_url": "https://mirrors.kernel.org/ubuntu-releases/16.04.5/ubuntu-16.04.5-server-amd64.iso",
+        "iso_checksum": "c94de1cc2e10160f325eb54638a5b5aa38f181d60ee33dae9578d96d932ee5f8",
         "iso_checksum_type": "sha256",
  "http_directory" : ".",
   "http_port_min" : 9001,
@@ -16,19 +16,20 @@
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
+        "vm_name": "ubuntu-consul",
         "hard_drive_interface": "sata",
         "disk_size": 20000,
         "boot_wait": "5s",
  "boot_command" : [
             "<enter><f6><esc>",
-	    "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>", 
-	    "<bs><bs><bs><bs><bs>",
-	    "<bs><bs><bs><bs><bs>",
-	    "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
-	    "<bs><bs><bs><bs><bs>",
+	          "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
@@ -38,10 +39,10 @@
             "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs><bs><bs>",
             "<bs><bs><bs>",
-	    "/install/vmlinuz noapic ",
+	          "/install/vmlinuz noapic ",
             "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg ",
             "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-            "hostname=moodle ",
+            "hostname=ubuntu-consul ",
             "fb=false debconf/frontend=noninteractive ",
             "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
             "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
@@ -62,7 +63,7 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_moodle_33.sh"
+    "script": "../scripts/post_install_consul.sh"
   }
 ],
   "post-processors": [
