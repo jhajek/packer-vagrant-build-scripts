@@ -5,7 +5,7 @@
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
         "iso_url": "http://archive.ubuntu.com/ubuntu/dists/xenial/main/installer-amd64/current/images/netboot/mini.iso",
-        "iso_checksum": "655d1ec0a7415b4d963e7f2c40e3d56bd135907dda2cedd0c75209ced3a63103",
+        "iso_checksum": "0BC98F965F2D761956D1EDF6A887328991E2A999D2DB33DF94C2AB8BBAA34CD3",
         "iso_checksum_type": "sha256",
  "http_directory" : ".",
   "http_port_min" : 9001,
