@@ -12,7 +12,7 @@
         "http_port_max" : 9001,
         "ssh_username": "vagrant",
         "ssh_password": "vagrant",
-        "ssh_wait_timeout": "30m",
+        "ssh_wait_timeout": "60m",
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
