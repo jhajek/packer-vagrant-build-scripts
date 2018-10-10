@@ -1,6 +1,6 @@
 {
     "builders": [{
-        "name": "ubuntu-16043-vanilla",
+        "name": "ubuntu-16045-vanilla",
         "type": "hyperv-iso",
         "guest_additions_mode": "enabled",
         "generation": 2, 
