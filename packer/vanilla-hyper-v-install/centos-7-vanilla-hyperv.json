@@ -2,7 +2,6 @@
   "builders": [{
       "name": "centos-vanilla-1708-server",
         "type": "hyperv-iso",
-        "guest_os_type": "RedHat_64",
         "guest_additions_mode": "enabled",
         "generation": 1,
     "iso_url": "http://mirrors.kernel.org/centos/7.4.1708/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso",
