@@ -1,0 +1,43 @@
+{
+  "builders": [{
+      "name": "centos-vanilla-1708-server",
+        "type": "hyperv-iso",
+        "guest_additions_mode": "enabled",
+        "generation": 1,
+    "iso_url": "https://mirrors.edge.kernel.org/centos/7.5.1804/isos/x86_64/CentOS-7-x86_64-Minimal-1804.iso",
+    "iso_checksum": "714acc0aefb32b7d51b515e25546835e55a90da9fb00417fbee2d03a62801efd",
+    "iso_checksum_type": "sha256",
+    "vm_name": "centos-vanilla-1708-server",
+    "http_directory" : ".",
+    "http_port_min" : 9001,
+    "http_port_max" : 9001,
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_timeout": "30m",
+    "communicator": "ssh", 
+    "ssh_pty": "true", 
+    "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
+    "switch_name": "Default Switch",
+    "disk_size": 20000,
+    "boot_wait": "25s",
+    "boot_command": [
+        "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
+    ]
+    
+  }],
+
+  "provisioners": [
+  {
+    "type": "shell",
+  "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+    "script": "../scripts/post_install_vagrant-centos-7.sh"
+  }
+],
+  "post-processors": [
+ {
+  "type": "vagrant",
+ "keep_input_artifact": false,
+ "output": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"  
+ }
+]
+}
