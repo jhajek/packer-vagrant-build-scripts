@@ -54,8 +54,10 @@
           "{{.Name}}",
           "--memory",
           "2048"
+        ],
+        ["createhd", "--filename", "output-virtualbox/packer-virtualbox-disk2.vdi", "--size", "{{user `harddisk2_size`}}", "--format", "VDI", "--variant", "Standard"],
+        ["storageattach", "{{.Name}}", "--storagectl", "SATA Controller", "--port", "1", "--device", "0", "--type", "hdd", "--medium", "output-virtualbox/packer-virtualbox-disk2.vdi"]      
         ]
-      ]
       }],
       
   "provisioners": [
