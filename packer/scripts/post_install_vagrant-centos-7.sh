@@ -41,15 +41,11 @@ sudo firewall-cmd --zone=public --add-port=3000/tcp --permanent
 ###############################################################################################################
 
 # Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
-sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
-sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
 sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/Repositories
-sudo yum makecache fast
-
 
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
-sudo yum install -y wget unzip vim git java-1.7.0-openjdk daemonize python-setuptools curl
+sudo yum install -y wget unzip vim git python-setuptools curl
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
 sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
 
