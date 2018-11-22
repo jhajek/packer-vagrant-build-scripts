@@ -25,23 +25,13 @@ sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 
-###############################################################################################################
-# firewalld additions to make CentOS and riemann to work
-###############################################################################################################
-# Adding firewall rules for riemann - Centos 7 uses firewalld (Thanks Lennart...)
-# http://serverfault.com/questions/616435/centos-7-firewall-configuration
-sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=5556/udp --permanent
-# Websockets are TCP... for now - http://stackoverflow.com/questions/4657033/javascript-websockets-with-udp
-sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=2003/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=2004/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=8888/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=3000/tcp --permanent
-###############################################################################################################
+#########################
+# Add customization here
+#########################
 
-# Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
-sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/Repositories
+# Install Elrepo - The Community Enterprise Linux Repository (ELRepo)
+# https://wiki.centos.org/AdditionalResources/Repositories
+sudo yum install -y epel-release 
 
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
