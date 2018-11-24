@@ -1,7 +1,7 @@
 {
     "builders": [{
         "type": "docker",
-        "image": "ubuntu:18.04",
+        "image": "ubuntu",
         "commit": true
     }],
     "provisioners": [{
