@@ -1,0 +1,11 @@
+{
+    "builders": [{
+        "type": "docker",
+        "image": "ubuntu:18.04",
+        "commit": true
+    }],
+    "provisioners": [{
+        "type": "shell",
+        "script": "../scripts/docker-install-pandoc-jenkins.sh"
+    }]
+}
