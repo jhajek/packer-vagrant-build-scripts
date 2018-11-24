@@ -2,7 +2,9 @@
 
 #update 
 apt-get -y update
-apt-get -y install wget git curl gnupg software-properties-common tzdata
+apt-get -y install wget 
+apt-get -y install perl liberror-perl
+apt-get -y install git curl gnupg software-properties-common tzdata
 echo "America/Chicago" > /etc/timezone
 wget https://github.com/jgm/pandoc/releases/download/2.2.2.1/pandoc-2.2.2.1-1-amd64.deb
 dpkg -i pandoc-2.2.2.1-1-amd64.deb
