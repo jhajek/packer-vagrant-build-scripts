@@ -2,7 +2,8 @@
 
 #update 
 apt-get -y update
-apt-get -y install wget git curl gnupg software-properties-common
+apt-get -y install wget git curl gnupg software-properties-common tzdata
+echo "America/Chicago" > /etc/timezone
 wget https://github.com/jgm/pandoc/releases/download/2.2.2.1/pandoc-2.2.2.1-1-amd64.deb
 dpkg -i pandoc-2.2.2.1-1-amd64.deb
 apt-get -y install texlive texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex
