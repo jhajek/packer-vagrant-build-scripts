@@ -40,7 +40,7 @@ sudo systemctl enable docker
 
 # install packer so you can buiild docker containers
 wget https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip
-sudo unzip -d /usr/local/bin packer_1.1.3_linux_amd64.zip
+sudo unzip -d /usr/local/bin packer_1.3.3_linux_amd64.zip
 
 # clone packer build scripts ahead of time
 git clone https://github.com/jhajek/packer-vagrant-build-scripts.git
