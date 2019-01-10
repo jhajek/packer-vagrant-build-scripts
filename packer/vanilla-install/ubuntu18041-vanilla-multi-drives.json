@@ -25,11 +25,7 @@
         " netcfg/get_hostname=vagrant<wait>",
         " grub-installer/bootdev=/dev/sda<wait>",
         " noapic<wait>",
-<<<<<<< HEAD
-        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-multi-disk.cfg<wait>",
-=======
         " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-multi-drives.cfg<wait>",
->>>>>>> 767e04cfc264eb76588637d229c57f6f80d2bdd8
         " -- <wait>",
         "<enter><wait>"
       ],
