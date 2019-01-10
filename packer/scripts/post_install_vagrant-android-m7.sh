@@ -32,13 +32,12 @@ sudo service fail2ban restart
 wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 unzip platform-tools-latest-linux.zip -d ~
 
-cat << EOT >> /home/vagrant/.profile
+cat << EOT >> ~/.profile
 
 # add Android SDK platform tools to path
 if [ -d "$HOME/platform-tools" ] ; then
     PATH="$HOME/platform-tools:$PATH"
 fi
-
 EOT
 
 source ~/.profile
@@ -53,13 +52,12 @@ mkdir -p ~/android/lineage
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 
-cat << EOT >> /home/vagrant/.profile
+cat << EOT >> ~/.profile
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-
 EOT
 
 source ~/.profile
