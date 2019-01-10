@@ -32,8 +32,8 @@ cat << EOT >> /home/vagrant/.bashrc
 
 ########## Inserted by Jeremy
 export JAVA_HOME=/usr
-export HADOOP_HOME=/home/vagrant/hadoop-2.6.5
-export PATH=/sbin:/usr/sbin:/bin:/usr/bin:/home/vagrant/hadoop-2.6.5/bin:/home/vagrant/hadoop-2.6.5/sbin:/usr/local/bin
+export HADOOP_HOME=/home/vagrant/hadoop-2.8.5
+export PATH=$PATH:$HADOOP_HOME/bin:/$HADOOP_HOME/sbin:
 export HADOOP_CLASSPATH=/usr/lib/jvm/java-8-oracle/lib/tools.jar
 EOT
 
@@ -43,6 +43,6 @@ sudo apt-get update ; sudo apt-get install -y software-properties-common openjdk
 sudo apt-get -y install pkgconf wget liblzo2-dev sysstat iotop vim libssl-dev libsnappy-dev libsnappy-java libbz2-dev libgcrypt11-dev zlib1g-dev lzop htop fail2ban
 
 # Download Hadoop 2.6.5 source and extract tarbal
-wget http://mirror.cc.columbia.edu/pub/software/apache/hadoop/common/hadoop-2.6.5/hadoop-2.6.5.tar.gz
-tar -xvzf ~/hadoop-2.6.5.tar.gz
+wget http://mirror.cc.columbia.edu/pub/software/apache/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz
+tar -xvzf ~/hadoop-2.8.5.tar.gz
 
