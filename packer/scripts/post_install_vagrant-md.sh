@@ -28,21 +28,6 @@ sudo service fail2ban restart
 # Add User customizations below here
 ##################################################
 
+sudo zpool create datapool /dev/sdb
+sudo zpool status
 
-sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo apt-key fingerprint 0EBFCD88
-sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt-get update
-sudo apt-get install -y docker-ce
-sudo systemctl enable docker
-
-# install packer so you can buiild docker containers
-wget https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip
-sudo unzip -d /usr/local/bin packer_1.3.3_linux_amd64.zip
-
-# clone packer build scripts ahead of time
-git clone https://github.com/jhajek/packer-vagrant-build-scripts.git
-
-sudo chown -R vagrant:vagrant ./packer-vagrant-build-scripts/

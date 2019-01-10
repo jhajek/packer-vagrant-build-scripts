@@ -27,22 +27,38 @@ sudo service fail2ban restart
 ##################################################
 # Add User customizations below here
 ##################################################
+# https://wiki.lineageos.org/devices/m7/build
+
+wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+unzip platform-tools-latest-linux.zip -d ~
+
+cat << EOT >> ~/.profile
+
+add Android SDK platform tools to path
+if [ -d "$HOME/platform-tools" ] ; then
+    PATH="$HOME/platform-tools:$PATH"
+fi
+EOT
 
 
-sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo apt-key fingerprint 0EBFCD88
-sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt-get update
-sudo apt-get install -y docker-ce
-sudo systemctl enable docker
+sudo apt-get install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev
 
-# install packer so you can buiild docker containers
-wget https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip
-sudo unzip -d /usr/local/bin packer_1.3.3_linux_amd64.zip
+sudo apt-get install -y openjdk-8-jdk
 
-# clone packer build scripts ahead of time
-git clone https://github.com/jhajek/packer-vagrant-build-scripts.git
+mkdir -p ~/bin
+mkdir -p ~/android/lineage
 
-sudo chown -R vagrant:vagrant ./packer-vagrant-build-scripts/
+curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+chmod a+x ~/bin/repo
+
+cat << EOT >> ~/.profile
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+EOT
+
+
+cd ~/android/lineage
+repo init -u https://github.com/LineageOS/android.git -b cm-14.1

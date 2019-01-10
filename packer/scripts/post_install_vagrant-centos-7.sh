@@ -25,31 +25,17 @@ sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 
-###############################################################################################################
-# firewalld additions to make CentOS and riemann to work
-###############################################################################################################
-# Adding firewall rules for riemann - Centos 7 uses firewalld (Thanks Lennart...)
-# http://serverfault.com/questions/616435/centos-7-firewall-configuration
-sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=5556/udp --permanent
-# Websockets are TCP... for now - http://stackoverflow.com/questions/4657033/javascript-websockets-with-udp
-sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=2003/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=2004/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=8888/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=3000/tcp --permanent
-###############################################################################################################
+#########################
+# Add customization here
+#########################
 
-# Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
-sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
-sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
-sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/Repositories
-sudo yum makecache fast
-
+# Install Elrepo - The Community Enterprise Linux Repository (ELRepo)
+# https://wiki.centos.org/AdditionalResources/Repositories
+sudo yum install -y epel-release 
 
 # Install base dependencies -  Centos 7 mininal needs the EPEL repo in the line above and the package daemonize
 sudo yum update -y
-sudo yum install -y wget unzip vim git java-1.7.0-openjdk daemonize python-setuptools curl
+sudo yum install -y wget unzip vim git python-setuptools curl
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
 sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
 

@@ -25,7 +25,11 @@
         " netcfg/get_hostname=vagrant<wait>",
         " grub-installer/bootdev=/dev/sda<wait>",
         " noapic<wait>",
+<<<<<<< HEAD
         " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-multi-disk.cfg<wait>",
+=======
+        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-multi-drives.cfg<wait>",
+>>>>>>> 767e04cfc264eb76588637d229c57f6f80d2bdd8
         " -- <wait>",
         "<enter><wait>"
       ],
@@ -36,10 +40,10 @@
       "http_port_min" : 9001,
       "http_port_max" : 9001,
       "iso_urls": [
-        "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04-server-amd64.iso"
+        "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.1-server-amd64.iso"
       ],
       "iso_checksum_type": "sha256",
-      "iso_checksum": "a7f5c7b0cdd0e9560d78f1e47660e066353bb8a79eb78d1fc3f4ea62a07e6cbc",
+      "iso_checksum": "a5b0ea5918f850124f3d72ef4b85bda82f0fcd02ec721be19c1a6952791c8ee8",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -65,7 +69,7 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_vagrant.sh"
+    "script": "../scripts/post_install_vagrant-md.sh"
   }
 ],
   "post-processors": [

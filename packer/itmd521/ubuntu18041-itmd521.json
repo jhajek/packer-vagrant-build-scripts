@@ -1,8 +1,8 @@
 {
   "builders": [
     {
-      "name": "ubuntu-vanilla-18041-server",
-      "vm_name": "ubuntu-vanilla-18041-server",
+      "name": "itmd521-local-cluster",
+      "vm_name": "itmd521-local-cluster",
       "type": "virtualbox-iso",
       "boot_command": [
         "<esc><wait>",
@@ -22,7 +22,7 @@
         " keyboard-configuration/variant=USA<wait>",
         " locale=en_US<wait>",
         " netcfg/get_domain=vm<wait>",
-        " netcfg/get_hostname=vagrant<wait>",
+        " netcfg/get_hostname=itmd521<wait>",
         " grub-installer/bootdev=/dev/sda<wait>",
         " noapic<wait>",
         " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg<wait>",
@@ -30,7 +30,7 @@
         "<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 20000,
+      "disk_size": 40000,
       "guest_os_type": "Ubuntu_64",
       "http_directory" : ".",
       "http_port_min" : 9001,
@@ -62,7 +62,7 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_vagrant.sh"
+    "script": "../scripts/post_install-521-cluster.sh"
   }
 ],
   "post-processors": [
