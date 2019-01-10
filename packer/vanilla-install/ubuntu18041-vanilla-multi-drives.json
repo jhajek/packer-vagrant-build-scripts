@@ -1,8 +1,8 @@
 {
   "builders": [
     {
-      "name": "ubuntu-vanilla-18041-server",
-      "vm_name": "ubuntu-vanilla-18041-server",
+      "name": "ubuntu-vanilla-18041-server-multi-disk",
+      "vm_name": "ubuntu-vanilla-18041-server-multi-disk",
       "type": "virtualbox-iso",
       "boot_command": [
         "<esc><wait>",
@@ -25,7 +25,7 @@
         " netcfg/get_hostname=vagrant<wait>",
         " grub-installer/bootdev=/dev/sda<wait>",
         " noapic<wait>",
-        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg<wait>",
+        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-multi-disk.cfg<wait>",
         " -- <wait>",
         "<enter><wait>"
       ],
