@@ -42,7 +42,7 @@ sudo apt-get update ; sudo apt-get install -y software-properties-common openjdk
 
 sudo apt-get -y install pkgconf wget liblzo2-dev sysstat iotop vim libssl-dev libsnappy-dev libsnappy-java libbz2-dev libgcrypt11-dev zlib1g-dev lzop htop fail2ban
 
-# Download Hadoop 2.6.5 source and extract tarbal
+# Download Hadoop 2.8.5 source and extract tarbal
 wget http://mirror.cc.columbia.edu/pub/software/apache/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz
 tar -xvzf ~/hadoop-2.8.5.tar.gz
 
