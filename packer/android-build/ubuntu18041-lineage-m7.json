@@ -63,7 +63,7 @@
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
     "scripts": ["../scripts/post_install_vagrant-android-m7-prereqs.sh",
-    "../scripts/post_install_vagrant-android-m7-prereqs.sh"
+    "../scripts/post_install_vagrant-android-m7.sh"
     ]}
 ],
   "post-processors": [
