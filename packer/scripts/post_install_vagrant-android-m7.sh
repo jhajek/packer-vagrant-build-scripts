@@ -27,6 +27,7 @@ sudo service fail2ban restart
 ##################################################
 # Add User customizations below here
 ##################################################
+# https://wiki.lineageos.org/devices/m7/build
 
 wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 unzip platform-tools-latest-linux.zip -d ~
