@@ -34,13 +34,12 @@ unzip platform-tools-latest-linux.zip -d ~
 
 cat << EOT >> ~/.profile
 
-# add Android SDK platform tools to path
+add Android SDK platform tools to path
 if [ -d "$HOME/platform-tools" ] ; then
     PATH="$HOME/platform-tools:$PATH"
 fi
 EOT
 
-source ~/.profile
 
 sudo apt-get install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev
 
@@ -60,7 +59,6 @@ if [ -d "$HOME/bin" ] ; then
 fi
 EOT
 
-source ~/.profile
 
 cd ~/android/lineage
 repo init -u https://github.com/LineageOS/android.git -b cm-14.1
