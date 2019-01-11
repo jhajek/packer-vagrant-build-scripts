@@ -59,6 +59,3 @@ if [ -d "$HOME/bin" ] ; then
 fi
 EOT
 
-
-cd ~/android/lineage
-~/bin/repo init -u https://github.com/LineageOS/android.git -b cm-14.1
