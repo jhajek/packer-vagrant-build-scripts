@@ -61,4 +61,4 @@ EOT
 
 
 cd ~/android/lineage
-repo init -u https://github.com/LineageOS/android.git -b cm-14.1
+~/bin/repo init -u https://github.com/LineageOS/android.git -b cm-14.1
