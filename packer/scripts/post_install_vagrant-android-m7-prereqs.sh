@@ -34,7 +34,7 @@ unzip platform-tools-latest-linux.zip -d ~
 
 cat << EOT >> ~/.profile
 
-add Android SDK platform tools to path
+# add Android SDK platform tools to path
 if [ -d "$HOME/platform-tools" ] ; then
     PATH="$HOME/platform-tools:$PATH"
 fi
