@@ -34,7 +34,7 @@ cat << EOT >> /home/vagrant/.bashrc
 export JAVA_HOME=/usr
 export HADOOP_HOME=/home/vagrant/hadoop-2.8.5
 export PATH=$PATH:$HADOOP_HOME/bin:/$HADOOP_HOME/sbin:
-export HADOOP_CLASSPATH=/usr/lib/jvm/java-8-oracle/lib/tools.jar
+export HADOOP_CLASSPATH=/usr/lib/jvm/java-8-openjdk-amd64/lib/tools.jar
 EOT
 
 # http://askubuntu.com/questions/493460/how-to-install-add-apt-repository-using-the-terminal
