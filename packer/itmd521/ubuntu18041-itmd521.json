@@ -58,13 +58,7 @@
       ]
       }],
       
-  "provisioners": [
-  {
-    "type": "shell",
-  "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install-521-cluster.sh"
-  }
-],
+
   "post-processors": [
  {
   "type": "vagrant",
