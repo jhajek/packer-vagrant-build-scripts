@@ -13,10 +13,10 @@
         "ssh_username": "vagrant",
         "ssh_password": "vagrant",
         "communicator": "ssh",
-        "ssh_timeout": "60m", 
+        "ssh_timeout": "30m", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-        "disk_size": 20000,
+        "disk_size": 50000,
         "boot_wait": "25s",
         "ram_size": "2048",
         "switch_name": "Default Switch",
@@ -54,7 +54,7 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_vagrant.sh"
+    "script": "../scripts/post_install_vagrant-hyperv.sh"
   }
 ],
   "post-processors": [
