@@ -84,5 +84,5 @@ mysql -u root -e "SHOW DATABASES;"
 # Execute sql file from repo cloned to insert 3 records into the table to seed it with valid data
 # These *.sql files can be found for reference here: https://github.com/illinoistech-itm/jhajek/tree/master/itmt-430/db-samples
 mysql -u root < ./hajek/itmt-430/db-samples/insert-new.sql
-mysql -u root -e "USE DATABASE comments; SHOW TABLES;"
+mysql -u root -e "USE comments; SHOW TABLES;"
 
