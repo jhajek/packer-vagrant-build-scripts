@@ -16,6 +16,7 @@ data/
 Vagrantfile
 *.tar
 id_rsa_github_deploy_key
+id_rsa*
 packer/build/xenial64/ubuntu-xenial-16.04-cloudimg-console.log
 *.txt.xz
 Understanding-Free*
