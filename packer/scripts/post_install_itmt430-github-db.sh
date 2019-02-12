@@ -18,7 +18,7 @@ sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 echo "All Done!"
 
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
-sudo sed -i "s/bantime = 600/bantime = -1/g" /etc/fail2ban/jail.conf
+sudo sed -i "s/bantime  = 600/bantime = -1/g" /etc/fail2ban/jail.conf
 sudo systemctl enable fail2ban
 sudo service fail2ban restart
 
@@ -84,5 +84,5 @@ mysql -u root -e "SHOW DATABASES;"
 # Execute sql file from repo cloned to insert 3 records into the table to seed it with valid data
 # These *.sql files can be found for reference here: https://github.com/illinoistech-itm/jhajek/tree/master/itmt-430/db-samples
 mysql -u root < ./hajek/itmt-430/db-samples/insert-new.sql
-mysql -u root -e "USE DATABASE comments; SHOW TABLES;"
+mysql -u root -e "USE comments; SHOW TABLES;"
 
