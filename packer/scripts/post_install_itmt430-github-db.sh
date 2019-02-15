@@ -34,8 +34,11 @@ sudo apt-get update
 sudo apt-get install -y mariadb-server 
 
 # chown the cloned github repo files so the user owns it 
+###############################################################################
+# Replace any occurance of hajek with the name of your own private repository #
+###############################################################################
+
 sudo chown -R vagrant:vagrant ~/hajek
-# copying the php code to the /var/www/html directory to serve php files
 
 # Inject the username and password for autologin later in a ~/.my.cnf file
 # http://serverfault.com/questions/103412/how-to-change-my-mysql-root-password-back-to-empty/103423#103423

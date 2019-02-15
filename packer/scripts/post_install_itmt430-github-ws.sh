@@ -38,8 +38,13 @@ ufw allow proto tcp to 0.0.0.0/0 port 443
 sudo apt-get update
 sudo apt-get install -y apache2 mariadb-client php7.0 libapache2-mod-php7.0 php7.0-mysql
 
-# chown the cloned github repo files so the user owns it 
+###############################################################################
+# Replace any occurance of hajek with the name of your own private repository #
+###############################################################################
+
 sudo chown -R vagrant:vagrant ~/hajek
+
+
 # copying the php code to the /var/www/html directory to serve php files
 sudo cp ./hajek/itmt-430/db-samples/*.php /var/www/html
 
