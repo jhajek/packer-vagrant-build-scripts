@@ -1,0 +1,9 @@
+{
+    "database-root-password": "foo",
+    "database-user-password": "bar",
+    "database-access-from-ip": "192.168.33.10",
+    "database-ip": "192.168.33.11",
+    "webserver-ip": "192.168.33.10",
+    "database-name": "comments",
+    "database-user-name": "worker"
+}
