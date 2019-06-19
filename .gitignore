@@ -9,6 +9,7 @@ output*/
 build/*
 .vagrant/*
 .cfg.*
+variables*.json
 variables.json
 variables-home.json
 *.swp
