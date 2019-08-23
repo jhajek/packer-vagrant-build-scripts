@@ -1,8 +1,8 @@
 {
   "builders": [
     {
-      "name": "ubuntu-vanilla-18042-server-multi-disk",
-      "vm_name": "ubuntu-vanilla-18042-server-multi-disk",
+      "name": "ubuntu-vanilla-18043-server-multi-disk",
+      "vm_name": "ubuntu-vanilla-18043-server-multi-disk",
       "type": "virtualbox-iso",
       "boot_command": [
         "<esc><wait>",

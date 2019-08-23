@@ -1,6 +1,6 @@
 {
     "builders": [{
-        "name": "ubuntu-mini-vanilla-18042-server",
+        "name": "ubuntu-mini-vanilla-18043-server",
         "type": "virtualbox-iso",
         "guest_os_type": "Ubuntu_64",
         "guest_additions_mode": "disable",
