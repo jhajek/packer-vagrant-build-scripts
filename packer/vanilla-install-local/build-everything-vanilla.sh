@@ -1,0 +1,1 @@
+packer build ./centos-7-vanilla.json ; packer build ./ubuntu14045-vanilla.json ; packer build ./ubuntu16041-vanilla.json 
