@@ -39,7 +39,7 @@
         "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.3-server-amd64.iso"
       ],
       "iso_checksum_type": "sha256",
-      "iso_checksum": "59f141b7c3816dc4ef5ff5322b9225faa2c59d02225528f0f21d367628bde9b1",
+      "iso_checksum": "7d8e0055d663bffa27c1718685085626cb59346e7626ba3d3f476322271f573e",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
