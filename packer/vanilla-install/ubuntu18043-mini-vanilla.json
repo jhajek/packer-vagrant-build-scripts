@@ -16,7 +16,7 @@
         "communicator": "ssh", 
         "ssh_pty": "true", 
         "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-        "vm_name": "ubuntu-vanilla-18042-server",
+        "vm_name": "ubuntu-vanilla-18043-server",
         "hard_drive_interface": "sata",
         "disk_size": 20000,
         "boot_wait": "5s",
