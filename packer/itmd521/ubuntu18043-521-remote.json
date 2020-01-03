@@ -1,8 +1,8 @@
 {
   "builders": [
     {
-      "name": "itmd521-local-cluster",
-      "vm_name": "itmd521-local-cluster",
+      "name": "itmd521-local-install",
+      "vm_name": "itmd521-local-install",
       "type": "virtualbox-iso",
       "boot_command": [
         "<esc><wait>",
@@ -22,7 +22,7 @@
         " keyboard-configuration/variant=USA<wait>",
         " locale=en_US<wait>",
         " netcfg/get_domain=vm<wait>",
-        " netcfg/get_hostname=itmd521<wait>",
+        " netcfg/get_hostname=jrh-remote-cluster<wait>",
         " grub-installer/bootdev=/dev/sda<wait>",
         " noapic<wait>",
         " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg<wait>",
@@ -36,10 +36,10 @@
       "http_port_min" : 9001,
       "http_port_max" : 9001,
       "iso_urls": [
-        "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.2-server-amd64.iso"
+        "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.3-server-amd64.iso"
       ],
       "iso_checksum_type": "sha256",
-      "iso_checksum": "a2cb36dc010d98ad9253ea5ad5a07fd6b409e3412c48f1860536970b073c98f5",
+      "iso_checksum": "7d8e0055d663bffa27c1718685085626cb59346e7626ba3d3f476322271f573e",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
