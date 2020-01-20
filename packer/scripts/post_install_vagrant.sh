@@ -12,7 +12,7 @@ sudo usermod -a -G admin vagrant
 
 sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
-sudo apt-get -y install openjdk-8-jdk
+#sudo apt-get -y install openjdk-8-jdk
 
 #sudo apt-get install -y fail2ban
 
