@@ -39,6 +39,7 @@ ufw allow proto tcp to 0.0.0.0/0 port 443
 sudo apt-get update
 sudo apt-get install vim git nodejs npm nginx
 
+sudo systemctl start nginx
 sudo npm install pm2@latest -g
 sudo pm2 startup systemd
 
