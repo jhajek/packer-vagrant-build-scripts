@@ -59,7 +59,7 @@ mkdir /home/vagrant/project
 sudo chown -R vagrant:vagrant ~/hajek
 
 # Change ownership of files
-sudo chown vagrant:vagrant /home/vagrant/.pm2/rpc.sock /home/vagrant/.pm2/pub.sock
+sudo chown -R vagrant:vagrant /home/vagrant/.pm2
 cp ./hajek/itmt-430/project/app.js ~/project
 pm2 start /home/vagrant/project/app.js
 
