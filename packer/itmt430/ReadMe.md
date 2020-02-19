@@ -14,6 +14,9 @@ This is how we are passing passwords/RSA keys securely.
 1) Edit the ```variables.json``` file replacing default values with your own
 1) Issue the command ```packer build --var-file=./variables.json ubuntu18044-itmt430-database.json``` and ```packer build --var-file=./variables.json ubuntu18044-itmt430-webserver.json``` to begin the install with password, usernames, and RSA private key properly seeded
 1) This way we can securely build the system, deploy it and when building it pass in passwords via environment variables
+
+## Webserver contents
+
 1) This application has an Nginx webserver running on port 80.  
 1) It has a Nodejs Hello World application running on port 3000.
 1) It has an Nginx route to the Nodejs app located at `/app`
