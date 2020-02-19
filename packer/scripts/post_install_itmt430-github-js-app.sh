@@ -53,7 +53,7 @@ mkdir /home/vagrant/project
 sudo chown -R vagrant:vagrant ~/hajek
 
 cp ./hajek/itmt-430/project/app.js ~/project
-pm2 start /home/vagrant/project/hello.js
+pm2 start /home/vagrant/project/app.js
 
 # nginx as a load-balancer
 # https://upcloud.com/community/tutorials/configure-load-balancing-nginx/
