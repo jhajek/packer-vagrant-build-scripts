@@ -58,8 +58,11 @@ sudo env PATH=$PATH:/usr/bin /usr/local/lib/node_modules/pm2/bin/pm2 startup sys
 mkdir /home/vagrant/project
 sudo chown -R vagrant:vagrant ~/hajek
 
+# Change ownership of files
+sudo chown vagrant:vagrant /home/vagrant/.pm2/rpc.sock /home/vagrant/.pm2/pub.sock
 cp ./hajek/itmt-430/project/app.js ~/project
 pm2 start /home/vagrant/project/app.js
+
 
 # nginx as a load-balancer
 # https://upcloud.com/community/tutorials/configure-load-balancing-nginx/
