@@ -37,7 +37,7 @@ ufw allow proto tcp to 0.0.0.0/0 port 443
 # Install nodejs and npm
 # https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04
 sudo apt-get update
-sudo apt-get install vim git nodejs npm
+sudo apt-get install vim git nodejs npm nginx
 
 sudo npm install pm2@latest -g
 sudo pm2 startup systemd
