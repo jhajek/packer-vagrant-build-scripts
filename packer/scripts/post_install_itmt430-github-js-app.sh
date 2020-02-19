@@ -20,6 +20,8 @@ sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 echo "All Done!"
 
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
+sudo apt-get update
+sudo apt-get install -y fail2ban
 sudo sed -i "s/bantime = 600/bantime = -1/g" /etc/fail2ban/jail.conf
 sudo systemctl enable fail2ban
 sudo service fail2ban restart
@@ -37,7 +39,7 @@ ufw allow proto tcp to 0.0.0.0/0 port 443
 # Install nodejs and npm
 # https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04
 sudo apt-get update
-sudo apt-get install vim git nodejs npm nginx
+sudo apt-get install -y vim git nodejs npm nginx
 
 sudo systemctl start nginx
 sudo npm install pm2@latest -g
