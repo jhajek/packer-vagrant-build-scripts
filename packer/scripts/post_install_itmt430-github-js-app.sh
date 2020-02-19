@@ -58,3 +58,5 @@ sudo pm2 start /home/vagrant/project/app.js
 
 # nginx as a load-balancer
 # https://upcloud.com/community/tutorials/configure-load-balancing-nginx/
+
+# https://nodejs.org/en/docs/guides/getting-started-guide/
