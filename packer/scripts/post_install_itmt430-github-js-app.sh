@@ -35,6 +35,7 @@ ufw --force enable
 ufw allow proto tcp to 0.0.0.0/0 port 22
 ufw allow proto tcp to 0.0.0.0/0 port 80
 ufw allow proto tcp to 0.0.0.0/0 port 443
+ufw allow proto tcp to 0.0.0.0/0 port 3000
 
 # Install nodejs and npm
 # https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04
@@ -54,7 +55,7 @@ mkdir /home/vagrant/project
 sudo chown -R vagrant:vagrant ~/hajek
 
 cp ./hajek/itmt-430/project/app.js ~/project
-sudo pm2 start /home/vagrant/project/app.js
+pm2 start /home/vagrant/project/app.js
 
 # nginx as a load-balancer
 # https://upcloud.com/community/tutorials/configure-load-balancing-nginx/
