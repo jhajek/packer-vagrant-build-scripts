@@ -47,22 +47,55 @@
       "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
       "guest_additions_mode": "disable",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-      "virtualbox_version_file": ".vbox_version",
-      "vboxmanage": [
+      "virtualbox_version_file": ".vbox_version",  
+ "vboxmanage": [
         [
           "modifyvm",
           "{{.Name}}",
           "--memory",
           "2048"
         ]
-      ]
-      }],
-      
+
+    ]
+  }],
+ 
   "provisioners": [
-  {
+    {
+    "type": "file",
+    "source": "./id_rsa_github_deploy_key",
+    "destination": "/home/vagrant/"
+    },
+    {
+      "type": "file",
+      "source": "./config",
+      "destination": "/home/vagrant/"     
+    },
+    {
+      "type": "shell",
+      "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+      "inline": [
+        "mkdir -p /home/vagrant/.ssh",
+        "mkdir -p /root/.ssh",
+        "chmod 600 /home/vagrant/id_rsa_github_deploy_key",
+        "cp -v /home/vagrant/id_rsa_github_deploy_key /home/vagrant/.ssh/",
+        "cp -v /home/vagrant/config /home/vagrant/.ssh/",
+        "cp -v /home/vagrant/config /root/.ssh/",
+        "git clone git@github.com:illinoistech-itm/hajek.git"
+      ]
+    },
+    {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_vagrant.sh"
+    "script": "../scripts/post_install_itmt430-github-ws.sh",
+    "environment_vars": [ 
+      "DBPASS={{user `database-root-password`}}",
+      "USERPASS={{user `database-user-password`}}",
+      "ACCESSFROMIP={{user `database-access-from-ip`}}",
+      "DATABASEIP={{user `database-ip`}}",
+      "WEBSERVERIP={{user `webserver-ip`}}",
+      "DATABASENAME={{user `database-name`}}",
+      "DATABASEUSERNAME={{user `database-user-name`}}"
+    ]
   }
 ],
   "post-processors": [
