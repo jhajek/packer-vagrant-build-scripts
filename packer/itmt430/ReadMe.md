@@ -20,3 +20,8 @@ This is how we are passing passwords/RSA keys securely.
 1) This application has an Nginx webserver running on port 80.  
 1) It has a Nodejs Hello World application running on port 3000.
 1) It has an Nginx route to the Nodejs app located at `/app`
+
+## Database contents
+
+1) System will create a `.my.cnf` file which allows for password-less authentication
+1) System will pre-seed MariaDB or MySql root password
