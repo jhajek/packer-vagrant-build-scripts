@@ -40,6 +40,7 @@ sudo apt-get update
 sudo apt-get install vim git nodejs npm
 
 sudo npm install pm2@latest -g
+sudo pm2 startup systemd
 
 ###############################################################################
 # Replace any occurance of hajek with the name of your own private repository #
