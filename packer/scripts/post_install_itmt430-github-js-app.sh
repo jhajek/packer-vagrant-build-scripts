@@ -43,8 +43,9 @@ sudo apt-get install -y vim git nodejs npm nginx
 
 sudo systemctl start nginx
 sudo npm install pm2@latest -g
-sudo pm2 startup systemd
-
+# sudo pm2 startup systemd
+# This line is the output of the above command
+sudo env PATH=$PATH:/usr/bin /usr/local/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant
 ###############################################################################
 # Replace any occurance of hajek with the name of your own private repository #
 ###############################################################################
