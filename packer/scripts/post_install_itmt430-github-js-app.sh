@@ -60,4 +60,12 @@ pm2 start /home/vagrant/project/app.js
 # nginx as a load-balancer
 # https://upcloud.com/community/tutorials/configure-load-balancing-nginx/
 
+
+# Nginx configurations
+# https://nginx.org/en/docs/beginners_guide.html
+# https://dev.to/guimg/how-to-serve-nodejs-applications-with-nginx-on-a-raspberry-jld
+sudo cp ./hajek/itmt-430/projects/nginx/default /etc/nginx/sites-enabled
+sudo systemctl daemon-reload
+sudo systemctl reload nginx
+
 # https://nodejs.org/en/docs/guides/getting-started-guide/
