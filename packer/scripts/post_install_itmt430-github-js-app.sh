@@ -68,7 +68,7 @@ pm2 start /home/vagrant/project/app.js
 # Nginx configurations
 # https://nginx.org/en/docs/beginners_guide.html
 # https://dev.to/guimg/how-to-serve-nodejs-applications-with-nginx-on-a-raspberry-jld
-sudo cp ./hajek/itmt-430/projects/nginx/default /etc/nginx/sites-enabled
+sudo cp ./hajek/itmt-430/project/nginx/default /etc/nginx/sites-enabled
 sudo systemctl daemon-reload
 sudo systemctl reload nginx
 
