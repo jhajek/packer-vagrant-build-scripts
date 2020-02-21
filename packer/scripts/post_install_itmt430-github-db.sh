@@ -64,8 +64,9 @@ echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf.user
 sudo sed -i "s/.*bind-address.*/#bind-address = $DATABASEIP/" /etc/mysql/mariadb.conf.d/50-server.cnf 
 
 # Enable the service and start the service
-sudo systemctl enable mysql
-sudo systemctl start mysql
+# Explanation of linked service filenames mysql and mariadb
+sudo systemctl enable maridb.service
+sudo systemctl start mariadb.service
 
 # Enable Firewall
 # https://serverfault.com/questions/809643/how-do-i-use-ufw-to-open-ports-on-ipv4-only
