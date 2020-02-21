@@ -18,6 +18,8 @@ sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 echo "All Done!"
 
 #http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
+sudo apt-get update
+sudo apt-get install -y fail2ban
 sudo sed -i "s/bantime  = 600/bantime = -1/g" /etc/fail2ban/jail.conf
 sudo systemctl enable fail2ban
 sudo service fail2ban restart
@@ -76,6 +78,14 @@ ufw allow from $ACCESSFROMIP to any port 3306
 # https://stackoverflow.com/questions/8055694/how-to-execute-a-mysql-command-from-a-shell-script
 # This section uses the user environment variables declared in packer json build template
 # #USERPASS and $BKPASS
-mysql -u root -e "CREATE DATABASE comments DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
-mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON comments.* TO worker@'$ACCESSFROMIP' IDENTIFIED BY '$USERPASS'; flush privileges;"
+# Example to do this via command line -- this is verbose but might not be scalable or maintainable, perhaps put it in a .sql file
+# mysql -u root -e "CREATE DATABASE comments DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+# mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON comments.* TO worker@'$ACCESSFROMIP' IDENTIFIED BY '$USERPASS'; flush privileges;"
+
+sudo mysql -u root < ~/hajek/itmt-430/db-samples/create-database.sql
+sudo mysql -u root < ~/hajek/itmt-430/db-samples/create-table.sql
+sudo mysql -u root < ~/hajek/itmt-430/db-samples/create-user-with-permissions.sql
+sudo mysql -u root < ~/hajek/itmt-430/db-samples/insert-records.sql
+sudo mysql -u root < ~/hajek/itmt-430/db-samples/sample-select.sql
