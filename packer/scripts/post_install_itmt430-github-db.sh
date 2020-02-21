@@ -65,7 +65,7 @@ sudo sed -i "s/.*bind-address.*/#bind-address = $DATABASEIP/" /etc/mysql/mariadb
 
 # Enable the service and start the service
 # Explanation of linked service filenames mysql and mariadb
-sudo systemctl enable maridb.service
+sudo systemctl enable mariadb.service
 sudo systemctl start mariadb.service
 
 # Enable Firewall
