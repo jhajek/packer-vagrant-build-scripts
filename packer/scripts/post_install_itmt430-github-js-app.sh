@@ -50,6 +50,7 @@ sudo systemctl start nginx
 sudo npm install pm2@latest -g
 # sudo pm2 startup systemd
 # This line is the output of the above command
+# https://pm2.keymetrics.io/docs/usage/startup/
 sudo env PATH=$PATH:/usr/bin /usr/local/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant
 ###############################################################################
 # Replace any occurance of hajek with the name of your own private repository #
