@@ -19,7 +19,7 @@ packer build --var-file=./variables.json ubuntu18044-itmt430-database.json
 packer build --var-file=./variables.json ubuntu18044-itmt430-webserver.json
 ```
 
-1) This way we can securely build the system, deploy it and when building it pass in passwords via environment variables
+This way we can securely build the system, deploy it and when building it pass in passwords via environment variables
 
 ## Webserver contents
 
