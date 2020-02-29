@@ -52,6 +52,7 @@ sudo npm install pm2@latest -g
 # This line is the output of the above command
 # https://pm2.keymetrics.io/docs/usage/startup/
 sudo env PATH=$PATH:/usr/bin /usr/local/lib/node_modules/pm2/bin/pm2 startup systemd -u vagrant --hp /home/vagrant
+sudo pm2 save
 ###############################################################################
 # Replace any occurance of hajek with the name of your own private repository #
 ###############################################################################
@@ -65,7 +66,7 @@ cp ./hajek/itmt-430/project-code/app.js /home/vagrant/project
 # Change the ownership of the NodeJS application files
 sudo chown -R vagrant:vagrant /home/vagrant/project
 sudo pm2 start /home/vagrant/project/app.js
-sudo pm2 save
+
 
 
 # nginx as a load-balancer
