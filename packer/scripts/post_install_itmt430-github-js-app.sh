@@ -61,7 +61,7 @@ sudo chown -R vagrant:vagrant ~/hajek
 
 # Change ownership of PM2 service that auto-starts our NojeJS app
 sudo chown -R vagrant:vagrant /home/vagrant/.pm2
-cp ./hajek/itmt-430/project/app.js /home/vagrant/project
+cp ./hajek/itmt-430/project-code/app.js /home/vagrant/project
 # Change the ownership of the NodeJS application files
 sudo chown -R vagrant:vagrant /home/vagrant/project
 sudo pm2 start /home/vagrant/project/app.js
