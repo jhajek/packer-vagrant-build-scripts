@@ -65,6 +65,7 @@ cp ./hajek/itmt-430/project/app.js /home/vagrant/project
 # Change the ownership of the NodeJS application files
 sudo chown -R vagrant:vagrant /home/vagrant/project
 sudo pm2 start /home/vagrant/project/app.js
+sudo pm2 save
 
 
 # nginx as a load-balancer
