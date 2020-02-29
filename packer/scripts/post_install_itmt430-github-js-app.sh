@@ -67,11 +67,8 @@ cp ./hajek/itmt-430/project-code/app.js /home/vagrant/project
 sudo chown -R vagrant:vagrant /home/vagrant/project
 sudo pm2 start /home/vagrant/project/app.js
 
-
-
 # nginx as a load-balancer
 # https://upcloud.com/community/tutorials/configure-load-balancing-nginx/
-
 
 # Nginx configurations
 # https://nginx.org/en/docs/beginners_guide.html
