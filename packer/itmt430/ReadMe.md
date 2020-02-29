@@ -30,4 +30,4 @@ packer build --var-file=./variables.json ubuntu18044-itmt430-webserver.json
 ## Database contents
 
 1) System will create a `.my.cnf` file which allows for password-less authentication
-1) System will pre-seed MariaDB or MySql root password
+1) System will pre-seed MariaDB or MySQL root password
