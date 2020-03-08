@@ -42,10 +42,16 @@ ufw allow proto tcp to 0.0.0.0/0 port 443
 ufw allow proto tcp to 0.0.0.0/0 port 3000
 
 # Install nodejs and npm
-# https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04
+# https://github.com/nodesource/distributions/blob/master/README.md#debinstall
+# 12.x verson is LTS
 sudo apt-get update
-sudo apt-get install -y vim git nodejs npm nginx
+sudo apt-get install -y vim git nginx
 
+# Using Ubuntu
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+sudo systemctl enable nginx
 sudo systemctl start nginx
 sudo npm install pm2@latest -g
 # sudo pm2 startup systemd
