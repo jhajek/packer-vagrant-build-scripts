@@ -47,6 +47,13 @@ ufw allow proto tcp to 0.0.0.0/0 port 3000
 sudo apt-get update
 sudo apt-get install -y vim git nginx
 
+# Nginx configurations
+# https://nginx.org/en/docs/beginners_guide.html
+# https://dev.to/guimg/how-to-serve-nodejs-applications-with-nginx-on-a-raspberry-jld
+sudo cp ./hajek/itmt-430/project-code/nginx/default /etc/nginx/sites-enabled
+sudo systemctl daemon-reload
+sudo systemctl reload nginx
+
 # Using Ubuntu
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt-get install -y nodejs
@@ -76,11 +83,5 @@ pm2 start /home/vagrant/project/app.js
 # nginx as a load-balancer
 # https://upcloud.com/community/tutorials/configure-load-balancing-nginx/
 
-# Nginx configurations
-# https://nginx.org/en/docs/beginners_guide.html
-# https://dev.to/guimg/how-to-serve-nodejs-applications-with-nginx-on-a-raspberry-jld
-sudo cp ./hajek/itmt-430/project-code/nginx/default /etc/nginx/sites-enabled
-sudo systemctl daemon-reload
-sudo systemctl reload nginx
 
 # https://nodejs.org/en/docs/guides/getting-started-guide/
