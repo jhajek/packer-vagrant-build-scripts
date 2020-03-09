@@ -80,8 +80,8 @@ cp ./hajek/itmt-430/project-code/app.js /home/vagrant/project
 sudo chown -R vagrant:vagrant /home/vagrant/project
 pm2 start /home/vagrant/project/app.js
 pm2 save
-# nginx as a load-balancer
-# https://upcloud.com/community/tutorials/configure-load-balancing-nginx/
+sudo chown -R vagrant:vagrant /home/vagrant/.pm2
 
+# You could add a line to remove the private key and the extranious code from the GitHub repo here
 
 # https://nodejs.org/en/docs/guides/getting-started-guide/
