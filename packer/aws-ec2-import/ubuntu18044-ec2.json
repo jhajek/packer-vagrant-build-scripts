@@ -76,8 +76,7 @@
   "access_key": "{{user `aws_access_key`}}",
   "secret_key": "{{user `aws_secret_key`}}",
   "region": "us-east-1",
-  "s3_bucket_name": "importbucket",
-  "license_type": "BYOL",
+  "s3_bucket_name": "{{user `s3_bucket_name`}}",
   "tags": {
     "Description": "packer amazon-import {{timestamp}}"
   }
