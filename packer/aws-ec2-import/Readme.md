@@ -10,7 +10,15 @@ What the packer post-processor is doing is essentially running this:  https://do
 
 ## Set export mode to OVA
 
-https://packer.io/docs/builders/vmware-iso.html#format
+[https://packer.io/docs/builders/virtualbox-iso.html](https://packer.io/docs/builders/virtualbox-iso.html "Packer documentation on how to build a virtualbox artifact as OVA).
+
+The OVA format is part of the [Open Virtualization Format](https://en.wikipedia.org/wiki/Open_Virtualization_Format "Wikipedia OVF deescription page")
+
+```json
+ "format": "ova",
+ ```
+
+The above line was added to this template so the AWS importer (which requires OVA) would work.
 
 ## How to get AWS Keys Securely into Packer
 
