@@ -10,6 +10,7 @@ build/*
 .vagrant/*
 .cfg.*
 variables*.json
+!variables-sample.json
 variables.json
 variables-home.json
 *.swp
