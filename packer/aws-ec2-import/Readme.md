@@ -8,6 +8,10 @@ https://packer.io/docs/templates/user-variables.html
 
 What the packer post-processor is doing is essentially running this:  https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html
 
+## Set export mode to OVA
+
+https://packer.io/docs/builders/vmware-iso.html#format
+
 ## How to get AWS Keys Securely into Packer
 
 There are a few ways to do this.  I will show you one here, but there are much more secure and manageable ways to do this (see [Hashicorp Vault](https://www.vaultproject.io/ "Website for Vault secret management")).
