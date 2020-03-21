@@ -6,9 +6,10 @@ Packer Docs located at: [https://packer.io/docs/post-processors/amazon-import.ht
 
 https://packer.io/docs/templates/user-variables.html
 
+What the packer post-processor is doing is essentially running this:  https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html
+
 ## How to get AWS Keys Securely into Packer
 
 There are a few ways to do this.  I will show you one here, but there are much more secure and manageable ways to do this (see Hashicorp Vault).
 
 Copy the file: ```variables-sample.json``` into a file named ```variables.json```.  This will give you a template along with having a file that will pass environment variables into the Packer build process.
-
