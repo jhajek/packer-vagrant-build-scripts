@@ -4,6 +4,8 @@ This document will walk you through the sample code to build and load/import an 
 
 Packer Docs located at: [https://packer.io/docs/post-processors/amazon-import.html](https://packer.io/docs/post-processors/amazon-import.html "Documentation for AWS importer")
 
+https://packer.io/docs/templates/user-variables.html
+
 ## How to get AWS Keys Securely into Packer
 
 There are a few ways to do this.  I will show you one here, but there are much more secure and manageable ways to do this (see Hashicorp Vault).

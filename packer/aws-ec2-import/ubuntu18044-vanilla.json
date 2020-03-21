@@ -70,7 +70,18 @@
   "type": "vagrant",
  "keep_input_artifact": false,
  "output": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"  
- }
+ },
+ {
+  "type": "amazon-import",
+  "access_key": "{{user `aws_access_key`}}",
+  "secret_key": "{{user `aws_secret_key`}}",
+  "region": "us-east-1",
+  "s3_bucket_name": "importbucket",
+  "license_type": "BYOL",
+  "tags": {
+    "Description": "packer amazon-import {{timestamp}}"
+  }
+}
 ]
 }
 
