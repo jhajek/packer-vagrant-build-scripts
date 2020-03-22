@@ -8,6 +8,11 @@ https://packer.io/docs/templates/user-variables.html
 
 What the packer post-processor is doing is essentially running this:  https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html
 
+## Pre-req steps to set up AWS configuration
+
+Follow these steps first:
+https://docs.aws.amazon.com/vm-import/latest/userguide/vmie_prereqs.html#vmimport-role
+
 ## Set export mode to OVA
 
 [https://packer.io/docs/builders/virtualbox-iso.html](https://packer.io/docs/builders/virtualbox-iso.html "Packer documentation on how to build a virtualbox artifact as OVA).
