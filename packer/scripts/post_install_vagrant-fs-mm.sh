@@ -65,7 +65,7 @@ echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf.user
 # sudo sed -i "s/.*bind-address.*/#bind-address = $DATABASEIP/" /etc/mysql/mysql.conf.d/mysql.cnf
 sudo sed -i "s/.*bind-address.*/#bind-address = $MMIP/" /etc/mysql/mariadb.conf.d/50-server.cnf 
 sudo sed -i "s/.*server-id.*/server-id      =1/" /etc/mysql/mariadb.conf.d/50-server.cnf
-sudo sed -i "s/.*log_bin.*/log_bin = \/var\/log\/mysql\/mysql-bin.log\/log_bin/" /etc/mysql/mariadb.conf.d/50-server.cnf
+sudo sed -i "s/.*log_bin.*/log_bin = \/var\/log\/mysql\/mysql-bin.log/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 
 # Enable the service and start the service
