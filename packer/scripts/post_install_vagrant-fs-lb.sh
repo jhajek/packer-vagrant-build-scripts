@@ -31,4 +31,21 @@ ufw allow proto tcp to 0.0.0.0/0 port 22
 ufw allow proto tcp to 0.0.0.0/0 port 80
 ufw allow proto tcp to 0.0.0.0/0 port 443
 
+# set the /etc/hosts file to match hostname
+echo "$LBIP     lb     lb.class.edu"   | sudo tee -a /etc/hosts
+echo "$WSIP1    ws1    ws1.class.edu"  | sudo tee -a /etc/hosts
+echo "$WS2IP     ws2  ws2.class.edu"   | sudo tee -a /etc/hosts
+echo "$WS3IP     ws3  ws3.class.edu"   | sudo tee -a /etc/hosts
+echo "$REDIP     redis  redis.class.edu" | sudo tee -a /etc/hosts
+echo "$MMIP     mm  mm.class.edu" | sudo tee -a /etc/hosts
+echo "$MS1IP     ms1  ms1.class.edu" | sudo tee -a /etc/hosts
+echo "$MS2IP     ms2  ms2.class.edu" | sudo tee -a /etc/hosts
+echo "$MS3IP     ms3  ms3.class.edu" | sudo tee -a /etc/hosts
+sudo hostnamectl set-hostname lb
 
+# Nginx configurations
+# https://nginx.org/en/docs/beginners_guide.html
+# https://dev.to/guimg/how-to-serve-nodejs-applications-with-nginx-on-a-raspberry-jld
+sudo cp ./hajek/itmt-430/fullstack/nginx-lb/default /etc/nginx/sites-enabled
+sudo systemctl daemon-reload
+sudo systemctl reload nginx
