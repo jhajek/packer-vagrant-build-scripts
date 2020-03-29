@@ -45,7 +45,8 @@ sudo hostnamectl set-hostname lb
 
 # Nginx configurations
 # https://nginx.org/en/docs/beginners_guide.html
-# https://dev.to/guimg/how-to-serve-nodejs-applications-with-nginx-on-a-raspberry-jld
-sudo cp ./hajek/itmt-430/fullstack/nginx-lb/default /etc/nginx/sites-enabled
+# https://www.booleanworld.com/configure-nginx-load-balancer/
+sudo cp -v ./hajek/itmt-430/fullstack/nginx-lb/default /etc/nginx/sites-enabled
+sudo cp -v ./hajek/itmt-430/fullstack/nginx-lb/nginx.conf /etc/nginx/
 sudo systemctl daemon-reload
 sudo systemctl reload nginx
