@@ -55,6 +55,19 @@ echo -e "\n\n[client]\nuser = worker\npassword = $USERPASS" >> /home/vagrant/.my
 echo -e "\nport = 3306\nsocket = /var/run/mysqld/mysqld.sock\n" >> /home/vagrant/.my.cnf.user
 echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf.user
 
+# set the /etc/hosts file to match hostname
+echo "$LBIP     lb     lb.class.edu"   | sudo tee -a /etc/hosts
+echo "$WS1IP     ws1    ws1.class.edu"  | sudo tee -a /etc/hosts
+echo "$WS2IP     ws2  ws2.class.edu"   | sudo tee -a /etc/hosts
+echo "$WS3IP     ws3  ws3.class.edu"   | sudo tee -a /etc/hosts
+echo "$REDIP     redis  redis.class.edu" | sudo tee -a /etc/hosts
+echo "$MMIP     mm  mm.class.edu" | sudo tee -a /etc/hosts
+echo "$MS1IP     ms1  ms1.class.edu" | sudo tee -a /etc/hosts
+echo "$MS2IP     ms2  ms2.class.edu" | sudo tee -a /etc/hosts
+echo "$MS3IP     ms3  ms3.class.edu" | sudo tee -a /etc/hosts
+sudo hostnamectl set-hostname mm
+
+
 # Changing the mysql bind address with a script
 # https://serverfault.com/questions/584607/changing-the-mysql-bind-address-within-a-script
 # https://stackoverflow.com/questions/23670282/bind-address-missing-in-my-cnf-in-mysql-centos

@@ -33,7 +33,7 @@ ufw allow proto tcp to 0.0.0.0/0 port 443
 
 # set the /etc/hosts file to match hostname
 echo "$LBIP     lb     lb.class.edu"   | sudo tee -a /etc/hosts
-echo "$WSIP1    ws1    ws1.class.edu"  | sudo tee -a /etc/hosts
+echo "$WS1IP      ws1    ws1.class.edu"  | sudo tee -a /etc/hosts
 echo "$WS2IP     ws2  ws2.class.edu"   | sudo tee -a /etc/hosts
 echo "$WS3IP     ws3  ws3.class.edu"   | sudo tee -a /etc/hosts
 echo "$REDIP     redis  redis.class.edu" | sudo tee -a /etc/hosts
