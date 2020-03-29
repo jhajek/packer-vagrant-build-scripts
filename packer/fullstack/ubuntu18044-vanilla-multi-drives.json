@@ -56,16 +56,50 @@
           "--memory",
           "2048"
         ],
-        ["createhd", "--filename", "output-virtualbox/packer-virtualbox-disk2.vdi", "--size", "15000", "--format", "VDI", "--variant", "Standard"],
-        ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "hdd", "--medium", "output-virtualbox/packer-virtualbox-disk2.vdi"]      
-        ]
+        ["createhd", "--filename", "output-virtualbox/packer-vb-lb-disk2.vdi", "--size", "7000", "--format", "VDI", "--variant", "Standard"],
+        ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "hdd", "--medium", "output-virtualbox/packer-vb-lb-disk2.vdi"],
+        ["createhd", "--filename", "output-virtualbox/packer-vb-lb-disk3.vdi", "--size", "7000", "--format", "VDI", "--variant", "Standard"],
+        ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "1", "--type", "hdd", "--medium", "output-virtualbox/packer-vb-lb-disk3.vdi"]         
+    ]
       }],
       
-  "provisioners": [
+"provisioners": [
+  {
+  "type": "file",
+  "source": "./id_rsa_github_deploy_key",
+  "destination": "/home/vagrant/"
+  },
+  {
+    "type": "file",
+    "source": "./config",
+    "destination": "/home/vagrant/"     
+  },
+  {
+    "type": "shell",
+    "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+    "inline": [
+      "mkdir -p /home/vagrant/.ssh",
+      "mkdir -p /root/.ssh",
+      "chmod 600 /home/vagrant/id_rsa_github_deploy_key",
+      "cp -v /home/vagrant/id_rsa_github_deploy_key /home/vagrant/.ssh/",
+      "cp -v /home/vagrant/config /home/vagrant/.ssh/",
+      "cp -v /home/vagrant/config /root/.ssh/",
+      "git clone git@github.com:illinoistech-itm/hajek.git"
+    ]
+  },
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_vagrant-md.sh"
+    "script": "../scripts/post_install_vagrant-fs-lb.sh",
+    "environment_vars": [ 
+      "DBPASS={{user `database-root-password`}}",
+      "USERPASS={{user `database-user-password`}}",
+      "ACCESSFROMIP={{user `database-access-from-ip`}}",
+      "DATABASEIP={{user `database-ip`}}",
+      "WEBSERVERIP={{user `webserver-ip`}}",
+      "DATABASENAME={{user `database-name`}}",
+      "DATABASEUSERNAME={{user `database-user-name`}}"
+    ]
   }
 ],
   "post-processors": [
