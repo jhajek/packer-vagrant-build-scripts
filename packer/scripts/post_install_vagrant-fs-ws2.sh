@@ -41,7 +41,7 @@ echo "$MMIP     mm  mm.class.edu" | sudo tee -a /etc/hosts
 echo "$MS1IP     ms1  ms1.class.edu" | sudo tee -a /etc/hosts
 echo "$MS2IP     ms2  ms2.class.edu" | sudo tee -a /etc/hosts
 echo "$MS3IP     ms3  ms3.class.edu" | sudo tee -a /etc/hosts
-sudo hostnamectl set-hostname lb
+sudo hostnamectl set-hostname ws2
 
 # Nginx configurations
 # https://nginx.org/en/docs/beginners_guide.html

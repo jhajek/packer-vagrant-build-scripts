@@ -1,8 +1,8 @@
 {
   "builders": [
     {
-      "name": "ubuntu-ws-multi",
-      "vm_name": "ubuntu-ws-multi",
+      "name": "ubuntu-ws2-multi",
+      "vm_name": "ubuntu-ws2-multi",
       "type": "virtualbox-iso",
       "boot_command": [
         "<esc><wait>",
@@ -56,10 +56,10 @@
           "--memory",
           "2048"
         ],
-        ["createhd", "--filename", "output-virtualbox/packer-vb-ws-disk2.vdi", "--size", "7000", "--format", "VDI", "--variant", "Standard"],
-        ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "hdd", "--medium", "output-virtualbox/packer-vb-ws-disk2.vdi"],
-        ["createhd", "--filename", "output-virtualbox/packer-vb-ws-disk3.vdi", "--size", "7000", "--format", "VDI", "--variant", "Standard"],
-        ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "1", "--type", "hdd", "--medium", "output-virtualbox/packer-vb-ws-disk3.vdi"]         
+        ["createhd", "--filename", "output-virtualbox/packer-vb-ws2-disk2.vdi", "--size", "7000", "--format", "VDI", "--variant", "Standard"],
+        ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "hdd", "--medium", "output-virtualbox/packer-vb-ws2-disk2.vdi"],
+        ["createhd", "--filename", "output-virtualbox/packer-vb-ws2-disk3.vdi", "--size", "7000", "--format", "VDI", "--variant", "Standard"],
+        ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "1", "--type", "hdd", "--medium", "output-virtualbox/packer-vb-ws2-disk3.vdi"]         
     ]
       }],
       
@@ -90,7 +90,7 @@
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_vagrant-fs-ws.sh",
+    "script": "../scripts/post_install_vagrant-fs-ws2.sh",
     "environment_vars": [ 
       "LBIP={{user `load-balancer-ip`}}",
       "WS1IP={{user `webserver-one-ip`}}",
