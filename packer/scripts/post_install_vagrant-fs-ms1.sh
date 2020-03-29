@@ -61,10 +61,15 @@ echo -e "\ndefault-character-set = utf8mb4\n" >> /home/vagrant/.my.cnf.user
 # https://en.wikipedia.org/wiki/Sed
 # If using mysql instead of MariaDB the path to the cnf file is /etc/mysql/mysql.conf.d/mysql.cnf
 # sudo sed -i "s/.*bind-address.*/#bind-address = $DATABASEIP/" /etc/mysql/mysql.conf.d/mysql.cnf
-sudo sed -i "s/.*bind-address.*/#bind-address = $DATABASEIP/" /etc/mysql/mariadb.conf.d/50-server.cnf 
+sudo sed -i "s/.*bind-address.*/#bind-address = $MS1IP/" /etc/mysql/mariadb.conf.d/50-server.cnf 
+sudo sed -i "s/.*server-id.*/server-id      =2/" /etc/mysql/mariadb.conf.d/50-server.cnf
+sudo sed -i "s/.*log_bin.*/log_bin = \/var\/log\/mysql\/mysql-bin.log/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 # Enable the service and start the service
 # Explanation of linked service filenames mysql and mariadb
+sudo systemctl daemon-reload
+sudo systemctl restart mariadb.service
+sudo systemctl status mariadb.service
 sudo systemctl enable mariadb.service
 sudo systemctl start mariadb.service
 
@@ -80,13 +85,5 @@ ufw allow from $ACCESSFROMIP to any port 3306
 # This section uses the user environment variables declared in packer json build template
 # #USERPASS and $BKPASS
 
-# Example to do this via command line -- this is verbose but might not be scalable or maintainable, perhaps put it in a .sql file
-# mysql -u root -e "CREATE DATABASE comments DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+sudo mysql -u root < ~/hajek/itmt-430/db-samples/create-user-with-permissions-ms1.sql
 
-# mysql -u root -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON comments.* TO worker@'$ACCESSFROMIP' IDENTIFIED BY '$USERPASS'; flush privileges;"
-
-sudo mysql -u root < ~/hajek/itmt-430/db-samples/create-database.sql
-sudo mysql -u root < ~/hajek/itmt-430/db-samples/create-table.sql
-sudo mysql -u root < ~/hajek/itmt-430/db-samples/create-user-with-permissions.sql
-sudo mysql -u root < ~/hajek/itmt-430/db-samples/insert-records.sql
-sudo mysql -u root < ~/hajek/itmt-430/db-samples/sample-select.sql

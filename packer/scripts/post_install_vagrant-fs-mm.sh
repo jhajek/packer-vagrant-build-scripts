@@ -95,6 +95,6 @@ ufw allow from $ACCESSFROMIP to any port 3306
 
 sudo mysql -u root < ~/hajek/itmt-430/db-samples/create-database.sql
 sudo mysql -u root < ~/hajek/itmt-430/db-samples/create-table.sql
-sudo mysql -u root < ~/hajek/itmt-430/db-samples/create-user-with-permissions.sql
+sudo mysql -u root < ~/hajek/itmt-430/db-samples/create-user-with-permissions-mm.sql
 sudo mysql -u root < ~/hajek/itmt-430/db-samples/insert-records.sql
 sudo mysql -u root < ~/hajek/itmt-430/db-samples/sample-select.sql
