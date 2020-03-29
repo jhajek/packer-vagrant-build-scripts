@@ -1,0 +1,17 @@
+cd fs-lb
+vagrant suspend
+cd ../fs-ws1
+vagrant suspend
+cd ../fs-ws2
+vagrant suspend
+cd ../fs-ws3
+vagrant suspend
+cd ../fs-mm
+vagrant suspend
+cd ../fs-ms1
+vagrant suspend
+cd ../fs-ms2
+vagrant suspend
+cd ../fs-red
+vagrant suspend
+cd ../
