@@ -49,4 +49,6 @@ sudo hostnamectl set-hostname lb
 sudo cp -v ./hajek/itmt-430/fullstack/nginx-lb/default /etc/nginx/sites-enabled
 sudo cp -v ./hajek/itmt-430/fullstack/nginx-lb/nginx.conf /etc/nginx/
 sudo systemctl daemon-reload
-sudo systemctl reload nginx
+sudo systemctl restart nginx
+sudo systemctl status nginx
+sudo systemctl enable nginx
