@@ -56,6 +56,10 @@ sudo apt-get install -y nodejs
 
 sudo systemctl enable nginx
 sudo systemctl start nginx
+
+# https://www.npmjs.com/package/redis
+sudo npm install redis
+
 sudo npm install pm2@latest -g
 # sudo pm2 startup systemd
 # This line is the output of the above command
