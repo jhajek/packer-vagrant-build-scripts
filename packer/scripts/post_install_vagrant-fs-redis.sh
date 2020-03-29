@@ -43,9 +43,10 @@ echo "$MS2IP     ms2  ms2.class.edu" | sudo tee -a /etc/hosts
 echo "$MS3IP     ms3  ms3.class.edu" | sudo tee -a /etc/hosts
 sudo hostnamectl set-hostname redis
 
-# Nginx configurations
-# https://nginx.org/en/docs/beginners_guide.html
-# https://dev.to/guimg/how-to-serve-nodejs-applications-with-nginx-on-a-raspberry-jld
-sudo cp ./hajek/itmt-430/fullstack/nginx-lb/default /etc/nginx/sites-enabled
+# Redis configurations
+# https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04
+sudo cp -v ./hajek/itmt-430/fullstack/redis-conf/redis.conf /etc/redis
 sudo systemctl daemon-reload
-sudo systemctl reload nginx
+sudo systemctl restart redis
+sudo systemctl status redis
+sudo systemctl enable redis
