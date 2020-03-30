@@ -87,7 +87,7 @@ sudo rm -v id_*
 
 # https://ethitter.com/2016/05/generating-a-csr-with-san-at-the-command-line/
 sudo cp ./hajek/itmt-430/fullstack/nginx-ws/ssl-setup-ws1.conf /tmp
-sudo openssl req -new -config /tmp/ssl-setup-ws1.conf -keyout /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt
+sudo openssl req -new -config /tmp/ssl-setup-ws1.conf -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 
 # https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04
 sudo cp ./hajek/itmt-430/fullstack/nginx-ws/self-signed.conf /etc/nginx/snippets
