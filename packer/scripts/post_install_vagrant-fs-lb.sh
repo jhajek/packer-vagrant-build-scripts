@@ -49,9 +49,9 @@ sudo hostnamectl set-hostname lb
 sudo cp -v ./hajek/itmt-430/fullstack/nginx-lb/default /etc/nginx/sites-enabled
 sudo cp -v ./hajek/itmt-430/fullstack/nginx-lb/nginx.conf /etc/nginx/
 
+# https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl
 # https://ethitter.com/2016/05/generating-a-csr-with-san-at-the-command-line/
-sudo cp ./hajek/itmt-430/fullstack/nginx-ws/ssl-setup-lb.conf /tmp
-sudo openssl req -new -config /tmp/ssl-setup-lb.conf -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048  -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt -subj "/C=US/ST=IL/L=Chicago/O=IIT/OU=SAT/CN=class.edu"
 
 # https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04
 sudo cp ./hajek/itmt-430/fullstack/nginx-lb/self-signed.conf /etc/nginx/snippets
