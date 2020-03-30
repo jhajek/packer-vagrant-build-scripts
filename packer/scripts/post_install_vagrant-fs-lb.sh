@@ -48,7 +48,17 @@ sudo hostnamectl set-hostname lb
 # https://www.booleanworld.com/configure-nginx-load-balancer/
 sudo cp -v ./hajek/itmt-430/fullstack/nginx-lb/default /etc/nginx/sites-enabled
 sudo cp -v ./hajek/itmt-430/fullstack/nginx-lb/nginx.conf /etc/nginx/
+
+# https://ethitter.com/2016/05/generating-a-csr-with-san-at-the-command-line/
+sudo cp ./hajek/itmt-430/fullstack/nginx-ws/ssl-setup-lb.conf /tmp
+sudo openssl req -new -config /tmp/ssl-setup-lb.conf -keyout /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt
+
+# https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04
+sudo cp ./hajek/itmt-430/fullstack/nginx-lb/self-signed.conf /etc/nginx/snippets
+
 sudo systemctl daemon-reload
 sudo systemctl restart nginx
 sudo systemctl status nginx
 sudo systemctl enable nginx
+
+

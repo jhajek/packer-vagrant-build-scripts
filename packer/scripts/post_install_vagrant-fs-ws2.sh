@@ -85,5 +85,9 @@ sudo chown -R vagrant:vagrant /home/vagrant/.pm2
 # You could add a line to remove the private key and the extranious code from the GitHub repo here
 sudo rm -v id_*
 
+# https://ethitter.com/2016/05/generating-a-csr-with-san-at-the-command-line/
+sudo cp ./hajek/itmt-430/fullstack/nginx-ws/ssl-setup-ws2.conf /tmp
+sudo openssl req -new -config /tmp/ssl-setup-ws2.conf -keyout /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt
 
-# https://nodejs.org/en/docs/guides/getting-started-guide/
+# https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04
+sudo cp ./hajek/itmt-430/fullstack/nginx-ws/self-signed.conf /etc/nginx/snippets
