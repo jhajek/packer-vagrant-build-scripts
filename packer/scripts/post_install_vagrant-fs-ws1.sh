@@ -43,12 +43,21 @@ echo "$MS2IP     ms2  ms2.class.edu" | sudo tee -a /etc/hosts
 echo "$MS3IP     ms3  ms3.class.edu" | sudo tee -a /etc/hosts
 sudo hostnamectl set-hostname ws1
 
+# https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl
+# https://ethitter.com/2016/05/generating-a-csr-with-san-at-the-command-line/
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048  -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt -subj "/C=US/ST=IL/L=Chicago/O=IIT/OU=SAT/CN=class.edu"
+sudo openssl dhparam -out /etc/nginx/dhparam.pem 2048
+# https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04
+sudo cp ./hajek/itmt-430/fullstack/nginx-ws/self-signed.conf /etc/nginx/snippets
+
 # Nginx configurations
 # https://nginx.org/en/docs/beginners_guide.html
 # https://dev.to/guimg/how-to-serve-nodejs-applications-with-nginx-on-a-raspberry-jld
 sudo cp ./hajek/itmt-430/fullstack/nginx-ws/default /etc/nginx/sites-enabled
 sudo systemctl daemon-reload
 sudo systemctl reload nginx
+sudo systemctl reload nginx
+sudo systemctl restart nginx
 
 # Using Ubuntu
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
@@ -85,10 +94,5 @@ sudo chown -R vagrant:vagrant /home/vagrant/.pm2
 # You could add a line to remove the private key and the extranious code from the GitHub repo here
 sudo rm -v id_*
 
-# https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl
-# https://ethitter.com/2016/05/generating-a-csr-with-san-at-the-command-line/
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048  -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt -subj "/C=US/ST=IL/L=Chicago/O=IIT/OU=SAT/CN=class.edu"
-sudo openssl dhparam -out /etc/nginx/dhparam.pem 2048
-# https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04
-sudo cp ./hajek/itmt-430/fullstack/nginx-ws/self-signed.conf /etc/nginx/snippets
+
 
