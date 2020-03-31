@@ -16,3 +16,4 @@ cd ../fs-red
 vagrant up
 cd ../
 #>
+cd ../
