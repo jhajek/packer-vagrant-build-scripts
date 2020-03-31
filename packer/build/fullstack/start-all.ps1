@@ -6,7 +6,7 @@ cd ../fs-ws2
 vagrant up
 cd ../fs-ws3
 vagrant up
-cd ../fs-mm
+<#cd ../fs-mm
 vagrant up
 cd ../fs-ms1
 vagrant up
@@ -15,3 +15,4 @@ vagrant up
 cd ../fs-red
 vagrant up
 cd ../
+#>
