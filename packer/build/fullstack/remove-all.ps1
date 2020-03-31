@@ -8,3 +8,7 @@ vagrant box remove fs-ms2
 vagrant box remove fs-red
 #>
 cd ../
+
+del ubuntu-*.box
+
+cd ../fullstack
