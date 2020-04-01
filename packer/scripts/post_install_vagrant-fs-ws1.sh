@@ -56,7 +56,6 @@ sudo cp ./hajek/itmt-430/fullstack/nginx-ws/self-signed.conf /etc/nginx/snippets
 sudo cp ./hajek/itmt-430/fullstack/nginx-ws/default /etc/nginx/sites-enabled
 sudo systemctl daemon-reload
 sudo systemctl reload nginx
-sudo systemctl reload nginx
 sudo systemctl restart nginx
 
 # Using Ubuntu
