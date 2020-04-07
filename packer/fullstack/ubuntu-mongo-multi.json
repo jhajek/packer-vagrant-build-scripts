@@ -56,10 +56,10 @@
           "--memory",
           "2048"
         ],
-        ["createhd", "--filename", "output-virtualbox/packer-vb-mongo-disk2.vdi", "--size", "7000", "--format", "VDI", "--variant", "Standard"],
-        ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "hdd", "--medium", "output-virtualbox/packer-vb-ws3-disk2.vdi"],
-        ["createhd", "--filename", "output-virtualbox/packer-vb-mongo-disk3.vdi", "--size", "7000", "--format", "VDI", "--variant", "Standard"],
-        ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "1", "--type", "hdd", "--medium", "output-virtualbox/packer-vb-ws3-disk3.vdi"]         
+        ["createhd", "--filename", "output-virtualbox/packer-vb-mongo-disk5.vdi", "--size", "7000", "--format", "VDI", "--variant", "Standard"],
+        ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "hdd", "--medium", "output-virtualbox/packer-vb-mongo-disk5.vdi"],
+        ["createhd", "--filename", "output-virtualbox/packer-vb-mongo-disk4.vdi", "--size", "7000", "--format", "VDI", "--variant", "Standard"],
+        ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "1", "--type", "hdd", "--medium", "output-virtualbox/packer-vb-mongo-disk4.vdi"]         
     ]
       }],
       
