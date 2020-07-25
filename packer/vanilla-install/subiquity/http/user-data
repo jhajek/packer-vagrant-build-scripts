@@ -15,9 +15,9 @@ autoinstall:
     layout:
       name: lvm
   identity:
-    hostname: ubuntu
-    username: ubuntu
-    password: $6$rounds=4096$8dkK1P/oE$2DGKKt0wLlTVJ7USY.0jN9du8FetmEr51yjPyeiR.zKE3DGFcitNL/nF1l62BLJNR87lQZixObuXYny.Mf17K1
+    hostname: vagrant
+    password: '$2y$12$zfS.Dpm682guriw6fJ5PXu4Kv7GSs7VYHUPGphQdSnT0wb4Rt1tVS'
+    username: vagrant
   ssh:
     install-server: yes
   user-data:

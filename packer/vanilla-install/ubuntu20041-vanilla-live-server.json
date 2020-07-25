@@ -10,7 +10,7 @@
         "<enter><wait>"
       ],
       "http_directory": "subiquity/http",
-      "boot_wait": "10s",
+      "boot_wait": "5s",
       "disk_size": 20000,
       "guest_os_type": "Ubuntu_64",
       "http_port_min" : 9001,
@@ -19,8 +19,8 @@
         "https://releases.ubuntu.com/20.04/ubuntu-20.04-live-server-amd64.iso"
       ],
       "iso_checksum": "sha256:caf3fd69c77c439f162e2ba6040e9c320c4ff0d69aad1340a514319a9264df9f",
-      "ssh_username": "ubuntu",
-      "ssh_password": "ubuntu",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
       "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
