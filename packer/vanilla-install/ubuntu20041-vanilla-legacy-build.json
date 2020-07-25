@@ -26,8 +26,8 @@
         "http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso"
       ],
       "iso_checksum": "sha256:36f15879bd9dfd061cd588620a164a82972663fdd148cce1f70d57d314c21b73",
-      "ssh_username": "vagrant",
-      "ssh_password": "vagrant",
+      "ssh_username": "ubuntu",
+      "ssh_password": "ubuntu",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
       "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
