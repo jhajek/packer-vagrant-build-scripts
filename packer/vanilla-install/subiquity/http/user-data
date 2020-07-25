@@ -1,21 +1,13 @@
 #cloud-config
 autoinstall:
-  version: 1
-  locale: en_US
-  keyboard:
-    layout: en
-    variant: us
-  storage:
-    layout:
-      name: lvm
-  identity:
-    hostname: vagrant
-    password: '$2y$12$zfS.Dpm682guriw6fJ5PXu4Kv7GSs7VYHUPGphQdSnT0wb4Rt1tVS'
-    username: vagrant
-  ssh:
-    install-server: yes
-  user-data:
-    disable_root: false
-  late-commands:
-    - 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'
-    - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
+    version: 1
+    locale: en_US
+    keyboard:
+      layout: en
+      variant: us
+    identity:
+      hostname: vagrant
+      password: '$2y$12$zfS.Dpm682guriw6fJ5PXu4Kv7GSs7VYHUPGphQdSnT0wb4Rt1tVS'
+      username: vagrant
+    ssh:
+      install-server: true
