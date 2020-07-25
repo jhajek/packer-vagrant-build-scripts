@@ -16,7 +16,6 @@
       "http_port_min" : 9001,
       "http_port_max" : 9001,
       "iso_urls": [
-        "iso/ubuntu-20.04-live-server-amd64.iso",
         "http://cdimage.ubuntu.com/ubuntu/releases/20.04/release/ubuntu-20.04-live-server-amd64.iso"
       ],
       "iso_checksum": "sha256:caf3fd69c77c439f162e2ba6040e9c320c4ff0d69aad1340a514319a9264df9f",
