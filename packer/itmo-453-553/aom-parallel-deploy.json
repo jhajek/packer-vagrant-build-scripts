@@ -1,0 +1,248 @@
+{
+  "builders": [{
+    "name": "riemanna",
+    "type": "virtualbox-iso",
+    "guest_os_type": "RedHat_64",
+    "guest_additions_mode": "disable",
+    "iso_url": "https://mirrors.edge.kernel.org/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso",
+    "iso_checksum": "sha256:9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
+    "vm_name": "riemanna",
+    "http_directory" : ".",
+    "http_port_min" : 9001,
+    "http_port_max" : 9001,
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_wait_timeout": "30m",
+    "communicator": "ssh", 
+    "ssh_pty": "true", 
+    "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
+    "hard_drive_interface": "sata",
+    "disk_size": 20000,
+    "boot_wait": "5s",
+    "boot_command": [
+        "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
+    ],
+    "vboxmanage": [
+      [
+        "modifyvm",
+        "{{.Name}}",
+        "--memory",
+        "1024"
+      ]  
+    ]
+},
+{
+    "builders": [{
+      "name": "riemannb",
+      "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "guest_additions_mode": "disable",
+      "iso_url": "https://mirrors.edge.kernel.org/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso",
+      "iso_checksum": "sha256:9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
+      "vm_name": "riemannb",
+      "http_directory" : ".",
+      "http_port_min" : 9001,
+      "http_port_max" : 9001,
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "30m",
+      "communicator": "ssh", 
+      "ssh_pty": "true", 
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
+      "hard_drive_interface": "sata",
+      "disk_size": 20000,
+      "boot_wait": "5s",
+      "boot_command": [
+          "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
+      ],
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "1024"
+        ]  
+      ]
+  },
+  {
+    "builders": [{
+      "name": "riemannmc",
+      "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "guest_additions_mode": "disable",
+      "iso_url": "https://mirrors.edge.kernel.org/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso",
+      "iso_checksum": "sha256:9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
+      "vm_name": "riemannmc",
+      "http_directory" : ".",
+      "http_port_min" : 9001,
+      "http_port_max" : 9001,
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "30m",
+      "communicator": "ssh", 
+      "ssh_pty": "true", 
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
+      "hard_drive_interface": "sata",
+      "disk_size": 20000,
+      "boot_wait": "5s",
+      "boot_command": [
+          "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
+      ],
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "1024"
+        ]  
+      ]
+  },
+  {
+    "builders": [{
+      "name": "graphitea",
+      "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "guest_additions_mode": "disable",
+      "iso_url": "https://mirrors.edge.kernel.org/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso",
+      "iso_checksum": "sha256:9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
+      "vm_name": "graphitea",
+      "http_directory" : ".",
+      "http_port_min" : 9001,
+      "http_port_max" : 9001,
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "30m",
+      "communicator": "ssh", 
+      "ssh_pty": "true", 
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
+      "hard_drive_interface": "sata",
+      "disk_size": 20000,
+      "boot_wait": "5s",
+      "boot_command": [
+          "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
+      ],
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "1024"
+        ]  
+      ]
+  },
+  {
+    "builders": [{
+      "name": "graphiteb",
+      "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "guest_additions_mode": "disable",
+      "iso_url": "https://mirrors.edge.kernel.org/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso",
+      "iso_checksum": "sha256:9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
+      "vm_name": "graphiteb",
+      "http_directory" : ".",
+      "http_port_min" : 9001,
+      "http_port_max" : 9001,
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "30m",
+      "communicator": "ssh", 
+      "ssh_pty": "true", 
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
+      "hard_drive_interface": "sata",
+      "disk_size": 20000,
+      "boot_wait": "5s",
+      "boot_command": [
+          "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
+      ],
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "1024"
+        ]  
+      ]
+  },
+  {
+    "builders": [{
+      "name": "riemannmc",
+      "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "guest_additions_mode": "disable",
+      "iso_url": "https://mirrors.edge.kernel.org/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso",
+      "iso_checksum": "sha256:9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
+      "vm_name": "riemannmc",
+      "http_directory" : ".",
+      "http_port_min" : 9001,
+      "http_port_max" : 9001,
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "30m",
+      "communicator": "ssh", 
+      "ssh_pty": "true", 
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
+      "hard_drive_interface": "sata",
+      "disk_size": 20000,
+      "boot_wait": "5s",
+      "boot_command": [
+          "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
+      ],
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "1024"
+        ]  
+      ]
+  }  
+],
+"only": ["riemanna"]
+    "provisioners": [
+    {
+      "type": "shell",
+      "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+      "script": "../scripts/post_install_vagrant-centos-7.sh",
+      "only": ["riemanna"]
+    },
+    {
+      "type": "shell",
+      "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+      "script": "../scripts/post_install_vagrant-centos-7.sh",
+      "only": ["riemannb"]
+    },
+    {
+        "type": "shell",
+        "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+        "script": "../scripts/post_install_vagrant-centos-7.sh",
+        "only": ["riemannmc"]
+      },
+      {
+        "type": "shell",
+        "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+        "script": "../scripts/post_install_vagrant-centos-7.sh",
+        "only": ["graphitea"]
+      },
+      {
+        "type": "shell",
+        "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+        "script": "../scripts/post_install_vagrant-centos-7.sh",
+        "only": ["graphiteb"]
+      },
+      {
+        "type": "shell",
+        "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+        "script": "../scripts/post_install_vagrant-centos-7.sh",
+        "only": ["graphitemc"]
+      }
+
+  ],
+    "post-processors": [
+   {
+    "type": "vagrant",
+   "keep_input_artifact": false,
+   "output": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"  
+   }
+  ]
+  }
+  
