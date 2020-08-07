@@ -7,8 +7,9 @@ set -v
 echo "vagrant ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/init-users
 sudo cat /etc/sudoers.d/init-users
 
-# Installing vagrant keys 
-wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'  
+
+# Installing vagrant keys
+wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
 sudo mkdir -p /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
@@ -18,18 +19,32 @@ sudo sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
 sudo systemctl enable fail2ban
 sudo service fail2ban restart
 
+
 sudo apt-get update -y
 sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre
 
-
 # P.42 The Art of Monitoring
-wget https://github.com/riemann/riemann/releases/download/0.2.14/riemann_0.2.14_all.deb
-dpkg -i riemann_0.2.14_all.deb
+wget https://github.com/riemann/riemann/releases/download/0.3.5/riemann_0.3.5_all.deb
+sudo dpkg -i riemann_0.3.5_all.deb
 
 sudo systemctl enable riemann
 sudo systemctl start riemann 
 
 # P. 44  Install ruby gem tools
-sudo gem install --no-ri --no-rdoc riemann-tools riemann-client riemann-dash
+sudo gem install --no-ri --no-rdoc riemann-tools
 
+# epub 34%
+# Installing collectd basic plugins for metric collection
+sudo sudo add-apt-repository -y ppa:collectd/collectd-5.5
+sudo apt-get update
+sudo apt-get -y install collectd
+
+git clone https://github.com/jhajek/commands
+sudo cp ~/commands/cnf/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d/
+sudo cp ~/commands/cnf/collectd/collectd.conf /etc/collectd/
+sudo cp -R ~/commands/cnf/riemann/* /etc/riemann
+
+sudo systemctl enable collectd
+sudo systemctl start collectd
+sudo systemctl restart riemann
 

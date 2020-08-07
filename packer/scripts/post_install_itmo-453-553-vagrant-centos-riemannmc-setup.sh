@@ -34,8 +34,8 @@ chmod -R go-rwsx /home/vagrant/.ssh
 sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2
 
 # Fetch and install the Riemann RPM
-wget https://aphyr.com/riemann/riemann-0.2.11-1.noarch.rpm
-sudo rpm -Uvh riemann-0.2.11-1.noarch.rpm
+wget https://github.com/riemann/riemann/releases/download/0.3.5/riemann-0.3.5-1.noarch-EL7.rpm
+sudo rpm -Uvh riemann-0.3.5-1.noarch-EL7.rpm
 
 # Enable to Riemann service to start on boot and start the service
 sudo systemctl enable riemann
