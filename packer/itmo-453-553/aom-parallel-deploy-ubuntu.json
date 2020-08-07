@@ -5,7 +5,7 @@
   "builders": [{
     "name": "ub-riemanna",
     "type": "virtualbox-iso",
-    "guest_os_type": "RedHat_64",
+    "guest_os_type": "Ubuntu_64",
     "guest_additions_mode": "disable",
     "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
     "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
@@ -59,7 +59,7 @@
   {   
       "name": "ub-riemannb",
       "type": "virtualbox-iso",
-      "guest_os_type": "RedHat_64",
+      "guest_os_type": "Ubuntu_64",
       "guest_additions_mode": "disable",
       "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
       "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
@@ -113,7 +113,7 @@
   {
       "name": "ub-riemannmc",
       "type": "virtualbox-iso",
-      "guest_os_type": "RedHat_64",
+      "guest_os_type": "Ubuntu_64",
       "guest_additions_mode": "disable",
       "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
       "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
@@ -167,7 +167,7 @@
   {
       "name": "ub-graphitea",
       "type": "virtualbox-iso",
-      "guest_os_type": "RedHat_64",
+      "guest_os_type": "Ubuntu_64",
       "guest_additions_mode": "disable",
       "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
       "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
@@ -221,7 +221,7 @@
   {
       "name": "ub-graphiteb",
       "type": "virtualbox-iso",
-      "guest_os_type": "RedHat_64",
+      "guest_os_type": "Ubuntu_64",
       "guest_additions_mode": "disable",
       "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
       "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
@@ -275,7 +275,7 @@
   {
       "name": "ub-graphitemc",
       "type": "virtualbox-iso",
-      "guest_os_type": "RedHat_64",
+      "guest_os_type": "Ubuntu_64",
       "guest_additions_mode": "disable",
       "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
       "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
