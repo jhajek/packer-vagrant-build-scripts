@@ -294,38 +294,38 @@
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_vagrant-centos-7.sh",
-      "only": ["centos-riemanna"]
+      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-riemanna-setup.sh",
+      "only": ["ub-riemanna"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_vagrant-centos-7.sh",
+      "script": "../scripts/post_install_itmo-453-553-vagrant-centos-riemannb-setup.sh",
       "only": ["centos-riemannb"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_vagrant-centos-7.sh",
-      "only": ["centos-riemannmc"]
+      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-riemannmc-setup.sh",
+      "only": ["ub-riemannmc"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_vagrant-centos-7.sh",
-      "only": ["centos-graphitea"]
+      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-graphitea-setup.sh",
+      "only": ["ub-graphitea"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_vagrant-centos-7.sh",
+      "script": "../scripts/post_install_itmo-453-553-vagrant-centos-graphiteb-setup.sh",
       "only": ["centos-graphiteb"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_vagrant-centos-7.sh",
-      "only": ["centos-graphitemc"]
+      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-graphitemc-setup.sh",
+      "only": ["ub-graphitemc"]
     }
   ],
   "post-processors": [
