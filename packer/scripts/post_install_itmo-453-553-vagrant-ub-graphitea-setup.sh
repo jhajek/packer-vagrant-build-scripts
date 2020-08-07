@@ -2,7 +2,6 @@
 set -e
 set -v
 
-
 # http://superuser.com/questions/196848/how-do-i-create-an-administrator-user-on-ubuntu
 # http://unix.stackexchange.com/questions/1416/redirecting-stdout-to-a-file-you-dont-have-write-permission-on
 echo "vagrant ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/init-users
