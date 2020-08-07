@@ -13,35 +13,20 @@ sudo mkdir -p /home/vagrant/.ssh
 cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 
-#http://www.fail2ban.org/wiki/index.php/MANUAL_0_8#Jails
-sudo sed -i "s/bantime=600/bantime=-1/g" /etc/fail2ban/jail.conf
-sudo systemctl enable fail2ban
-sudo service fail2ban restart
-
 # Add customizations after this line
 
 sudo apt-get update
+sudo apt-get install python3-dev python3-pip python3-setuptools
 #http://askubuntu.com/questions/549550/installing-graphite-carbon-via-apt-unattended
-sudo DEBIAN_FRONTEND=noninteractive apt-get -q -y --force-yes install graphite-carbon
+sudo DEBIAN_FRONTEND=noninteractive apt-get -q -y --force-yes install graphite-carbon python-whisper
 sudo apt-get install -y apt-transport-https 
-
-# P.134 - Listing 4.10: Adding the Graphite-API Package Cloudkey
-curl https://packagecloud.io/gpg.key | sudo apt-key add -
-
-# P.134 - Listing 4.11: Adding the Package Cloud exoscale repository listing
-sudo sh -c "echo deb https://packagecloud.io/exoscale/community/ubuntu/ trusty main > /etc/apt/sources.list.d/exoscale_community.list"
-sudo apt-get update -y 
 
 # P.135 - Listing 4.13: Installing the graphite-api package on Ubuntu
 sudo apt-get install -y graphite-api
 
-# P.136 - Listing 4.16: Adding the Grafana repository listing
-sudo sh -c "echo deb https://packagecloud.io/grafana/stable/debian/ wheezy main > /etc/apt/sources.list.d/packagecloud_grafana.list"
-
-# P.137 - Listing 4.17: Adding the Package Cloudkey
-curl https://packagecloud.io/gpg.key | sudo apt-key add -
-
 # P.137 - Listing 4.18: Installing the Grafana package
-sudo apt-get update -y
 sudo apt-get install -y grafana
 
+##################################################################################################
+# Start Services
+##################################################################################################
