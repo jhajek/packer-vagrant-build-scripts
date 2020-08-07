@@ -1,12 +1,15 @@
 {
+  "variables": {
+    "mem-build-allocation": "1024"
+  },
   "builders": [{
-    "name": "riemanna",
+    "name": "ub-riemanna",
     "type": "virtualbox-iso",
     "guest_os_type": "RedHat_64",
     "guest_additions_mode": "disable",
     "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
     "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
-    "vm_name": "riemanna",
+    "vm_name": "ub-riemanna",
     "http_directory" : ".",
     "http_port_min" : 9001,
     "http_port_max" : 9001,
@@ -49,18 +52,18 @@
         "modifyvm",
         "{{.Name}}",
         "--memory",
-        "1024"
+        "{{user `mem-build-allocation`}}"
       ]  
     ]
   },
   {   
-      "name": "riemannb",
+      "name": "ub-riemannb",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
       "guest_additions_mode": "disable",
-      "iso_url": "https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
-      "iso_checksum": "sha256:659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
-      "vm_name": "riemannb",
+      "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
+      "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
+      "vm_name": "ub-riemannb",
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9001,
@@ -108,13 +111,13 @@
       ]
   },
   {
-      "name": "riemannmc",
+      "name": "ub-riemannmc",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
       "guest_additions_mode": "disable",
-      "iso_url": "https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
-      "iso_checksum": "sha256:659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
-      "vm_name": "riemannmc",
+      "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
+      "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
+      "vm_name": "ub-riemannmc",
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9001,
@@ -162,13 +165,13 @@
       ]
   },
   {
-      "name": "graphitea",
+      "name": "ub-graphitea",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
       "guest_additions_mode": "disable",
-      "iso_url": "https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
-      "iso_checksum": "sha256:659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
-      "vm_name": "graphitea",
+      "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
+      "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
+      "vm_name": "ub-graphitea",
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9001,
@@ -216,13 +219,13 @@
       ]
   },
   {
-      "name": "graphiteb",
+      "name": "ub-graphiteb",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
       "guest_additions_mode": "disable",
-      "iso_url": "https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
-      "iso_checksum": "sha256:659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
-      "vm_name": "graphiteb",
+      "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
+      "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
+      "vm_name": "ub-graphiteb",
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9001,
@@ -270,13 +273,13 @@
       ]
   },
   {
-      "name": "graphitemc",
+      "name": "ub-graphitemc",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
       "guest_additions_mode": "disable",
-      "iso_url": "https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
-      "iso_checksum": "sha256:659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
-      "vm_name": "graphitemc",
+      "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
+      "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
+      "vm_name": "ub-graphitemc",
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9001,
@@ -329,37 +332,37 @@
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_vagrant.sh",
-      "only": ["riemanna"]
+      "only": ["ub-riemanna"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_vagrant.sh",
-      "only": ["riemannb"]
+      "only": ["ub-riemannb"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_vagrant.sh",
-      "only": ["riemannmc"]
+      "only": ["ub-riemannmc"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_vagrant.sh",
-      "only": ["graphitea"]
+      "only": ["ub-graphitea"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_vagrant.sh",
-      "only": ["graphiteb"]
+      "only": ["ub-graphiteb"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_vagrant.sh",
-      "only": ["graphitemc"]
+      "only": ["ub-graphitemc"]
     }
   ],
   "post-processors": [

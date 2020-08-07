@@ -1,12 +1,12 @@
 {
   "builders": [{
-    "name": "riemanna",
+    "name": "centos-riemanna",
     "type": "virtualbox-iso",
     "guest_os_type": "RedHat_64",
     "guest_additions_mode": "disable",
     "iso_url": "https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
     "iso_checksum": "sha256:659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
-    "vm_name": "riemanna",
+    "vm_name": "centos-riemanna",
     "http_directory" : ".",
     "http_port_min" : 9001,
     "http_port_max" : 9001,
@@ -32,13 +32,13 @@
     ]
   },
   {   
-      "name": "riemannb",
+      "name": "centos-riemannb",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
       "guest_additions_mode": "disable",
       "iso_url": "https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
       "iso_checksum": "sha256:659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
-      "vm_name": "riemannb",
+      "vm_name": "centos-riemannb",
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9001,
@@ -64,13 +64,13 @@
       ]
   },
   {
-      "name": "riemannmc",
+      "name": "centos-riemannmc",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
       "guest_additions_mode": "disable",
       "iso_url": "https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
       "iso_checksum": "sha256:659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
-      "vm_name": "riemannmc",
+      "vm_name": "centos-riemannmc",
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9001,
@@ -96,13 +96,13 @@
       ]
   },
   {
-      "name": "graphitea",
+      "name": "centos-graphitea",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
       "guest_additions_mode": "disable",
       "iso_url": "https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
       "iso_checksum": "sha256:659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
-      "vm_name": "graphitea",
+      "vm_name": "centos-graphitea",
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9001,
@@ -128,13 +128,13 @@
       ]
   },
   {
-      "name": "graphiteb",
+      "name": "centos-graphiteb",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
       "guest_additions_mode": "disable",
       "iso_url": "sha256:https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
       "iso_checksum": "659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
-      "vm_name": "graphiteb",
+      "vm_name": "centos-graphiteb",
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9001,
@@ -160,13 +160,13 @@
       ]
   },
   {
-      "name": "graphitemc",
+      "name": "centos-graphitemc",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
       "guest_additions_mode": "disable",
       "iso_url": "sha256:https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
       "iso_checksum": "659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
-      "vm_name": "graphitemc",
+      "vm_name": "centos-graphitemc",
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9001,
@@ -197,37 +197,37 @@
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_vagrant-centos-7.sh",
-      "only": ["riemanna"]
+      "only": ["centos-riemanna"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_vagrant-centos-7.sh",
-      "only": ["riemannb"]
+      "only": ["centos-riemannb"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_vagrant-centos-7.sh",
-      "only": ["riemannmc"]
+      "only": ["centos-riemannmc"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_vagrant-centos-7.sh",
-      "only": ["graphitea"]
+      "only": ["centos-graphitea"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_vagrant-centos-7.sh",
-      "only": ["graphiteb"]
+      "only": ["centos-graphiteb"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_vagrant-centos-7.sh",
-      "only": ["graphitemc"]
+      "only": ["centos-graphitemc"]
     }
   ],
   "post-processors": [
