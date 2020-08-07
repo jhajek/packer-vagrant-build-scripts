@@ -1,4 +1,7 @@
 {
+  "variables": {
+  "mem-build-allocation": "1024"
+},
   "builders": [{
     "name": "ub-riemanna",
     "type": "virtualbox-iso",
@@ -9,7 +12,7 @@
     "vm_name": "ub-riemanna",
     "http_directory" : ".",
     "http_port_min" : 9001,
-    "http_port_max" : 9001,
+    "http_port_max" : 9050,
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "30m",
@@ -63,7 +66,7 @@
       "vm_name": "centos-riemannb",
       "http_directory" : ".",
       "http_port_min" : 9001,
-      "http_port_max" : 9001,
+      "http_port_max" : 9050,
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_wait_timeout": "30m",
@@ -81,7 +84,7 @@
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "1024"
+          "{{user `mem-build-allocation`}}"
         ]  
       ]
   },
@@ -95,7 +98,7 @@
     "vm_name": "ub-riemannmc",
     "http_directory" : ".",
     "http_port_min" : 9001,
-    "http_port_max" : 9001,
+    "http_port_max" : 9050,
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "30m",
@@ -135,7 +138,7 @@
         "modifyvm",
         "{{.Name}}",
         "--memory",
-        "1024"
+        "{{user `mem-build-allocation`}}"
       ]  
     ]
 },
@@ -149,7 +152,7 @@
   "vm_name": "ub-graphitea",
   "http_directory" : ".",
   "http_port_min" : 9001,
-  "http_port_max" : 9001,
+  "http_port_max" : 9050,
   "ssh_username": "vagrant",
   "ssh_password": "vagrant",
   "ssh_wait_timeout": "30m",
@@ -189,7 +192,7 @@
       "modifyvm",
       "{{.Name}}",
       "--memory",
-      "1024"
+      "{{user `mem-build-allocation`}}"
     ]  
   ]
 },
@@ -203,7 +206,7 @@
       "vm_name": "centos-graphiteb",
       "http_directory" : ".",
       "http_port_min" : 9001,
-      "http_port_max" : 9001,
+      "http_port_max" : 9050,
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_wait_timeout": "30m",
@@ -221,7 +224,7 @@
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "1024"
+          "{{user `mem-build-allocation`}}"
         ]  
       ]
   },
@@ -235,7 +238,7 @@
     "vm_name": "ub-graphitemc",
     "http_directory" : ".",
     "http_port_min" : 9001,
-    "http_port_max" : 9001,
+    "http_port_max" : 9050,
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "30m",
@@ -275,7 +278,7 @@
         "modifyvm",
         "{{.Name}}",
         "--memory",
-        "1024"
+        "{{user `mem-build-allocation`}}"
       ]  
     ]
 } 
