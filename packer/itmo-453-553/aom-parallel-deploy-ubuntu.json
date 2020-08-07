@@ -331,37 +331,37 @@
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_vagrant.sh",
+      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-riemanna-setup.sh",
       "only": ["ub-riemanna"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_vagrant.sh",
+      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-riemannb-setup.sh",
       "only": ["ub-riemannb"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_vagrant.sh",
+      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-riemannmc-setup.sh",
       "only": ["ub-riemannmc"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_vagrant.sh",
+      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-graphitea-setup.sh",
       "only": ["ub-graphitea"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_vagrant.sh",
+      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-graphiteb-setup.sh",
       "only": ["ub-graphiteb"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_vagrant.sh",
+      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-graphitemc-setup.sh",
       "only": ["ub-graphitemc"]
     }
   ],
