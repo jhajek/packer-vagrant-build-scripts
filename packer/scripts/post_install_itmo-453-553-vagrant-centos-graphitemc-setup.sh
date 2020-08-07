@@ -58,6 +58,10 @@ sudo systemctl start riemann
 sudo yum install -y ruby ruby-devel gcc libxml2-devel
 sudo gem install --no-ri --no-rdoc riemann-tools
 
+# P. 137 - Listing 4.19: Creating the Grafana Yum repository
+wget https://dl.grafana.com/oss/release/grafana-7.1.3-1.x86_64.rpm
+sudo yum install grafana-7.1.3-1.x86_64.rpm
+
 echo "All Done!"
 
 

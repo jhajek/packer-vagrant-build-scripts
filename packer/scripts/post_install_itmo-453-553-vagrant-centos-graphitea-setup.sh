@@ -77,35 +77,15 @@ sudo chown -R _graphite:_graphite /var/log/carbon
 sudo userdel carbon
 
 # P.135 - Listing 4.14: Install Graphite-API prerequisite packages on RedHat
-sudo yum install -y python-pip gcc libffi-devel cairo-devel libtool libyaml-devel python-devel
+sudo yum install -y python3-pip gcc libffi-devel cairo-devel libtool libyaml-devel python3-devel
 
 # P.135 - Listing 4.15: Installing Graphite-API via pip
-sudo pip install -U six pyparsing websocket urllib3 
-sudo pip install graphite-api gunicorn
+pip3 install -U six pyparsing websocket urllib3 --user
+pip3 install graphite-api gunicorn --user
 
 # P. 137 - Listing 4.19: Creating the Grafana Yum repository
-sudo touch /etc/yum.repos.d/grafana.repo
-
-# P.138 - Listing 4.20: Yum repository definition for Grafana
-# http://superuser.com/questions/351193/echo-multiple-lines-of-text-to-a-file-in-bash
-# http://docs.grafana.org/installation/rpm/
-cat > grafana.repo <<'EOT'
-[grafana]
-name=grafana
-baseurl=https://packagecloud.io/grafana/stable/el/6/$basearch
-repo_gpgcheck=1
-enabled=1
-gpgcheck=1
-gpgkey=https://packagecloud.io/gpg.key https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt  
-EOT
-
-# NOTE Repace the 6 above with your RedHat version, for example 7 for RHEL 7.
-cat ./grafana.repo | sudo tee -a /etc/yum.repos.d/grafana.repo
-
-# p.138 - Listing 4.21: Installing Grafana via Yum
-sudo yum install -y grafana
+wget https://dl.grafana.com/oss/release/grafana-7.1.3-1.x86_64.rpm
+sudo yum install grafana-7.1.3-1.x86_64.rpm
 
 # P.153 - Listing 4-39 - Create empty conf file to avoid error
 sudo cp -v carbon.conf /etc/carbon

@@ -159,7 +159,7 @@
   "http_port_max" : 9050,
   "ssh_username": "vagrant",
   "ssh_password": "vagrant",
-  "ssh_wait_timeout": "30m",
+  "ssh_wait_timeout": "60m",
   "headless": "{{user `headless-val`}}",
   "communicator": "ssh", 
   "ssh_pty": "true", 
