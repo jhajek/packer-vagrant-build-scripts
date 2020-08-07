@@ -24,7 +24,13 @@ echo "All Done!"
 # Change hostname and /etc/hosts
 ##################################################
 cat << EOT >> /etc/hosts
-# Hadoop Datanodes
+# Nodes
+192.168.33.20 ub-riemanna ub-riemanna.project.iit.edu
+192.168.33.21 ub-riemannb ub-riemannb.project.iit.edu
+192.168.33.22 ub-riemannmc ub-riemannmc.project.iit.edu
+192.168.33.210 ub-graphitea ub-graphitea.project.iit.edu
+192.168.33.211 ub-graphiteb ub-graphiteb.project.iit.edu
+192.168.33.212 ub-graphitemc ub-graphitemc.project.iit.edu
 192.168.33.10 centos-riemanna centos-riemanna.project.iit.edu
 192.168.33.11 centos-riemannb centos-riemannb.project.iit.edu
 192.168.33.12 centos-riemannmc centos-riemannmc.project.iit.edu

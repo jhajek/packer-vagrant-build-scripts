@@ -14,7 +14,28 @@ cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 
 # Add customizations after this line
+##################################################
+# Change hostname and /etc/hosts
+##################################################
+cat << EOT >> /etc/hosts
+# Nodes
+192.168.33.10 centos-riemanna centos-riemanna.project.iit.edu
+192.168.33.11 centos-riemannb centos-riemannb.project.iit.edu
+192.168.33.12 centos-riemannmc centos-riemannmc.project.iit.edu
+192.168.33.110 centos-graphitea centos-graphitea.project.iit.edu
+192.168.33.111 centos-graphiteb centos-graphiteb.project.iit.edu
+192.168.33.112 centos-graphitemc centos-graphitemc.project.iit.edu
+192.168.33.20 ub-riemanna ub-riemanna.project.iit.edu
+192.168.33.21 ub-riemannb ub-riemannb.project.iit.edu
+192.168.33.22 ub-riemannmc ub-riemannmc.project.iit.edu
+192.168.33.210 ub-graphitea ub-graphitea.project.iit.edu
+192.168.33.211 ub-graphiteb ub-graphiteb.project.iit.edu
+192.168.33.212 ub-graphitemc ub-graphitemc.project.iit.edu
+EOT
 
+sudo hostnamectl set-hostname ub-graphitea
+
+##################################################
 sudo apt-get update
 sudo apt-get install python3-dev python3-pip python3-setuptools
 #http://askubuntu.com/questions/549550/installing-graphite-carbon-via-apt-unattended
