@@ -197,7 +197,6 @@
       ]
   }  
 ],
-"only": ["riemanna"]
     "provisioners": [
     {
       "type": "shell",
