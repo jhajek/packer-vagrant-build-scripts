@@ -20,7 +20,22 @@ echo "All Done!"
 ##################################################
 # Add User customizations below here
 ##################################################
+##################################################
+# Change hostname and /etc/hosts
+##################################################
+cat << EOT >> /etc/hosts
+# Hadoop Datanodes
+192.168.33.10 centos-riemanna centos-riemanna.project.iit.edu
+192.168.33.11 centos-riemannb centos-riemannb.project.iit.edu
+192.168.33.12 centos-riemannmc centos-riemannmc.project.iit.edu
+192.168.33.110 centos-graphitea centos-graphitea.project.iit.edu
+192.168.33.111 centos-graphiteb centos-graphiteb.project.iit.edu
+192.168.33.112 centos-graphitemc centos-graphitemc.project.iit.edu
+EOT
 
+sudo hostnamectl set-hostname centos-riemannmc
+
+##################################################
 # Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
