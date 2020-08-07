@@ -30,9 +30,8 @@
         "1024"
       ]  
     ]
-},
-{
-    "builders": [{
+  },
+  {   
       "name": "riemannb",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
@@ -65,7 +64,6 @@
       ]
   },
   {
-    "builders": [{
       "name": "riemannmc",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
@@ -98,7 +96,6 @@
       ]
   },
   {
-    "builders": [{
       "name": "graphitea",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
@@ -131,7 +128,6 @@
       ]
   },
   {
-    "builders": [{
       "name": "graphiteb",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
@@ -164,14 +160,13 @@
       ]
   },
   {
-    "builders": [{
-      "name": "riemannmc",
+      "name": "graphitemc",
       "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
       "guest_additions_mode": "disable",
       "iso_url": "https://mirrors.edge.kernel.org/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso",
       "iso_checksum": "sha256:9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
-      "vm_name": "riemannmc",
+      "vm_name": "graphitemc",
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9001,
@@ -196,7 +191,7 @@
         ]  
       ]
   }  
-],
+  ],
     "provisioners": [
     {
       "type": "shell",
@@ -211,37 +206,36 @@
       "only": ["riemannb"]
     },
     {
-        "type": "shell",
-        "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-        "script": "../scripts/post_install_vagrant-centos-7.sh",
-        "only": ["riemannmc"]
-      },
-      {
-        "type": "shell",
-        "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-        "script": "../scripts/post_install_vagrant-centos-7.sh",
-        "only": ["graphitea"]
-      },
-      {
-        "type": "shell",
-        "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-        "script": "../scripts/post_install_vagrant-centos-7.sh",
-        "only": ["graphiteb"]
-      },
-      {
-        "type": "shell",
-        "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-        "script": "../scripts/post_install_vagrant-centos-7.sh",
-        "only": ["graphitemc"]
-      }
-
+      "type": "shell",
+      "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+      "script": "../scripts/post_install_vagrant-centos-7.sh",
+      "only": ["riemannmc"]
+    },
+    {
+      "type": "shell",
+      "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+      "script": "../scripts/post_install_vagrant-centos-7.sh",
+      "only": ["graphitea"]
+    },
+    {
+      "type": "shell",
+      "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+      "script": "../scripts/post_install_vagrant-centos-7.sh",
+      "only": ["graphiteb"]
+    },
+    {
+      "type": "shell",
+      "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+      "script": "../scripts/post_install_vagrant-centos-7.sh",
+      "only": ["graphitemc"]
+    }
   ],
-    "post-processors": [
-   {
+  "post-processors": [
+    {
     "type": "vagrant",
-   "keep_input_artifact": false,
-   "output": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"  
-   }
+    "keep_input_artifact": false,
+    "output": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"  
+    }
   ]
-  }
+}
   
