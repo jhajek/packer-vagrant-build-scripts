@@ -45,7 +45,7 @@ sudo apt-get install -y apt-transport-https
 # P.135 - Listing 4.13: Installing the graphite-api package on Ubuntu
 sudo apt-get install -y graphite-api gunicorn3
 
-# P.137 - Listing 4.18: Installing the Grafana package
+# https://grafana.com/grafana/download
 sudo apt-get install -y adduser libfontconfig1
 wget https://dl.grafana.com/oss/release/grafana_7.1.3_amd64.deb
 sudo dpkg -i grafana_7.1.3_amd64.deb
