@@ -54,5 +54,3 @@ sudo systemctl enable graphite-api
 sudo systemctl enable grafana-server
 sudo systemctl start graphite-api
 sudo systemctl start grafana-server
-sudo systemctl status graphite-api
-sudo systemctl status grafana-server
