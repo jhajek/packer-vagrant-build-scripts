@@ -41,11 +41,19 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get -q -y --force-yes install graphite-c
 sudo apt-get install -y apt-transport-https 
 
 # P.135 - Listing 4.13: Installing the graphite-api package on Ubuntu
-sudo apt-get install -y graphite-api
+sudo apt-get install -y graphite-api gunicorn3
 
 # P.137 - Listing 4.18: Installing the Grafana package
-sudo apt-get install -y grafana
+sudo apt-get install -y adduser libfontconfig1
+wget https://dl.grafana.com/oss/release/grafana_7.1.3_amd64.deb
+sudo dpkg -i grafana_7.1.3_amd64.deb
 
 ##################################################################################################
 # Start Services
 ##################################################################################################
+sudo systemctl enable graphite-api
+sudo systemctl enable grafana-server
+sudo systemctl start graphite-api
+sudo systemctl start grafana-server
+sudo systemctl status graphite-api
+sudo systemctl status grafana-server
