@@ -1,10 +1,23 @@
 # Destroy existing vagrant boxes
-vagrant box destroy -force ub-riemanna
-vagrant box destroy -force centos-riemannb
-vagrant box destroy -force ub-riemannmc
-vagrant box destroy -force ub-graphitea
-vagrant box destroy -force centos-graphiteb
-vagrant box destroy -force ub-graphitemc
+Set-Location ub-riemanna
+vagrant destroy -f
+Remote-Item ./.vagrant -Recurse
+Set-Location ../centos-riemannb
+vagrant destroy -f
+Remote-Item ./.vagrant -Recurse
+Set-Location ../ub-riemannmc
+vagrant destroy -f
+Remote-Item ./.vagrant -Recurse
+Set-Location ../ub-graphitea
+vagrant destroy -f
+Remote-Item ./.vagrant -Recurse
+Set-Location ../centos-graphiteb
+vagrant destroy -f
+Remote-Item ./.vagrant -Recurse
+Set-Location ../ub-graphitemc
+vagrant destroy -f
+Remote-Item ./.vagrant -Recurse
+Set-Location ../
 
 # Remove existing vagrant boxes
 vagrant box remove -force ub-riemanna
