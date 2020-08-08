@@ -36,7 +36,7 @@ sudo hostnamectl set-hostname ub-graphiteb
 
 ##################################################
 sudo apt-get update
-sudo apt-get install python3-dev python3-pip python3-setuptools
+sudo apt-get install -y python3-dev python3-pip python3-setuptools
 #http://askubuntu.com/questions/549550/installing-graphite-carbon-via-apt-unattended
 sudo DEBIAN_FRONTEND=noninteractive apt-get -q -y --force-yes install graphite-carbon python-whisper
 sudo apt-get install -y apt-transport-https 

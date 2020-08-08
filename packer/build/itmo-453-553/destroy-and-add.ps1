@@ -7,11 +7,11 @@ vagrant box destroy -force ub-graphitemc
 
 
 
-vagrant box add ../*.box --name ub-riemanna
-vagrant box add ../*.box --name centos-riemannb
-vagrant box add ../*.box --name ub-riemannmc
-vagrant box add ../*.box --name ub-graphitea
-vagrant box add ../*.box --name centos-graphiteb
-vagrant box add ../*.box --name ub-graphitemc
+vagrant box add ../ub-riemanna-virtualbox*.box --name ub-riemanna
+vagrant box add ../centos-riemannb-virtualbox*.box --name centos-riemannb
+vagrant box add ../ub-riemannmc-virtualbox*.box --name ub-riemannmc
+vagrant box add ../ub-graphitea-virtualbox*.box --name ub-graphitea
+vagrant box add ../centos-graphiteb-virtualbox*.box --name centos-graphiteb
+vagrant box add ../ub-graphitemc-virtualbox*.box --name ub-graphitemc
 
 
