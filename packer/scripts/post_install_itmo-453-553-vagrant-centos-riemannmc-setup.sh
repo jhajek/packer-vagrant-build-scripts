@@ -48,9 +48,8 @@ sudo hostnamectl set-hostname centos-riemannmc
 ##################################################
 # Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
-sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
-sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/Repositories
-sudo yum makecache fast
+# https://wiki.centos.org/AdditionalResources/Repositories
+sudo yum install -y https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm
 
 sudo yum install -y java-1.8.0-openjdk daemonize curl collectd
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions

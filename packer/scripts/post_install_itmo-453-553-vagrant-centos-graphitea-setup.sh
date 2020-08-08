@@ -48,9 +48,8 @@ sudo hostnamectl set-hostname centos-graphitea
 ##################################################
 # Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
-sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
-sudo yum install -y epel-release # https://wiki.centos.org/AdditionalResources/Repositories
-sudo yum makecache fast
+# https://wiki.centos.org/AdditionalResources/Repositories
+sudo yum install -y https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm
 
 sudo yum install -y java-1.8.0-openjdk daemonize curl collectd
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
@@ -150,5 +149,12 @@ sudo cp -v graphite-api.service /lib/systemd/system/graphite-api.service
 # Listing 4.60: Enabling and starting the systemd Graphite-API daemons
 sudo systemctl enable graphite-api.service
 sudo systemctl start graphite-api.service
+
+###############################################################################################################
+
+# P. 137 - Listing 4.19: Creating the Grafana Yum repository
+wget https://dl.grafana.com/oss/release/grafana-7.1.3-1.x86_64.rpm
+sudo yum install -y grafana-7.1.3-1.x86_64.rpm
+
 
 echo "All Done!"
