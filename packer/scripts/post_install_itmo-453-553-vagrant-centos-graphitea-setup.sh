@@ -50,6 +50,8 @@ sudo hostnamectl set-hostname centos-graphitea
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 # https://wiki.centos.org/AdditionalResources/Repositories
 sudo yum install -y https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm
+# Install epel repo for collectd
+sudo yum install -y epel-release
 
 sudo yum install -y java-1.8.0-openjdk daemonize curl collectd
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
@@ -76,6 +78,8 @@ sudo rpm -Uvh riemann-0.3.5-1.noarch-EL7.rpm
 # Enable to Riemann service to start on boot and start the service
 sudo systemctl enable riemann
 sudo systemctl start riemann
+sudo systemctl enable collectd
+sudo systemctl start collectd
 
 # P. 44  Install ruby gem tool, Centos 7 has Ruby 2.x as the default
 sudo yum install -y ruby ruby-devel gcc libxml2-devel

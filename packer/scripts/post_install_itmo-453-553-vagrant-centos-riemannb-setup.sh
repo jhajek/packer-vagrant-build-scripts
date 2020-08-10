@@ -50,6 +50,8 @@ sudo hostnamectl set-hostname centos-riemannb
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 # https://wiki.centos.org/AdditionalResources/Repositories
 sudo yum install -y https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm
+# Install epel repo for collectd
+sudo yum install -y epel-release
 
 sudo yum install -y java-1.8.0-openjdk daemonize curl collectd
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
