@@ -1,44 +1,60 @@
 # Destroy existing vagrant boxes
 Set-Location ub-riemanna
 vagrant destroy -f
-Remote-Item ./.vagrant -Recurse
+Remove-Item ./.vagrant -Recurse
 Set-Location ../centos-riemannb
 vagrant destroy -f
-Remote-Item ./.vagrant -Recurse
+Remove-Item ./.vagrant -Recurse
 Set-Location ../ub-riemannmc
 vagrant destroy -f
-Remote-Item ./.vagrant -Recurse
+Remove-Item ./.vagrant -Recurse
 Set-Location ../ub-graphitea
 vagrant destroy -f
-Remote-Item ./.vagrant -Recurse
+Remove-Item ./.vagrant -Recurse
 Set-Location ../centos-graphiteb
 vagrant destroy -f
-Remote-Item ./.vagrant -Recurse
+Remove-Item ./.vagrant -Recurse
 Set-Location ../ub-graphitemc
 vagrant destroy -f
-Remote-Item ./.vagrant -Recurse
+Remove-Item ./.vagrant -Recurse
 Set-Location ../
 
 # Remove existing vagrant boxes
-vagrant box remove -force ub-riemanna
-vagrant box remove -force centos-riemannb
-vagrant box remove -force ub-riemannmc
-vagrant box remove -force ub-graphitea
-vagrant box remove -force centos-graphiteb
-vagrant box remove -force ub-graphitemc
+vagrant box remove ub-riemanna --force 
+vagrant box remove centos-riemannb --force
+vagrant box remove ub-riemannmc --force 
+vagrant box remove ub-graphitea --force 
+vagrant box remove centos-graphiteb --force 
+vagrant box remove ub-graphitemc --force 
 
 # Add newly built Vagrant boxes
-vagrant box add ../ub-riemanna-virtualbox*.box --name ub-riemanna
-vagrant box add ../centos-riemannb-virtualbox*.box --name centos-riemannb
-vagrant box add ../ub-riemannmc-virtualbox*.box --name ub-riemannmc
-vagrant box add ../ub-graphitea-virtualbox*.box --name ub-graphitea
-vagrant box add ../centos-graphiteb-virtualbox*.box --name centos-graphiteb
-vagrant box add ../ub-graphitemc-virtualbox*.box --name ub-graphitemc
-
-# Delete existing Vagrant artifacts since they have been added
-Remove-Item ../ub-riemanna-virtualbox*.box
-Remove-Item ../centos-riemannb-virtualbox*.box
-Remove-Item ../ub-riemannmc-virtualbox*.box
-Remove-Item ../ub-graphitea-virtualbox*.box
-Remove-Item ../centos-graphiteb-virtualbox*.box
-Remove-Item ../ub-graphitemc-virtualbox*.box
+If (Test-Path -Path ../ub-riemanna-virtualbox*.box) {
+    vagrant box add ../ub-riemanna-virtualbox*.box --name ub-riemanna
+} Else {
+    Write-Host "File ../ub-riemanna-virtualbox*.box doesn't exist"
+}
+If (Test-Path -Path ../centos-riemannb-virtualbox*.box) {
+    vagrant box add ../centos-riemannb-virtualbox*.box --name centos-riemannb
+} Else {
+    Write-Host "File ../centos-riemannb-virtualbox*.box doesn't exist"
+}
+If (Test-Path -Path ../ub-riemannmc-virtualbox*.box) {
+    vagrant box add ../ub-riemannmc-virtualbox*.box --name ub-riemannmc
+} Else {
+    Write-Host "File ../ub-riemannmc-virtualbox*.box doesn't exist"
+}
+If (Test-Path -Path ../ub-graphitea-virtualbox*.box) {
+    vagrant box add ../ub-graphitea-virtualbox*.box --name ub-graphitea
+} Else {
+    Write-Host "File ../ub-graphitea-virtualbox*.box doesn't exist"
+}
+If (Test-Path -Path ../centos-graphiteb-virtualbox*.box) {
+    vagrant box add ../centos-graphiteb-virtualbox*.box --name centos-graphiteb
+} Else {
+    Write-Host "File ../centos-graphiteb-virtualbox*.box doesn't exist"
+}
+If (Test-Path -Path ../ub-graphitemc-virtualbox*.box) {
+    vagrant box add ../ub-graphitemc-virtualbox*.box --name ub-graphitemc
+} Else {
+    Write-Host "File ../ub-graphitemc-virtualbox*.box doesn't exist"
+}
