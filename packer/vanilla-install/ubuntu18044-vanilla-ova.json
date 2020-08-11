@@ -48,6 +48,7 @@
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
       "format": "ova",
+      "output_filename": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box",
       "vboxmanage": [
         [
           "modifyvm",
@@ -65,5 +66,4 @@
     "script": "../scripts/post_install_ova.sh"
   }
 ]
-  
 }
