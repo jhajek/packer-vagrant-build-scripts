@@ -25,3 +25,4 @@ packer/build/xenial64/ubuntu-xenial-16.04-cloudimg-console.log
 Understanding-Free*
 1950*
 .DS_Store
+*.ova

@@ -1,4 +1,8 @@
 {
+  "variables": {
+  "ova-name": "ubuntu-18044",
+  "headless-val": "false"
+},
   "builders": [
     {
       "name": "ubuntu-18044",
@@ -48,7 +52,8 @@
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
       "format": "ova",
-      "output_filename": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box",
+      "headless": "{{user `headless`}}",
+      "output_filename": "ubuntu-18044-{{timestamp}}.box",
       "vboxmanage": [
         [
           "modifyvm",
