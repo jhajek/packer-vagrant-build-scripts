@@ -24,3 +24,4 @@ packer/build/xenial64/ubuntu-xenial-16.04-cloudimg-console.log
 *.txt.xz
 Understanding-Free*
 1950*
+.DS_Store
