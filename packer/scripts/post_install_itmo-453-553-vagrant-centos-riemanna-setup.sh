@@ -79,7 +79,7 @@ sudo cp ./lein /usr/local/bin
 # Riemann syntax checker download and install
 git clone https://github.com/samn/riemann-syntax-check
 cd riemann-syntax-check
-lein uberjar
+/usr/local/bin/lein uberjar
 cd ../
 
 # Enable to Riemann service to start on boot and start the service
