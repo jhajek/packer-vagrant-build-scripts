@@ -7,7 +7,8 @@ output*/
 *.vmdk
 *.ovf
 build/*
-!build/itmo-453-553/
+Vagrantfile
+!build/itmo-453-553/*/Vagrantfile
 .vagrant/*
 .cfg.*
 variables*.json
@@ -17,7 +18,6 @@ variables-home.json
 *.swp
 data/
 *.log
-Vagrantfile
 *.tar
 id_rsa_github_deploy_key
 id_rsa*
