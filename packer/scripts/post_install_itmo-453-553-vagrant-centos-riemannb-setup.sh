@@ -81,6 +81,7 @@ sudo cp ./lein /usr/local/bin
 git clone https://github.com/samn/riemann-syntax-check
 cd riemann-syntax-check
 lein uberjar
+cd ../
 
 # Enable to Riemann service to start on boot and start the service
 sudo systemctl enable collectd

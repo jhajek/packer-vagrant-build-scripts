@@ -75,6 +75,7 @@ git clone https://github.com/turnbullpress/aom-code.git
 wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 chmod +x lein
 sudo cp ./lein /usr/local/bin
+cd ../
 
 # Riemann syntax checker download and install
 git clone https://github.com/samn/riemann-syntax-check
