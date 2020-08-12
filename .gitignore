@@ -7,7 +7,7 @@ output*/
 *.vmdk
 *.ovf
 build/*
-!build/itmo-453-553
+!build/itmo-453-553/
 .vagrant/*
 .cfg.*
 variables*.json
