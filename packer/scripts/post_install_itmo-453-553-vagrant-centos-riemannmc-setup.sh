@@ -29,21 +29,15 @@ echo "All Done!"
 ##################################################
 cat << EOT >> /etc/hosts
 # Nodes
-192.168.33.20 ub-riemanna ub-riemanna.project.iit.edu
-192.168.33.21 ub-riemannb ub-riemannb.project.iit.edu
-192.168.33.22 ub-riemannmc ub-riemannmc.project.iit.edu
-192.168.33.210 ub-graphitea ub-graphitea.project.iit.edu
-192.168.33.211 ub-graphiteb ub-graphiteb.project.iit.edu
-192.168.33.212 ub-graphitemc ub-graphitemc.project.iit.edu
-192.168.33.10 centos-riemanna centos-riemanna.project.iit.edu
-192.168.33.11 centos-riemannb centos-riemannb.project.iit.edu
-192.168.33.12 centos-riemannmc centos-riemannmc.project.iit.edu
-192.168.33.110 centos-graphitea centos-graphitea.project.iit.edu
-192.168.33.111 centos-graphiteb centos-graphiteb.project.iit.edu
-192.168.33.112 centos-graphitemc centos-graphitemc.project.iit.edu
+192.168.33.10 riemanna riemanna.project.iit.edu
+192.168.33.11 riemannb riemannb.project.iit.edu
+192.168.33.12 riemannmc riemannmc.project.iit.edu
+192.168.33.100 graphitea graphitea.project.iit.edu
+192.168.33.101 graphiteb graphiteb.project.iit.edu
+192.168.33.102 graphitemc graphitemc.project.iit.edu
 EOT
 
-sudo hostnamectl set-hostname centos-riemannmc
+sudo hostnamectl set-hostname riemannmc
 
 ##################################################
 # Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
@@ -73,6 +67,19 @@ sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
 ###############################################################################################################
 wget https://github.com/riemann/riemann/releases/download/0.3.5/riemann-0.3.5-1.noarch-EL7.rpm
 sudo rpm -Uvh riemann-0.3.5-1.noarch-EL7.rpm
+
+# cloning source code examples for the book
+git clone https://github.com/turnbullpress/aom-code.git
+
+# Install leiningen on Centos 7 - needed for riemann syntax checker
+wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+chmod +x lein
+sudo cp ./lein /usr/local/bin
+
+# Riemann syntax checker download and install
+git clone https://github.com/samn/riemann-syntax-check
+cd riemann-syntax-check
+lein uberjar
 
 # Enable to Riemann service to start on boot and start the service
 sudo systemctl enable collectd

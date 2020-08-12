@@ -18,15 +18,21 @@ sudo chown -R vagrant:vagrant /home/vagrant/.ssh
 ##################################################
 cat << EOT >> /etc/hosts
 # Nodes
-192.168.33.10 riemanna riemanna.project.iit.edu
-192.168.33.11 riemannb riemannb.project.iit.edu
-192.168.33.12 riemannmc riemannmc.project.iit.edu
-192.168.33.100 graphitea graphitea.project.iit.edu
-192.168.33.101 graphiteb graphiteb.project.iit.edu
-192.168.33.102 graphitemc graphitemc.project.iit.edu
+192.168.33.10 centos-riemanna centos-riemanna.project.iit.edu
+192.168.33.11 centos-riemannb centos-riemannb.project.iit.edu
+192.168.33.12 centos-riemannmc centos-riemannmc.project.iit.edu
+192.168.33.110 centos-graphitea centos-graphitea.project.iit.edu
+192.168.33.111 centos-graphiteb centos-graphiteb.project.iit.edu
+192.168.33.112 centos-graphitemc centos-graphitemc.project.iit.edu
+192.168.33.20 ub-riemanna ub-riemanna.project.iit.edu
+192.168.33.21 ub-riemannb ub-riemannb.project.iit.edu
+192.168.33.22 ub-riemannmc ub-riemannmc.project.iit.edu
+192.168.33.210 ub-graphitea ub-graphitea.project.iit.edu
+192.168.33.211 ub-graphiteb ub-graphiteb.project.iit.edu
+192.168.33.212 ub-graphitemc ub-graphitemc.project.iit.edu
 EOT
 
-sudo hostnamectl set-hostname riemannb
+sudo hostnamectl set-hostname ub-riemannmc
 
 ##################################################
 sudo apt-get update -y
@@ -48,12 +54,11 @@ cd riemann-syntax-check
 lein uberjar
 cd ../
 
-# P. 44  Install ruby gem tools
-sudo gem install --no-ri --no-rdoc riemann-tools
-
+sudo systemctl enable riemann
+sudo systemctl start riemann 
 sudo systemctl enable collectd
 sudo systemctl start collectd
-sudo systemctl enable riemann
-sudo systemctl start riemann
 
+# P. 44  Install ruby gem tools
+sudo gem install --no-ri --no-rdoc riemann-tools
 
