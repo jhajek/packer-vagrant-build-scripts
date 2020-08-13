@@ -1,4 +1,8 @@
 {
+  "variables": {
+  "mem-build-allocation": "2048",
+  "headless-val": "false"
+},
   "builders": [
     {
       "name": "ubuntu-vanilla-18045-server",
@@ -45,12 +49,13 @@
       "guest_additions_mode": "disable",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
+      "headless": "{{user `headless-val`}}",
       "vboxmanage": [
         [
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "2048"
+          "{{user `mem-build-allocation`}}"
         ]
       ]
       }],

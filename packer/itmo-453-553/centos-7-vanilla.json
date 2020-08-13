@@ -1,4 +1,8 @@
 {
+  "variables": {
+  "mem-build-allocation": "2048",
+  "headless-val": "false"
+},
   "builders": [{
     "name": "centos-vanilla-1908-server",
     "type": "virtualbox-iso",
@@ -19,6 +23,7 @@
     "hard_drive_interface": "sata",
     "disk_size": 20000,
     "boot_wait": "5s",
+    "headless": "{{user `headless-val`}}",
     "boot_command": [
         "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
     ],"vboxmanage": [
@@ -26,7 +31,7 @@
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "2048"
+          "{{user `mem-build-allocation`}}"
         ]  
     ]
   }],
