@@ -1,8 +1,12 @@
 {
+  "variables": {
+  "ova-name": "ubuntu-18044",
+  "headless-val": "false"
+},
   "builders": [
     {
-      "name": "ubuntu-vanilla-18044-server",
-      "vm_name": "ubuntu-vanilla-18044-server",
+      "name": "ubuntu-18044",
+      "vm_name": "ubuntu-18044",
       "type": "virtualbox-iso",
       "boot_command": [
         "<esc><wait>",
@@ -22,7 +26,7 @@
         " keyboard-configuration/variant=USA<wait>",
         " locale=en_US<wait>",
         " netcfg/get_domain=vm<wait>",
-        " netcfg/get_hostname=uvanilla<wait>",
+        " netcfg/get_hostname=vagrant<wait>",
         " grub-installer/bootdev=/dev/sda<wait>",
         " noapic<wait>",
         " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg<wait>",
@@ -30,13 +34,13 @@
         "<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 20000,
+      "disk_size": 50000,
       "guest_os_type": "Ubuntu_64",
       "http_directory" : ".",
       "http_port_min" : 9001,
-      "http_port_max" : 9001,
-      "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.4-server-amd64.iso",
-      "iso_checksum": "sha256:e2ecdace33c939527cbc9e8d23576381c493b071107207d2040af72595f8990b",
+      "http_port_max" : 9050,
+      "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.5-server-amd64.iso",
+      "iso_checksum": "sha256:8c5fc24894394035402f66f3824beb7234b757dd2b5531379cb310cedfdf0996",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -45,6 +49,9 @@
       "guest_additions_mode": "disable",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
+      "format": "ova",
+      "headless": "{{user `headless`}}",
+      "output_filename": "ubuntu-18044-{{timestamp}}.box",
       "vboxmanage": [
         [
           "modifyvm",
@@ -55,19 +62,11 @@
       ]
       }],
       
-  "provisioners": [
+"provisioners": [
   {
     "type": "shell",
   "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-    "script": "../scripts/post_install_vagrant.sh"
+    "script": "../scripts/post_install_ova.sh"
   }
-],
-  "post-processors": [
- {
-  "type": "vagrant",
- "keep_input_artifact": false,
- "output": "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"  
- }
 ]
 }
-
