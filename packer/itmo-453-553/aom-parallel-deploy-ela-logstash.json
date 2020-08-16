@@ -363,12 +363,6 @@
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
       "script": "../scripts/post_install_itmo-453-553-vagrant-host2-setup.sh",
       "only": ["host2"]
-    },
-    {
-      "type": "shell",
-      "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-graphitemc-setup.sh",
-      "only": ["ub-graphitemc"]
     }
   ],
   "post-processors": [
