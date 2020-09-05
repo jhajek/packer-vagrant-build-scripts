@@ -81,7 +81,7 @@ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -
 mkdir /home/vagrant/project
 sudo chown -R vagrant:vagrant ~/hajek
 
-# Change ownership of PM2 service that auto-starts our NojeJS app
+# Change ownership of PM2 service that auto-starts our NodeJS app
 sudo chown -R vagrant:vagrant /home/vagrant/.pm2
 cp ./hajek/itmt-430/fullstack/nginx-ws/app.js /home/vagrant/project
 # Change the ownership of the NodeJS application files
