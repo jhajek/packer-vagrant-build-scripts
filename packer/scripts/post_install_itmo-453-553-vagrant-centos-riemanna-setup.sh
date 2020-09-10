@@ -29,18 +29,18 @@ echo "All Done!"
 ##################################################
 cat << EOT >> /etc/hosts
 # Nodes
-192.168.33.10 riemanna riemanna.example.com
-192.168.33.11 riemannb riemannb.example.com
-192.168.33.12 riemannmc riemannmc.example.com
-192.168.33.100 graphitea graphitea.example.com
-192.168.33.101 graphiteb graphiteb.example.com
-192.168.33.102 graphitemc graphitemc.example.com
-192.168.33.201 ela1 ela1.example.com
-192.168.33.202 ela2 ela2.example.com
-192.168.33.203 ela3 ela3.example.com
-192.168.33.204 logstash logstash.example.com
-192.168.33.205 host1 host1.example.com
-192.168.33.206 host2 host2.example.com
+192.168.33.110 riemanna riemanna.example.com
+192.168.33.120 riemannb riemannb.example.com
+192.168.33.100 riemannmc riemannmc.example.com
+192.168.33.210 graphitea graphitea.example.com
+192.168.33.220 graphiteb graphiteb.example.com
+192.168.33.200 graphitemc graphitemc.example.com
+192.168.33.150 ela1 ela1.example.com
+192.168.33.160 ela2 ela2.example.com
+192.168.33.170 ela3 ela3.example.com
+192.168.33.180 logstash logstash.example.com
+192.168.33.10 host1 host1.example.com
+192.168.33.11 host2 host2.example.com
 EOT
 
 sudo hostnamectl set-hostname riemanna
