@@ -43,7 +43,9 @@ wget https://github.com/riemann/riemann/releases/download/0.3.5/riemann_0.3.5_al
 sudo dpkg -i riemann_0.3.5_all.deb
 
 # cloning source code examples for the book
-git clone https://github.com/turnbullpress/aom-code.git
+#git clone https://github.com/turnbullpress/aom-code.git
+
+cp -v /jhajek/aom-code/3/riemann/riemann.config /etc/
 
 # Install leiningen on Centos 7 - needed for riemann syntax checker
 sudo apt-get install -y leiningen
