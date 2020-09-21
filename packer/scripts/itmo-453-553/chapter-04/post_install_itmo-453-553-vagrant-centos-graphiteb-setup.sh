@@ -44,48 +44,28 @@ cat << EOT >> /etc/hosts
 EOT
 
 sudo hostnamectl set-hostname centos-graphiteb
-
 ##################################################
-# Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
-sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
-# https://wiki.centos.org/AdditionalResources/Repositories
-sudo yum install -y https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm
-# Install epel repo for collectd
-sudo yum install -y epel-release
-
-sudo yum install -y java-1.8.0-openjdk daemonize curl collectd
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
-sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2 python3 python3-pip python3-setuptools
-
+sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2 vim
 ###############################################################################################################
 # firewalld additions to make CentOS and riemann to work
 ###############################################################################################################
 # Adding firewall rules for riemann - Centos 7 uses firewalld (Thanks Lennart...)
 # http://serverfault.com/questions/616435/centos-7-firewall-configuration
+# Websockets are TCP... for now - http://stackoverflow.com/questions/4657033/javascript-websockets-with-udp
 sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=5556/udp --permanent
-# Websockets are TCP... for now - http://stackoverflow.com/questions/4657033/javascript-websockets-with-udp
 sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
 ###############################################################################################################
+# Install the pre-reqs needed for python based installation of carbon and whisper
+# P. 132
+sudo yum install -y python3 python3-pip python3-setuptools python3-devel gcc libffi-devel cairo-devel libtool libyaml-devel
 
-###############################################################################################################
-# Fetch and install the Riemann RPM
-###############################################################################################################
-wget https://github.com/riemann/riemann/releases/download/0.3.5/riemann-0.3.5-1.noarch-EL7.rpm
-sudo rpm -Uvh riemann-0.3.5-1.noarch-EL7.rpm
 
+##################################################
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
 
-# Enable to Riemann service to start on boot and start the service
-sudo systemctl enable riemann
-sudo systemctl start riemann
-sudo systemctl enable collectd
-sudo systemctl start collectd
-
-# P. 44  Install ruby gem tool, Centos 7 has Ruby 2.x as the default
-sudo yum install -y ruby ruby-devel gcc libxml2-devel
-sudo gem install --no-ri --no-rdoc riemann-tools
 
 # P. 137 - Listing 4.19: Creating the Grafana Yum repository
 wget https://dl.grafana.com/oss/release/grafana-7.1.3-1.x86_64.rpm
