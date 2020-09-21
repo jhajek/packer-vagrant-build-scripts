@@ -66,6 +66,7 @@ sudo cp -v /home/vagrant/aom-code/4/graphite/carbon-relay@.service /lib/systemd/
 # P.159
 sudo cp -v /home/vagrant/aom-code/4/graphite/graphite-api.yaml /etc/
 sudo touch /var/lib/graphite/api_search_index
+sudo touch /etc/carbon/storage-aggregation.conf
 ##################################################################################################
 # Start Services
 ##################################################################################################

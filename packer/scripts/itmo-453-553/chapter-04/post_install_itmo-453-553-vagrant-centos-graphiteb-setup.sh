@@ -55,14 +55,18 @@ sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2 vim wge
 # Websockets are TCP... for now - http://stackoverflow.com/questions/4657033/javascript-websockets-with-udp
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
-sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=5556/udp --permanent
-sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
+sudo firewall-cmd --permanent --zone=public --add-port=5555/tcp --permanent
+sudo firewall-cmd --permanent --zone=public --add-port=5556/udp --permanent
+sudo firewall-cmd --permanent --zone=public --add-port=5557/tcp --permanent
+sudo firewall-cmd --permanent --zone=public --add-port=8888/tcp --permanent
+sudo firewall-cmd --permanent --zone=public --add-port=3000/tcp --permanent
+sudo firewall-cmd --reload
 ###############################################################################################################
 # P. 128 - 129
 sudo yum install -y epel-release
-sudo yum install -y python3-setuptools
-sudo yum install -y python-whisper python-carbon python-gunicorn 
+sudo yum install -y python3 python3-pip python3-setuptools python3-devel gcc libffi-devel cairo-devel libtool libyaml-devel
+sudo yum install -y python-six pyparsing python-urllib3
+sudo yum install -y python-whisper python-carbon python-gunicorn graphite-api
 
 #P. 130 - 131
 sudo groupadd _graphite
@@ -72,12 +76,6 @@ sudo chown -R _graphite:_graphite /var/lib/graphite
 sudo chown -R _graphite:_graphite /var/log/carbon
 sudo userdel carbon
 
-# Install the pre-reqs needed for python based installation of carbon and whisper
-# P. 133
-sudo yum install -y python3 python3-pip python3-setuptools python3-devel gcc libffi-devel cairo-devel libtool libyaml-devel
-sudo pip3 six pyparsing websocket urllib3 wheel
-sudo pip3 graphite-api
-
 # P. 135 - Installing Grafana rpm package
 wget https://dl.grafana.com/oss/release/grafana-7.1.5-1.x86_64.rpm
 sudo yum install -y grafana-7.1.5-1.x86_64.rpm
@@ -85,7 +83,6 @@ sudo yum install -y grafana-7.1.5-1.x86_64.rpm
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
 
-sudo cp -v /home/vagrant/aom-code/4/graphite/graphite-api.service /lib/systemd/system/
 # P.137
 sudo cp -v /home/vagrant/aom-code/4/graphite/carbon.conf /etc/carbon/
 # P.157
@@ -96,6 +93,7 @@ sudo cp -v /home/vagrant/aom-code/4/graphite/carbon-relay@.service /lib/systemd/
 # P.159
 sudo cp -v /home/vagrant/aom-code/4/graphite/graphite-api.yaml /etc/
 sudo touch /var/lib/graphite/api_search_index
+sudo touch /etc/carbon/storage-aggregation.conf
 ##################################################################################################
 # Start Services
 ##################################################################################################
