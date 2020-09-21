@@ -53,13 +53,33 @@ sudo dpkg -i grafana_7.1.3_amd64.deb
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
 
-cp -v /home/vagrant/aom-code/4/graphite/graphite-api.service /lib/systemd/system/
-
+sudo cp -v /home/vagrant/aom-code/4/graphite/graphite-api.service /lib/systemd/system/
+# P.137
+sudo cp -v /home/vagrant/aom-code/4/graphite/carbon.conf /etc/carbon/
+# P.153
+sudo cp -v /home/vagrant/aom-code/4/graphite/graphite-carbon.default /etc/default/graphite-carbon
+# P.157
+sudo rm -f /lib/systemd/system/carbon-relay.service
+sudo rm -f /lib/systemd/system/carbon-cache.service
+sudo cp -v /home/vagrant/aom-code/4/graphite/carbon-cache@.service /lib/systemd/system/
+sudo cp -v /home/vagrant/aom-code/4/graphite/carbon-relay@.service /lib/systemd/system/
+# P.159
+sudo cp -v /home/vagrant/aom-code/4/graphite/graphite-api.yaml /etc/
+sudo touch /var/lib/graphite/api_search_index
 ##################################################################################################
 # Start Services
 ##################################################################################################
+sudo systemctl enable carbon-cache@1.service
+sudo systemctl enable carbon-cache@2.service
+sudo systemctl start carbon-cache@1.service
+sudo systemctl start carbon-cache@2.service
+
+sudo systemctl enable carbon-relay@1.service
+sudo systemctl start carbon-relay@1.service
+
 sudo systemctl daemon-reload 
 sudo systemctl enable graphite-api
-sudo systemctl enable grafana-server
 sudo systemctl start graphite-api
+
+sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
