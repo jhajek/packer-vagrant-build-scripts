@@ -46,7 +46,7 @@ EOT
 sudo hostnamectl set-hostname centos-graphiteb
 ##################################################
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
-sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2 vim
+sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2 vim wget git rsync
 ###############################################################################################################
 # firewalld additions to make CentOS and riemann to work
 ###############################################################################################################
@@ -73,8 +73,8 @@ sudo userdel carbon
 # Install the pre-reqs needed for python based installation of carbon and whisper
 # P. 133
 sudo yum install -y python3 python3-pip python3-setuptools python3-devel gcc libffi-devel cairo-devel libtool libyaml-devel
-python3 -m pip install --user six pyparsing websocket urllib3
-python3 -m pip install --user graphite-api gunicorn
+sudo pip3 six pyparsing websocket urllib3 wheel
+sudo pip3 graphite-api gunicorn
 
 # P. 135 - Installing Grafana rpm package
 wget https://dl.grafana.com/oss/release/grafana-7.1.5-1.x86_64.rpm
