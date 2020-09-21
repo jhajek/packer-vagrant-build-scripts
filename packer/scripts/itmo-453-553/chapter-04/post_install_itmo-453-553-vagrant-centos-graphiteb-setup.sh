@@ -57,9 +57,24 @@ sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=5556/udp --permanent
 sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
 ###############################################################################################################
+# P. 128 - 129
+sudo yum install -y epel-release
+sudo yum install -y python3-setuptools
+sudo yum install -y python-whisper python-carbon
+
+#P. 130 - 131
+sudo groupadd _graphite
+sudo useradd -c "Carbon daemons" -g _graphite -d /var/lib/graphite -M -s /sbin/nologin _graphite
+sudo mv /var/lib/carbon /var/lib/graphite
+sudo chown -R _graphite:_graphite /var/lib/graphite
+sudo chown -R _graphite:_graphite /var/log/carbon
+sudo userdel carbon
+
 # Install the pre-reqs needed for python based installation of carbon and whisper
-# P. 132
+# P. 133
 sudo yum install -y python3 python3-pip python3-setuptools python3-devel gcc libffi-devel cairo-devel libtool libyaml-devel
+python3 -m pip install --user six pyparsing websocket urllib3
+python3 -m pip install --user graphite-api gunicorn
 
 
 ##################################################
