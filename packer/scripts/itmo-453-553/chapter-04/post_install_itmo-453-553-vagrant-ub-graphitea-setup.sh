@@ -53,7 +53,7 @@ sudo dpkg -i grafana_7.1.3_amd64.deb
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
 
-cp -v /home/vargrant/aom-code/4/graphite/
+cp -v /home/vagrant/aom-code/4/graphite/graphite-api.service /lib/systemd/system/
 
 ##################################################################################################
 # Start Services
