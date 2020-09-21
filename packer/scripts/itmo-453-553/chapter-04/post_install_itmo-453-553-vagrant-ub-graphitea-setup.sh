@@ -33,7 +33,7 @@ cat << EOT >> /etc/hosts
 192.168.33.11 host2 host2.example.com
 EOT
 
-sudo hostnamectl set-hostname ub-graphitea
+sudo hostnamectl set-hostname graphitea
 
 ##################################################
 sudo apt-get update

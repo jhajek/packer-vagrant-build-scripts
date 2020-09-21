@@ -43,7 +43,7 @@ cat << EOT >> /etc/hosts
 192.168.33.11 host2 host2.example.com
 EOT
 
-sudo hostnamectl set-hostname centos-graphiteb
+sudo hostnamectl set-hostname graphiteb
 ##################################################
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
 sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2 vim wget git rsync
@@ -53,6 +53,8 @@ sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2 vim wge
 # Adding firewall rules for riemann - Centos 7 uses firewalld (Thanks Lennart...)
 # http://serverfault.com/questions/616435/centos-7-firewall-configuration
 # Websockets are TCP... for now - http://stackoverflow.com/questions/4657033/javascript-websockets-with-udp
+sudo systemctl enable firewalld
+sudo systemctl start firewalld
 sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=5556/udp --permanent
 sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
@@ -60,7 +62,7 @@ sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
 # P. 128 - 129
 sudo yum install -y epel-release
 sudo yum install -y python3-setuptools
-sudo yum install -y python-whisper python-carbon
+sudo yum install -y python-whisper python-carbon python-gunicorn 
 
 #P. 130 - 131
 sudo groupadd _graphite
@@ -74,7 +76,7 @@ sudo userdel carbon
 # P. 133
 sudo yum install -y python3 python3-pip python3-setuptools python3-devel gcc libffi-devel cairo-devel libtool libyaml-devel
 sudo pip3 six pyparsing websocket urllib3 wheel
-sudo pip3 graphite-api gunicorn
+sudo pip3 graphite-api
 
 # P. 135 - Installing Grafana rpm package
 wget https://dl.grafana.com/oss/release/grafana-7.1.5-1.x86_64.rpm
@@ -86,8 +88,6 @@ git clone https://github.com/turnbullpress/aom-code.git
 sudo cp -v /home/vagrant/aom-code/4/graphite/graphite-api.service /lib/systemd/system/
 # P.137
 sudo cp -v /home/vagrant/aom-code/4/graphite/carbon.conf /etc/carbon/
-# P.153
-sudo cp -v /home/vagrant/aom-code/4/graphite/graphite-carbon.default /etc/default/graphite-carbon
 # P.157
 sudo rm -f /lib/systemd/system/carbon-relay.service
 sudo rm -f /lib/systemd/system/carbon-cache.service

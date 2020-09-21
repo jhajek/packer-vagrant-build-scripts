@@ -31,7 +31,7 @@ cat << EOT >> /etc/hosts
 192.168.33.11 host2 host2.example.com
 EOT
 
-sudo hostnamectl set-hostname ub-graphitemc
+sudo hostnamectl set-hostname graphitemc
 ##################################################
 sudo apt-get update
 sudo apt-get install -y python3-dev python3-pip python3-setuptools

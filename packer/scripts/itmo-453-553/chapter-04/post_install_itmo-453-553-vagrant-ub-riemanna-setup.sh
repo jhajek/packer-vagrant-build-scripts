@@ -32,7 +32,7 @@ cat << EOT >> /etc/hosts
 192.168.33.11 host2 host2.example.com
 EOT
 
-sudo hostnamectl set-hostname ub-riemanna
+sudo hostnamectl set-hostname riemanna
 
 ##################################################
 sudo apt-get update -y
