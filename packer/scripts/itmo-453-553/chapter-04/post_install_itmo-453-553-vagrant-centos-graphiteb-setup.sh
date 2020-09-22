@@ -88,12 +88,14 @@ sudo cp -v /home/vagrant/aom-code/4/graphite/carbon.conf /etc/carbon/
 # P.157
 sudo rm -f /lib/systemd/system/carbon-relay.service
 sudo rm -f /lib/systemd/system/carbon-cache.service
-sudo cp -v /home/vagrant/aom-code/4/graphite/carbon-cache@.service /lib/systemd/system/
-sudo cp -v /home/vagrant/aom-code/4/graphite/carbon-relay@.service /lib/systemd/system/
+# No longer needed
+#sudo cp -v /home/vagrant/aom-code/4/graphite/carbon-cache@.service /lib/systemd/system/
+#sudo cp -v /home/vagrant/aom-code/4/graphite/carbon-relay@.service /lib/systemd/system/
 # P.159
 sudo cp -v /home/vagrant/aom-code/4/graphite/graphite-api.yaml /etc/
 sudo touch /var/lib/graphite/api_search_index
-sudo touch /etc/carbon/storage-aggregation.conf
+# No longer needed
+#sudo touch /etc/carbon/storage-aggregation.conf
 ##################################################################################################
 # Start Services
 ##################################################################################################
