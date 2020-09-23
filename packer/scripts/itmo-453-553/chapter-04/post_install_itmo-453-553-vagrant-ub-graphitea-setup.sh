@@ -61,7 +61,9 @@ sudo cp -v /home/vagrant/aom-code/4/graphite/carbon.conf /etc/carbon/
 # P.153
 sudo cp -v /home/vagrant/aom-code/4/graphite/graphite-carbon.default /etc/default/graphite-carbon
 # P.157
-sudo rm -f /lib/systemd/system/carbon-relay.service
+sudo systemctl stop carbon-relay@1.service
+sudo rm -f /lib/systemd/system/carbon-relay@.service
+sudo systemctl stop carbon-cache.service
 sudo rm -f /lib/systemd/system/carbon-cache.service
 sudo cp -v /home/vagrant/aom-code/4/graphite/carbon-cache@.service /lib/systemd/system/
 sudo cp -v /home/vagrant/aom-code/4/graphite/carbon-relay@.service /lib/systemd/system/
