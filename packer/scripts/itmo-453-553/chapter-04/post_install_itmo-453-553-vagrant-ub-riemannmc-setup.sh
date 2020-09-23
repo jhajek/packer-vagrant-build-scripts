@@ -7,7 +7,6 @@ set -v
 echo "vagrant ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/init-users
 sudo cat /etc/sudoers.d/init-users
 
-
 # Installing vagrant keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
 sudo mkdir -p /home/vagrant/.ssh
@@ -45,6 +44,11 @@ sudo dpkg -i riemann_0.3.5_all.deb
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
 
+sudo mv -v /home/vagrant/aom-code/4/riemann/riemann.config_riemannmc /etc/riemann/riemann.config
+
+sudo sed -i 's/graphitea/graphitemc' /home/vagrant/aom-code/4/riemann/examplecom/etc/graphite.clj
+sudo sed -i 's/productiona/productionmc' /home/vagrant/aom-code/4/riemann/examplecom/etc/graphite.clj
+
 # Install leiningen on Centos 7 - needed for riemann syntax checker
 sudo apt-get install -y leiningen
 
@@ -56,9 +60,5 @@ cd ../
 
 sudo systemctl enable riemann
 sudo systemctl start riemann 
-sudo systemctl enable collectd
-sudo systemctl start collectd
 
-# P. 44  Install ruby gem tools
-sudo gem install --no-ri --no-rdoc riemann-tools
 
