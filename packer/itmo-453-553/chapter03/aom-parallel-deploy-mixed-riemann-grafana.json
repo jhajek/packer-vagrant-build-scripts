@@ -294,37 +294,37 @@
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-riemanna-setup.sh",
+      "script": "../../scripts/itmo-453-553/chapter-03/post_install_itmo-453-553-vagrant-ub-riemanna-setup.sh",
       "only": ["ub-riemanna"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_itmo-453-553-vagrant-centos-riemannb-setup.sh",
+      "script": "../../scripts/itmo-453-553/chapter-03/post_install_itmo-453-553-vagrant-centos-riemannb-setup.sh",
       "only": ["centos-riemannb"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-riemannmc-setup.sh",
+      "script": "../../scripts/itmo-453-553/chapter-03/post_install_itmo-453-553-vagrant-ub-riemannmc-setup.sh",
       "only": ["ub-riemannmc"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-graphitea-setup.sh",
+      "script": "../../scripts/itmo-453-553/chapter-03/post_install_itmo-453-553-vagrant-ub-graphitea-setup.sh",
       "only": ["ub-graphitea"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_itmo-453-553-vagrant-centos-graphiteb-setup.sh",
+      "script": "../../scripts/itmo-453-553/chapter-03/post_install_itmo-453-553-vagrant-centos-graphiteb-setup.sh",
       "only": ["centos-graphiteb"]
     },
     {
       "type": "shell",
       "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
-      "script": "../scripts/post_install_itmo-453-553-vagrant-ub-graphitemc-setup.sh",
+      "script": "../../scripts/itmo-453-553/chapter-03/post_install_itmo-453-553-vagrant-ub-graphitemc-setup.sh",
       "only": ["ub-graphitemc"]
     }
   ],
