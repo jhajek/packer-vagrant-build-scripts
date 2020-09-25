@@ -64,7 +64,9 @@ sudo firewall-cmd --permanent --zone=public --add-port=3000/tcp --permanent
 sudo firewall-cmd --reload
 ###############################################################################################################
 # Installing collectd
-sudo yum install -y collectd
+# P. 128 - 129
+sudo yum install -y epel-release
+sudo yum install -y java-1.8.0-openjdk daemonize curl collectd
 ###############################################################################################################
 # Fetch and install the Riemann RPM
 ###############################################################################################################
@@ -74,15 +76,17 @@ sudo rpm -Uvh riemann-0.3.5-1.noarch-EL7.rpm
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
 
-sudo cp -v /home/vagrant/aom-code/4/riemann/riemann.config /etc/riemann
-sudo cp -rv /home/vagrant/aom-code/4/riemann/examplecom /etc/riemann
+sudo cp -v /home/vagrant/aom-code/5-6/riemann/riemann.config /etc/riemann
+sudo cp -rv /home/vagrant/aom-code/5-6/riemann/examplecom /etc/riemann
 
-sudo sed -i 's/graphitea/graphiteb' /home/vagrant/aom-code/4/riemann/examplecom/etc/graphite.clj
-sudo sed -i 's/productiona/productionb' /home/vagrant/aom-code/4/riemann/examplecom/etc/graphite.clj
+sudo sed -i 's/graphitea/graphiteb/g' /etc/riemann/examplecom/etc/graphite.clj
+sudo sed -i 's/productiona/productionb/g' /etc/riemann/examplecom/etc/graphite.clj
 
 # Collectd config filees
+sudo yum install -y collectd-write_riemann
 sudo cp -v /home/vagrant/aom-code/5-6/collectd/collectd.conf /etc
-sudo sudo cp -rv /home/vagrant/aom-code/5-6/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d
+sudo sudo cp -rv /home/vagrant/aom-code/5-6/collectd/collectd.d/*.conf /etc/collectd.d/
+sudo sed -i 's/riemanna/riemannb/g' /etc/collectd.d/write_riemann.conf
 sudo systemctl daemon-reload
 sudo systemctl restart collectd
 
@@ -103,6 +107,5 @@ sudo gem install --no-ri --no-rdoc riemann-tools
 # Enable to Riemann service to start on boot and start the service
 sudo systemctl enable riemann
 sudo systemctl start riemann
-
 
 echo "All Done!"

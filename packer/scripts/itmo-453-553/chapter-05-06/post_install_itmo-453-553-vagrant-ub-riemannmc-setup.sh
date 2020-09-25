@@ -49,12 +49,13 @@ git clone https://github.com/turnbullpress/aom-code.git
 
 sudo mv -v /home/vagrant/aom-code/4/riemann/riemann.config_riemannmc /etc/riemann/riemann.config
 
-sudo sed -i 's/graphitea/graphitemc' /home/vagrant/aom-code/4/riemann/examplecom/etc/graphite.clj
-sudo sed -i 's/productiona/productionmc' /home/vagrant/aom-code/4/riemann/examplecom/etc/graphite.clj
+sudo sed -i 's/graphitea/graphitemc' /etc/riemann/examplecom/etc/graphite.clj
+sudo sed -i 's/productiona/productionmc' /etc/riemann/examplecom/etc/graphite.clj
 
 # Collectd config filees
 sudo cp -v /home/vagrant/aom-code/5-6/collectd/collectd.conf /etc
 sudo sudo cp -rv /home/vagrant/aom-code/5-6/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d
+sudo sed -i 's/riemanna/riemannmc/g' /etc/collectd.d/write_riemann.conf
 sudo systemctl daemon-reload
 sudo systemctl restart collectd
 # Install leiningen on Centos 7 - needed for riemann syntax checker
