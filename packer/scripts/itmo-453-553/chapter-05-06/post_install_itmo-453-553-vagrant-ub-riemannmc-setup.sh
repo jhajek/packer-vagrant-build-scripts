@@ -47,7 +47,8 @@ sudo dpkg -i riemann_0.3.5_all.deb
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
 
-sudo mv -v /home/vagrant/aom-code/4/riemann/riemann.config_riemannmc /etc/riemann/riemann.config
+sudo mv -v /home/vagrant/aom-code/5-6/riemann/riemann.config_riemannmc /etc/riemann/riemann.config
+sudo cp -rv /home/vagrant/aom-code/5-6/riemann/examplecom /etc/riemann/
 
 sudo sed -i 's/graphitea/graphitemc' /etc/riemann/examplecom/etc/graphite.clj
 sudo sed -i 's/productiona/productionmc' /etc/riemann/examplecom/etc/graphite.clj
