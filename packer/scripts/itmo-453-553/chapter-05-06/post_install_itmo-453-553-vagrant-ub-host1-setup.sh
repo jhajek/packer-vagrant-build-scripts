@@ -31,40 +31,23 @@ cat << EOT >> /etc/hosts
 192.168.33.11 host2 host2.example.com
 EOT
 
-sudo hostnamectl set-hostname riemanna
+sudo hostnamectl set-hostname host1
 
 ##################################################
 sudo apt-get update -y
-sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre collectd
+sudo apt-get install -y collectd stress
 
-# P.42 The Art of Monitoring
-wget https://github.com/riemann/riemann/releases/download/0.3.5/riemann_0.3.5_all.deb
-sudo dpkg -i riemann_0.3.5_all.deb
-
-# cloning source code examples for the book
+# Cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
-
-sudo cp -v /home/vagrant/aom-code/4/riemann/riemann.config /etc/riemann
-sudo cp -rv /home/vagrant/aom-code/4/riemann/examplecom /etc/riemann
-
-# Install leiningen on Centos 7 - needed for riemann syntax checker
-sudo apt-get install -y leiningen
 
 # Collectd config filees
 sudo cp -v /home/vagrant/aom-code/5-6/collectd/collectd.conf /etc
 sudo sudo cp -rv /home/vagrant/aom-code/5-6/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d
+# sudo sed -i 's/riemanna.exmaple.com/riemanna.example.com/g' /etc/collectd.d/write_riemann.conf
+sudo sed -i 's/Node "riemanna"/Node "host1"/g' /etc/collectd/collectd.conf.d/write_riemann.conf
+
+# Reload collectd service and start it at boot
+sudo systemctl enable collectd
+sudo systemctl stop collectd
 sudo systemctl daemon-reload
-sudo systemctl restart collectd
-
-# Riemann syntax checker download and install
-git clone https://github.com/samn/riemann-syntax-check
-cd riemann-syntax-check
-lein uberjar
-cd ../
-
-# P. 44  Install ruby gem tools
-sudo gem install --no-ri --no-rdoc riemann-tools
-
-sudo systemctl enable riemann
-sudo systemctl start riemann
-
+sudo systemctl start collectd

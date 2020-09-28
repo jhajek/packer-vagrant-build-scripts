@@ -35,7 +35,7 @@ sudo hostnamectl set-hostname riemannmc
 
 ##################################################
 sudo apt-get update -y
-sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre collectd
+sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre 
 
 # P.42 The Art of Monitoring
 wget https://github.com/riemann/riemann/releases/download/0.3.5/riemann_0.3.5_all.deb
@@ -50,13 +50,7 @@ sudo cp -rv /home/vagrant/aom-code/5-6/riemann/examplecom /etc/riemann/
 sudo sed -i 's/graphitea/graphitemc' /etc/riemann/examplecom/etc/graphite.clj
 sudo sed -i 's/productiona/productionmc' /etc/riemann/examplecom/etc/graphite.clj
 
-# Collectd config filees
-sudo cp -v /home/vagrant/aom-code/5-6/collectd/collectd.conf /etc
-sudo sudo cp -rv /home/vagrant/aom-code/5-6/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d
-sudo sed -i 's/riemanna/riemannmc/g' /etc/collectd.d/write_riemann.conf
-sudo systemctl daemon-reload
-sudo systemctl restart collectd
-# Install leiningen on Centos 7 - needed for riemann syntax checker
+# Install leiningen on Ubuntu - needed for riemann syntax checker
 sudo apt-get install -y leiningen
 
 # Riemann syntax checker download and install

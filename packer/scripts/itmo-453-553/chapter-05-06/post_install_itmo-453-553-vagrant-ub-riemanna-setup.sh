@@ -35,7 +35,7 @@ sudo hostnamectl set-hostname riemanna
 
 ##################################################
 sudo apt-get update -y
-sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre collectd
+sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre
 
 # P.42 The Art of Monitoring
 wget https://github.com/riemann/riemann/releases/download/0.3.5/riemann_0.3.5_all.deb
@@ -47,14 +47,8 @@ git clone https://github.com/turnbullpress/aom-code.git
 sudo cp -v /home/vagrant/aom-code/4/riemann/riemann.config /etc/riemann
 sudo cp -rv /home/vagrant/aom-code/4/riemann/examplecom /etc/riemann
 
-# Install leiningen on Centos 7 - needed for riemann syntax checker
+# Install leiningen on Ubuntu - needed for riemann syntax checker
 sudo apt-get install -y leiningen
-
-# Collectd config filees
-sudo cp -v /home/vagrant/aom-code/5-6/collectd/collectd.conf /etc
-sudo sudo cp -rv /home/vagrant/aom-code/5-6/collectd/collectd.d/*.conf /etc/collectd/collectd.conf.d
-sudo systemctl daemon-reload
-sudo systemctl restart collectd
 
 # Riemann syntax checker download and install
 git clone https://github.com/samn/riemann-syntax-check

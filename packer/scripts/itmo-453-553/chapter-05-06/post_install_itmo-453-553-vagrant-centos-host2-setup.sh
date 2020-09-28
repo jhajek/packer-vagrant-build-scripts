@@ -66,45 +66,21 @@ sudo firewall-cmd --reload
 # Installing epel-release
 # P. 128 - 129
 sudo yum install -y epel-release
-###############################################################################################################
-# Fetch and install the Riemann RPM
-###############################################################################################################
-wget https://github.com/riemann/riemann/releases/download/0.3.5/riemann-0.3.5-1.noarch-EL7.rpm
-sudo rpm -Uvh riemann-0.3.5-1.noarch-EL7.rpm
+sudo yum install -y collectd collectd-write_riemann stress
 
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
 
-sudo cp -v /home/vagrant/aom-code/5-6/riemann/riemann.config /etc/riemann
-sudo cp -rv /home/vagrant/aom-code/5-6/riemann/examplecom /etc/riemann
-
-sudo sed -i 's/graphitea/graphiteb/g' /etc/riemann/examplecom/etc/graphite.clj
-sudo sed -i 's/productiona/productionb/g' /etc/riemann/examplecom/etc/graphite.clj
-
 # Collectd config filees
-sudo yum install -y collectd-write_riemann
 sudo cp -v /home/vagrant/aom-code/5-6/collectd/collectd.conf /etc
 sudo sudo cp -rv /home/vagrant/aom-code/5-6/collectd/collectd.d/*.conf /etc/collectd.d/
-sudo sed -i 's/riemanna/riemannb/g' /etc/collectd.d/write_riemann.conf
+sudo sed -i 's/riemanna.exmaple.com/riemannb.example.com/g' /etc/collectd.d/write_riemann.conf
+sudo sed -i 's/riemanna/host2/g' /etc/collectd.d/write_riemann.conf
+
+# Reload collectd service and start it at boot
+sudo systemctl enable collectd
+sudo systemctl stop collectd
 sudo systemctl daemon-reload
-sudo systemctl restart collectd
-
-# Install leiningen on Centos 7 - needed for riemann syntax checker
-wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
-chmod +x lein
-sudo cp ./lein /usr/local/bin
-
-# Riemann syntax checker download and install
-git clone https://github.com/samn/riemann-syntax-check
-cd riemann-syntax-check
-lein uberjar
-
-# P. 44  Install ruby gem tool, Centos 7 has Ruby 2.x as the default
-sudo yum install -y ruby ruby-devel gcc libxml2-devel
-sudo gem install --no-ri --no-rdoc riemann-tools
-
-# Enable to Riemann service to start on boot and start the service
-sudo systemctl enable riemann
-sudo systemctl start riemann
+sudo systemctl start collectd
 
 echo "All Done!"
