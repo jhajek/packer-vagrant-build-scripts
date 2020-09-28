@@ -37,9 +37,6 @@ sudo hostnamectl set-hostname riemannmc
 sudo apt-get update -y
 sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre collectd
 
-# Installing collectd
-sudo apt-get install -y collectd
-
 # P.42 The Art of Monitoring
 wget https://github.com/riemann/riemann/releases/download/0.3.5/riemann_0.3.5_all.deb
 sudo dpkg -i riemann_0.3.5_all.deb
