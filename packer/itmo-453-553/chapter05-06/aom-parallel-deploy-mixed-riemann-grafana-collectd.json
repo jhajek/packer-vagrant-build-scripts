@@ -292,44 +292,11 @@
   {
     "name": "ub-host1",
     "type": "virtualbox-iso",
-    "guest_os_type": "RedHat_64",
-    "guest_additions_mode": "disable",
-    "iso_url": "https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
-    "iso_checksum": "sha256:659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
-    "vm_name": "centos-graphiteb",
-    "http_directory" : ".",
-    "http_port_min" : 9001,
-    "http_port_max" : 9050,
-    "ssh_username": "vagrant",
-    "ssh_password": "vagrant",
-    "ssh_wait_timeout": "60m",
-    "headless": "{{user `headless-val`}}",
-    "communicator": "ssh", 
-    "ssh_pty": "true", 
-    "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
-    "hard_drive_interface": "sata",
-    "disk_size": 20000,
-    "boot_wait": "5s",
-    "boot_command": [
-        "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
-    ],
-    "vboxmanage": [
-      [
-        "modifyvm",
-        "{{.Name}}",
-        "--memory",
-        "{{user `mem-build-allocation`}}"
-      ]  
-    ]
-  },
-  {
-    "name": "centos-host2",
-    "type": "virtualbox-iso",
     "guest_os_type": "Ubuntu_64",
     "guest_additions_mode": "disable",
     "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.5-server-amd64.iso",
     "iso_checksum": "sha256:8c5fc24894394035402f66f3824beb7234b757dd2b5531379cb310cedfdf0996",
-    "vm_name": "centos-host2",
+    "vm_name": "ub-host1",
     "http_directory" : ".",
     "http_port_min" : 9001,
     "http_port_max" : 9050,
@@ -367,6 +334,39 @@
       " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg<wait>",
       " -- <wait>",
       "<enter><wait>"
+    ],
+    "vboxmanage": [
+      [
+        "modifyvm",
+        "{{.Name}}",
+        "--memory",
+        "{{user `mem-build-allocation`}}"
+      ]  
+    ]
+  },
+  {
+    "name": "centos-host2",
+    "type": "virtualbox-iso",
+    "guest_os_type": "RedHat_64",
+    "guest_additions_mode": "disable",
+    "iso_url": "https://mirrors.edge.kernel.org/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
+    "iso_checksum": "sha256:659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
+    "vm_name": "centos-graphiteb",
+    "http_directory" : ".",
+    "http_port_min" : 9001,
+    "http_port_max" : 9050,
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_wait_timeout": "60m",
+    "headless": "{{user `headless-val`}}",
+    "communicator": "ssh", 
+    "ssh_pty": "true", 
+    "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now", 
+    "hard_drive_interface": "sata",
+    "disk_size": 20000,
+    "boot_wait": "5s",
+    "boot_command": [
+        "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"
     ],
     "vboxmanage": [
       [
