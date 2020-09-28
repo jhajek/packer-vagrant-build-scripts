@@ -81,14 +81,6 @@ sudo cp -rv /home/vagrant/aom-code/5-6/riemann/examplecom /etc/riemann
 sudo sed -i 's/graphitea/graphiteb/g' /etc/riemann/examplecom/etc/graphite.clj
 sudo sed -i 's/productiona/productionb/g' /etc/riemann/examplecom/etc/graphite.clj
 
-# Collectd config filees
-sudo yum install -y collectd-write_riemann
-sudo cp -v /home/vagrant/aom-code/5-6/collectd/collectd.conf /etc
-sudo sudo cp -rv /home/vagrant/aom-code/5-6/collectd/collectd.d/*.conf /etc/collectd.d/
-sudo sed -i 's/riemanna/riemannb/g' /etc/collectd.d/write_riemann.conf
-sudo systemctl daemon-reload
-sudo systemctl restart collectd
-
 # Install leiningen on Centos 7 - needed for riemann syntax checker
 wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 chmod +x lein

@@ -44,8 +44,8 @@ sudo dpkg -i riemann_0.3.5_all.deb
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
 
-sudo cp -v /home/vagrant/aom-code/4/riemann/riemann.config /etc/riemann
-sudo cp -rv /home/vagrant/aom-code/4/riemann/examplecom /etc/riemann
+sudo cp -v /home/vagrant/aom-code/5-6/riemann/riemann.config /etc/riemann
+sudo cp -rv /home/vagrant/aom-code/5-6/riemann/examplecom /etc/riemann
 
 # Install leiningen on Ubuntu - needed for riemann syntax checker
 sudo apt-get install -y leiningen

@@ -44,7 +44,6 @@ sudo dpkg -i riemann_0.3.5_all.deb
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
 
-sudo mv -v /home/vagrant/aom-code/5-6/riemann/riemann.config_riemannmc /etc/riemann/riemann.config
 sudo cp -rv /home/vagrant/aom-code/5-6/riemann/examplecom /etc/riemann/
 
 sudo sed -i 's/graphitea/graphitemc' /etc/riemann/examplecom/etc/graphite.clj
@@ -58,6 +57,53 @@ git clone https://github.com/samn/riemann-syntax-check
 cd riemann-syntax-check
 lein uberjar
 cd ../
+
+# Adding the raw content of the chapter 5-6 riemann.config file
+cat << EOT > /etc/riemann/riemann.config
+(logging/init {:file "/var/log/riemann/riemann.log"})
+
+(require 'riemann.client)
+(require '[examplecom.etc.email :refer :all])
+(require '[examplecom.etc.graphite :refer :all])
+(require '[examplecom.etc.collectd :refer :all])
+
+(let [host "0.0.0.0"]
+  (repl-server {:host "127.0.0.1"})
+  (tcp-server {:host host})
+  (udp-server {:host host})
+  (ws-server  {:host host}))
+
+(periodically-expire 10 {:keep-keys [:host :service :tags, :state, :description, :metric]})
+
+(let [index (index)]
+
+  ; Inbound events will be passed to these streams:
+  (streams
+    (default :ttl 60
+      ; Index all events immediately.
+      (where (not (tagged "notification"))
+        index)
+
+      (tagged "collectd"
+        (smap rewrite-service graph)
+
+        (tagged "notification"
+          (changed-state {:init "ok"}
+            (adjust [:service clojure.string/replace #"^processes-(.*)\/ps_count$" "$1"]
+              (email "james@example.com"))))
+
+         (where (and (expired? event)
+                     (service #"^processes-.+\/ps_count\/processes"))
+           (adjust [:service clojure.string/replace #"^processes-(.*)\/ps_count\/processes$" "$1"]
+             (email "james@example.com"))))
+
+      (where (service #"^riemann.*")
+        graph
+
+        downstream))))
+
+EOT
+
 
 sudo systemctl enable riemann
 sudo systemctl start riemann 
