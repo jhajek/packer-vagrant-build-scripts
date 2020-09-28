@@ -39,8 +39,8 @@ sudo hostnamectl set-hostname graphitea
 sudo apt-get update
 sudo apt-get install -y python3-dev python3-pip python3-setuptools
 #http://askubuntu.com/questions/549550/installing-graphite-carbon-via-apt-unattended
-# sudo DEBIAN_FRONTEND=noninteractive apt-get -y --allow-change-held-packages install graphite-carbon python-whisper
-sudo apt-get install -y graphite-carbon python-whisper
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y --allow-change-held-packages install graphite-carbon python-whisper
+# sudo apt-get install -y graphite-carbon python-whisper
 sudo apt-get install -y apt-transport-https 
 
 # P.135 - Listing 4.13: Installing the graphite-api package on Ubuntu
