@@ -66,7 +66,7 @@ sudo firewall-cmd --reload
 # Installing epel-release
 # P. 128 - 129
 sudo yum install -y epel-release
-sudo yum install -y java-1.8.0-openjdk-headless
+sudo yum install -y java-1.8.0-openjdk-headless.x86_64
 ###############################################################################################################
 # Fetch and install the Riemann RPM
 ###############################################################################################################
@@ -85,7 +85,7 @@ sudo sed -i 's/productiona/productionb/g' /etc/riemann/examplecom/etc/graphite.c
 # Install leiningen on Centos 7 - needed for riemann syntax checker
 wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 chmod +x lein
-sudo cp ./lein /usr/local/bin
+sudo cp -v ./lein /usr/local/bin
 
 # Riemann syntax checker download and install
 git clone https://github.com/samn/riemann-syntax-check
