@@ -90,7 +90,7 @@ sudo cp -v ./lein /usr/local/bin
 # Riemann syntax checker download and install
 git clone https://github.com/samn/riemann-syntax-check
 cd riemann-syntax-check
-lein uberjar
+/usr/local/bin/lein uberjar
 
 # P. 44  Install ruby gem tool, Centos 7 has Ruby 2.x as the default
 sudo yum install -y ruby ruby-devel gcc libxml2-devel
