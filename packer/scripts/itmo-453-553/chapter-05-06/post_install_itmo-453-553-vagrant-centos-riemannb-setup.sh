@@ -66,6 +66,7 @@ sudo firewall-cmd --reload
 # Installing epel-release
 # P. 128 - 129
 sudo yum install -y epel-release
+sudo yum install -y java-1.8.0-openjdk-headless
 ###############################################################################################################
 # Fetch and install the Riemann RPM
 ###############################################################################################################
