@@ -11,4 +11,8 @@ cd ../centos-graphiteb
 vagrant suspend
 cd ../ub-graphitemc
 vagrant suspend
+cd ../host2
+vagrant suspend
+cd ../host2
+vagrant suspend
 cd ../

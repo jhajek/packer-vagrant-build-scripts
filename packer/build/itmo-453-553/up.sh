@@ -11,4 +11,8 @@ cd ../centos-graphiteb
 vagrant up
 cd ../ub-graphitemc
 vagrant up
+cd ../host1
+vagrant up
+cd ../host2
+vagrant up
 cd ../

@@ -10,4 +10,8 @@ Set-Location ../centos-graphiteb
 vagrant up
 Set-Location ../ub-graphitemc
 vagrant up
+Set-Location ../host1
+vagrant up
+Set-Location ../host2
+vagrant up
 Set-Location ../

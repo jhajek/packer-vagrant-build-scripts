@@ -10,4 +10,8 @@ Set-Location ../centos-graphiteb
 vagrant suspend
 Set-Location ../ub-graphitemc
 vagrant suspend
+Set-Location ../host2
+vagrant suspend
+Set-Location ../host2
+vagrant suspend
 Set-Location ../
