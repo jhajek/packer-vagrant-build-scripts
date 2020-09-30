@@ -7,7 +7,7 @@ output*/
 *.vmdk
 *.ovf
 build/*
-!build/itmo-453-553/*/Vagrantfile
+!build/itmo-453-553/
 Vagrantfile
 .vagrant/*
 .cfg.*
