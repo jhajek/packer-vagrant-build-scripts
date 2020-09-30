@@ -10,7 +10,7 @@ Set-Location ../centos-graphiteb
 vagrant halt
 Set-Location ../ub-graphitemc
 vagrant halt
-Set-Location ../host2
+Set-Location ../host1
 vagrant halt
 Set-Location ../host2
 vagrant halt
