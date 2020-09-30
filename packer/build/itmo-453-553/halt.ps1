@@ -1,4 +1,8 @@
-Set-Location ub-riemanna
+Set-Location host1
+vagrant halt
+Set-Location ../host2
+vagrant halt
+Set-Location ../ub-riemanna
 vagrant halt
 Set-Location ../centos-riemannb
 vagrant halt
@@ -9,9 +13,5 @@ vagrant halt
 Set-Location ../centos-graphiteb
 vagrant halt
 Set-Location ../ub-graphitemc
-vagrant halt
-Set-Location ../host1
-vagrant halt
-Set-Location ../host2
 vagrant halt
 Set-Location ../

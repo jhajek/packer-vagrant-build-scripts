@@ -1,5 +1,10 @@
 #!/bin/bash
-cd ub-riemanna
+
+cd host1
+vagrant halt
+cd ../host2
+vagrant halt
+cd ../ub-riemanna
 vagrant halt
 cd ../centos-riemannb
 vagrant halt
@@ -10,9 +15,5 @@ vagrant halt
 cd ../centos-graphiteb
 vagrant halt
 cd ../ub-graphitemc
-vagrant halt
-cd ../host2
-vagrant halt
-cd ../host2
 vagrant halt
 cd ../
