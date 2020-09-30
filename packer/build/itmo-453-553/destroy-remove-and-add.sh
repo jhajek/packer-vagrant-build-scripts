@@ -17,6 +17,12 @@ vagrant destroy -f
 rm -rf ./.vagrant 
 cd ../ub-graphitemc
 vagrant destroy -f
+rm -rf ./.vagrant
+cd ../host1
+vagrant destroy -f
+rm -rf ./.vagrant  
+cd ../ub-host2
+vagrant destroy -f
 rm -rf ./.vagrant 
 cd ../
 
@@ -27,6 +33,8 @@ vagrant box remove ub-riemannmc --force
 vagrant box remove ub-graphitea --force 
 vagrant box remove centos-graphiteb --force 
 vagrant box remove ub-graphitemc --force 
+vagrant box remove host1 --force
+vagrant box remove host2 --force
 
 # Add newly built Vagrant boxes
 if [ -a  ../ub-riemanna-virtualbox*.box ]
@@ -59,4 +67,14 @@ if [ -a  ../ub-graphitemc-virtualbox*.box ]
     vagrant box add ../ub-graphitemc-virtualbox*.box --name ub-graphitemc
 else
    echo  "File ../ub-graphitemc-virtualbox*.box doesn't exist"
+fi
+if [ -a  ../ub-host1-virtualbox*.box ] 
+    vagrant box add ../ub-host1-virtualbox*.box --name host1
+else
+   echo  "File ../ub-host1-virtualbox*.box doesn't exist"
+fi
+if [ -a  ../centos-host2-virtualbox*.box ] 
+    vagrant box add ../centos-host2-virtualbox*.box --name host2
+else
+   echo  "File ../centos-host2-virtualbox*.box doesn't exist"
 fi

@@ -18,6 +18,12 @@ rm -rf ./.vagrant
 cd ../ub-graphitemc
 vagrant destroy -f
 rm -rf ./.vagrant 
+cd ../host1
+vagrant destroy -f
+rm -rf ./.vagrant  
+cd ../ub-host2
+vagrant destroy -f
+rm -rf ./.vagrant 
 cd ../
 
 # Remove existing vagrant boxes
@@ -27,3 +33,5 @@ vagrant box remove ub-riemannmc --force
 vagrant box remove ub-graphitea --force 
 vagrant box remove centos-graphiteb --force 
 vagrant box remove ub-graphitemc --force 
+vagrant box remove host1 --force
+vagrant box remove host2 --force
