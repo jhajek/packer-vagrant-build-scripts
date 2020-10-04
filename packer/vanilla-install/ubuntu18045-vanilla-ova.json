@@ -5,8 +5,8 @@
 },
   "builders": [
     {
-      "name": "ubuntu-18044",
-      "vm_name": "ubuntu-18044",
+      "name": "ubuntu-18045",
+      "vm_name": "ubuntu-18045",
       "type": "virtualbox-iso",
       "boot_command": [
         "<esc><wait>",

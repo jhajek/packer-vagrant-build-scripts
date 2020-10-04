@@ -32,7 +32,7 @@ The OVA format is part of the [Open Virtualization Format](https://en.wikipedia.
  ```
 
 The above line was added to this template so the AWS importer (which requires OVA) can accept your virtual machine.  
-Once all of the above is set, execute this command: ```packer build --var-file=variables.json .\ubuntu18044-ec2.json```
+Once all of the above is set, execute this command: ```packer build --var-file=variables.json .\ubuntu18045-ec2.json```
 
 Depending on Upload speed, this process could take some time.  The OVA built is near 1 GB, that has to be uploaded to AWS.  
 
