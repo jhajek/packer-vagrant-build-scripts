@@ -14,5 +14,7 @@ sudo usermod -a -G admin ubuntu
 ##################################################
 # needed to disable password authentication via SSH
 sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+sudo systemctl enable ssh.service
+sudo systemctl start ssh.service
 
 sudo apt-get install -y git rsync wget links
