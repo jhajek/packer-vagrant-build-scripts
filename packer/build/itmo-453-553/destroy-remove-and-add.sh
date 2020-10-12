@@ -68,8 +68,8 @@ else
    echo  "File ../centos-graphiteb-virtualbox*.box doesn't exist"
 fi
 if [ -a  ../ub-graphitemc-virtualbox*.box ] 
-    vagrant box add ../ub-graphitemc-virtualbox*.box --name ub-graphitemc
 then
+    vagrant box add ../ub-graphitemc-virtualbox*.box --name ub-graphitemc
 else
    echo  "File ../ub-graphitemc-virtualbox*.box doesn't exist"
 fi
