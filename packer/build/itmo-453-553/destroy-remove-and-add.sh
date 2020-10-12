@@ -74,8 +74,8 @@ else
    echo  "File ../ub-graphitemc-virtualbox*.box doesn't exist"
 fi
 if [ -a  ../ub-host1-virtualbox*.box ] 
-    vagrant box add ../ub-host1-virtualbox*.box --name host1
 then
+    vagrant box add ../ub-host1-virtualbox*.box --name host1
 else
    echo  "File ../ub-host1-virtualbox*.box doesn't exist"
 fi
