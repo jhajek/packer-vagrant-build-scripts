@@ -12,4 +12,8 @@ cd ../centos-riemannb
 vagrant up
 cd ../ub-riemannmc
 vagrant up
+cd ../host1
+vagrant up
+cd ../host2
+vagrant up
 cd ../
