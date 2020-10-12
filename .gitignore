@@ -6,9 +6,6 @@ output*/
 *~
 *.vmdk
 *.ovf
-
-!build/itmo-453-553/
-Vagrantfile
 .vagrant/*
 .cfg.*
 variables*.json
