@@ -44,36 +44,43 @@ else
    echo  "File ../ub-riemanna-virtualbox*.box doesn't exist"
 fi
 if [ -a  ../centos-riemannb-virtualbox*.box ] 
+then
     vagrant box add ../centos-riemannb-virtualbox*.box --name centos-riemannb
 else
    echo  "File ../centos-riemannb-virtualbox*.box doesn't exist"
 fi
 if [ -a  ../ub-riemannmc-virtualbox*.box ] 
+then
     vagrant box add ../ub-riemannmc-virtualbox*.box --name ub-riemannmc
 else
    echo  "File ../ub-riemannmc-virtualbox*.box doesn't exist"
 fi
 if [ -a  ../ub-graphitea-virtualbox*.box ] 
+then
     vagrant box add ../ub-graphitea-virtualbox*.box --name ub-graphitea
 else
    echo  "File ../ub-graphitea-virtualbox*.box doesn't exist"
 fi
 if [ -a  ../centos-graphiteb-virtualbox*.box ] 
+then
     vagrant box add ../centos-graphiteb-virtualbox*.box --name centos-graphiteb
 else
    echo  "File ../centos-graphiteb-virtualbox*.box doesn't exist"
 fi
 if [ -a  ../ub-graphitemc-virtualbox*.box ] 
     vagrant box add ../ub-graphitemc-virtualbox*.box --name ub-graphitemc
+then
 else
    echo  "File ../ub-graphitemc-virtualbox*.box doesn't exist"
 fi
 if [ -a  ../ub-host1-virtualbox*.box ] 
     vagrant box add ../ub-host1-virtualbox*.box --name host1
+then
 else
    echo  "File ../ub-host1-virtualbox*.box doesn't exist"
 fi
 if [ -a  ../centos-host2-virtualbox*.box ] 
+then
     vagrant box add ../centos-host2-virtualbox*.box --name host2
 else
    echo  "File ../centos-host2-virtualbox*.box doesn't exist"
