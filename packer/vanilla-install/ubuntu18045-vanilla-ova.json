@@ -1,6 +1,6 @@
 {
   "variables": {
-  "ova-name": "ubuntu-18044",
+  "ova-name": "ubuntu-18045",
   "headless-val": "false"
 },
   "builders": [
@@ -26,7 +26,7 @@
         " keyboard-configuration/variant=USA<wait>",
         " locale=en_US<wait>",
         " netcfg/get_domain=vm<wait>",
-        " netcfg/get_hostname=vagrant<wait>",
+        " netcfg/get_hostname={{.Name}}<wait>",
         " grub-installer/bootdev=/dev/sda<wait>",
         " noapic<wait>",
         " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg<wait>",
@@ -34,7 +34,7 @@
         "<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 50000,
+      "disk_size": 10000,
       "guest_os_type": "Ubuntu_64",
       "http_directory" : ".",
       "http_port_min" : 9001,
@@ -51,7 +51,7 @@
       "virtualbox_version_file": ".vbox_version",
       "format": "ova",
       "headless": "{{user `headless`}}",
-      "output_filename": "ubuntu-18044-{{timestamp}}.box",
+      "output_filename": "../../build/ubuntu-18045-{{timestamp}}",
       "vboxmanage": [
         [
           "modifyvm",
