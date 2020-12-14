@@ -43,6 +43,7 @@
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9050,
+      "http_interface":"Intel(R) Ethernet Connection (3) I218-V",      
       "iso_urls": ["http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.5-server-amd64.iso"],
       "iso_checksum": "sha256:8c5fc24894394035402f66f3824beb7234b757dd2b5531379cb310cedfdf0996",
       "iso_storage_pool": "local",
@@ -51,7 +52,6 @@
       "unmount_iso": true,
       "template_name": "Ubuntu18045",
       "scsi_controller":"virtio-scsi-pci",
-      "http_interface":"ATT4rqG6v7",
       "network_adapters": [
         {
           "bridge": "vmbr0",
