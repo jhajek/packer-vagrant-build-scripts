@@ -57,7 +57,7 @@
           "type": "scsi",
           "disk_size": "15G",
           "storage_pool": "datadisk",
-          "storage_pool_type": "zfs"
+          "storage_pool_type": "zfspool"
         }
       ],      
       "ssh_username": "vagrant",
