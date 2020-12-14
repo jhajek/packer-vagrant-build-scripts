@@ -48,6 +48,8 @@
       "iso_storage_pool": "datadisk",
       "os": "l26",
       "memory": 2048,
+      "unmount_iso": true,
+      "template_name": "Ubuntu18045",
       "network_adapters": [
         {
           "bridge": "vmbr0"
