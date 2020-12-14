@@ -2,7 +2,7 @@
   "variables": {
   "ova-name": "ubuntu-18045-prxmx",
   "headless-val": "false",
-  "prxmx-url": "https://172.16.1.68:8006/api2/json"
+  "prxmx-url": "https://172.16.1.62:8006/api2/json"
 },
   "builders": [
     {
@@ -10,6 +10,7 @@
       "vm_name": "ubuntu-18045-prxmx",
       "type": "proxmox-iso",
       "proxmox_url": "{{user `prxmx-url`}}",
+      "insecure_skip_tls_verify": true,
       "username": "root",
       "password": "cluster",
       "node": "pve",
