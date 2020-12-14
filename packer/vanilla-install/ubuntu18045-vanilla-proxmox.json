@@ -11,7 +11,7 @@
       "type": "proxmox-iso",
       "proxmox_url": "{{user `prxmx-url`}}",
       "insecure_skip_tls_verify": true,
-      "username": "root",
+      "username": "root@pve",
       "password": "cluster",
       "node": "pve",
       "boot_command": [
