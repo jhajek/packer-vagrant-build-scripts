@@ -1,13 +1,13 @@
 {
   "variables": {
-  "ova-name": "ubuntu-18045-prxmx",
   "headless-val": "false",
-  "prxmx-url": "https://172.16.1.62:8006/api2/json"
+  "prxmx-url": "https://172.16.1.62:8006/api2/json",
+  "mac-addr": "90:e2:ba:2e:b0:70"
 },
   "builders": [
     {
-      "name": "ubuntu-18045-prxmx",
-      "vm_name": "ubuntu-18045-prxmx",
+      "name": "ubuntu-18045-prxmx25",
+      "vm_name": "ubuntu-18045-prxmx25",
       "type": "proxmox-iso",
       "proxmox_url": "{{user `prxmx-url`}}",
       "insecure_skip_tls_verify": true,
@@ -26,16 +26,16 @@
         " debconf/frontend=noninteractive<wait>",
         " debian-installer=en_US<wait>",
         " fb=false<wait>",
-        " initrd=/install/initrd.gz<wait>",
+        " initrd=/install/initrd.gz ipv6.disable=1<wait>",
         " kbd-chooser/method=us<wait>",
         " keyboard-configuration/layout=USA<wait>",
         " keyboard-configuration/variant=USA<wait>",
         " locale=en_US<wait>",
         " netcfg/get_domain=vm<wait>",
-        " netcfg/get_hostname=vagrant<wait>",
+        " netcfg/get_hostname=prxmx25<wait>",
         " grub-installer/bootdev=/dev/sda<wait>",
         " noapic<wait>",
-        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg<wait>",
+        " preseed/url={{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-prxmx.cfg<wait>",
         " -- <wait>",
         "<enter><wait>"
       ],
@@ -50,17 +50,22 @@
       "memory": 2048,
       "unmount_iso": true,
       "template_name": "Ubuntu18045",
+      "scsi_controller":"virtio-scsi-pci",
+      "http_interface":"ATT4rqG6v7",
       "network_adapters": [
         {
-          "bridge": "vmbr0"
+          "bridge": "vmbr0",
+          "model": "virtio",
+          "mac_address": "90:e2:ba:2e:b0:70",
+          "firewall": true
         }
       ],
       "disks": [
         {
-          "type": "scsi",
+          "type": "virtio",
           "disk_size": "15G",
-          "storage_pool": "datadisk",
-          "storage_pool_type": "zfspool"
+          "storage_pool": "local-lvm",
+          "storage_pool_type": "lvm"
         }
       ],      
       "ssh_username": "vagrant",

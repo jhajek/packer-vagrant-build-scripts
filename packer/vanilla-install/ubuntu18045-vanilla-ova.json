@@ -39,7 +39,7 @@
       "http_directory" : ".",
       "http_port_min" : 9001,
       "http_port_max" : 9050,
-      "iso_urls": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.5-server-amd64.iso",
+      "iso_urls": ["http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.5-server-amd64.iso"],
       "iso_checksum": "sha256:8c5fc24894394035402f66f3824beb7234b757dd2b5531379cb310cedfdf0996",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
@@ -50,7 +50,7 @@
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
       "format": "ova",
-      "headless": "{{user `headless`}}",
+      "headless": "{{user `headless-val`}}",
       "output_filename": "../../build/ubuntu-18045-{{timestamp}}",
       "vboxmanage": [
         [
