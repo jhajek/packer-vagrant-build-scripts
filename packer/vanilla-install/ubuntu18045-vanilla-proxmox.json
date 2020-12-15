@@ -2,7 +2,8 @@
   "variables": {
   "headless-val": "false",
   "prxmx-url": "https://172.16.1.62:8006/api2/json",
-  "mac-addr": "90:e2:ba:2e:b0:71"
+  "mac-addr": "90:e2:ba:2e:b0:71",
+  "ip":"172.168.1.201"
 },
   "builders": [
     {
