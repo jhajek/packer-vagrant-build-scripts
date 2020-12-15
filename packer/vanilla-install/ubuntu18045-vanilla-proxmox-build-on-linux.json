@@ -2,7 +2,8 @@
   "variables": {
   "headless-val": "false",
   "prxmx-url": "https://172.16.1.62:8006/api2/json",
-  "mac-addr": "90:e2:ba:2e:b0:70"
+  "mac-addr": "90:e2:ba:2e:b0:70",
+  "ip":"172.168.1.201"
 },
   "builders": [
     {
@@ -47,7 +48,7 @@
       "iso_storage_pool": "local",
       "os": "l26",
       "memory": 2048,
-      "unmount_iso": true,
+      "unmount": true,
       "template_name": "Ubuntu18045",
       "scsi_controller":"virtio-scsi-pci",
       "network_adapters": [
@@ -62,8 +63,8 @@
         {
           "type": "virtio",
           "disk_size": "15G",
-          "storage_pool": "local-lvm",
-          "storage_pool_type": "lvm"
+          "storage_pool": "datadisk",
+          "storage_pool_type": "zfspool"
         }
       ],      
       "ssh_username": "vagrant",
