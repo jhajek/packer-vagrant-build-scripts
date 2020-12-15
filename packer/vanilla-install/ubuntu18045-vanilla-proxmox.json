@@ -35,7 +35,7 @@
         " netcfg/get_hostname=prxmx25<wait>",
         " grub-installer/bootdev=/dev/sda<wait>",
         " noapic<wait>",
-        " preseed/url={{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-prxmx.cfg<wait>",
+        " preseed/url={{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed.cfg<wait>",
         " -- <wait>",
         "<enter><wait>"
       ],
