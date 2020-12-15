@@ -52,6 +52,7 @@
       "unmount_iso": true,
       "template_name": "Ubuntu18045",
       "scsi_controller":"virtio-scsi-pci",
+      "cloud_init": true,
       "network_adapters": [
         {
           "bridge": "vmbr0",
