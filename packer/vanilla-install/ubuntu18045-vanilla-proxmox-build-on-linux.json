@@ -70,7 +70,8 @@
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
-      "ssh_wait_timeout": "10000s"
+      "ssh_wait_timeout": "10000s",
+      "http_bind_address":"172.16.1.200"
       }],
       
 "provisioners": [
