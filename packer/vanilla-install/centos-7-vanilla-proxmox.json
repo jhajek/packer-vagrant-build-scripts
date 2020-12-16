@@ -37,6 +37,8 @@
         "ssh_username": "vagrant",
         "ssh_timeout": "15m",
         "ssh_password": "vagrant",
+        "http_port_min" : 9001,
+        "http_port_max" : 9050,  
         "http_bind_address":"{{user `ip`}}",
   
         "unmount_iso": true,
