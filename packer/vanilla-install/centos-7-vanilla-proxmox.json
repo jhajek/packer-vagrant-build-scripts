@@ -1,6 +1,6 @@
 {
     "variables": {
-      "username": "root@pve",
+      "username": "root@pam",
       "password": "cluster",
       "ip":"172.168.1.201"
     },
