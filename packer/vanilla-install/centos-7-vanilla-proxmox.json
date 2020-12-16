@@ -28,6 +28,7 @@
         ],
   
         "iso_file": "local:iso/CentOS-7-x86_64-Minimal-2003.iso",
+        "http_directory": ".",
         "boot_wait": "10s",
         "boot_command": [
           "<up><tab> ip=dhcp inst.cmdline inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks/centos-7-base.cfg<enter>"
