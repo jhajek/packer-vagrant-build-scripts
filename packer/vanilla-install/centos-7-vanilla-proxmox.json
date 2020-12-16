@@ -31,7 +31,7 @@
         "http_directory": ".",
         "boot_wait": "10s",
         "boot_command": [
-          "<up><tab> ip=dhcp inst.cmdline inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks/centos-7-base.cfg<enter>"
+          "<up><tab> ip=dhcp inst.cmdline inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks/centos-7-proxmox.cfg<enter>"
         ],
   
         "ssh_username": "vagrant",
