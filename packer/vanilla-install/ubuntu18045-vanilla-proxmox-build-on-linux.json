@@ -49,7 +49,6 @@
       "iso_storage_pool": "local",
       "os": "l26",
       "memory": 2048,
-      "unmount_iso": true,
       "template_name": "Ubuntu18045",
       "scsi_controller":"virtio-scsi-pci",
       "cloud_init": true,
@@ -74,7 +73,8 @@
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
-      "http_bind_address":"{{user `ip`}}"
+      "http_bind_address":"{{user `ip`}}",
+      "unmount_iso": true
       }],
       
 "provisioners": [
