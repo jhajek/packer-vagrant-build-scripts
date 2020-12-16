@@ -1,0 +1,47 @@
+{
+    "variables": {
+      "username": "root@pve",
+      "password": "cluster",
+      "ip":"172.168.1.201"
+    },
+    "builders": [
+      {
+        "type": "proxmox",
+        "proxmox_url": "https://172.16.1.62:8006/api2/json",
+        "insecure_skip_tls_verify": true,
+        "username": "{{user `username`}}",
+        "password": "{{user `password`}}",
+  
+        "node": "pve",
+        "network_adapters": [
+          {
+            "bridge": "vmbr0"
+          }
+        ],
+        "disks": [
+          {
+            "type": "scsi",
+            "disk_size": "5G",
+            "storage_pool": "local-lvm",
+            "storage_pool_type": "lvm"
+          }
+        ],
+  
+        "iso_file": "local:iso/CentOS-7-x86_64-Minimal-2003.iso",
+        "http_directory": "config",
+        "boot_wait": "10s",
+        "boot_command": [
+          "<up><tab> ip=dhcp inst.cmdline inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks/centos-7-base.cfg<enter>"
+        ],
+  
+        "ssh_username": "vagrant",
+        "ssh_timeout": "15m",
+        "ssh_password": "vagrant",
+        "http_bind_address":"{{user `ip`}}",
+  
+        "unmount_iso": true,
+        "template_name": "CentOS-7",
+        "template_description": "CentOS-7, generated on {{ isotime \"2020-012-29T20:04:05Z\" }}"
+      }
+    ]
+  }
