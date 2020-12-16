@@ -59,7 +59,7 @@
           "bridge": "vmbr0",
           "model": "virtio",
           "mac_address": "90:e2:ba:2e:b0:70",
-          "firewall": true
+          "firewall": false
         }
       ],
       "disks": [
