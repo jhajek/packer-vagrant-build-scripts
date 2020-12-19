@@ -2,6 +2,10 @@
 
 These are the commands and variables to create proxmox templates
 
+## Packages
+
+The package `qemu-guest-agent` needs to be added to your preseed
+
 ## Commands
 
 ```bash
