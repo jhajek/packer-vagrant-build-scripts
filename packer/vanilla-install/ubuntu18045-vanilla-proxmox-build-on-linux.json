@@ -18,7 +18,7 @@
       "proxmox_url": "{{user `prxmx-url`}}",
       "insecure_skip_tls_verify": true,
       "username": "{{ user `uname` }}",
-      "password": "{{ user `password `}}",
+      "password": "{{ user `password` }}",
       "node": "proxmonster",
       "boot_command": [
         "<esc><wait>",
