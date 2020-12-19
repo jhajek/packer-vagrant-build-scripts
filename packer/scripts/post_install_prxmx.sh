@@ -9,3 +9,5 @@ echo "%admin  ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/init-users
 sudo groupadd admin
 sudo usermod -a -G admin vagrant
 
+sudo apt-get update
+sudo apt-get install -y links
