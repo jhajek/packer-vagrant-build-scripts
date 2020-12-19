@@ -79,5 +79,13 @@
       "ssh_wait_timeout": "10000s",
       "http_bind_address":"{{user `ip`}}",
       "unmount_iso": true
-      }]
+      }],
+      
+      "provisioners": [
+        {
+          "type": "shell",
+        "execute_command" : "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'", 
+          "script": "../scripts/post_install_prxmx.sh"
+        }
+      ]
 }
