@@ -6,7 +6,9 @@
   "ip":"172.168.1.201",
   "storagepool":"datadisk1",
   "storagepooltype": "lvm",
-  "vmname":"ubuntu-18045-prxmx25"
+  "vmname":"ubuntu-18045-prxmx25",
+  "uname": "root@pam",
+  "password": "cluster"
 },
   "builders": [
     {
@@ -15,8 +17,8 @@
       "type": "proxmox-iso",
       "proxmox_url": "{{user `prxmx-url`}}",
       "insecure_skip_tls_verify": true,
-      "username": "root@pam",
-      "password": "researchcluster",
+      "username": "{{ user `uname` }}",
+      "password": "{{ user `password `}}",
       "node": "proxmonster",
       "boot_command": [
         "<esc><wait>",
