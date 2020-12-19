@@ -57,7 +57,7 @@
       "template_name": "Ubuntu18045",
       "scsi_controller":"virtio-scsi-pci",
       "qemu_agent": true,
-      "cloud-init": true,
+      "cloud_init": true,
       "boot": "order=virtio0;ide2",
       "network_adapters": [
         {
