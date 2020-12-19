@@ -3,18 +3,21 @@
   "headless-val": "false",
   "prxmx-url": "https://172.16.1.62:8006/api2/json",
   "mac-addr": "90:e2:ba:2e:b0:70",
-  "ip":"172.168.1.201"
+  "ip":"172.168.1.201",
+  "storagepool":"datadisk1",
+  "storagepooltype": "lvm",
+  "vmname":"ubuntu-18045-prxmx25"
 },
   "builders": [
     {
-      "name": "ubuntu-18045-prxmx25",
-      "vm_name": "ubuntu-18045-prxmx25",
+      "name": "{{ user `vmname` }}",
+      "vm_name": "{{ user `vmname` }}",
       "type": "proxmox-iso",
       "proxmox_url": "{{user `prxmx-url`}}",
       "insecure_skip_tls_verify": true,
       "username": "root@pam",
-      "password": "cluster",
-      "node": "pve",
+      "password": "researchcluster",
+      "node": "proxmonster",
       "boot_command": [
         "<esc><wait>",
         "<esc><wait>",
@@ -57,16 +60,15 @@
         {
           "bridge": "vmbr0",
           "model": "virtio",
-          "mac_address": "90:e2:ba:2e:b0:70",
-          "firewall": true
+          "firewall": false
         }
       ],
       "disks": [
         {
           "type": "virtio",
           "disk_size": "15G",
-          "storage_pool": "datadisk",
-          "storage_pool_type": "zfspool"
+          "storage_pool": "{{ user `storagepool` }}",
+          "storage_pool_type": "{{ user `storagepooltype` }}"
         }
       ],      
       "ssh_username": "vagrant",
