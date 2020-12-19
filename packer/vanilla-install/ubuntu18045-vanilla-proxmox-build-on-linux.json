@@ -56,8 +56,6 @@
       "memory": 2048,
       "template_name": "Ubuntu18045",
       "scsi_controller":"virtio-scsi-pci",
-      "cloud_init": true,
-      "qemu_agent": true,
       "boot": "order=virtio0;ide2",
       "network_adapters": [
         {
