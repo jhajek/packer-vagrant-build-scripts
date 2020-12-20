@@ -10,7 +10,11 @@ sudo groupadd admin
 sudo usermod -a -G admin vagrant
 
 sudo apt-get update
-sudo apt-get install -y links fail2ban
+sudo apt-get install -y links fail2ban firewalld
 
 sudo sed -i "s/bantime  = 600/bantime = -1/g" /etc/fail2ban/jail.conf
 sudo systemctl enable fail2ban
+
+sudo systemctl enable firewalld
+sudo systemctl start firewalld
+sudo firewall-cmd --add-service=ssh --permanent
