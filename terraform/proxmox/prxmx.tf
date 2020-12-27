@@ -12,7 +12,7 @@ provider "proxmox" {
     pm_tls_insecure = true
     pm_api_url = "https://172.16.1.62:8006/api2/json"
     pm_password = "root"
-    pm_user = "cluster@pve"
+    pm_user = "cluster@pam"
     pm_otp = ""
 }
 
@@ -109,16 +109,3 @@ resource "proxmox-iso" "${var.vmname}" {
   vm_name          = "${var.vmname}"
 }
 
-# a build block invokes sources and runs provisioning steps on them. The
-# documentation for build blocks can be found here:
-# https://www.packer.io/docs/from-1.5/blocks/build
-build {
-  sources = ["source.proxmox-iso.{{ user `vmname` }}"]
-
-
-  #could not parse template for following block: "template: generated:2:41: executing \"generated\" at <.Vars>: can't evaluate field Vars in type struct { HTTPIP string; HTTPPort string }"
-  provisioner "shell" {
-    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    script          = "../scripts/post_install_prxmx.sh"
-  }
-}
