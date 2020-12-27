@@ -1,3 +1,13 @@
+terraform {
+  required_providers {
+    proxmox = {
+      source  = "registry.example.com/telmate/proxmox"
+      version = ">=1.0.0"
+    }
+  }
+  required_version = ">= 0.13"
+}
+
 provider "proxmox" {
     pm_tls_insecure = true
     pm_api_url = "https://172.16.1.62:8006/api2/json"
@@ -6,56 +16,109 @@ provider "proxmox" {
     pm_otp = ""
 }
 
-resource "proxmox_vm_qemu" "cloudinit-test" {
-    name = "terraform-test-vm"
-    desc = "A test for using terraform and cloudinit"
+variable "headless-val" {
+  type    = string
+  default = "false"
+}
 
-    # Node name has to be the same name as within the cluster
-    # this might not include the FQDN
-    target_node = "pve"
+variable "ip" {
+  type    = string
+  default = "172.168.1.201"
+}
 
-    # The destination resource pool for the new VM
-    # pool = "pool0"
+variable "mac-addr" {
+  type    = string
+  default = "90:e2:ba:2e:b0:70"
+}
 
-    # The template name to clone this vm from
-    # clone = "linux-cloudinit-template"
+variable "password" {
+  type    = string
+  default = "cluster"
+}
 
-    # Activate QEMU agent for this VM
-    agent = 1
+variable "prxmx-url" {
+  type    = string
+  default = "https://172.16.1.62:8006/api2/json"
+}
 
-    os_type = "cloud-init"
-    cores = "2"
-    sockets = "1"
-    vcpus = "0"
-    cpu = "host"
-    memory = "2048"
-    scsihw = "lsi"
+variable "storagepool" {
+  type    = string
+  default = "datadisk1"
+}
 
-    # Setup the disk. The id has to be unique
-    disk {
-        id = 0
-        size = 32
-        type = "virtio"
-        storage = "datadisk"
-        storage_type = "zfspool"
-        iothread = true
-        ssd = true
-        discard = "on"
-    }
+variable "storagepooltype" {
+  type    = string
+  default = "lvm"
+}
 
-    # Setup the network interface and assign a vlan tag: 256
-    network {
-        id = 0
-        model = "virtio"
-        bridge = "vmbr0"
-        tag = 256
-    }
+variable "uname" {
+  type    = string
+  default = "root@pam"
+}
 
-    # Setup the ip address using cloud-init.
-    # Keep in mind to use the CIDR notation for the ip.
-    ipconfig0 = "ip=192.168.10.20/24,gw=192.168.10.1"
+variable "vmname" {
+  type    = string
+  default = "ubuntu-18045-prxmx25"
+}
 
-    sshkeys = <<EOF
-    ssh-rsa 9182739187293817293817293871== user@pc
-    EOF
+# "timestamp" template function replacement
+locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
+
+# source blocks are generated from your builders; a source can be referenced in
+# build blocks. A build block runs provisioner and post-processors on a
+# source. Read the documentation for source blocks here:
+# https://www.packer.io/docs/from-1.5/blocks/source
+resource "proxmox-iso" "${var.vmname}" {
+  boot         = "order=virtio0;ide2"
+  boot_command = ["<esc><wait>", "<esc><wait>", "<enter><wait>", "/install/vmlinuz<wait>", " auto<wait>", " console-setup/ask_detect=false<wait>", " console-setup/layoutcode=us<wait>", " console-setup/modelcode=pc105<wait>", " debconf/frontend=noninteractive<wait>", " debian-installer=en_US<wait>", " fb=false<wait>", " initrd=/install/initrd.gz ipv6.disable=1<wait>", " kbd-chooser/method=us<wait>", " keyboard-configuration/layout=USA<wait>", " keyboard-configuration/variant=USA<wait>", " locale=en_US<wait>", " netcfg/get_domain=vm<wait>", " grub-installer/bootdev=/dev/vda<wait>", " netcfg/get_hostname=prxmx25<wait>", " noapic<wait>", " preseed/url={{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-prxmx.cfg<wait>", " -- <wait>", "<enter><wait>"]
+  boot_wait    = "10s"
+  cloud_init   = true
+  disks {
+    disk_size         = "15G"
+    storage_pool      = "${var.storagepool}"
+    storage_pool_type = "${var.storagepooltype}"
+    type              = "virtio"
+  }
+  http_bind_address        = "${var.ip}"
+  http_directory           = "."
+  http_port_max            = 9050
+  http_port_min            = 9001
+  insecure_skip_tls_verify = true
+  iso_checksum             = "sha256:8c5fc24894394035402f66f3824beb7234b757dd2b5531379cb310cedfdf0996"
+  iso_file                 = "local:iso/ubuntu-18.04.5-server-amd64.iso"
+  iso_storage_pool         = "local"
+  memory                   = 2048
+  network_adapters {
+    bridge   = "vmbr0"
+    firewall = false
+    model    = "virtio"
+  }
+  node             = "proxmonster"
+  os               = "l26"
+  password         = "${var.password}"
+  proxmox_url      = "${var.prxmx-url}"
+  qemu_agent       = true
+  scsi_controller  = "virtio-scsi-pci"
+  ssh_password     = "vagrant"
+  ssh_port         = 22
+  ssh_username     = "vagrant"
+  ssh_wait_timeout = "10000s"
+  template_name    = "Ubuntu18045"
+  unmount_iso      = true
+  username         = "${var.uname}"
+  vm_name          = "${var.vmname}"
+}
+
+# a build block invokes sources and runs provisioning steps on them. The
+# documentation for build blocks can be found here:
+# https://www.packer.io/docs/from-1.5/blocks/build
+build {
+  sources = ["source.proxmox-iso.{{ user `vmname` }}"]
+
+
+  #could not parse template for following block: "template: generated:2:41: executing \"generated\" at <.Vars>: can't evaluate field Vars in type struct { HTTPIP string; HTTPPort string }"
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    script          = "../scripts/post_install_prxmx.sh"
+  }
 }
