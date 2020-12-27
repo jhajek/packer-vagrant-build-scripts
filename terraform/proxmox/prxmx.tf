@@ -68,18 +68,18 @@ locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 # build blocks. A build block runs provisioner and post-processors on a
 # source. Read the documentation for source blocks here:
 # https://www.packer.io/docs/from-1.5/blocks/source
-resource "proxmox-iso" "${var.vmname}" {
+resource "proxmox-iso" "var.vmname}" {
   boot         = "order=virtio0;ide2"
   boot_command = ["<esc><wait>", "<esc><wait>", "<enter><wait>", "/install/vmlinuz<wait>", " auto<wait>", " console-setup/ask_detect=false<wait>", " console-setup/layoutcode=us<wait>", " console-setup/modelcode=pc105<wait>", " debconf/frontend=noninteractive<wait>", " debian-installer=en_US<wait>", " fb=false<wait>", " initrd=/install/initrd.gz ipv6.disable=1<wait>", " kbd-chooser/method=us<wait>", " keyboard-configuration/layout=USA<wait>", " keyboard-configuration/variant=USA<wait>", " locale=en_US<wait>", " netcfg/get_domain=vm<wait>", " grub-installer/bootdev=/dev/vda<wait>", " netcfg/get_hostname=prxmx25<wait>", " noapic<wait>", " preseed/url={{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-prxmx.cfg<wait>", " -- <wait>", "<enter><wait>"]
   boot_wait    = "10s"
   cloud_init   = true
   disks {
     disk_size         = "15G"
-    storage_pool      = "${var.storagepool}"
-    storage_pool_type = "${var.storagepooltype}"
+    storage_pool      = "var.storagepool"
+    storage_pool_type = "var.storagepooltype"
     type              = "virtio"
   }
-  http_bind_address        = "${var.ip}"
+  http_bind_address        = "var.ip"
   http_directory           = "."
   http_port_max            = 9050
   http_port_min            = 9001
@@ -95,8 +95,8 @@ resource "proxmox-iso" "${var.vmname}" {
   }
   node             = "proxmonster"
   os               = "l26"
-  password         = "${var.password}"
-  proxmox_url      = "${var.prxmx-url}"
+  password         = "var.password"
+  proxmox_url      = "var.prxmx-url"
   qemu_agent       = true
   scsi_controller  = "virtio-scsi-pci"
   ssh_password     = "vagrant"
@@ -105,7 +105,7 @@ resource "proxmox-iso" "${var.vmname}" {
   ssh_wait_timeout = "10000s"
   template_name    = "Ubuntu18045"
   unmount_iso      = true
-  username         = "${var.uname}"
-  vm_name          = "${var.vmname}"
+  username         = "var.uname"
+  vm_name          = "var.vmname"
 }
 
