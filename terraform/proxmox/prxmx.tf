@@ -68,7 +68,7 @@ locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 # build blocks. A build block runs provisioner and post-processors on a
 # source. Read the documentation for source blocks here:
 # https://www.packer.io/docs/from-1.5/blocks/source
-resource "proxmox-iso" "var.vmname}" {
+resource "proxmox-iso" "var.vmname" {
   boot         = "order=virtio0;ide2"
   boot_command = ["<esc><wait>", "<esc><wait>", "<enter><wait>", "/install/vmlinuz<wait>", " auto<wait>", " console-setup/ask_detect=false<wait>", " console-setup/layoutcode=us<wait>", " console-setup/modelcode=pc105<wait>", " debconf/frontend=noninteractive<wait>", " debian-installer=en_US<wait>", " fb=false<wait>", " initrd=/install/initrd.gz ipv6.disable=1<wait>", " kbd-chooser/method=us<wait>", " keyboard-configuration/layout=USA<wait>", " keyboard-configuration/variant=USA<wait>", " locale=en_US<wait>", " netcfg/get_domain=vm<wait>", " grub-installer/bootdev=/dev/vda<wait>", " netcfg/get_hostname=prxmx25<wait>", " noapic<wait>", " preseed/url={{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-prxmx.cfg<wait>", " -- <wait>", "<enter><wait>"]
   boot_wait    = "10s"
