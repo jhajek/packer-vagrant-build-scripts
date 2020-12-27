@@ -24,3 +24,5 @@ Understanding-Free*
 1950*
 .DS_Store
 *.ova
+.terraform/
+.terraform*
