@@ -14,5 +14,6 @@ provider "proxmox" {
 
 resource "proxmox_vm_qemu" "resource-name" {
     name = "VM name"
-    target_node = "Node to create the VM on"
+    target_node = "pve"
+    iso = "local:iso/ubuntu-18.04.5-server-amd64.iso"
 }
