@@ -17,10 +17,11 @@ resource "proxmox_vm_qemu" "resource-name" {
     target_node = "pve"
     iso = "local:iso/ubuntu-18.04.5-server-amd64.iso"
     os_type = "ubuntu"
+    agent = 1
     network {
       bridge   = "vmbr0"
       firewall = false
       model    = "virtio"
-      id = 1
+      id = 0
     }
 }
