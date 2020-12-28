@@ -3,3 +3,8 @@ provider "proxmox" {
     pm_user = "root@pam"
     pm_password = "cluster"
 }
+
+resource "proxmox_vm_qemu" "resource-name" {
+    name = "VM name"
+    target_node = "Node to create the VM on"
+}
