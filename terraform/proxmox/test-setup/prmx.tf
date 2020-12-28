@@ -20,6 +20,6 @@ resource "proxmox_vm_qemu" "resource-name" {
       bridge   = "vmbr0"
       firewall = false
       model    = "virtio"
-      id = "test"
+      id = 1
     }
 }
