@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     proxmox = {
-    source = "registry.terraform.io/hashicorp/ondrejsika/proxmox"
+    source = "registry.terraform.io/ondrejsika/proxmox"
     }
 }
 
