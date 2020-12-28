@@ -13,7 +13,7 @@ provider "proxmox" {
 }
 
 resource "proxmox_vm_qemu" "resource-name" {
-    name = "VM name"
+    name = "ubuntu-class-server"
     target_node = "pve"
     iso = "local:iso/ubuntu-18.04.5-server-amd64.iso"
 }
