@@ -21,9 +21,8 @@ echo "All Done!"
 # Add User customizations below here
 ##################################################
 
-# sudo apt-get -y upgrade
-# sudo apt-get -y dist-upgrade
-# sudo apt-get -y install openjdk-8-jdk
-# sudo apt-get install -y fail2ban
+# Disable Auto Package Update
+# https://askubuntu.com/questions/1167314/disable-automatic-updates-ubuntu-18-04
+sed -i 's/1/0/g' /etc/apt/apt.conf.d/20auto-upgrades
 
 
