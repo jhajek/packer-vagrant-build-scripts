@@ -15,8 +15,8 @@ This is how we are passing passwords/RSA keys securely.
 1) Issue the command to begin the install with password, usernames, and RSA private key properly seeded:
 
 ```bash
-packer build --var-file=./variables.json ubuntu18044-itmt430-database.json
-packer build --var-file=./variables.json ubuntu18044-itmt430-webserver.json
+packer build --var-file=./variables.json ubuntu18045-itmt430-database.json
+packer build --var-file=./variables.json ubuntu18045-itmt430-webserver.json
 ```
 
 This way we can securely build the system, deploy it and when building it pass in passwords via environment variables
