@@ -14,7 +14,7 @@ source "virtualbox-iso" "ubuntu-20042-live-server" {
   iso_checksum            = "sha256:d1f2bf834bbe9bb43faf16f9be992a6f3935e65be0edece1dee2aa6eb1767423"
   iso_urls                = ["http://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso"]
   shutdown_command        = "echo 'ubuntu' | sudo -S shutdown -P now"
-  # ssh_handshake_attempts  = "40"
+  ssh_handshake_attempts  = "80"
   ssh_password            = "ubuntu"
   ssh_port                = 22
   ssh_timeout             = "20m"
