@@ -1,42 +1,33 @@
-#cloud-config
+#cloud-config - https://raw.githubusercontent.com/nickcharlton/packer-ubuntu-2004/master/http/user-data
 autoinstall:
   version: 1
-  apt:
-    geoip: true
-    preserve_sources_list: false
-    primary:
-    - arches: [amd64]
-      uri: http://us.archive.ubuntu.com/ubuntu
   identity:
-    hostname: ubuntu2004
-    username: vagrant
-    password: '$6$pYP9uw5wpvWxMapn$QUwvTLT2rOCSFQqRMkPAb5qIC3toclUNueOkBV./cCBYa5ZKywCgZ5WughkseNIIMDYdd3mHzBwuXNcKsc/aE1'
-  ssh:
-    allow-pw: true
-    install-server: true
-  locale: en_US
-  keyboard: 
-    layout: us
+    hostname: ubuntu-server
+    password: '$6$rounds=4096$jPmEGbHW5CkbWf$vVo.zmNfBHk7ESjN5coFW0v0cfCEi1bXS5KyHAi6yeeKvRYdc4ghxUSTpJJqO4IrMOYHNMKehKJInbFxrwMyi1'
+    username: ubuntu
   storage:
     layout:
       name: direct
-    config:
-      - type: disk
-        id: disk0
-        match:
-          size: largest
-      - type: partition
-        id: boot-partition
-        device: disk0
-        size: 2048M
-      - type: partition
-        id: root-partition
-        device: disk0
-        size: -1
+  packages:
+    - bc
+    - curl
+    - wget
+    - openssh-server
+    - qemu-guest-agent
+  network:
+    network:
+      version: 2
+      ethernets:
+        enp0s3: {dhcp4: true, dhcp-identifier: mac}
+  ssh:
+    allow-pw: true
+    install-server: true
   late-commands:
-    - "echo 'Defaults:vagrant !requiretty' > /target/etc/sudoers.d/vagrant"
-    - "echo 'vagrant ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/vagrant"
-    - "chmod 440 /target/etc/sudoers.d/vagrant"
+    - sed -i 's/^#*\(send dhcp-client-identifier\).*$/\1 = hardware;/' /target/etc/dhcp/dhclient.conf
+    - 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'
+    - "echo 'Defaults:ubuntu !requiretty' > /target/etc/sudoers.d/ubuntu"
+    - "echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/ubuntu"
+    - "chmod 440 /target/etc/sudoers.d/ubuntu"
 
 
 
