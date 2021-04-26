@@ -3,7 +3,7 @@ autoinstall:
   version: 1
   identity:
     hostname: ubuntu-server
-    password: '$6$rounds=4096$jPmEGbHW5CkbWf$vVo.zmNfBHk7ESjN5coFW0v0cfCEi1bXS5KyHAi6yeeKvRYdc4ghxUSTpJJqO4IrMOYHNMKehKJInbFxrwMyi1'
+    password: '$6$ExJMC2Vf$WMzulvVD8.9zNHLi78wW.XlGj/R3nBZnLf6eV5cVUgxnzDSFlwzfqoG1d4mSdaCmd0jVaKmp1b3h6zzc6YpHv1'
     username: ubuntu
   storage:
     layout:
