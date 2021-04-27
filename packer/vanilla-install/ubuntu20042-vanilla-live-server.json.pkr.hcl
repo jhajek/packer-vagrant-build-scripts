@@ -1,11 +1,6 @@
 
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
-variable "headless-build" {
-  type =  boolean
-  default = false
-}
-
 source "virtualbox-iso" "ubuntu-20042-live-server" {
   boot_command            = ["<enter><enter><f6><esc><wait> ", "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/", "<enter><wait>"]
   boot_wait               = "5s"
@@ -28,7 +23,7 @@ source "virtualbox-iso" "ubuntu-20042-live-server" {
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "2048"]]
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "ubuntu-20042-live-server"
-  headless                = ${var.headless-build}
+  headless                = "${var.headless_build}"
 }
 
 build {
