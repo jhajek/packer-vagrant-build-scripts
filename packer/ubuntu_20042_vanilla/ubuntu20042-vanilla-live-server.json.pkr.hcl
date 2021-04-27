@@ -36,7 +36,7 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'ubuntu' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    script          = "../scripts/post_install_vagrant.sh"
+    script          = "../scripts/post_install_ubuntu_2004_vagrant.sh"
   }
 
   post-processor "vagrant" {
