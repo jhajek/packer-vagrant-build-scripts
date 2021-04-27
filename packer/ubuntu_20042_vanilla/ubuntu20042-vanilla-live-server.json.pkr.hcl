@@ -31,7 +31,7 @@ build {
 
   provisioner "shell" {
     #inline_shebang  =  "#!/usr/bin/bash -e"
-    inline          = ["echo 'Resetting SSH port to default!'", "rm /etc/ssh/sshd_config.d/packer-init.conf"]
+    inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
     }
 
   provisioner "shell" {
