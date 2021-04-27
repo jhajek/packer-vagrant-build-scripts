@@ -10,7 +10,7 @@ sudo groupadd admin
 sudo usermod -a -G admin ubuntu
 
 # Installing Vagrant keys
-wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
+wget --no-check-certificate 'https://raw.githubusercontent.com/hashicorp/vagrant/main/keys/vagrant.pub'
 sudo mkdir -p /home/ubuntu/.ssh
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.ssh
 cat ./vagrant.pub >> /home/ubuntu/.ssh/authorized_keys
