@@ -18,7 +18,7 @@ autoinstall:
     network:
       version: 2
       ethernets:
-        enp0s3: {dhcp4: true, dhcp-identifier: mac}
+        enp3s0: {dhcp4: true, dhcp-identifier: mac}
   ssh:
     allow-pw: true
     install-server: true
