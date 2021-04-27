@@ -9,16 +9,29 @@ autoinstall:
     layout:
       name: direct
   packages:
+    - ubuntu-standard
     - bc
     - curl
     - wget
-    - openssh-server
+    - git
     - qemu-guest-agent
+    - ubuntu-server
+    - cryptsetup
+    - build-essential
+    - libssl-dev
+    - libreadline-dev
+    - zlib1g-dev
+    - linux-source
+    - dkms
+    - nfs-common
+    - software-properties-common
   network:
     network:
       version: 2
       ethernets:
-        enp3s0: {dhcp4: true, dhcp-identifier: mac}
+        enp0s3:
+          dhcp4: true
+          dhcp-identifier: mac
   ssh:
     allow-pw: true
     install-server: true
@@ -28,6 +41,7 @@ autoinstall:
     - "echo 'Defaults:ubuntu !requiretty' > /target/etc/sudoers.d/ubuntu"
     - "echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/ubuntu"
     - "chmod 440 /target/etc/sudoers.d/ubuntu"
+    - 'echo "Port 2222" > /target/etc/ssh/sshd_config.d/packer-init.conf'
 
 
 
