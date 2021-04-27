@@ -9,3 +9,15 @@ There are multiple ways to provide configuration data for cloud-init. Typically 
 [https://beryju.org/blog/automating-ubuntu-server-20-04-with-packer](https://beryju.org/blog/automating-ubuntu-server-20-04-with-packer "Subiquity 20.04")
 
 [https://beryju.org/blog/automating-ubuntu-server-20-04-with-packer](https://beryju.org/blog/automating-ubuntu-server-20-04-with-packer "packer ubuntu 2004)
+
+## Command to Run
+
+```bash
+
+packer build .
+```
+
+```bash
+# With optional runtime variables, values default to false and 2048
+packer build -var 'headless_build=true' -var 'memory_amount=8192' .
+```
