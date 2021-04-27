@@ -20,7 +20,7 @@ source "virtualbox-iso" "ubuntu-20042-live-server" {
   ssh_port                = 2222
   ssh_timeout             = "20m"
   ssh_username            = "ubuntu"
-  vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "2048"]]
+  vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "ubuntu-20042-live-server"
   headless                = "${var.headless_build}"
