@@ -1,4 +1,4 @@
 variable "headless_build" {
-  type =  boolean
+  type =  bool
   default = false
 }
