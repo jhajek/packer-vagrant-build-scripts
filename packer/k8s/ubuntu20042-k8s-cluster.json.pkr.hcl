@@ -15,7 +15,7 @@ source "virtualbox-iso" "ubuntu20042-k8sm-cluster" {
   iso_urls                = ["http://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso"]
   shutdown_command        = "echo 'ubuntu' | sudo -S shutdown -P now"
   #ssh_handshake_attempts  = "80"
-  ssh_wait_timeout        = "1800s"
+  ssh_wait_timeout        = "2800s"
   ssh_password            = "ubuntu"
   ssh_port                = 2222
   ssh_timeout             = "20m"
@@ -40,7 +40,7 @@ source "virtualbox-iso" "ubuntu20042-k8sw1-cluster" {
   iso_urls                = ["http://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso"]
   shutdown_command        = "echo 'ubuntu' | sudo -S shutdown -P now"
   #ssh_handshake_attempts  = "80"
-  ssh_wait_timeout        = "1800s"
+  ssh_wait_timeout        = "2800s"
   ssh_password            = "ubuntu"
   ssh_port                = 2223
   ssh_timeout             = "20m"
@@ -65,7 +65,7 @@ source "virtualbox-iso" "ubuntu20042-k8sw2-cluster" {
   iso_urls                = ["http://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso"]
   shutdown_command        = "echo 'ubuntu' | sudo -S shutdown -P now"
   #ssh_handshake_attempts  = "80"
-  ssh_wait_timeout        = "1800s"
+  ssh_wait_timeout        = "2800s"
   ssh_password            = "ubuntu"
   ssh_port                = 2224
   ssh_timeout             = "20m"
