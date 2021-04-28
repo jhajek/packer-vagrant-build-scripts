@@ -74,6 +74,7 @@ source "virtualbox-iso" "ubuntu20042-k8sw2-cluster" {
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "k8sw2"
   headless                = "${var.headless_build}"
+  cpus                    = "${var.cpu_amount}"
 }
 
 build {
