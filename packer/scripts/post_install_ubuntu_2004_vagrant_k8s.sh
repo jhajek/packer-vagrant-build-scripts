@@ -21,6 +21,10 @@ echo "All Done!"
 # Add User customizations below here
 ##################################################
 
+# Kubernetes requires swap to be turned off
+sudo swapoff –a
+
+# Add Kubernetes packages
 sudo apt-add-repository -y ppa:k8s-maintainers/1.19
 sudo apt-get update
 sudo apt install -y kubeadm kubelet cri-tools kubernetes-cni docker.io vim
