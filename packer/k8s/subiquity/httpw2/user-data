@@ -2,7 +2,7 @@
 autoinstall:
   version: 1
   identity:
-    hostname: k8sm
+    hostname: k8sw2
     password: '$6$ExJMC2Vf$WMzulvVD8.9zNHLi78wW.XlGj/R3nBZnLf6eV5cVUgxnzDSFlwzfqoG1d4mSdaCmd0jVaKmp1b3h6zzc6YpHv1'
     username: ubuntu
   storage:
@@ -41,7 +41,7 @@ autoinstall:
     - "echo 'Defaults:ubuntu !requiretty' > /target/etc/sudoers.d/ubuntu"
     - "echo 'ubuntu ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/ubuntu"
     - "chmod 440 /target/etc/sudoers.d/ubuntu"
-    - 'echo "Port 2222" > /target/etc/ssh/sshd_config.d/packer-init.conf'
+    - 'echo "Port 2224" > /target/etc/ssh/sshd_config.d/packer-init.conf'
 
 
 

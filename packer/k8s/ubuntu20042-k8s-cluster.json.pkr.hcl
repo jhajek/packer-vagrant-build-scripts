@@ -33,7 +33,7 @@ source "virtualbox-iso" "ubuntu20042-k8sw1-cluster" {
   guest_additions_mode    = "disable"
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "Ubuntu_64"
-  http_directory          = "subiquity/http"
+  http_directory          = "subiquity/httpw1"
   http_port_max           = 9050
   http_port_min           = 9001
   iso_checksum            = "sha256:d1f2bf834bbe9bb43faf16f9be992a6f3935e65be0edece1dee2aa6eb1767423"
@@ -42,7 +42,7 @@ source "virtualbox-iso" "ubuntu20042-k8sw1-cluster" {
   #ssh_handshake_attempts  = "80"
   ssh_wait_timeout        = "1800s"
   ssh_password            = "ubuntu"
-  ssh_port                = 2222
+  ssh_port                = 2223
   ssh_timeout             = "20m"
   ssh_username            = "ubuntu"
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
@@ -58,7 +58,7 @@ source "virtualbox-iso" "ubuntu20042-k8sw2-cluster" {
   guest_additions_mode    = "disable"
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "Ubuntu_64"
-  http_directory          = "subiquity/http"
+  http_directory          = "subiquity/httpw2"
   http_port_max           = 9050
   http_port_min           = 9001
   iso_checksum            = "sha256:d1f2bf834bbe9bb43faf16f9be992a6f3935e65be0edece1dee2aa6eb1767423"
@@ -67,7 +67,7 @@ source "virtualbox-iso" "ubuntu20042-k8sw2-cluster" {
   #ssh_handshake_attempts  = "80"
   ssh_wait_timeout        = "1800s"
   ssh_password            = "ubuntu"
-  ssh_port                = 2222
+  ssh_port                = 2224
   ssh_timeout             = "20m"
   ssh_username            = "ubuntu"
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
@@ -86,7 +86,20 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'ubuntu' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    script          = "../scripts/post_install_ubuntu_2004_vagrant_k8s.sh"
+    script          = "../scripts/post_install_vagrant_k8sm.sh"
+    only            = ["ubuntu20042-k8sm-cluster"]
+  }
+
+  provisioner "shell" {
+    execute_command = "echo 'ubuntu' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    script          = "../scripts/post_install_vagrant_k8sw1.sh"
+    only            = ["ubuntu20042-k8sw1-cluster"]
+  }
+
+  provisioner "shell" {
+    execute_command = "echo 'ubuntu' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    script          = "../scripts/post_install_vagrant_k8sw2.sh"
+    only            = ["ubuntu20042-k8sw2-cluster"]
   }
 
   post-processor "vagrant" {

@@ -28,9 +28,9 @@ cat << EOT >> /etc/hosts
 192.168.33.12 k8sw2 k8sw2.iltech.iit.edu
 EOT
 
-swapoff -a
+sudo swapoff -a
 
 sudo apt install -y apt-transport-https curl
 sudo add-apt-repository ppa:k8s-maintainers/1.19
 sudo apt update
-sudo apt install -y docker kubelet kubeadm kubectl kubernetes-cni
+sudo apt install -y kubeadm kubelet cri-tools kubernetes-cni docker.io vim
