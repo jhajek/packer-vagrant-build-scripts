@@ -88,19 +88,19 @@ build {
   provisioner "shell" {
     execute_command = "echo 'ubuntu' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     script          = "../scripts/post_install_vagrant_k8sm.sh"
-    only            = ["ubuntu20042-k8sm-cluster"]
+    only            = ["virtualbox-iso.ubuntu20042-k8sm-cluster"]
   }
 
   provisioner "shell" {
     execute_command = "echo 'ubuntu' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     script          = "../scripts/post_install_vagrant_k8sw1.sh"
-    only            = ["ubuntu20042-k8sw1-cluster"]
+    only            = ["virtualbox-iso.ubuntu20042-k8sw1-cluster"]
   }
 
   provisioner "shell" {
     execute_command = "echo 'ubuntu' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     script          = "../scripts/post_install_vagrant_k8sw2.sh"
-    only            = ["ubuntu20042-k8sw2-cluster"]
+    only            = ["virtualbox-iso.ubuntu20042-k8sw2-cluster"]
   }
 
   post-processor "vagrant" {
