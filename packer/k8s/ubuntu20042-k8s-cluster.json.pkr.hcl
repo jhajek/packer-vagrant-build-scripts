@@ -24,6 +24,7 @@ source "virtualbox-iso" "ubuntu20042-k8sm-cluster" {
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "k8sm"
   headless                = "${var.headless_build}"
+  cpus                    = "${var.cpu_amount}"
 }
 
 source "virtualbox-iso" "ubuntu20042-k8sw1-cluster" {
@@ -49,6 +50,7 @@ source "virtualbox-iso" "ubuntu20042-k8sw1-cluster" {
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "k8sw1"
   headless                = "${var.headless_build}"
+  cpus                    = "${var.cpu_amount}"
 }
 
 source "virtualbox-iso" "ubuntu20042-k8sw2-cluster" {
