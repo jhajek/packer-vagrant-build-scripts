@@ -24,3 +24,13 @@ packer build .
 # values default to false, 2048, and 1
 packer build -var 'headless_build=true' -var 'memory_amount=8192' -var 'cpu_amount=2'.
 ```
+
+```bash
+# The syntax to build only induvidual boxes has changed with the move from
+# JSON based syntax to HCL2
+# FROM: https://www.packer.io/docs/commands/build and https://github.com/hashicorp/packer/issues/9794
+# -only=foo,bar,baz - Only run the builds with the given comma-separated names. In legacy JSON templates, build names default to the types of their builders (e.g. docker or amazon-ebs or virtualbox-iso, unless a specific name attribute is specified within the configuration. In HCL2 templates, the "name" is the source block's "name" label, unless an in-build source definition adds the "name" configuration option.
+packer build -only "*k8sm*" .
+packer build -only "*k8sw1*" .
+packer build -only "*k8sw2*" .
+```
