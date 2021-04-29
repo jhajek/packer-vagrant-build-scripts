@@ -11,10 +11,10 @@ sudo usermod -a -G admin vagrant
 
 # Installing Vagrant keys
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
-sudo mkdir -p /home/ubuntu/.ssh
-sudo chown -R ubuntu:ubuntu /home/ubuntu/.ssh
-cat ./vagrant.pub >> /home/ubuntu/.ssh/authorized_keys
-sudo chown -R ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
+sudo mkdir -p /home/vagrant/.ssh
+sudo chown -R vagrant:vagrant /home/vagrant/.ssh
+cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
+sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 echo "All Done!"
 
 ##################################################

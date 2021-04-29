@@ -19,6 +19,8 @@ packer build .
 ```
 
 ```bash
-# With optional runtime variables, values default to false and 2048
-packer build -var 'headless_build=true' -var 'memory_amount=8192' .
+# With optional runtime variables, you can use any of these variables--
+# Defined in the variables.pkr.hcl file 
+# values default to false, 2048, and 1
+packer build -var 'headless_build=true' -var 'memory_amount=8192' -var 'cpu_amount=2'.
 ```
