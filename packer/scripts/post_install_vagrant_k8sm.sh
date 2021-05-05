@@ -29,7 +29,7 @@ cat << EOT >> /etc/hosts
 EOT
 
 sudo apt install -y apt-transport-https curl
-sudo add-apt-repository -y ppa:k8s-maintainers/1.21
+sudo add-apt-repository -y ppa:k8s-maintainers/1.20
 sudo apt update
 sudo apt install -y kubeadm kubelet cri-tools kubernetes-cni docker.io
 
