@@ -31,5 +31,12 @@ EOT
 sudo apt install -y apt-transport-https curl
 sudo add-apt-repository -y ppa:k8s-maintainers/1.19
 sudo apt update
-sudo apt install -y kubeadm kubelet cri-tools kubernetes-cni docker.io vim
+sudo apt install -y kubeadm kubelet cri-tools kubernetes-cni docker.io
 
+cat << EOT >> /etc/docker/daemon.json
+{
+  "exec-opts": ["native.cgroupdriver=systemd"]
+}
+EOT
+
+sudo systemctl restart docker
