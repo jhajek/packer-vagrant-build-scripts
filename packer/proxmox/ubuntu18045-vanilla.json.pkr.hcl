@@ -37,7 +37,7 @@ source "proxmox-iso" "ubuntu-vanilla" {
     type              = "scsi"
   }
   http_directory   = "."
-  http_port_max    = 9050
+  http_port_max    = 9200
   http_port_min    = 9001
   iso_checksum     = "sha256:8c5fc24894394035402f66f3824beb7234b757dd2b5531379cb310cedfdf0996"
   iso_file         = "local:iso/ubuntu-18.04.5-server-amd64.iso"
