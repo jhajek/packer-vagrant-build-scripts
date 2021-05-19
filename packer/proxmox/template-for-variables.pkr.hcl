@@ -1,0 +1,38 @@
+//  variables.pkr.hcl
+
+// For those variables that you don't provide a default for, you must
+// set them from the command line, a var-file, or the environment.
+
+variable "NODENAME" {
+  type =  string
+  default = ""
+}
+
+variable "USERNAME" {}
+
+variable "PROXMOX_TOKEN" {}
+
+variable "URL" {
+  type = string
+  default = ""
+}
+
+variable "MEMORY" {
+  type = string
+  default = "4192"
+}
+
+variable "DISKSIZE" {
+  type = string
+  default = "10G"
+}
+
+variable "STORAGEPOOL" {
+  type = string
+  default = ""
+}
+
+variable "NUMBEROFCORES" {
+  type = string
+  default = "1"
+}
