@@ -49,7 +49,10 @@ source "proxmox-iso" "ubuntu-vanilla" {
   }
   os                   = "l26"
   proxmox_url          = "${var.URL}"
-  sockets              = 1
+  insecure_skip_tls_verify = true
+  unmount_iso          = true
+  qemu_agent           = true
+  cloud_init           = true
   ssh_password         = "vagrant"
   ssh_username         = "vagrant"
   ssh_port             = 22
