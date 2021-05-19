@@ -58,7 +58,6 @@ source "proxmox-iso" "ubuntu-vanilla" {
   ssh_port             = 22
   ssh_wait_timeout     = "10000s"
   template_description = "A Packer template to create a Promox Template - Vanilla Ubuntu"
-  unmount_iso          = true
   vm_name              = "ubuntu-vanilla"
 }
 
