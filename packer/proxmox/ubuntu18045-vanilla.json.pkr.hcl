@@ -73,7 +73,7 @@ build {
   # could not parse template for following block: "template: hcl2_upgrade:2:41: executing \"hcl2_upgrade\" at <.Vars>: can't evaluate field Vars in type struct { HTTPIP string; HTTPPort string }"
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts          = ["../scripts/post_install_prxmx.sh","../scripts/post_install_prxmx_start-cloud-init.sh","../scripts/post_install_prxmx_ssh-restrict-login.sh"]
+    scripts          = ["../scripts/post_install_prxmx.sh","../scripts/post_install_prxmx_start-cloud-init.sh","../scripts/post_install_prxmx-ssh-restrict-login.sh"]
   }
 
 }
