@@ -25,14 +25,14 @@ locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 source "proxmox-iso" "ubuntu-vanilla" {
   boot_command = ["<esc><wait>", "<esc><wait>", "<enter><wait>", "/install/vmlinuz<wait>", " auto<wait>", " console-setup/ask_detect=false<wait>", " console-setup/layoutcode=us<wait>", " console-setup/modelcode=pc105<wait>", " debconf/frontend=noninteractive<wait>", " debian-installer=en_US<wait>", " fb=false<wait>", " initrd=/install/initrd.gz<wait>", " kbd-chooser/method=us<wait>", " keyboard-configuration/layout=USA<wait>", " keyboard-configuration/variant=USA<wait>", " locale=en_US<wait>", " netcfg/get_domain=vm<wait>", " netcfg/get_hostname=uvanilla<wait>", " grub-installer/bootdev=/dev/sda<wait>", " noapic<wait>", " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed/preseed-prxmx.cfg<wait>", " -- <wait>", "<enter><wait>"]
   boot_wait    = "10s"
-  cores        = 1
-  node         = "hpe3"
-  username     = "controller@hpe3!token"
+  cores        = "${var.NUMBEROFCORES}"
+  node         = "${var.NODENAME}"
+  username     = "${var.USERNAME}"
   token        = "${var.PROXMOX_TOKEN}"
   cpu_type     = "host"
   disks {
-    disk_size         = "20G"
-    storage_pool      = "local-lvm"
+    disk_size         = "${var.DISKSIZE}"
+    storage_pool      = "${var.STORAGEPOOL}"
     storage_pool_type = "lvm"
     type              = "scsi"
   }
@@ -42,19 +42,17 @@ source "proxmox-iso" "ubuntu-vanilla" {
   iso_checksum     = "sha256:8c5fc24894394035402f66f3824beb7234b757dd2b5531379cb310cedfdf0996"
   iso_file         = "local:iso/ubuntu-18.04.5-server-amd64.iso"
   iso_storage_pool = "local"
-  memory           = 8192
+  memory           = "${var.MEMORY}"
   network_adapters {
     bridge   = "vmbr0"
-    firewall = true
     model    = "virtio"
-    vlan_tag = "10"
   }
   os                   = "l26"
-  proxmox_url          = "https://192.168.172.77:8006/api2/json"
+  proxmox_url          = "${var.URL}"
   sockets              = 1
   ssh_password         = "vagrant"
-  ssh_port             = 22
   ssh_username         = "vagrant"
+  ssh_port             = 22
   ssh_wait_timeout     = "10000s"
   template_description = "A Packer template to create a Promox Template - Vanilla Ubuntu"
   unmount_iso          = true
@@ -67,16 +65,15 @@ source "proxmox-iso" "ubuntu-vanilla" {
 build {
   sources = ["source.proxmox-iso.ubuntu-vanilla"]
 
-
+#Add provisioners to upload public key to all the VMs
+  provisioner "file" {
+    source = "../sshkey.pub"
+    destination = "/home/vagrant/"
+  }
   # could not parse template for following block: "template: hcl2_upgrade:2:41: executing \"hcl2_upgrade\" at <.Vars>: can't evaluate field Vars in type struct { HTTPIP string; HTTPPort string }"
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    script          = "../scripts/post_install_vagrant.sh"
+    scripts          = ["../scripts/post_install_prxmx.sh","../scripts/post_install_prxmx_start-cloud-init.sh","../scripts/post_install_prxmx_ssh-restrict-login.sh"]
   }
 
-  # could not parse template for following block: "template: hcl2_upgrade:3:36: executing \"hcl2_upgrade\" at <.BuildName>: can't evaluate field BuildName in type struct { HTTPIP string; HTTPPort string }"
-  post-processor "vagrant" {
-    keep_input_artifact = false
-    output              = "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"
-  }
 }
