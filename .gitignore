@@ -26,3 +26,6 @@ Understanding-Free*
 *.ova
 .terraform/
 .terraform*
+
+# Exclude packer variable file
+variables.pkr.hcl
