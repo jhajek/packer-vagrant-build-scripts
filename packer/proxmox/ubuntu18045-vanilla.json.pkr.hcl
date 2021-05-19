@@ -53,6 +53,7 @@ source "proxmox-iso" "ubuntu-vanilla" {
   unmount_iso          = true
   qemu_agent           = true
   cloud_init           = true
+  cloud_init_storage_pool = "local"
   ssh_password         = "vagrant"
   ssh_username         = "vagrant"
   ssh_port             = 22
