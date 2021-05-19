@@ -14,6 +14,7 @@ variable "PROXMOX_TOKEN" {}
 
 variable "URL" {
   type = string
+  # https://x.x.x.x:8006/json/api
   default = ""
 }
 
@@ -29,6 +30,7 @@ variable "DISKSIZE" {
 
 variable "STORAGEPOOL" {
   type = string
+  # choose datapool1, datapool2, datapool3, or datapool4
   default = ""
 }
 
