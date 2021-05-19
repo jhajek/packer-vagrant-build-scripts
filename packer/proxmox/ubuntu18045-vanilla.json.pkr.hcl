@@ -58,7 +58,7 @@ source "proxmox-iso" "ubuntu-vanilla" {
   ssh_port             = 22
   ssh_wait_timeout     = "10000s"
   template_description = "A Packer template to create a Promox Template - Vanilla Ubuntu"
-  vm_name              = "ubuntu-vanilla"
+  vm_name              = "${var.VMNAME}"
 }
 
 # a build block invokes sources and runs provisioning steps on them. The

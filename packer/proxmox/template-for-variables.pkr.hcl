@@ -38,3 +38,8 @@ variable "NUMBEROFCORES" {
   type = string
   default = "1"
 }
+
+variable "VMNAME" {
+  type = string
+  default = ""
+}
