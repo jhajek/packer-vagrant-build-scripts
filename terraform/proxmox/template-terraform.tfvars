@@ -2,7 +2,7 @@ pm_api_url  = "https://x.x.x.x:8006/api2/json" #URL of your Proxmox cluster
 pm_user     = "pam"                              #Username of your Proxmox cluster
 pm_password = "pass"                      #Password of your Proxmox cluster
 
-
+count             = 3
 desc              = "ITMT Class" #What is the purpose of the TF template
 target_node       = "nameofnode"                     #Promox node to provision VMs
 template_to_clone = "template"    #The name of the template to clone

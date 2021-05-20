@@ -6,6 +6,8 @@ variable "pm_password" {
   sensitive = true
 }
 
+variable "count" {}
+
 variable "desc" {}
 
 variable "target_node"{}
