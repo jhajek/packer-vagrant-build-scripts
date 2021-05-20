@@ -6,7 +6,7 @@ variable "pm_password" {
   sensitive = true
 }
 
-variable "count" {}
+variable "numberofvms" {}
 
 variable "desc" {}
 

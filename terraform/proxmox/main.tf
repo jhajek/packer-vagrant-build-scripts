@@ -1,5 +1,5 @@
 resource "proxmox_vm_qemu" "test" {
-  count       = var.count
+  count       = var.numberofvms
   name        = "test-jrh-vm${count.index}"
   desc        = var.desc
   target_node = var.target_node
