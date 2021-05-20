@@ -25,3 +25,5 @@ variable "storage" {}
 variable "disk_size"{}
 
 variable "additional_wait" {}
+
+variable "keypath" {}

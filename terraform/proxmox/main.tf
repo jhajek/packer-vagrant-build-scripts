@@ -34,7 +34,7 @@ resource "proxmox_vm_qemu" "test" {
     connection {
       type        = "ssh"
       user        = "vagrant"
-      private_key = file("${path.module}/id_rsa_jrh_sample")
+      private_key = file(var.keypath)
       host        = self.ssh_host
       port        = self.ssh_port
     }
