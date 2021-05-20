@@ -23,3 +23,5 @@ variable "sockets"{}
 variable "storage" {}
 
 variable "disk_size"{}
+
+variable "additional_wait" {}
