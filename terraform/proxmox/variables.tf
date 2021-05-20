@@ -1,49 +1,23 @@
-variable "headless-val" {
-  type    = string
-  default = "false"
+variable "pm_api_url" {}
+
+variable "pm_user" {}
+
+variable "pm_password" {
+  sensitive = true
 }
 
-variable "ip" {
-  type    = string
-  default = "172.168.1.201"
-}
+variable "desc" {}
 
-variable "mac-addr" {
-  type    = string
-  default = "90:e2:ba:2e:b0:70"
-}
+variable "target_node"{}
 
-variable "password" {
-  type    = string
-  default = "cluster"
-}
+variable "template_to_clone" {}
 
-variable "prxmx-url" {
-  type    = string
-  default = "https://172.16.1.62:8006/api2/json"
-}
+variable "memory"{}
 
-variable "storagepool" {
-  type    = string
-  default = "datadisk1"
-}
+variable "cores"{}
 
-variable "storagepooltype" {
-  type    = string
-  default = "lvm"
-}
+variable "sockets"{}
 
-variable "uname" {
-  type    = string
-  default = "root@pam"
-}
+variable "storage" {}
 
-variable "vmname" {
-  type    = string
-  default = "ubuntu-18045-prxmx25"
-}
-
-variable "node" {
-  type    = string
-  default = "pve"
-}
+variable "disk_size"{}
