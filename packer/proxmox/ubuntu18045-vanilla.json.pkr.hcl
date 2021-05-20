@@ -70,7 +70,7 @@ build {
 
 #Add provisioners to upload public key to all the VMs
   provisioner "file" {
-    source = "./${var.KEYNAME}"
+    source = "~/.ssh/${var.KEYNAME}"
     destination = "/home/vagrant/"
   }
 
