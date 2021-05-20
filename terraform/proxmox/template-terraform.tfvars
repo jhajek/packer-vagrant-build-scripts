@@ -11,3 +11,4 @@ cores             = 2                          #vCPU = cores * sockets
 sockets           = 1                          #vCPU = cores * sockets
 storage           = "local-lvm"                #Which storage pool to use - example: local, local-lvm, disk1, etc
 disk_size         = "10G"                      #Disk size of a VM - min size must equal to the disk size of your clone image
+additional_wait	  = 60	                       #The amount of time in seconds to wait between creating the VM and powering it up.

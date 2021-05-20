@@ -11,6 +11,7 @@ resource "proxmox_vm_qemu" "test" {
   bootdisk    = "scsi0"
   boot        = "cdn"
   agent       = 1
+  additional_wait = var.additional_wait
 
   ipconfig0 = "ip=dhcp"
 
