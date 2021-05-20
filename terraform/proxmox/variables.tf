@@ -27,3 +27,5 @@ variable "disk_size"{}
 variable "additional_wait" {}
 
 variable "keypath" {}
+
+variable "clone_wait" {}
