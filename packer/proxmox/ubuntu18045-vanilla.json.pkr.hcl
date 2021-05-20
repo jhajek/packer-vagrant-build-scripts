@@ -70,9 +70,20 @@ build {
 
 #Add provisioners to upload public key to all the VMs
   provisioner "file" {
-    source = "../sshkey.pub"
+    source = "../${var.KEYNAME}"
     destination = "/home/vagrant/"
   }
+
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    inline = [
+      "mkdir -p /home/vagrant/.ssh",
+      "touch /home/vagrant/.ssh/authorized_keys",
+      "chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys",
+      "cat /home/vagrant/${var.KEYNAME} >> /home/vagrant/.ssh/authorized_keys"
+        ]
+  }
+
   # could not parse template for following block: "template: hcl2_upgrade:2:41: executing \"hcl2_upgrade\" at <.Vars>: can't evaluate field Vars in type struct { HTTPIP string; HTTPPort string }"
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"

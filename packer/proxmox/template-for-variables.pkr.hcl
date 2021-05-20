@@ -43,3 +43,9 @@ variable "VMNAME" {
   type = string
   default = ""
 }
+
+variable "KEYNAME" {
+  type = string
+  # Name of public key to insert to the template 
+  default = ""
+}
