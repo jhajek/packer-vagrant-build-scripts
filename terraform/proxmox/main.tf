@@ -1,6 +1,6 @@
 resource "proxmox_vm_qemu" "test" {
   count       = 3
-  name        = "test-vm${count.index}"
+  name        = "test-jrh-vm${count.index}"
   desc        = var.desc
   target_node = var.target_node
   clone       = var.template_to_clone
@@ -27,7 +27,7 @@ resource "proxmox_vm_qemu" "test" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo hostnamectl set-hostname test-vm${count.index}"
+      "sudo hostnamectl set-hostname test-jrh-vm${count.index}"
     ]
 
     connection {
