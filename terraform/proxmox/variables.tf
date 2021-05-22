@@ -15,6 +15,12 @@ variable "pm_api_token_secret" {
   sensitive = true
 }
 
+variable "pm_log_enable" {}
+
+variable "pm_parallel" {}
+
+variable "pm_timeout" {}
+
 variable "numberofvms" {}
 
 variable "desc" {}
