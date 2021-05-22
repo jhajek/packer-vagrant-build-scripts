@@ -1,10 +1,15 @@
 variable "pm_api_url" {}
 
-variable "pm_user" {}
+#variable "pm_user" {}
 
-variable "pm_password" {
-  sensitive = true
-}
+#variable "pm_password" {
+#  sensitive = true
+#}
+variable "yourinitials" {}
+
+variable "pm_api_token_id" {}
+
+variable "pm_api_token_secret" {}
 
 variable "numberofvms" {}
 

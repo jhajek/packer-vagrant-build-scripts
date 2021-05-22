@@ -1,11 +1,16 @@
 pm_api_url  = "https://x.x.x.x:8006/api2/json" #URL of your Proxmox cluster
-pm_user     = "pam"                              #Username of your Proxmox cluster
-pm_password = "pass"                      #Password of your Proxmox cluster
+#pm_user     = "pam"                           #Username of your Proxmox cluster
+#pm_password = "pass"                          #Password of your Proxmox cluster
+pm_api_token_id = ""                           #This is an API token you have previously created for a specific user
+pm_api_token_secret = ""                       #This is a uuid that is only available when initially creating the token 
+#pm_log_enable = false                         #Optional; defaults to false) Enable debug logging, see the section below for logging details
+#pm_parallel = 4                               #(Optional; defaults to 4) Allowed simultaneous Proxmox processes (e.g. creating resources).
 
+yourinitials      = "jrh"                      #Your initials or Hawk ID to add to the vms so they have a unique name
 numberofvms       = 3
-desc              = "ITMT Class" #What is the purpose of the TF template
-target_node       = "nameofnode"                     #Promox node to provision VMs
-template_to_clone = "template"    #The name of the template to clone
+desc              = "ITMT Class"               #What is the purpose of the TF template
+target_node       = "nameofnode"               #Promox node to provision VMs
+template_to_clone = "template"                 #The name of the template to clone
 memory            = 4096                       #Memory size of a VM
 cores             = 2                          #vCPU = cores * sockets
 sockets           = 1                          #vCPU = cores * sockets
