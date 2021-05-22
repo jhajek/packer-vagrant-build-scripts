@@ -6,6 +6,7 @@ pm_api_token_secret = ""                       #This is a uuid that is only avai
 pm_log_enable = false                         #Optional; defaults to false) Enable debug logging, see the section below for logging details
 pm_parallel = 4                               #(Optional; defaults to 4) Allowed simultaneous Proxmox processes (e.g. creating resources).
 pm_timeout = 300                              #  (Optional; defaults to 300) Timeout value (seconds) for proxmox API calls.
+pm_log_file = "terraform-plugin-proxmox.log"  #(Optional; defaults to terraform-plugin-proxmox.log) If logging is enabled, the log file the provider will write logs to.
 
 yourinitials      = "jrh"                      #Your initials or Hawk ID to add to the vms so they have a unique name
 numberofvms       = 3

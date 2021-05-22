@@ -21,6 +21,8 @@ variable "pm_parallel" {}
 
 variable "pm_timeout" {}
 
+variable "pm_log_file" {}
+
 variable "numberofvms" {}
 
 variable "desc" {}
