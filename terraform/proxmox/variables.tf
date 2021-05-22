@@ -7,9 +7,13 @@ variable "pm_api_url" {}
 #}
 variable "yourinitials" {}
 
-variable "pm_api_token_id" {}
+variable "pm_api_token_id" {
+  sensitive = true
+}
 
-variable "pm_api_token_secret" {}
+variable "pm_api_token_secret" {
+  sensitive = true
+}
 
 variable "numberofvms" {}
 
