@@ -20,7 +20,6 @@ variable "pm_log_enable" {}
 
 variable "pm_log_levels" {
     default = "debug"
-    capturelog = ""
   }
 
 variable "pm_parallel" {}
