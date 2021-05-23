@@ -1,3 +1,4 @@
+#https://registry.terraform.io/providers/Telmate/proxmox/latest/docs
 variable "pm_api_url" {}
 
 #variable "pm_user" {}
@@ -16,6 +17,11 @@ variable "pm_api_token_secret" {
 }
 
 variable "pm_log_enable" {}
+
+variable "pm_log_level" {
+    _default = "debug"
+    _capturelog = ""
+  }
 
 variable "pm_parallel" {}
 
