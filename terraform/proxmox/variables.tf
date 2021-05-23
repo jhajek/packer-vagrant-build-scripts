@@ -19,8 +19,8 @@ variable "pm_api_token_secret" {
 variable "pm_log_enable" {}
 
 variable "pm_log_levels" {
-    _default = "debug"
-    _capturelog = ""
+    default = "debug"
+    capturelog = ""
   }
 
 variable "pm_parallel" {}
