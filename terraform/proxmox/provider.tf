@@ -18,5 +18,5 @@ provider "proxmox" {
   pm_log_file = var.pm_log_file
   pm_timeout = var.pm_timeout
   pm_parallel = var.pm_parallel
-  pm_log_level = var.pm_log_level
+  pm_log_levels = var.pm_log_levels
 }
