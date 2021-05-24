@@ -19,7 +19,7 @@ provider "proxmox" {
   pm_timeout = var.pm_timeout
   pm_parallel = var.pm_parallel
   pm_log_levels = {
-    _default = "debug"
+    _default = var.error_level
     _capturelog = ""
   }
 }

@@ -16,6 +16,10 @@ variable "pm_api_token_secret" {
   sensitive = true
 }
 
+variable "error_level" {
+  default = debug
+}
+
 variable "pm_log_enable" {}
 
 variable "pm_parallel" {}
