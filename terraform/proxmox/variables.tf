@@ -46,8 +46,12 @@ variable "storage" {}
 
 variable "disk_size"{}
 
-variable "additional_wait" {}
-
 variable "keypath" {}
 
-variable "clone_wait" {}
+variable "additional_wait" {
+  default = 30
+}
+
+variable "clone_wait" {
+  default = 30
+}
