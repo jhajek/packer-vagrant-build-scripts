@@ -17,7 +17,7 @@ variable "pm_api_token_secret" {
 }
 
 variable "error_level" {
-  default = debug
+  default = "debug"
 }
 
 variable "pm_log_enable" {}
