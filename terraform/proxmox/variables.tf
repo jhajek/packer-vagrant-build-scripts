@@ -18,10 +18,6 @@ variable "pm_api_token_secret" {
 
 variable "pm_log_enable" {}
 
-variable "pm_log_levels" {
-    default = "debug"
-  }
-
 variable "pm_parallel" {}
 
 variable "pm_timeout" {}
