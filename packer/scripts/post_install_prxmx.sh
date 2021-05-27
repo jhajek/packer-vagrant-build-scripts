@@ -17,6 +17,6 @@ sudo systemctl start firewalld
 sudo firewall-cmd --add-service=ssh --permanent
 
 # https://github.com/hashicorp/terraform-provider-vsphere/issues/516
-# Remove /etc/machine-id so that all the cloned machines will get the new ip address
+# Remove /etc/machine-id so that all the cloned machines will get their own IP address upon DHCP request
 sudo rm -f /etc/machine-id
 sudo touch /etc/machine-id
