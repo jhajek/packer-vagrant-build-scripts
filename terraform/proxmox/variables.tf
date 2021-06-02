@@ -55,19 +55,3 @@ variable "additional_wait" {
 variable "clone_wait" {
   default = 30
 }
-
-variable "pm_log_enable" {
-  default = true
-}
-
-variable "pm_log_file" {}
-
-variable "pm_parallel" {}
-
-variable "pm_timeout" {
-  default = 300
-}
-
-variable "yourinitials" {
-  default = "jrh"
-}
