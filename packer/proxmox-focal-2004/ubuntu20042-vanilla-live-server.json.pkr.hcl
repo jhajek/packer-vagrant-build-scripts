@@ -45,7 +45,7 @@ source "proxmox-iso" "ubuntu20042-vanilla-live-server" {
 }
 
 build {
-  sources = ["source.virtualbox-iso.ubuntu20042-vanilla-live-server"]
+  sources = ["source.proxmox-iso.ubuntu20042-vanilla-live-server"]
 
 #Add provisioners to upload public key to all the VMs
   provisioner "file" {
