@@ -18,7 +18,7 @@ source "proxmox-iso" "ubuntu20042-vanilla-live-server" {
     storage_pool_type = "lvm"
     type              = "scsi"
   }
-  http_directory   = "."
+  http_directory   = "subiquity/http"
   http_port_max    = 9200
   http_port_min    = 9001
   iso_checksum            = "sha256:d1f2bf834bbe9bb43faf16f9be992a6f3935e65be0edece1dee2aa6eb1767423"
@@ -63,14 +63,14 @@ build {
         ]
   }
 
-  provisioner "shell" {
-    #inline_shebang  =  "#!/usr/bin/bash -e"
-    inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
-    }
-
   # could not parse template for following block: "template: hcl2_upgrade:2:41: executing \"hcl2_upgrade\" at <.Vars>: can't evaluate field Vars in type struct { HTTPIP string; HTTPPort string }"
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts          = ["../scripts/post_install_prxmx.sh","../scripts/post_install_prxmx_start-cloud-init.sh","../scripts/post_install_prxmx-ssh-restrict-login.sh"]
   }
+
+    provisioner "shell" {
+    #inline_shebang  =  "#!/usr/bin/bash -e"
+    inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
+    }
 }
