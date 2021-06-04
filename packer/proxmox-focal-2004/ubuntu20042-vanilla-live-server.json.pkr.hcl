@@ -38,8 +38,9 @@ source "proxmox-iso" "ubuntu20042-vanilla-live-server" {
   cloud_init_storage_pool = "local"
   ssh_password         = "vagrant"
   ssh_username         = "vagrant"
-  ssh_port             = 22
-  ssh_wait_timeout     = "10000s"
+  ssh_port             = 2222
+  ssh_timeout          = "20m"
+  ssh_wait_timeout     = "1800s"
   template_description = "A Packer template to create a Promox Template - Vanilla Ubuntu"
   vm_name              = "${var.VMNAME}"
 }
