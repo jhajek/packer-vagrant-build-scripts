@@ -10,27 +10,19 @@ autoinstall:
       name: direct
   packages:
     - ubuntu-standard
+    - ubuntu-server    
+    - qemu-guest-agent
     - bc
     - curl
     - wget
     - git
     - cloud-init
-    - qemu-guest-agent
-    - ubuntu-server
-    - cryptsetup
     - build-essential
-    - libssl-dev
-    - libreadline-dev
-    - zlib1g-dev
-    - linux-source
-    - dkms
-    - nfs-common
-    - software-properties-common
   network:
     network:
       version: 2
       ethernets:
-        enp0s3:
+        ens18:
           dhcp4: true
           dhcp-identifier: mac
   ssh:
