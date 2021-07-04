@@ -35,6 +35,3 @@ autoinstall:
     - "echo 'vagrant ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/vagrant"
     - "chmod 440 /target/etc/sudoers.d/vagrant"
     - 'echo "Port 2222" > /target/etc/ssh/sshd_config.d/packer-init.conf'
-
-
-
