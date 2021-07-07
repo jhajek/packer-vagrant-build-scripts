@@ -33,7 +33,7 @@ resource "proxmox_vm_qemu" "test" {
       "sudo sed -i 's/id = \"changeme\"/id = \"`uuid`\"/g' /etc/consul.d/system.hcl",
       "sudo sed -i 's/name = \"replace-name\"/name = \"${var.yourinitials}-vm${count.index}\"/g' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/g' /etc/consul.d/consul.hcl",
-      "sudo sed -i 's/#retry_join = \[\"10.0.4.67\"\]/retry_join = [\"${var.consulip}\"]",
+      "sudo sed -i 's/#retry_join = [\"10.0.4.67\"]/retry_join = [\"${var.consulip}\"]",
       "sudo systemctl daemon-reload",
       "sudo systemctl restart consul.service",      
     ]
