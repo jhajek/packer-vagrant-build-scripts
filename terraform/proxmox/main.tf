@@ -29,7 +29,8 @@ resource "proxmox_vm_qemu" "test" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo hostnamectl set-hostname test-${var.yourinitials}-vm${count.index}"
+      "sudo hostnamectl set-hostname test-${var.yourinitials}-vm${count.index}",
+      "sudo sed -i 's/id = \"changeme\"/id = \"`uuid`\"/g' /etc/consul.d/system.hcl"
     ]
 
     connection {

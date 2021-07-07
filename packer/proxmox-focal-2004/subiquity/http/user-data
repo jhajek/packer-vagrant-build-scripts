@@ -15,6 +15,7 @@ autoinstall:
     - bc
     - curl
     - wget
+    - uuid
     - git
     - cloud-init
     - build-essential
