@@ -31,7 +31,9 @@ resource "proxmox_vm_qemu" "test" {
     inline = [
       "sudo hostnamectl set-hostname test-${var.yourinitials}-vm${count.index}",
       "sudo sed -i 's/id = \"changeme\"/id = \"`uuid`\"/g' /etc/consul.d/system.hcl",
-      "sudo sed -i 's/name = \"replace-name\"/name = \"${var.yourinitials}-vm${count.index}\"/g' /etc/consul.d/system.hcl"
+      "sudo sed -i 's/name = \"replace-name\"/name = \"${var.yourinitials}-vm${count.index}\"/g' /etc/consul.d/system.hcl",
+      "sudo systemctl daemon-reload",
+      "sudo systemctl restart consul.service"      
     ]
 
     connection {
