@@ -19,3 +19,4 @@ disk_size         = "20G"                      # Disk size of a VM - min size mu
 additional_wait	  = 60	                       # The amount of time in seconds to wait between creating the VM and powering it up.
 keypath           = "name-of-private-key"      # The path to the private key you need to communicate with your instances
 clone_wait        = 60                         # Provider will wait clone_wait/2 seconds after a clone operation and clone_wait seconds after an UpdateConfig operation.
+consulip          = ""                         # IP address of consul master server

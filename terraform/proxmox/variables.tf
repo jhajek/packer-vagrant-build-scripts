@@ -55,3 +55,5 @@ variable "additional_wait" {
 variable "clone_wait" {
   default = 30
 }
+
+variable "consulip" {}
