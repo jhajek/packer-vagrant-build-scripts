@@ -1,3 +1,6 @@
+resource "random_uuid" "test" {
+}
+
 resource "proxmox_vm_qemu" "test" {
   count       = var.numberofvms
   name        = "test-${var.yourinitials}-vm${count.index}"
