@@ -32,7 +32,6 @@ source "proxmox-iso" "centos-stream" {
   cloud_init_storage_pool = "local"
   ssh_password         = "vagrant"
   ssh_username         = "vagrant"
-  ssh_port             = 2222
   ssh_timeout          = "20m"
   ssh_wait_timeout     = "1800s"
   vm_name              = "${var.VMNAME}"
