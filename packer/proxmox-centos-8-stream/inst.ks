@@ -1,5 +1,5 @@
 #version=RHEL8
-ignoredisk --only-use=sda
+#ignoredisk --only-use=sda
 autopart --type=lvm
 # Partition clearing information
 clearpart --all --initlabel
