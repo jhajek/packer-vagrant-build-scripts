@@ -36,8 +36,8 @@ resource "proxmox_vm_qemu" "test" {
       "sudo hostnamectl set-hostname test-${var.yourinitials}-vm${count.index}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/replace-name/${var.yourinitials}-vm${count.index}/' /etc/consul.d/system.hcl",
-      "sudo sed -i 's/#my-dc-1/rice-dc-1/' /etc/consul.d/consul.hcl",
-      "sudo sed -i 's/#10.0.4.67/${var.consulip}/' /etc/consul.d/consul.hcl",
+      "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
+      "sudo sed -i 's/#retry_join = \[\"10.0.4.67\"\]/retry_join = \[\"${var.consulip}\"\]/' /etc/consul.d/consul.hcl",
       "sudo systemctl daemon-reload",
       "sudo systemctl start consul.service"     
     ]
