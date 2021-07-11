@@ -13,6 +13,7 @@ source "proxmox-iso" "centos-stream" {
     storage_pool_type = "lvm"
     type              = "scsi"
   }
+  http_directory   = "ks"
   http_port_max    = 9200
   http_port_min    = 9001
   iso_checksum            = "sha256:79ba22aec5589fc9222d294d4079a0631576f6ba2c081952e81a4e5933126c74"
