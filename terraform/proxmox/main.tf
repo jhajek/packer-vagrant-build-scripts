@@ -33,7 +33,7 @@ resource "proxmox_vm_qemu" "test" {
 
   provisioner "remote-exec" {
     when = destroy
-    command = "consul services deregister -id ${random_id.id.dec}${count.index}"
+    command = "consul services deregister -id ${var.yourinitials}${count.index}"
     inline = [
       "sudo hostnamectl set-hostname test-${var.yourinitials}-vm${count.index}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
