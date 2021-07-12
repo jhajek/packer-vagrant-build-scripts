@@ -39,7 +39,7 @@ resource "proxmox_vm_qemu" "test" {
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl",
       "sudo systemctl daemon-reload",
-      "sudo systemctl start consul.service"     
+      "sudo systemctl restart consul.service"     
     ]
 
     connection {
