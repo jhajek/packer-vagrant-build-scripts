@@ -62,6 +62,7 @@ resource "consul_service" "proxmox" {
 }
 
 resource "consul_node" "compute" {
+  count   = var.numberofvms
   name    = "${var.yourinitials}-vm${count.index}"
   
   connection {
