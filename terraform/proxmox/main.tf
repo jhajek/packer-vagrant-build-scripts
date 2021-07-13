@@ -36,10 +36,7 @@ resource "proxmox_vm_qemu" "test" {
   resource "consul_service" "proxmox" {
     name    = "${var.yourinitials}-vm${count.index}"
     node    = "${consul_node.compute.name}"
-    port    = 80
-    datacenter = "rice-dc-1"
-    tags    = ["tag0"]
-
+  
     connection {
     type        = "ssh"
     user        = "vagrant"

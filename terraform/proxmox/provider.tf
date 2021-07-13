@@ -4,6 +4,10 @@ terraform {
       source  = "Telmate/proxmox"
       version = "2.7.1"
     }
+    consul = {
+      source = "hashicorp/consul"
+      version = "2.12.0"
+    }
   }
 }
 
@@ -20,4 +24,12 @@ provider "proxmox" {
     _default = var.error_level
     _capturelog = ""
   }
+
+# Configure the Consul provider
+provider "consul" {
+  insecure_https = true
+  datacenter = "rice-dc-1"
+  address = "${var.consulip}:8500"
+}
+
 }
