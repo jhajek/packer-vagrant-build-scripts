@@ -50,7 +50,7 @@ resource "proxmox_vm_qemu" "test" {
 # How to add the consul_service to the terraform provider
 resource "consul_service" "proxmox" {
   name    = "${var.yourinitials}-vm${count.index}"
-  node    = "${consul_node.compute.name}"
+  node    = "${var.yourinitials}-vm${count.index}"
   
   connection {
   type        = "ssh"
