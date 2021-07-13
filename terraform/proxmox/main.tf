@@ -2,6 +2,12 @@ resource "random_id" "id" {
   byte_length = 8
 }
 
+# https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/shuffle#example-usage
+resource "random_shuffle" "datadisk" {
+  input = ["datadisk1", "datadisk4", "datadisk5"]
+  result_count = 1 
+}
+
 resource "proxmox_vm_qemu" "test" {
   count       = var.numberofvms
   name        = "test-${var.yourinitials}-vm${count.index}"
@@ -27,7 +33,8 @@ resource "proxmox_vm_qemu" "test" {
 
   disk {
     type    = "scsi"
-    storage = var.storage
+    #storage = var.storage
+    storage = "${random_shuffle.datadisk.result_count}"
     size    = var.disk_size
   }
 
