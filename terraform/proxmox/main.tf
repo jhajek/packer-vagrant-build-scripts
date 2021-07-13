@@ -51,7 +51,7 @@ resource "proxmox_vm_qemu" "test" {
 resource "consul_service" "proxmox" {
   count   = var.numberofvms
   name = "proxmox"
-  node    = "${consul_node.compute[count.index]}"
+  node    = "${consul_node.compute.name}"
   
   connection {
   type        = "ssh"
