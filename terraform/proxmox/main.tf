@@ -40,7 +40,8 @@ resource "proxmox_vm_qemu" "test" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo hostnamectl set-hostname test-${var.yourinitials}-vm${count.index}"
+      "sudo hostnamectl set-hostname test-${var.yourinitials}-vm${count.index}",
+      "sudo systemctl stop consul"
     ]
 
     connection {
