@@ -31,17 +31,27 @@ resource "proxmox_vm_qemu" "test" {
     size    = var.disk_size
   }
 
+# https://registry.terraform.io/providers/hashicorp/consul/latest/docs/resources/service
+# How to add the consul_service to the terraform provider
+  resource "consul_service" "proxmox" {
+    name    = "${var.yourinitials}-vm${count.index}"
+    node    = "${consul_node.compute.name}"
+    port    = 80
+    datacenter = "rice-dc-1"
+    tags    = ["tag0"]
+
+    connection {
+    type        = "ssh"
+    user        = "vagrant"
+    private_key = file("${path.module}/${var.keypath}")
+    host        = self.ssh_host
+    port        = self.ssh_port
+    }
+  }
+
   provisioner "remote-exec" {
-    when = destroy
-    command = "consul services deregister -name ${var.yourinitials}-vm${count.index}"
     inline = [
-      "sudo hostnamectl set-hostname test-${var.yourinitials}-vm${count.index}",
-      "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
-      "sudo sed -i 's/replace-name/${var.yourinitials}-vm${count.index}/' /etc/consul.d/system.hcl",
-      "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
-      "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl",
-      "sudo systemctl daemon-reload",
-      "sudo systemctl restart consul.service"     
+      "sudo hostnamectl set-hostname test-${var.yourinitials}-vm${count.index}"
     ]
 
     connection {
