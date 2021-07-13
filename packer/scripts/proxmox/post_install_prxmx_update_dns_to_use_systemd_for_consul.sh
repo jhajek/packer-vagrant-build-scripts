@@ -17,4 +17,5 @@ sudo iptables -t nat -A OUTPUT -d localhost -p udp -m udp --dport 53 -j REDIRECT
 sudo iptables -t nat -A OUTPUT -d localhost -p tcp -m tcp --dport 53 -j REDIRECT --to-ports 8600
 
 # Structure to keep the iptables adjusted DNS entries
+sudo mkdir -p /etc/iptables
 sudo /sbin/iptables-save | sudo tee /etc/iptables/rules.v4
