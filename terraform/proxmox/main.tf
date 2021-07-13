@@ -31,21 +31,6 @@ resource "proxmox_vm_qemu" "test" {
     size    = var.disk_size
   }
 
-# https://registry.terraform.io/providers/hashicorp/consul/latest/docs/resources/service
-# How to add the consul_service to the terraform provider
-  resource "consul_service" "proxmox" {
-    name    = "${var.yourinitials}-vm${count.index}"
-    node    = "${consul_node.compute.name}"
-  
-    connection {
-    type        = "ssh"
-    user        = "vagrant"
-    private_key = file("${path.module}/${var.keypath}")
-    host        = self.ssh_host
-    port        = self.ssh_port
-    }
-  }
-
   provisioner "remote-exec" {
     inline = [
       "sudo hostnamectl set-hostname test-${var.yourinitials}-vm${count.index}"
@@ -58,5 +43,20 @@ resource "proxmox_vm_qemu" "test" {
       host        = self.ssh_host
       port        = self.ssh_port
     }
+  }
+}
+
+# https://registry.terraform.io/providers/hashicorp/consul/latest/docs/resources/service
+# How to add the consul_service to the terraform provider
+resource "consul_service" "proxmox" {
+  name    = "${var.yourinitials}-vm${count.index}"
+  node    = "${consul_node.compute.name}"
+  
+  connection {
+  type        = "ssh"
+  user        = "vagrant"
+  private_key = file("${path.module}/${var.keypath}")
+  host        = self.ssh_host
+  port        = self.ssh_port
   }
 }
