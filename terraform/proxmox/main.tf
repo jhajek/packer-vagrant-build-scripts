@@ -50,7 +50,7 @@ resource "proxmox_vm_qemu" "test" {
 # How to add the consul_service to the terraform provider
 resource "consul_service" "proxmox" {
   count   = var.numberofvms
-  name = proxmox
+  name = "proxmox"
   node    = "${consul_node.compute[count.index]}"
   
   connection {
