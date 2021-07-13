@@ -17,5 +17,6 @@ sudo iptables -t nat -A OUTPUT -d localhost -p udp -m udp --dport 53 -j REDIRECT
 sudo iptables -t nat -A OUTPUT -d localhost -p tcp -m tcp --dport 53 -j REDIRECT --to-ports 8600
 
 # Structure to keep the iptables adjusted DNS entries
+# https://askubuntu.com/questions/1252275/ubuntu-20-04-cant-persist-the-iptables-configuration
 sudo mkdir -p /etc/iptables
 sudo /sbin/iptables-save | sudo tee /etc/iptables/rules.v4
