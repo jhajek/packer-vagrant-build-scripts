@@ -24,12 +24,11 @@ provider "proxmox" {
     _default = var.error_level
     _capturelog = ""
   }
+} # end of provider "proxmox"
 
 # Configure the Consul provider
 provider "consul" {
   insecure_https = true
   datacenter = "rice-dc-1"
   address = "${var.consulip}:8500"
-}
-
 }
