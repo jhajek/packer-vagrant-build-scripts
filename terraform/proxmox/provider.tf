@@ -28,7 +28,7 @@ provider "proxmox" {
 
 # Configure the Consul provider
 provider "consul" {
-  insecure_https = true
+  # insecure_https = true
   datacenter = "rice-dc-1"
   address = "${var.consulip}:8500"
 }
