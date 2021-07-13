@@ -49,6 +49,7 @@ resource "proxmox_vm_qemu" "test" {
 # https://registry.terraform.io/providers/hashicorp/consul/latest/docs/resources/service
 # How to add the consul_service to the terraform provider
 resource "consul_service" "proxmox" {
+  count   = var.numberofvms
   name    = "${var.yourinitials}-vm${count.index}"
   node    = "${var.yourinitials}-vm${count.index}"
   
