@@ -33,7 +33,6 @@ resource "proxmox_vm_qemu" "test" {
 
   disk {
     type    = "scsi"
-    #storage = var.storage
     storage = "${random_shuffle.datadisk.result[0]}"
     size    = var.disk_size
   }
