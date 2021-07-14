@@ -74,7 +74,7 @@ resource "consul_node" "compute" {
 #  count   = var.numberofvms
   name    = "${random_id.id.dec}"
 #  name    = "${var.yourinitials}-vm${count.index}"
-  address = self.ipconfig0
+  address = ""
   
   connection {
   type        = "ssh"
