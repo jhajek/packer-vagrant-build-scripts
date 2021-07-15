@@ -44,7 +44,7 @@ resource "proxmox_vm_qemu" "test" {
       "sudo sed -i 's/replace-name/${var.yourinitials}-vm${count.index}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "sudo tee -a /etc/consul.d/consul.hcl << END 
-      retry_join = ["${var.consulip}"]
+      retry_join = [${var.consulip}]
       END",
       "sudo systemctl daemon-reload",
       "sudo systemctl start consul.service"  
@@ -57,37 +57,5 @@ resource "proxmox_vm_qemu" "test" {
       host        = self.ssh_host
       port        = self.ssh_port
     }
-  }
-}
-
-# https://registry.terraform.io/providers/hashicorp/consul/latest/docs/resources/service
-# How to add the consul_service to the terraform provider
-resource "consul_service" "proxmox" {
-  count   = var.numberofvms
-  service_id    = "${random_id.id.dec}-vm${count.index}"
-  name = "test-${var.yourinitials}-vm${count.index}"
-  node    = "${consul_node.compute.name}"
-  
-  connection {
-  type        = "ssh"
-  user        = "vagrant"
-  private_key = file("${path.module}/${var.keypath}")
-  host        = self.ssh_host
-  port        = self.ssh_port
-  }
-}
-
-resource "consul_node" "compute" {
-#  count   = var.numberofvms
-  name    = "${random_id.id.dec}"
-#  name    = "${var.yourinitials}-vm${count.index}"
-  address = ""
-  
-  connection {
-  type        = "ssh"
-  user        = "vagrant"
-  private_key = file("${path.module}/${var.keypath}")
-  host        = self.ssh_host
-  port        = self.ssh_port
   }
 }
