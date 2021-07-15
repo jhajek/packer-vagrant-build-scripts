@@ -43,9 +43,7 @@ resource "proxmox_vm_qemu" "test" {
            "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/replace-name/${var.yourinitials}-vm${count.index}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
-      "sudo tee -a /etc/consul.d/consul.hcl << END 
-      retry_join = [${var.consulip}]
-      END",
+      "echo 'retry_join = ['${var.consulip}']' | sudo tee -a /etc/consul.d/consul.hcl",
       "sudo systemctl daemon-reload",
       "sudo systemctl start consul.service"  
     ]
