@@ -32,4 +32,3 @@ variables.tf
 # Exclude packer variable file
 variables.pkr.hcl
 consul.hcl
-system.hcl
