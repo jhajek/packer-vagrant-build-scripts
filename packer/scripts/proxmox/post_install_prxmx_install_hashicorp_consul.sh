@@ -10,3 +10,4 @@ sudo mv -v /home/vagrant/system.hcl /etc/consul.d/
 sudo systemctl enable consul.service
 sudo systemctl daemon-reload
 sudo systemctl restart consul
+sudo systemctl status consul
