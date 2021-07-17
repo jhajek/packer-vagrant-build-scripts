@@ -46,7 +46,7 @@ resource "proxmox_vm_qemu" "test" {
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl",
       "sudo systemctl start consul.service",  
       "sudo systemctl daemon-reload",
-      "sudo systemctl restart consul.service"
+      "sudo systemctl start consul.service"
      
     ]
 
