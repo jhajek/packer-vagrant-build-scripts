@@ -28,6 +28,7 @@ Understanding-Free*
 .terraform/
 .terraform*
 terraform.tfvars
+terraform.tfstate
 variables.tf
 # Exclude packer variable file
 variables.pkr.hcl
