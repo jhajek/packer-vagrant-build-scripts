@@ -1,4 +1,6 @@
 #version=RHEL8
+nousbstorage
+bootloader --location=mbr --driveorder=sda --append="rhgb quiet"
 ignoredisk --only-use=sda
 autopart --type=lvm
 # Partition clearing information
