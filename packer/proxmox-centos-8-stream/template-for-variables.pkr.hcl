@@ -31,7 +31,7 @@ variable "DISKSIZE" {
 variable "STORAGEPOOL" {
   type = string
   # choose datapool1, datapool2, datapool3, or datapool4
-  default = ""
+  default = "datapool1"
 }
 
 variable "NUMBEROFCORES" {
