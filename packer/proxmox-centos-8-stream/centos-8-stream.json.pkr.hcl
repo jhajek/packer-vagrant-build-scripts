@@ -11,7 +11,7 @@ source "proxmox-iso" "centos-stream" {
     disk_size         = "${var.DISKSIZE}"
     storage_pool      = "${var.STORAGEPOOL}"
     storage_pool_type = "lvm"
-    type              = "scsi"
+    type              = "virtio"
   }
   http_directory   = "./"
   http_port_max    = 9200
