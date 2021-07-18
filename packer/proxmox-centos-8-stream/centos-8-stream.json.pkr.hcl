@@ -7,10 +7,10 @@ source "proxmox-iso" "centos-stream" {
   username     = "${var.USERNAME}"
   token        = "${var.PROXMOX_TOKEN}"
   cpu_type     = "host"
-  disks {
+  disk {
     disk_size         = "${var.DISKSIZE}"
     storage_pool      = "${var.STORAGEPOOL}"
-    storage_pool_type = "lvm"
+    # storage_pool_type = "lvm"
     type              = "virtio"
   }
   http_directory   = "./"
