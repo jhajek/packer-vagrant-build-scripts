@@ -7,7 +7,7 @@ source "proxmox-iso" "centos-stream" {
   username     = "${var.USERNAME}"
   token        = "${var.PROXMOX_TOKEN}"
   cpu_type     = "host"
-  scsi_controller = "virtio-single-scsi"
+  scsi_controller = "virtio-scsi-single"
   disks {
     disk_size         = "${var.DISKSIZE}"
     storage_pool      = "${var.STORAGEPOOL}"
