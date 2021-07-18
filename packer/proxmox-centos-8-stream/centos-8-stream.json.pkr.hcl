@@ -63,7 +63,7 @@ build {
 
     provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts          = ["../scripts/proxmox/post_install_prxmx.sh"]
+    scripts          = ["../scripts/proxmox/post_install_prxmx_centos_8.sh"]
   }
 
 }
