@@ -63,7 +63,7 @@ build {
 
     provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts          = ["../scripts/proxmox/post_install_prxmx_centos_8.sh"]
+    scripts          = ["../scripts/proxmox/centos8/post_install_prxmx_centos_8.sh","../scripts/proxmox/centos8/post_install_prxmx_start-cloud-init.sh","../scripts/proxmox/centos8/post_install_prxmx-ssh-restrict-login.sh","../scripts/proxmox/centos8/post_install_prxmx_install_hashicorp_consul.sh","../scripts/proxmox/centos8/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
   }
 
 }
