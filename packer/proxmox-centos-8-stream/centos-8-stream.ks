@@ -32,8 +32,8 @@ user --groups=wheel --name=vagrant --password=$6$qoazpFv0h6$1i0uxiM32aszgrgyYjv/
 reboot
 
 %packages --ignoremissing
-@^minimal-environment
-#@standard
+#@^minimal-environment
+@standard
 kexec-tools
 
 # unnecessary firmware
