@@ -35,8 +35,6 @@ reboot
 #@^minimal-environment
 @standard
 kexec-tools
-# Needed to interact with the Proxmox VM
-qemu-guest-agent
 
 # unnecessary firmware
 -aic94xx-firmware
@@ -84,6 +82,10 @@ echo "################################"
 echo "# Running Post Configuration   #"
 echo "################################"
 (
+# Needed to interact with the Proxmox VM
+/usr/bin/yum -y install qemu-guest-agent
+sudo systemctl enable qemu-guest-agent
+sudo systemctl start qemu-guest-agent
 /usr/bin/yum -y install drpm sudo
 /usr/bin/yum -y update
 echo "vagrant        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers.d/vagrant
