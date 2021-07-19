@@ -49,8 +49,7 @@ resource "proxmox_vm_qemu" "test" {
       "sudo systemctl restart consul.service",
       "sudo cat /opt/consul/node-id",
       "sudo rm /opt/consul/node-id",
-      "sudo systemctl restart consul",
-      "sudo systemctl status consul"
+      "sudo systemctl restart consul"
     ]
 
     connection {
