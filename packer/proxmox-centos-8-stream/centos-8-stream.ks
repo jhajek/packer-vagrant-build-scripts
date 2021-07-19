@@ -35,6 +35,8 @@ reboot
 #@^minimal-environment
 @standard
 kexec-tools
+# Needed to interact with the Proxmox VM
+qemu-guest-agent
 
 # unnecessary firmware
 -aic94xx-firmware
