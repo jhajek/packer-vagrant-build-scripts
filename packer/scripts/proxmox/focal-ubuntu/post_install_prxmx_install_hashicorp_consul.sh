@@ -11,3 +11,6 @@ sudo systemctl enable consul.service
 sudo systemctl daemon-reload
 sudo systemctl restart consul
 sudo systemctl status consul
+# with the clone there is a duplicate consul node-id - going to try to delete the node-id so that a new one is generated when Terraform deploys these instances
+sudo cat /opt/consul/node-id
+sudo rm /opt/consul/node-id
