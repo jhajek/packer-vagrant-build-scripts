@@ -38,6 +38,7 @@ resource "proxmox_vm_qemu" "test" {
   }
 
   provisioner "remote-exec" {
+    # With the clone there is a duplicate consul node-id - going to try to delete the node-id so that a new one is generated when Terraform deploys these instances
     inline = [
       "sudo hostnamectl set-hostname test-${var.yourinitials}-vm${count.index}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
@@ -45,7 +46,11 @@ resource "proxmox_vm_qemu" "test" {
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl", 
       "sudo systemctl daemon-reload",
-      "sudo systemctl restart consul.service"
+      "sudo systemctl restart consul.service",
+      "sudo cat /opt/consul/node-id",
+      "sudo rm /opt/consul/node-id",
+      "sudo systemctl restart consul",
+      "sudo systemctl status consul"
     ]
 
     connection {
