@@ -84,10 +84,30 @@ build {
         ]
   }
 
+#Add .hcl configuration file to register the systems DNS - base template
+  provisioner "file" {
+    source = "./system.hcl"
+    destination = "/home/vagrant/"
+  }
+
+#Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
+  provisioner "file" {
+    source = "../scripts/proxmox/focal-ubuntu/post_install_iptables-dns-adjustment.sh"
+    destination = "/home/vagrant/"
+  }
+
+# Command to move dns-adjustment script to a safer place
+  provisioner "shell" {
+    inline = [
+      "sudo mv /home/vagrant/post_install_iptables-dns-adjustment.sh /etc",
+      "sudo chmod u+x /etc/post_install_iptables-dns-adjustment.sh"
+    ]
+  }
+
   # could not parse template for following block: "template: hcl2_upgrade:2:41: executing \"hcl2_upgrade\" at <.Vars>: can't evaluate field Vars in type struct { HTTPIP string; HTTPPort string }"
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts          = ["../scripts/post_install_prxmx.sh","../scripts/post_install_prxmx_start-cloud-init.sh","../scripts/post_install_prxmx-ssh-restrict-login.sh"]
+    scripts          = ["../scripts/proxmox/bionic-ubuntu/post_install_prxmx_ubuntu_18045.sh","../scripts/proxmox/bionic-ubuntu/post_install_prxmx_start-cloud-init.sh","../scripts/proxmox/bionic-ubuntu/post_install_prxmx-ssh-restrict-login.sh"]
   }
 
 }
