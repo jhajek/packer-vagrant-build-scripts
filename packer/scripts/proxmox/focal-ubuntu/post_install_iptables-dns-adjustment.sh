@@ -12,5 +12,6 @@ sudo iptables -t nat -A OUTPUT -d localhost -p tcp -m tcp --dport 53 -j REDIRECT
 # https://wiki.nftables.org/wiki-nftables/index.php/Moving_from_iptables_to_nftables
 sudo apt-get install -y nftables
 sudo mkdir -p /etc/iptables
-sudo /sbin/iptables-save | sudo tee /etc/iptables/rules.v4 > ruleset.nft
+sudo /sbin/iptables-save | sudo tee /etc/iptables/rules.v4 
+sudo iptables-restore-translate -f /etc/iptables/rules.v4 > ruleset.nft
 sudo nft -f ruleset.nft
