@@ -80,7 +80,7 @@ build {
   provisioner "shell" {
     inline = [
       "sudo mv /home/vagrant/post_install_iptables-dns-adjustment.sh /etc",
-      "sudo chmod o+x /etc/post_install_iptables-dns-adjustment.sh"
+      "sudo chmod u+x /etc/post_install_iptables-dns-adjustment.sh"
     ]
   }
 
