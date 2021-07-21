@@ -10,7 +10,7 @@ resource "random_shuffle" "datadisk" {
 
 resource "proxmox_vm_qemu" "test" {
   count       = var.numberofvms
-  name        = "test-${var.yourinitials}-vm${count.index}"
+  name        = "${var.yourinitials}-vm${count.index}"
   desc        = var.desc
   target_node = var.target_node
   clone       = var.template_to_clone
