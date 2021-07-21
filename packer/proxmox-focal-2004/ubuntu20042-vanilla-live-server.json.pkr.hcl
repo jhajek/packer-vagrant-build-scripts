@@ -79,7 +79,8 @@ build {
 # Command to move dns-adjustment script to a safer place
   provisioner "shell" {
     inline = [
-      "sudo mv /home/vagrant/post_install_iptables-dns-adjustment.sh /etc"
+      "sudo mv /home/vagrant/post_install_iptables-dns-adjustment.sh /etc",
+      "sudo chmod o+x /etc/post_install_iptables-dns-adjustment.sh"
     ]
   }
 
