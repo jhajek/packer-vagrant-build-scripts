@@ -73,7 +73,7 @@ build {
 #Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
   provisioner "file" {
     source = "../scripts/proxmox/focal-ubuntu/post_install_iptables-dns-adjustment.sh"
-    destination = "/home/vagrant"
+    destination = "/home/vagrant/"
   }
 
 # Command to move dns-adjustment script to a safer place
