@@ -12,3 +12,14 @@ sudo systemctl daemon-reload
 sudo systemctl restart systemd-resolved
 # see iptables-dns-adjustment.sh on how the iptables/nftables will be automatically adjusted to forward local dns requets to port 8600 on each boot or reboot
 
+# Create systemd service file to start nftables dns adjustment at every boot
+cat << EOT >> /etc/systemd/system/post_install_iptables-dns-adjustment.sh
+[Unit]
+After=network.service
+
+[Service]
+ExecStart=/etc/post_install_iptables-dns-adjustment.sh
+
+[Install]
+WantedBy=default.target
+EOT
