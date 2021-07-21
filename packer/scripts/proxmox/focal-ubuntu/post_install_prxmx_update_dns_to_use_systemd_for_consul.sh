@@ -23,3 +23,5 @@ ExecStart=/etc/post_install_iptables-dns-adjustment.sh
 [Install]
 WantedBy=default.target
 EOT
+
+sudo systemctl enable post_install_iptables-dns-adjustment.service
