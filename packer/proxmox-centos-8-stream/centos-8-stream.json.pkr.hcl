@@ -1,7 +1,7 @@
 # https://www.packer.io/docs/builders/proxmox/iso
 source "proxmox-iso" "centos-stream" {
   boot_command            = ["<tab> text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-8-stream.ks<enter>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>"]
-  boot_wait    = "5s"
+  boot_wait    = "10s"
   cores        = "${var.NUMBEROFCORES}"
   node         = "${var.NODENAME}"
   username     = "${var.USERNAME}"
