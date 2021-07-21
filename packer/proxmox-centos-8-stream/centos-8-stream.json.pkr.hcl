@@ -61,7 +61,21 @@ build {
         ]
   }
 
-    provisioner "shell" {
+#Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
+  provisioner "file" {
+    source = "../scripts/proxmox/centos8/post_install_iptables-dns-adjustment.sh"
+    destination = "/home/vagrant/"
+  }
+
+# Command to move dns-adjustment script to a safer place
+  provisioner "shell" {
+    inline = [
+      "sudo mv /home/vagrant/post_install_iptables-dns-adjustment.sh /etc",
+      "sudo chmod u+x /etc/post_install_iptables-dns-adjustment.sh"
+    ]
+  }
+
+  provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts          = ["../scripts/proxmox/centos8/post_install_prxmx_centos_8.sh","../scripts/proxmox/centos8/post_install_prxmx-ssh-restrict-login.sh","../scripts/proxmox/centos8/post_install_prxmx_install_hashicorp_consul.sh"]
   }
