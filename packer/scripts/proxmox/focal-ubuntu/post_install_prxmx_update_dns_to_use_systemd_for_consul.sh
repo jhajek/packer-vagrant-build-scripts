@@ -24,3 +24,4 @@ sudo iptables -t nat -A OUTPUT -d localhost -p tcp -m tcp --dport 53 -j REDIRECT
 sudo apt-get install -y nftables
 sudo mkdir -p /etc/iptables
 sudo /sbin/iptables-save | sudo tee /etc/iptables/rules.v4 > ruleset.nft
+sudo nft -f ruleset.nft
