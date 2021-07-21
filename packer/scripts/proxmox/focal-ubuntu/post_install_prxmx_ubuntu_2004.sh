@@ -10,6 +10,7 @@ sudo groupadd admin
 sudo usermod -a -G admin vagrant
 
 sudo apt-get update
+sudo apt-get dist-upgrade -y
 sudo apt-get install -y links firewalld
 
 sudo systemctl enable firewalld
