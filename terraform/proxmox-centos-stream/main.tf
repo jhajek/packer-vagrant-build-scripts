@@ -16,10 +16,10 @@ resource "proxmox_vm_qemu" "test" {
   clone       = var.template_to_clone
   os_type     = "cloud-init"
   memory      = var.memory
-  scsihw      = "pvscsi"
+  scsihw      = "virtio-scsi-pci"
   cores       = var.cores
   sockets     = var.sockets
-  bootdisk    = "scsi0"
+  bootdisk    = "virtio0"
   boot        = "cdn"
   agent       = 1
   additional_wait = var.additional_wait
