@@ -18,7 +18,8 @@ resource "proxmox_vm_qemu" "test" {
   memory      = var.memory
   cores       = var.cores
   sockets     = var.sockets
-  bootdisk    = "scsi0"
+  scsihw      = "virtio-scsi-pci"
+  bootdisk    = "virtio0"
   boot        = "cdn"
   agent       = 1
   additional_wait = var.additional_wait
