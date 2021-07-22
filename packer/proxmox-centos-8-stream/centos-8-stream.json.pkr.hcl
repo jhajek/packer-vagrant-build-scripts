@@ -61,6 +61,12 @@ build {
         ]
   }
 
+#Add .hcl configuration file to register the systems DNS - base template
+  provisioner "file" {
+    source = "./system.hcl"
+    destination = "/home/vagrant/"
+  }
+
 #Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
   provisioner "file" {
     source = "../scripts/proxmox/centos8/post_install_iptables-dns-adjustment.sh"
