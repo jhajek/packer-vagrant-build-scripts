@@ -16,7 +16,7 @@ source "proxmox-iso" "ubuntu20042-vanilla-live-server" {
     disk_size         = "${var.DISKSIZE}"
     storage_pool      = "${var.STORAGEPOOL}"
     storage_pool_type = "lvm"
-    type              = "scsi"
+    type              = "virtio"
   }
   http_directory   = "subiquity/http"
   http_port_max    = 9200
