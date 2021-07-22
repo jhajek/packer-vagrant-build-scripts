@@ -30,7 +30,6 @@ Understanding-Free*
 terraform.tfvars
 terraform.tfstate
 terraform.tfstate.backup
-variables.tf
 # Exclude packer variable file
 variables.pkr.hcl
 consul.hcl
