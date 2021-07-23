@@ -8,7 +8,7 @@ sudo yum install -y https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rp
 # Install epel repo for collectd
 sudo yum install -y epel-release
 
-sudo yum install -y java-1.8.0-openjdk daemonize curl collectd
+sudo yum install -y java-1.8.0-openjdk daemonize curl collectd wget
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
 sudo yum install -y kernel-devel gcc binutils make perl bzip2 python3 python3-pip python3-setuptools
 
