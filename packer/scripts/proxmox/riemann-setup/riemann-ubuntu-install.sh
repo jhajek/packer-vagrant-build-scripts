@@ -26,4 +26,4 @@ sudo systemctl enable collectd
 sudo systemctl start collectd
 
 # P. 44  Install ruby gem tools
-sudo gem install --no-ri --no-rdoc riemann-tools
+sudo gem install --no-rdoc riemann-tools

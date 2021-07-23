@@ -51,5 +51,5 @@ sudo systemctl start riemann
 
 # P. 44  Install ruby gem tool, Centos 7 has Ruby 2.x as the default
 sudo yum install -y ruby ruby-devel gcc libxml2-devel
-sudo gem install --no-ri --no-rdoc riemann-tools
+sudo gem install --no-rdoc riemann-tools
 echo "All Done!"
