@@ -10,7 +10,7 @@ sudo yum install -y epel-release
 
 sudo yum install -y java-1.8.0-openjdk daemonize curl collectd
 # Due to needing a tty to run sudo, this install command adds all the pre-reqs to build the virtualbox additions
-sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2 python3 python3-pip python3-setuptools
+sudo yum install -y kernel-devel gcc binutils make perl bzip2 python3 python3-pip python3-setuptools
 
 
 ###############################################################################################################
