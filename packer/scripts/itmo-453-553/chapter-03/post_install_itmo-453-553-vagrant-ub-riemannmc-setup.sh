@@ -39,8 +39,8 @@ sudo apt-get update -y
 sudo apt-get install -y ruby ruby-dev build-essential zlib1g-dev openjdk-8-jre collectd
 
 # P.42 The Art of Monitoring
-wget https://github.com/riemann/riemann/releases/download/0.3.5/riemann_0.3.5_all.deb
-sudo dpkg -i riemann_0.3.5_all.deb
+wget https://github.com/riemann/riemann/releases/download/0.3.6/riemann_0.3.6_all.deb
+sudo dpkg -i riemann_0.3.6_all.deb
 
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
