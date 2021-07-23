@@ -49,7 +49,7 @@ sudo hostnamectl set-hostname centos-riemannb
 # Install Elrepo - The Community Enterprise Linux Repository (ELRepo) - http://elrepo.org/tiki/tiki-index.php
 sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 # https://wiki.centos.org/AdditionalResources/Repositories
-sudo yum install -y https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm
+sudo yum install -y https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
 # Install epel repo for collectd
 sudo yum install -y epel-release
 
@@ -72,8 +72,8 @@ sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
 ###############################################################################################################
 # Fetch and install the Riemann RPM
 ###############################################################################################################
-wget https://github.com/riemann/riemann/releases/download/0.3.5/riemann-0.3.5-1.noarch-EL7.rpm
-sudo rpm -Uvh riemann-0.3.5-1.noarch-EL7.rpm
+wget https://github.com/riemann/riemann/releases/download/0.3.6/riemann-0.3.6-1.noarch-EL8.rpm
+sudo rpm -Uvh riemann-0.3.6-1.noarch-EL8.rpm
 
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
