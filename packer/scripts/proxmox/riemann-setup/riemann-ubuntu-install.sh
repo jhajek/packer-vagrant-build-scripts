@@ -11,7 +11,7 @@ sudo dpkg -i riemann_0.3.6_all.deb
 # cloning source code examples for the book
 git clone https://github.com/turnbullpress/aom-code.git
 
-# Install leiningen on Centos 7 - needed for riemann syntax checker
+# Install leiningen needed for riemann syntax checker
 sudo apt-get install -y leiningen
 
 # Riemann syntax checker download and install
