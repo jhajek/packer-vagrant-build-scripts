@@ -81,9 +81,20 @@ build {
     ]
   }
 
+# This block is needed to setup the Consul DNS infrastructure - do not modify
+
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts          = ["../scripts/proxmox/centos8/post_install_prxmx_centos_8.sh","../scripts/proxmox/centos8/post_install_prxmx-ssh-restrict-login.sh","../scripts/proxmox/centos8/post_install_prxmx_install_hashicorp_consul.sh","../scripts/proxmox/centos8/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh","../scripts/proxmox/riemann-setup/riemann-centos-stream-install.sh"]
+    scripts          = ["../scripts/proxmox/centos8/post_install_prxmx_centos_8.sh","../scripts/proxmox/centos8/post_install_prxmx-ssh-restrict-login.sh","../scripts/proxmox/centos8/post_install_prxmx_install_hashicorp_consul.sh","../scripts/proxmox/centos8/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
   }
+
+# This block you can add your own shell scripts to customize the image you are creating
+
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts          = ["../scripts/proxmox/riemann-setup/riemann-centos-stream-install.sh"]
+  }
+
+
 
 }
