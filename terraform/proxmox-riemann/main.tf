@@ -12,8 +12,8 @@ resource "random_shuffle" "datadisk" {
 
 resource "proxmox_vm_qemu" "riemanna" {
   count       = var.numberofvms
-  name        = "${var.yourinitials}"
-  desc        = var.desc
+  name        = "${var.yourinitials_a}"
+  desc        = var.desc_a
   target_node = var.target_node
   clone       = var.template_to_clone
   os_type     = "cloud-init"
@@ -65,12 +65,12 @@ resource "proxmox_vm_qemu" "riemanna" {
   }
 }
 
-# Create Riemann A
+# Create Riemann B
 
 resource "proxmox_vm_qemu" "riemannb" {
   count       = var.numberofvms
-  name        = "${var.yourinitials}"
-  desc        = var.desc
+  name        = "${var.yourinitials_b}"
+  desc        = var.desc_b
   target_node = var.target_node
   clone       = var.template_to_clone
   os_type     = "cloud-init"
@@ -126,8 +126,8 @@ resource "proxmox_vm_qemu" "riemannb" {
 
 resource "proxmox_vm_qemu" "riemannmc" {
   count       = var.numberofvms
-  name        = "${var.yourinitials}"
-  desc        = var.desc
+  name        = "${var.yourinitials_mc}"
+  desc        = var.desc_mc
   target_node = var.target_node
   clone       = var.template_to_clone
   os_type     = "cloud-init"
