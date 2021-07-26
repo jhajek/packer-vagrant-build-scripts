@@ -6,7 +6,11 @@ variable "pm_api_url" {}
 #variable "pm_password" {
 #  sensitive = true
 #}
-variable "yourinitials" {}
+variable "yourinitials_a" {}
+
+variable "yourinitials_b" {}
+
+variable "yourinitials_mc" {}
 
 variable "pm_api_token_id" {
   sensitive = true
