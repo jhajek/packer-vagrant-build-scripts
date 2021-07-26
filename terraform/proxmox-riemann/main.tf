@@ -35,7 +35,7 @@ resource "proxmox_vm_qemu" "riemanna" {
   }
 
   disk {
-    type    = "scsi"
+    type    = "virtio"
     storage = "${random_shuffle.datadisk.result[0]}"
     size    = var.disk_size
   }
@@ -92,7 +92,7 @@ resource "proxmox_vm_qemu" "riemannb" {
   }
 
   disk {
-    type    = "scsi"
+    type    = "virtio"
     storage = "${random_shuffle.datadisk.result[0]}"
     size    = var.disk_size
   }
@@ -149,7 +149,7 @@ resource "proxmox_vm_qemu" "riemannmc" {
   }
 
   disk {
-    type    = "scsi"
+    type    = "virtio"
     storage = "${random_shuffle.datadisk.result[0]}"
     size    = var.disk_size
   }
