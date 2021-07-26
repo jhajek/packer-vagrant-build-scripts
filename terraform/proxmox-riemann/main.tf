@@ -15,7 +15,7 @@ resource "proxmox_vm_qemu" "riemanna" {
   name        = "${var.yourinitials_a}"
   desc        = var.desc_a
   target_node = var.target_node
-  clone       = var.template_to_clone
+  clone       = var.template_to_clone_a
   os_type     = "cloud-init"
   memory      = var.memory
   cores       = var.cores
@@ -43,9 +43,9 @@ resource "proxmox_vm_qemu" "riemanna" {
   provisioner "remote-exec" {
     # With the clone there is a duplicate consul node-id - going to try to delete the node-id so that a new one is generated when Terraform deploys these instances
     inline = [
-      "sudo hostnamectl set-hostname ${var.yourinitials}",
+      "sudo hostnamectl set-hostname ${var.yourinitials_a}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
-      "sudo sed -i 's/replace-name/${var.yourinitials}/' /etc/consul.d/system.hcl",
+      "sudo sed -i 's/replace-name/${var.yourinitials_a}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl", 
       "sudo systemctl daemon-reload",
@@ -72,7 +72,7 @@ resource "proxmox_vm_qemu" "riemannb" {
   name        = "${var.yourinitials_b}"
   desc        = var.desc_b
   target_node = var.target_node
-  clone       = var.template_to_clone
+  clone       = var.template_to_clone_b
   os_type     = "cloud-init"
   memory      = var.memory
   cores       = var.cores
@@ -100,9 +100,9 @@ resource "proxmox_vm_qemu" "riemannb" {
   provisioner "remote-exec" {
     # With the clone there is a duplicate consul node-id - going to try to delete the node-id so that a new one is generated when Terraform deploys these instances
     inline = [
-      "sudo hostnamectl set-hostname ${var.yourinitials}",
+      "sudo hostnamectl set-hostname ${var.yourinitials_b}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
-      "sudo sed -i 's/replace-name/${var.yourinitials}/' /etc/consul.d/system.hcl",
+      "sudo sed -i 's/replace-name/${var.yourinitials_b}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl", 
       "sudo systemctl daemon-reload",
@@ -129,7 +129,7 @@ resource "proxmox_vm_qemu" "riemannmc" {
   name        = "${var.yourinitials_mc}"
   desc        = var.desc_mc
   target_node = var.target_node
-  clone       = var.template_to_clone
+  clone       = var.template_to_clone_mc
   os_type     = "cloud-init"
   memory      = var.memory
   cores       = var.cores
@@ -157,9 +157,9 @@ resource "proxmox_vm_qemu" "riemannmc" {
   provisioner "remote-exec" {
     # With the clone there is a duplicate consul node-id - going to try to delete the node-id so that a new one is generated when Terraform deploys these instances
     inline = [
-      "sudo hostnamectl set-hostname ${var.yourinitials}",
+      "sudo hostnamectl set-hostname ${var.yourinitials_mc}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
-      "sudo sed -i 's/replace-name/${var.yourinitials}/' /etc/consul.d/system.hcl",
+      "sudo sed -i 's/replace-name/${var.yourinitials_mc}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl", 
       "sudo systemctl daemon-reload",
