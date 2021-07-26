@@ -30,11 +30,19 @@ variable "pm_log_file" {}
 
 variable "numberofvms" {}
 
-variable "desc" {}
+variable "desc_a" {}
+
+variable "desc_b" {}
+
+variable "desc_mc" {}
 
 variable "target_node"{}
 
-variable "template_to_clone" {}
+variable "template_to_clone_a" {}
+
+variable "template_to_clone_b" {}
+
+variable "template_to_clone_mc" {}
 
 variable "memory"{}
 
