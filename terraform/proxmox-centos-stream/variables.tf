@@ -1,11 +1,6 @@
 #https://registry.terraform.io/providers/Telmate/proxmox/latest/docs
 variable "pm_api_url" {}
 
-#variable "pm_user" {}
-
-#variable "pm_password" {
-#  sensitive = true
-#}
 variable "yourinitials" {}
 
 variable "pm_api_token_id" {
@@ -32,19 +27,19 @@ variable "numberofvms" {}
 
 variable "desc" {}
 
-variable "target_node"{}
+variable "target_node" {}
 
 variable "template_to_clone" {}
 
-variable "memory"{}
+variable "memory" {}
 
-variable "cores"{}
+variable "cores" {}
 
-variable "sockets"{}
+variable "sockets" {}
 
 variable "storage" {}
 
-variable "disk_size"{}
+variable "disk_size" {}
 
 variable "keypath" {}
 
