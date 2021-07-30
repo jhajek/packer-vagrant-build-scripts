@@ -45,12 +45,20 @@ build {
 
   sources = ["source.proxmox-iso.proxmox-centos-8-stream"]
 
-  #Add provisioners to upload public key to all the VMs
+  ########################################################################################################################
+  # File provisioner will SCP your public key to the instance so you can connect over SSH via your 
+  # generated RSA private key
+  ########################################################################################################################
+
   provisioner "file" {
     source      = "./${var.KEYNAME}"
     destination = "/home/vagrant/"
   }
+
+  ########################################################################################################################
   # Commands to move the public key copied to the vm via the File Provisioner into the authorized keys
+  ########################################################################################################################
+
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     inline = [
@@ -61,19 +69,29 @@ build {
     ]
   }
 
-  #Add .hcl configuration file to register the systems DNS - base template
+  ########################################################################################################################
+  # Using the file provisioner to SCP this file to the instance 
+  # Add .hcl configuration file to register the systems DNS - base template
+  ########################################################################################################################
+
   provisioner "file" {
     source      = "./system.hcl"
     destination = "/home/vagrant/"
   }
 
-  #Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
+  ########################################################################################################################
+  # Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
+  ########################################################################################################################
+
   provisioner "file" {
     source      = "../scripts/proxmox/centos8/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
   }
 
-  # Command to move dns-adjustment script to a safer place
+  ########################################################################################################################
+  # Command to move dns-adjustment script so the Consul DNS service will start on boot/reboot
+  ########################################################################################################################
+
   provisioner "shell" {
     inline = [
       "sudo mv /home/vagrant/post_install_iptables-dns-adjustment.sh /etc",
@@ -81,9 +99,24 @@ build {
     ]
   }
 
+  ########################################################################################################################
+  # These shell scripts are needed to create the cloud instance and register the instance with Consul DNS
+  # Don't edit this
+  ########################################################################################################################
+
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/centos8/post_install_prxmx_centos_8.sh", "../scripts/proxmox/centos8/post_install_prxmx-ssh-restrict-login.sh", "../scripts/proxmox/centos8/post_install_prxmx_install_hashicorp_consul.sh", "../scripts/proxmox/centos8/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
   }
+
+  ########################################################################################################################
+  # Uncomment this block to add your own custom bash install scripts
+  # This block you can add your own shell scripts to customize the image you are creating
+  ########################################################################################################################
+
+  #  provisioner "shell" {
+  #    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+  #    scripts          = ["../path/to/your/shell/script.sh"]
+  #  }
 
 }
