@@ -4,7 +4,7 @@
 // set them from the command line, a var-file, or the environment.
 
 variable "NODENAME" {
-  type =  string
+  type    = string
   default = ""
 }
 
@@ -19,12 +19,12 @@ variable "URL" {
 }
 
 variable "MEMORY" {
-  type = string
+  type    = string
   default = "4192"
 }
 
 variable "DISKSIZE" {
-  type = string
+  type    = string
   default = "10G"
 }
 
@@ -35,12 +35,12 @@ variable "STORAGEPOOL" {
 }
 
 variable "NUMBEROFCORES" {
-  type = string
+  type    = string
   default = "1"
 }
 
 variable "VMNAME" {
-  type = string
+  type    = string
   default = ""
 }
 

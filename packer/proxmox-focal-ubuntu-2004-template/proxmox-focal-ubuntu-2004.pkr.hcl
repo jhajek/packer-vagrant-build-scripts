@@ -21,46 +21,46 @@ source "proxmox-iso" "proxmox-focal-ubuntu-2004" {
   http_directory   = "subiquity/http"
   http_port_max    = 9200
   http_port_min    = 9001
-  iso_checksum            = "sha256:d1f2bf834bbe9bb43faf16f9be992a6f3935e65be0edece1dee2aa6eb1767423"
-  iso_urls                = ["http://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso"]
+  iso_checksum     = "sha256:d1f2bf834bbe9bb43faf16f9be992a6f3935e65be0edece1dee2aa6eb1767423"
+  iso_urls         = ["http://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso"]
   iso_storage_pool = "local"
   memory           = "${var.MEMORY}"
   network_adapters {
-    bridge   = "vmbr0"
-    model    = "virtio"
+    bridge = "vmbr0"
+    model  = "virtio"
   }
-  os                   = "l26"
-  proxmox_url          = "${var.URL}"
+  os                       = "l26"
+  proxmox_url              = "${var.URL}"
   insecure_skip_tls_verify = true
-  unmount_iso          = true
-  qemu_agent           = true
-  cloud_init           = true
-  cloud_init_storage_pool = "local"
-  ssh_password         = "vagrant"
-  ssh_username         = "vagrant"
-  ssh_port             = 2222
-  ssh_timeout          = "20m"
-  ssh_wait_timeout     = "1800s"
-  template_description = "A Packer template to create a Promox Template - Vanilla Ubuntu"
-  vm_name              = "${var.VMNAME}"
+  unmount_iso              = true
+  qemu_agent               = true
+  cloud_init               = true
+  cloud_init_storage_pool  = "local"
+  ssh_password             = "vagrant"
+  ssh_username             = "vagrant"
+  ssh_port                 = 2222
+  ssh_timeout              = "20m"
+  ssh_wait_timeout         = "1800s"
+  template_description     = "A Packer template to create a Promox Template - Vanilla Ubuntu"
+  vm_name                  = "${var.VMNAME}"
 }
 
 build {
   sources = ["source.proxmox-iso.proxmox-focal-ubuntu-2004"]
 
-########################################################################################################################
-# File provisioner will SCP your public key to the instance so you can connect over SSH via your 
-# generated RSA private key
-########################################################################################################################
+  ########################################################################################################################
+  # File provisioner will SCP your public key to the instance so you can connect over SSH via your 
+  # generated RSA private key
+  ########################################################################################################################
 
   provisioner "file" {
-    source = "./${var.KEYNAME}"
+    source      = "./${var.KEYNAME}"
     destination = "/home/vagrant/"
   }
 
-########################################################################################################################
-# Commands to move the public key copied to the vm via the File Provisioner into the authorized keys
-########################################################################################################################
+  ########################################################################################################################
+  # Commands to move the public key copied to the vm via the File Provisioner into the authorized keys
+  ########################################################################################################################
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
@@ -69,31 +69,31 @@ build {
       "touch /home/vagrant/.ssh/authorized_keys",
       "chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys",
       "cat /home/vagrant/${var.KEYNAME} >> /home/vagrant/.ssh/authorized_keys"
-        ]
+    ]
   }
 
-########################################################################################################################
-# Using the file provisioner to SCP this file to the instance 
-# Add .hcl configuration file to register the systems DNS - base template
-########################################################################################################################
+  ########################################################################################################################
+  # Using the file provisioner to SCP this file to the instance 
+  # Add .hcl configuration file to register the systems DNS - base template
+  ########################################################################################################################
 
   provisioner "file" {
-    source = "./system.hcl"
+    source      = "./system.hcl"
     destination = "/home/vagrant/"
   }
 
-########################################################################################################################
-# Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
-########################################################################################################################
+  ########################################################################################################################
+  # Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
+  ########################################################################################################################
 
   provisioner "file" {
-    source = "../scripts/proxmox/focal-ubuntu/post_install_iptables-dns-adjustment.sh"
+    source      = "../scripts/proxmox/focal-ubuntu/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
   }
 
-########################################################################################################################
-# Command to move dns-adjustment script so the Consul DNS service will start on boot/reboot
-########################################################################################################################
+  ########################################################################################################################
+  # Command to move dns-adjustment script so the Consul DNS service will start on boot/reboot
+  ########################################################################################################################
 
   provisioner "shell" {
     inline = [
@@ -102,34 +102,34 @@ build {
     ]
   }
 
-########################################################################################################################
-# These shell scripts are needed to create the cloud instance and register the instance with Consul DNS
-# Don't edit this
-########################################################################################################################
+  ########################################################################################################################
+  # These shell scripts are needed to create the cloud instance and register the instance with Consul DNS
+  # Don't edit this
+  ########################################################################################################################
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts          = ["../scripts/proxmox/focal-ubuntu/post_install_prxmx_ubuntu_2004.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx_start-cloud-init.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx-ssh-restrict-login.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx_install_hashicorp_consul.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
+    scripts         = ["../scripts/proxmox/focal-ubuntu/post_install_prxmx_ubuntu_2004.sh", "../scripts/proxmox/focal-ubuntu/post_install_prxmx_start-cloud-init.sh", "../scripts/proxmox/focal-ubuntu/post_install_prxmx-ssh-restrict-login.sh", "../scripts/proxmox/focal-ubuntu/post_install_prxmx_install_hashicorp_consul.sh", "../scripts/proxmox/focal-ubuntu/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
   }
 
-########################################################################################################################
-# This is a hack needed to be able to install Ubuntu 20.04 via Packer -- due to Ubuntu adopting Cloud-Init as the method for scripted 
-# installation
-########################################################################################################################
+  ########################################################################################################################
+  # This is a hack needed to be able to install Ubuntu 20.04 via Packer -- due to Ubuntu adopting Cloud-Init as the method for scripted 
+  # installation
+  ########################################################################################################################
 
-    provisioner "shell" {
+  provisioner "shell" {
     #inline_shebang  =  "#!/usr/bin/bash -e"
-    inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
-    }
+    inline = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
+  }
 
-########################################################################################################################
-# Uncomment this block to add your own custom bash install scripts
-# This block you can add your own shell scripts to customize the image you are creating
-########################################################################################################################
+  ########################################################################################################################
+  # Uncomment this block to add your own custom bash install scripts
+  # This block you can add your own shell scripts to customize the image you are creating
+  ########################################################################################################################
 
-#  provisioner "shell" {
-#    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-#    scripts          = ["../path/to/your/shell/script.sh"]
-#  }
+  #  provisioner "shell" {
+  #    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+  #    scripts          = ["../path/to/your/shell/script.sh"]
+  #  }
 
 }
