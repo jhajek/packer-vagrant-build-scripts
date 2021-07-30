@@ -48,12 +48,20 @@ source "proxmox-iso" "proxmox-focal-ubuntu-2004" {
 build {
   sources = ["source.proxmox-iso.proxmox-focal-ubuntu-2004"]
 
-#Add provisioners to upload public key to all the VMs
+########################################################################################################################
+# File provisioner will SCP your public key to the instance so you can connect over SSH via your 
+# generated RSA private key
+########################################################################################################################
+
   provisioner "file" {
     source = "./${var.KEYNAME}"
     destination = "/home/vagrant/"
   }
+
+########################################################################################################################
 # Commands to move the public key copied to the vm via the File Provisioner into the authorized keys
+########################################################################################################################
+
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     inline = [
@@ -64,19 +72,29 @@ build {
         ]
   }
 
-#Add .hcl configuration file to register the systems DNS - base template
+########################################################################################################################
+# Using the file provisioner to SCP this file to the instance 
+# Add .hcl configuration file to register the systems DNS - base template
+########################################################################################################################
+
   provisioner "file" {
     source = "./system.hcl"
     destination = "/home/vagrant/"
   }
 
-#Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
+########################################################################################################################
+# Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
+########################################################################################################################
+
   provisioner "file" {
     source = "../scripts/proxmox/focal-ubuntu/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
   }
 
+########################################################################################################################
 # Command to move dns-adjustment script so the Consul DNS service will start on boot/reboot
+########################################################################################################################
+
   provisioner "shell" {
     inline = [
       "sudo mv /home/vagrant/post_install_iptables-dns-adjustment.sh /etc",
@@ -84,15 +102,20 @@ build {
     ]
   }
 
+########################################################################################################################
 # These shell scripts are needed to create the cloud instance and register the instance with Consul DNS
 # Don't edit this
+########################################################################################################################
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts          = ["../scripts/proxmox/focal-ubuntu/post_install_prxmx_ubuntu_2004.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx_start-cloud-init.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx-ssh-restrict-login.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx_install_hashicorp_consul.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
   }
 
-# This is a hack needed to be able to install Ubuntu 20.04 via Packer -- due to Ubuntu adopting Cloud-Init as the method for scripted installation
+########################################################################################################################
+# This is a hack needed to be able to install Ubuntu 20.04 via Packer -- due to Ubuntu adopting Cloud-Init as the method for scripted 
+# installation
+########################################################################################################################
 
     provisioner "shell" {
     #inline_shebang  =  "#!/usr/bin/bash -e"
