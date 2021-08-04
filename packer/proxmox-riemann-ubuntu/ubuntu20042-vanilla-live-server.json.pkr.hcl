@@ -96,9 +96,9 @@ build {
     scripts          = ["../scripts/proxmox/riemann-setup/riemann-ubuntu-install.sh"]
   }
 
-
+# This block is needed due to a bug using Packer and Cloud-Init on Ubuntu 20.04 to remove the
+# temporary SSH port during installation
     provisioner "shell" {
-    #inline_shebang  =  "#!/usr/bin/bash -e"
     inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
     }
 }
