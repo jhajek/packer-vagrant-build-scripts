@@ -1,24 +1,28 @@
-# https://www.packer.io/docs/builders/proxmox/iso
-source "proxmox-iso" "centos-stream" {
-  boot_command            = ["<tab> text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-8-stream.ks<enter>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>"]
-  boot_wait    = "10s"
+locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
+
+# source blocks are generated from your builders; a source can be referenced in
+# build blocks. A build block runs provisioner and post-processors on a
+# source. Read the documentation for source blocks here:
+# https://www.packer.io/docs/from-1.5/blocks/source
+source "proxmox-iso" "proxmox-focal-ubuntu-2004-minio-template" {
+  boot_command = ["<enter><enter><f6><esc><wait> ", "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/", "<enter><wait>"]
+  boot_wait    = "5s"
   cores        = "${var.NUMBEROFCORES}"
   node         = "${var.NODENAME}"
   username     = "${var.USERNAME}"
   token        = "${var.PROXMOX_TOKEN}"
   cpu_type     = "host"
-  scsi_controller = "virtio-scsi-pci"
   disks {
     disk_size         = "${var.DISKSIZE}"
     storage_pool      = "${var.STORAGEPOOL}"
     storage_pool_type = "lvm"
     type              = "virtio"
   }
-  http_directory   = "./"
+  http_directory   = "subiquity/http"
   http_port_max    = 9200
   http_port_min    = 9001
-  iso_checksum            = "sha256:79ba22aec5589fc9222d294d4079a0631576f6ba2c081952e81a4e5933126c74"
-  iso_urls                = ["http://bay.uchicago.edu/centos/8-stream/isos/x86_64/CentOS-Stream-8-x86_64-20210706-boot.iso"]
+  iso_checksum            = "sha256:d1f2bf834bbe9bb43faf16f9be992a6f3935e65be0edece1dee2aa6eb1767423"
+  iso_urls                = ["http://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso"]
   iso_storage_pool = "local"
   memory           = "${var.MEMORY}"
   network_adapters {
@@ -34,16 +38,15 @@ source "proxmox-iso" "centos-stream" {
   cloud_init_storage_pool = "local"
   ssh_password         = "vagrant"
   ssh_username         = "vagrant"
-  ssh_port             = 22
+  ssh_port             = 2222
   ssh_timeout          = "20m"
   ssh_wait_timeout     = "1800s"
+  template_description = "A Packer template to create a Promox Template - Vanilla Ubuntu"
   vm_name              = "${var.VMNAME}"
 }
 
 build {
-  description = "Build base CentOS 8 x86_64"
-
-  sources = ["source.proxmox-iso.centos-stream"]
+  sources = ["source.proxmox-iso.proxmox-focal-ubuntu-2004-minio-template"]
 
 #Add provisioners to upload public key to all the VMs
   provisioner "file" {
@@ -69,7 +72,7 @@ build {
 
 #Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
   provisioner "file" {
-    source = "../scripts/proxmox/centos8/post_install_iptables-dns-adjustment.sh"
+    source = "../scripts/proxmox/focal-ubuntu/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
   }
 
@@ -80,21 +83,22 @@ build {
       "sudo chmod u+x /etc/post_install_iptables-dns-adjustment.sh"
     ]
   }
-
-# This block is needed to setup the Consul DNS infrastructure - do not modify
-
+# Scripts needed to setup internal DNS -- do not edit
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts          = ["../scripts/proxmox/centos8/post_install_prxmx_centos_8.sh","../scripts/proxmox/centos8/post_install_prxmx-ssh-restrict-login.sh","../scripts/proxmox/centos8/post_install_prxmx_install_hashicorp_consul.sh","../scripts/proxmox/centos8/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
+    scripts          = ["../scripts/proxmox/focal-ubuntu/post_install_prxmx_ubuntu_2004.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx_start-cloud-init.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx-ssh-restrict-login.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx_install_hashicorp_consul.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh","../scripts/proxmox/riemann-setup/riemann-ubuntu-install.sh"]
   }
 
 # This block you can add your own shell scripts to customize the image you are creating
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts          = ["../scripts/proxmox/riemann-setup/riemann-centos-stream-install.sh"]
+    scripts          = ["../scripts/proxmox/minio-setup/minio-ubuntu-install.sh"]
   }
 
-
-
+# This block is needed due to a bug using Packer and Cloud-Init on Ubuntu 20.04 to remove the
+# temporary SSH port during installation
+    provisioner "shell" {
+    inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
+    }
 }
