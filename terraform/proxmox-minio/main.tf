@@ -81,7 +81,7 @@ resource "proxmox_vm_qemu" "minio-node1" {
     inline = [
       "sudo hostnamectl set-hostname ${var.yourinitials_node1}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
-      "sudo sed -i 's/replace-name/${var.yourinitials_a}/' /etc/consul.d/system.hcl",
+      "sudo sed -i 's/replace-name/${var.yourinitials_node1}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl", 
       "sudo systemctl daemon-reload",
