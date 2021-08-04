@@ -41,7 +41,7 @@ variable "desc_node4" {}
 
 variable "target_node"{}
 
-variable "template_to_clone_a" {}
+variable "template_to_clone" {}
 
 variable "memory"{}
 

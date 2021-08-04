@@ -19,7 +19,7 @@ resource "random_shuffle" "datadisk" {
 resource "proxmox_vm_qemu" "minio-node1" {
   count       = var.numberofvms
   name        = "${var.yourinitials_node1}"
-  desc        = var.desc_a
+  desc        = var.desc_node1
   target_node = var.target_node
   clone       = var.template_to_clone
   os_type     = "cloud-init"
