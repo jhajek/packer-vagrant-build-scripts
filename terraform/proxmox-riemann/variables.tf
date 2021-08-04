@@ -1,11 +1,6 @@
 #https://registry.terraform.io/providers/Telmate/proxmox/latest/docs
 variable "pm_api_url" {}
 
-#variable "pm_user" {}
-
-#variable "pm_password" {
-#  sensitive = true
-#}
 variable "yourinitials_a" {}
 
 variable "yourinitials_b" {}
