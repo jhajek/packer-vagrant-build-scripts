@@ -1,5 +1,6 @@
 ###############################################################################################
-# This template demonstrates a Terraform plan to deploy one CentOS Stream instance
+# This template demonstrates a Terraform plan to deploy one CentOS Stream instance.
+# Run this by typing: terraform apply -parallelism=1
 ###############################################################################################
 resource "random_id" "id" {
   byte_length = 8

@@ -2,6 +2,7 @@
 # This template demonstrates a Terraform plan to deploy three virtual machines, two 
 # two Ubuntu Focal 20.04 instances and one CentOS Stream instance and installs Riemann software 
 # on each instance.
+# Run this by typing: terraform apply -parallelism=1
 ###############################################################################################
 resource "random_id" "id" {
   byte_length = 8

@@ -1,5 +1,6 @@
 ###############################################################################################
 # This template demonstrates a Terraform plan to deploy one Ubuntu Focal 20.04 instance.
+# Run this by typing: terraform apply -parallelism=1
 ###############################################################################################
 resource "random_id" "id" {
   byte_length = 8
