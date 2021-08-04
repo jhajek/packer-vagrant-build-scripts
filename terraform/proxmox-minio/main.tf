@@ -18,10 +18,10 @@ resource "random_shuffle" "datadisk" {
 
 resource "proxmox_vm_qemu" "minio-node1" {
   count       = var.numberofvms
-  name        = "${var.yourinitials_a}"
+  name        = "${var.yourinitials_node1}"
   desc        = var.desc_a
   target_node = var.target_node
-  clone       = var.template_to_clone_a
+  clone       = var.template_to_clone
   os_type     = "cloud-init"
   memory      = var.memory
   cores       = var.cores
@@ -79,7 +79,7 @@ resource "proxmox_vm_qemu" "minio-node1" {
     # This inline provisioner is needed to accomplish the final fit and finish of your deployed
     # instance and condigure the system to register the FQDN with the Consul DNS system
     inline = [
-      "sudo hostnamectl set-hostname ${var.yourinitials_a}",
+      "sudo hostnamectl set-hostname ${var.yourinitials_node1}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/replace-name/${var.yourinitials_a}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
@@ -101,14 +101,14 @@ resource "proxmox_vm_qemu" "minio-node1" {
   }
 }
 
-# Create Riemann B
+# Create Minio Node 2
 
-resource "proxmox_vm_qemu" "riemannb" {
+resource "proxmox_vm_qemu" "minio-node2" {
   count       = var.numberofvms
-  name        = "${var.yourinitials_b}"
-  desc        = var.desc_b
+  name        = "${var.yourinitials_node2}"
+  desc        = var.desc_node2
   target_node = var.target_node
-  clone       = var.template_to_clone_b
+  clone       = var.template_to_clone
   os_type     = "cloud-init"
   memory      = var.memory
   cores       = var.cores
@@ -133,13 +133,41 @@ resource "proxmox_vm_qemu" "riemannb" {
     size    = var.disk_size
   }
 
+# Attached first datadisk 
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.data_disk_size
+  }
+
+# Attached second datadisk 
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.data_disk_size
+  }
+
+ # Attached third datadisk 
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.data_disk_size
+  } 
+
+# Attached fourth datadisk 
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.data_disk_size
+  }
+
   provisioner "remote-exec" {
     # This inline provisioner is needed to accomplish the final fit and finish of your deployed
     # instance and condigure the system to register the FQDN with the Consul DNS system
     inline = [
-      "sudo hostnamectl set-hostname ${var.yourinitials_b}",
+      "sudo hostnamectl set-hostname ${var.yourinitials_node2}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
-      "sudo sed -i 's/replace-name/${var.yourinitials_b}/' /etc/consul.d/system.hcl",
+      "sudo sed -i 's/replace-name/${var.yourinitials_node2}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl", 
       "sudo systemctl daemon-reload",
@@ -159,14 +187,14 @@ resource "proxmox_vm_qemu" "riemannb" {
   }
 }
 
-# Create Riemann MC
+# Create Minio Node 3
 
-resource "proxmox_vm_qemu" "riemannmc" {
+resource "proxmox_vm_qemu" "minio-node3" {
   count       = var.numberofvms
-  name        = "${var.yourinitials_mc}"
-  desc        = var.desc_mc
+  name        = "${var.yourinitials_node3}"
+  desc        = var.desc_node3
   target_node = var.target_node
-  clone       = var.template_to_clone_mc
+  clone       = var.template_to_clone
   os_type     = "cloud-init"
   memory      = var.memory
   cores       = var.cores
@@ -191,13 +219,127 @@ resource "proxmox_vm_qemu" "riemannmc" {
     size    = var.disk_size
   }
 
+# Attached first datadisk 
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.data_disk_size
+  }
+
+# Attached second datadisk 
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.data_disk_size
+  }
+
+ # Attached third datadisk 
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.data_disk_size
+  } 
+
+# Attached fourth datadisk 
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.data_disk_size
+  }
+
   provisioner "remote-exec" {
     # This inline provisioner is needed to accomplish the final fit and finish of your deployed
     # instance and condigure the system to register the FQDN with the Consul DNS system
     inline = [
-      "sudo hostnamectl set-hostname ${var.yourinitials_mc}",
+      "sudo hostnamectl set-hostname ${var.yourinitials_node3}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
-      "sudo sed -i 's/replace-name/${var.yourinitials_mc}/' /etc/consul.d/system.hcl",
+      "sudo sed -i 's/replace-name/${var.yourinitials_node3}/' /etc/consul.d/system.hcl",
+      "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
+      "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl", 
+      "sudo systemctl daemon-reload",
+      "sudo systemctl restart consul.service",
+      "sudo cat /opt/consul/node-id",
+      "sudo rm /opt/consul/node-id",
+      "sudo systemctl restart consul"
+    ]
+
+    connection {
+      type        = "ssh"
+      user        = "vagrant"
+      private_key = file("${path.module}/${var.keypath}")
+      host        = self.ssh_host
+      port        = self.ssh_port
+    }
+  }
+}
+
+# Create Minio Node 4
+
+resource "proxmox_vm_qemu" "minio-node4" {
+  count       = var.numberofvms
+  name        = "${var.yourinitials_node4}"
+  desc        = var.desc_node4
+  target_node = var.target_node
+  clone       = var.template_to_clone
+  os_type     = "cloud-init"
+  memory      = var.memory
+  cores       = var.cores
+  sockets     = var.sockets
+  scsihw      = "virtio-scsi-pci"
+  bootdisk    = "virtio0"
+  boot        = "cdn"
+  agent       = 1
+  additional_wait = var.additional_wait
+  clone_wait = var.clone_wait
+
+  ipconfig0 = "ip=dhcp"
+
+  network {
+    model  = "virtio"
+    bridge = "vmbr0"
+  }
+
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.disk_size
+  }
+
+# Attached first datadisk 
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.data_disk_size
+  }
+
+# Attached second datadisk 
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.data_disk_size
+  }
+
+ # Attached third datadisk 
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.data_disk_size
+  } 
+
+# Attached fourth datadisk 
+  disk {
+    type    = "virtio"
+    storage = "${random_shuffle.datadisk.result[0]}"
+    size    = var.data_disk_size
+  }
+
+  provisioner "remote-exec" {
+    # This inline provisioner is needed to accomplish the final fit and finish of your deployed
+    # instance and condigure the system to register the FQDN with the Consul DNS system
+    inline = [
+      "sudo hostnamectl set-hostname ${var.yourinitials_node4}",
+      "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
+      "sudo sed -i 's/replace-name/${var.yourinitials_node4}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl", 
       "sudo systemctl daemon-reload",

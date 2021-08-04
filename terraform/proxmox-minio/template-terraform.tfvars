@@ -6,17 +6,17 @@ pm_parallel = 4                               # (Optional; defaults to 4) Allowe
 pm_timeout = 300                              # (Optional; defaults to 300) Timeout value (seconds) for proxmox API calls.
 pm_log_file = "terraform-plugin-proxmox.log"  # (Optional; defaults to terraform-plugin-proxmox.log) If logging is enabled, the log file the provider will write logs to.
 
-yourinitials_a      = ""                        # Your initials or Hawk ID to add to the vms so they have a unique name
-yourinitials_b      = ""                        # Your initials or Hawk ID to add to the vms so they have a unique name
-yourinitials_mc      = ""                        # Your initials or Hawk ID to add to the vms so they have a unique name
+yourinitials_node1      = ""                        # Your initials or Hawk ID to add to the vms so they have a unique name
+yourinitials_node2      = ""                        # Your initials or Hawk ID to add to the vms so they have a unique name
+yourinitials_node3      = ""                        # Your initials or Hawk ID to add to the vms so they have a unique name
+yourinitials_node4      = ""                        # Your initials or Hawk ID to add to the vms so they have a unique name
 numberofvms       = 1
-desc_a              = ""                         # What is the purpose of the TF template
-desc_b            = ""                         # What is the purpose of the TF template
-desc_mc            = ""                         # What is the purpose of the TF template
+desc_node1              = ""                         # What is the purpose of the TF template
+desc_node2            = ""                         # What is the purpose of the TF template
+desc_node3            = ""                         # What is the purpose of the TF template
+desc_node4            = ""                         # What is the purpose of the TF template
 target_node       = ""                         # Promox node to provision VMs
-template_to_clone_a = ""                         # The name of the template to clone
-template_to_clone_b = ""                         # The name of the template to clone
-template_to_clone_mc = ""                         # The name of the template to clone
+template_to_clone = ""                         # The name of the template to clone
 memory            = 4096                       # Memory size of a VM
 cores             = 2                          # vCPU = cores * sockets
 sockets           = 1                          # vCPU = cores * sockets
