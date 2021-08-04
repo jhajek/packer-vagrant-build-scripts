@@ -1,3 +1,8 @@
+###############################################################################################
+# This template demonstrates a Terraform plan to deploy three virtual machines, two 
+# two Ubuntu Focal 20.04 instances and one CentOS Stream instance and installs Riemann software 
+# on each instance.
+###############################################################################################
 resource "random_id" "id" {
   byte_length = 8
 }
@@ -41,7 +46,8 @@ resource "proxmox_vm_qemu" "riemanna" {
   }
 
   provisioner "remote-exec" {
-    # With the clone there is a duplicate consul node-id - going to try to delete the node-id so that a new one is generated when Terraform deploys these instances
+    # This inline provisioner is needed to accomplish the final fit and finish of your deployed
+    # instance and condigure the system to register the FQDN with the Consul DNS system
     inline = [
       "sudo hostnamectl set-hostname ${var.yourinitials_a}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
@@ -98,7 +104,8 @@ resource "proxmox_vm_qemu" "riemannb" {
   }
 
   provisioner "remote-exec" {
-    # With the clone there is a duplicate consul node-id - going to try to delete the node-id so that a new one is generated when Terraform deploys these instances
+    # This inline provisioner is needed to accomplish the final fit and finish of your deployed
+    # instance and condigure the system to register the FQDN with the Consul DNS system
     inline = [
       "sudo hostnamectl set-hostname ${var.yourinitials_b}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
@@ -155,7 +162,8 @@ resource "proxmox_vm_qemu" "riemannmc" {
   }
 
   provisioner "remote-exec" {
-    # With the clone there is a duplicate consul node-id - going to try to delete the node-id so that a new one is generated when Terraform deploys these instances
+    # This inline provisioner is needed to accomplish the final fit and finish of your deployed
+    # instance and condigure the system to register the FQDN with the Consul DNS system
     inline = [
       "sudo hostnamectl set-hostname ${var.yourinitials_mc}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",

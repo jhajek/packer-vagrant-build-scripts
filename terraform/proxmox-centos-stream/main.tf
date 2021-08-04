@@ -1,3 +1,6 @@
+###############################################################################################
+# This template demonstrates a Terraform plan to deploy one CentOS Stream instance
+###############################################################################################
 resource "random_id" "id" {
   byte_length = 8
 }
@@ -39,7 +42,8 @@ resource "proxmox_vm_qemu" "test" {
   }
 
   provisioner "remote-exec" {
-    # With the clone there is a duplicate consul node-id - going to try to delete the node-id so that a new one is generated when Terraform deploys these instances
+    # This inline provisioner is needed to accomplish the final fit and finish of your deployed
+    # instance and condigure the system to register the FQDN with the Consul DNS system
     inline = [
       "sudo hostnamectl set-hostname ${var.yourinitials}-vm${count.index}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
