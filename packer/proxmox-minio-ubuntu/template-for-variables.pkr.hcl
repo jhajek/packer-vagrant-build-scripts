@@ -29,10 +29,15 @@ variable "DISKSIZE" {
   default = "20G"
 }
 
+variable "DATADISKSIZE" {
+  type    = string
+  default = "500G"
+}
+
 variable "STORAGEPOOL" {
   type = string
   # choose datadisk1
-  default = ""
+  default = "datadisk1"
 }
 
 variable "NUMBEROFCORES" {
