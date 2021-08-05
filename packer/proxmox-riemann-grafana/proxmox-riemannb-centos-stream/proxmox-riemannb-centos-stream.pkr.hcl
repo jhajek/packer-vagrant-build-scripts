@@ -1,5 +1,5 @@
 # https://www.packer.io/docs/builders/proxmox/iso
-source "proxmox-iso" "proxmox-riemann-centos-stream" {
+source "proxmox-iso" "proxmox-riemannb-centos-stream" {
   boot_command            = ["<tab> text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-8-stream.ks<enter>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>"]
   boot_wait    = "10s"
   cores        = "${var.NUMBEROFCORES}"
@@ -43,7 +43,7 @@ source "proxmox-iso" "proxmox-riemann-centos-stream" {
 build {
   description = "Build base CentOS 8 x86_64"
 
-  sources = ["source.proxmox-iso.proxmox-riemann-centos-stream"]
+  sources = ["source.proxmox-iso.proxmox-riemannb-centos-stream"]
 
 #Add provisioners to upload public key to all the VMs
   provisioner "file" {
@@ -69,7 +69,7 @@ build {
 
 #Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
   provisioner "file" {
-    source = "../scripts/proxmox/centos8/post_install_iptables-dns-adjustment.sh"
+    source = "../../scripts/proxmox/centos8/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
   }
 
@@ -85,14 +85,14 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts          = ["../scripts/proxmox/centos8/post_install_prxmx_centos_8.sh","../scripts/proxmox/centos8/post_install_prxmx-ssh-restrict-login.sh","../scripts/proxmox/centos8/post_install_prxmx_install_hashicorp_consul.sh","../scripts/proxmox/centos8/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
+    scripts          = ["../../scripts/proxmox/centos8/post_install_prxmx_centos_8.sh","../../scripts/proxmox/centos8/post_install_prxmx-ssh-restrict-login.sh","../../scripts/proxmox/centos8/post_install_prxmx_install_hashicorp_consul.sh","../../scripts/proxmox/centos8/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
   }
 
 # This block you can add your own shell scripts to customize the image you are creating
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts          = ["../scripts/proxmox/riemann-setup/riemann-centos-stream-install.sh"]
+    scripts          = ["../../scripts/proxmox/riemann-setup/riemann-centos-stream-install.sh", "../../scripts/proxmox/riemann-setup/riemannb-centos-setup.sh"]
   }
 
 }
