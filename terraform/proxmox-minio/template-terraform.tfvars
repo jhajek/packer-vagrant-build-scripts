@@ -18,7 +18,7 @@ desc_node4         = ""                    # What is the purpose of the TF templ
 target_node        = ""                    # Promox node to provision VMs
 template_to_clone  = ""                    # The name of the template to clone
 memory             = 4096                  # Memory size of a VM
-cores              = 2                     # vCPU = cores * sockets
+cores              = 1                     # vCPU = cores * sockets
 sockets            = 1                     # vCPU = cores * sockets
 storage            = ""                    # Which storage pool to use - example: local, local-lvm, disk1, etc
 disk_size          = "20G"                 # Disk size of a VM - min size must equal to the disk size of your clone image
