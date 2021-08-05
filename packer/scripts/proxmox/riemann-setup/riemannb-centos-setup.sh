@@ -11,6 +11,8 @@ sudo yum install -y kernel-devel-`uname -r` gcc binutils make perl bzip2 vim wge
 # Adding firewall rules for riemann - Centos 7 uses firewalld (Thanks Lennart...)
 # http://serverfault.com/questions/616435/centos-7-firewall-configuration
 # Websockets are TCP... for now - http://stackoverflow.com/questions/4657033/javascript-websockets-with-udp
+sudo systemctl enable firewalld
+sudo systemctl start firewalld
 sudo firewall-cmd --permanent --zone=public --add-port=5555/tcp --permanent
 sudo firewall-cmd --permanent --zone=public --add-port=5556/udp --permanent
 sudo firewall-cmd --permanent --zone=public --add-port=5557/tcp --permanent
