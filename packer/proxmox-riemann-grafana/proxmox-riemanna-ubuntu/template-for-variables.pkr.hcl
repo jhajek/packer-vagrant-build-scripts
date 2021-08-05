@@ -51,19 +51,3 @@ variable "KEYNAME" {
   # Name of public key to insert to the template 
   default = ""
 }
-
-variable "NUMBEROFCORES" {
-  type = string
-  default = "1"
-}
-
-variable "VMNAME" {
-  type = string
-  default = ""
-}
-
-variable "KEYNAME" {
-  type = string
-  # Name of public key to insert to the template 
-  default = ""
-}
