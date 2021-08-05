@@ -31,7 +31,7 @@ variable "DISKSIZE" {
 
 variable "DATADISKSIZE" {
   type    = string
-  default = "500G"
+  default = "100G"
 }
 
 variable "STORAGEPOOL" {
