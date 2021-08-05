@@ -83,6 +83,17 @@ build {
       "sudo chmod u+x /etc/post_install_iptables-dns-adjustment.sh"
     ]
   }
+
+  ########################################################################################################################
+  # This is the script that will open the default firewall ports, all ports except 22, 8301, and 8500 are locked down
+  # by default.  Edit this script if you want to open additional ports
+  ########################################################################################################################
+
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts         = ["../scripts/proxmox/focal-ubuntu/post_install_prxmx-firewall-configuration.sh"]
+  }
+
 # Scripts needed to setup internal DNS -- do not edit
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
