@@ -18,6 +18,12 @@ source "proxmox-iso" "proxmox-minio-setup-2004-minio-template" {
     storage_pool_type = "lvm"
     type              = "virtio"
   }
+  disks {
+    disk_size         = "${var.DISKSIZE}"
+    storage_pool      = "${var.STORAGEPOOL}"
+    storage_pool_type = "lvm"
+    type              = "virtio"
+  }  
   http_directory   = "subiquity/http"
   http_port_max    = 9200
   http_port_min    = 9001
