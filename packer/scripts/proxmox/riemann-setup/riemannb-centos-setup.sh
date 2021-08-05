@@ -26,9 +26,9 @@ git clone https://github.com/turnbullpress/aom-code.git
 sudo cp -v /home/vagrant/aom-code/4/riemann/riemann.config /etc/riemann
 sudo cp -rv /home/vagrant/aom-code/4/riemann/examplecom /etc/riemann
 # Doing a find and replace for the stock riemannmc for the my FQDN
-sudo sed -i 's/riemannmc/jrh-riemannmc' /etc/riemann/riemann.config
+sudo sed -i 's/riemannmc/jrh-riemannmc/' /etc/riemann/riemann.config
 # Change the default name to match my FQDN
-sudo sed -i 's/graphitea/jrh-graphiteb' /etc/riemann/examplecom/etc/graphite.clj
+sudo sed -i 's/graphitea/jrh-graphiteb/' /etc/riemann/examplecom/etc/graphite.clj
 
 sudo systemctl daemon-reload
 sudo systemctl restart riemann
