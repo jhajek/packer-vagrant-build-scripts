@@ -9,9 +9,9 @@ sudo cp -v /home/vagrant/aom-code/4/riemann/riemann.config /etc/riemann
 sudo cp -rv /home/vagrant/aom-code/4/riemann/examplecom /etc/riemann
 
 # Doing a find and replace for the stock riemannmc for the my FQDN
-sudo sed -i 's/riemannmc/jrh-riemannmc/' /etc/riemann/riemann.config
+sudo sed -i 's/riemannmc/jrh-riemannmc.service.consul/' /etc/riemann/riemann.config
 # Change the default name to match my FQDN
-sudo sed -i 's/graphitea/jrh-graphitea/' /etc/riemann/examplecom/etc/graphite.clj
+sudo sed -i 's/graphitea/jrh-graphitea.service.consul/' /etc/riemann/examplecom/etc/graphite.clj
 
 sudo systemctl daemon-reload
 sudo systemctl restart riemann
