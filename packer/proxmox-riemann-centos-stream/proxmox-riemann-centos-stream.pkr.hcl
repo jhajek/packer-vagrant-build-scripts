@@ -95,6 +95,4 @@ build {
     scripts          = ["../scripts/proxmox/riemann-setup/riemann-centos-stream-install.sh"]
   }
 
-
-
 }
