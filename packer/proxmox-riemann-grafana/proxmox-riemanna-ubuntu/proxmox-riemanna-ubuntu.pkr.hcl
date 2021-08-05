@@ -104,7 +104,7 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts          = ["../../scripts/proxmox/riemann-setup/riemanna-ubuntu-setup.sh"]
+    scripts          = ["../../scripts/proxmox/riemann-setup/riemanna-ubuntu-install.sh", "../../scripts/proxmox/riemann-setup/riemanna-ubuntu-setup.sh"]
   }
 
 # This block is needed due to a bug using Packer and Cloud-Init on Ubuntu 20.04 to remove the
