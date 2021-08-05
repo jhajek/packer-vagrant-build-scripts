@@ -4,7 +4,7 @@ locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 # build blocks. A build block runs provisioner and post-processors on a
 # source. Read the documentation for source blocks here:
 # https://www.packer.io/docs/from-1.5/blocks/source
-source "proxmox-iso" "proxmox-focal-ubuntu-2004-minio-template" {
+source "proxmox-iso" "proxmox-minio-setup-2004-minio-template" {
   boot_command = ["<enter><enter><f6><esc><wait> ", "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/", "<enter><wait>"]
   boot_wait    = "5s"
   cores        = "${var.NUMBEROFCORES}"
@@ -46,7 +46,7 @@ source "proxmox-iso" "proxmox-focal-ubuntu-2004-minio-template" {
 }
 
 build {
-  sources = ["source.proxmox-iso.proxmox-focal-ubuntu-2004-minio-template"]
+  sources = ["source.proxmox-iso.proxmox-minio-setup-2004-minio-template"]
 
 #Add provisioners to upload public key to all the VMs
   provisioner "file" {
@@ -72,7 +72,7 @@ build {
 
 #Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
   provisioner "file" {
-    source = "../scripts/proxmox/focal-ubuntu/post_install_iptables-dns-adjustment.sh"
+    source = "../scripts/proxmox/minio-setup/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
   }
 
@@ -86,7 +86,7 @@ build {
 # Scripts needed to setup internal DNS -- do not edit
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts          = ["../scripts/proxmox/focal-ubuntu/post_install_prxmx_ubuntu_2004.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx_start-cloud-init.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx-ssh-restrict-login.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx_install_hashicorp_consul.sh","../scripts/proxmox/focal-ubuntu/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
+    scripts          = ["../scripts/proxmox/minio-setup/minio-ubuntu-install.sh","../scripts/proxmox/minio-setup/post_install_prxmx_start-cloud-init.sh","../scripts/proxmox/minio-setup/post_install_prxmx-ssh-restrict-login.sh","../scripts/proxmox/minio-setup/post_install_prxmx_install_hashicorp_consul.sh","../scripts/proxmox/minio-setup/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
   }
 
 # This block you can add your own shell scripts to customize the image you are creating
