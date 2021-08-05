@@ -10,28 +10,28 @@ resource "random_id" "id" {
 
 # https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/shuffle#example-usage
 resource "random_shuffle" "datadisk" {
-  input = ["datadisk1", "datadisk2", "datadisk3", "datadisk4", "datadisk5"]
-  result_count = 1 
+  input        = ["datadisk1", "datadisk2", "datadisk3", "datadisk4", "datadisk5"]
+  result_count = 1
 }
 
 # Create minio node1
 
 resource "proxmox_vm_qemu" "minio-node1" {
-  count       = var.numberofvms
-  name        = "${var.yourinitials_node1}"
-  desc        = var.desc_node1
-  target_node = var.target_node
-  clone       = var.template_to_clone
-  os_type     = "cloud-init"
-  memory      = var.memory
-  cores       = var.cores
-  sockets     = var.sockets
-  scsihw      = "virtio-scsi-pci"
-  bootdisk    = "virtio0"
-  boot        = "cdn"
-  agent       = 1
+  count           = var.numberofvms
+  name            = var.yourinitials_node1
+  desc            = var.desc_node1
+  target_node     = var.target_node
+  clone           = var.template_to_clone
+  os_type         = "cloud-init"
+  memory          = var.memory
+  cores           = var.cores
+  sockets         = var.sockets
+  scsihw          = "virtio-scsi-pci"
+  bootdisk        = "virtio0"
+  boot            = "cdn"
+  agent           = 1
   additional_wait = var.additional_wait
-  clone_wait = var.clone_wait
+  clone_wait      = var.clone_wait
 
   ipconfig0 = "ip=dhcp"
 
@@ -40,38 +40,38 @@ resource "proxmox_vm_qemu" "minio-node1" {
     bridge = "vmbr0"
   }
 
-# Initial operating system disk 
+  # Initial operating system disk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.disk_size
   }
 
-# Attached first datadisk 
+  # Attached first datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
   }
 
-# Attached second datadisk 
+  # Attached second datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
   }
 
- # Attached third datadisk 
+  # Attached third datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
-  } 
+  }
 
-# Attached fourth datadisk 
+  # Attached fourth datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
   }
 
@@ -83,7 +83,7 @@ resource "proxmox_vm_qemu" "minio-node1" {
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/replace-name/${var.yourinitials_node1}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
-      "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl", 
+      "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl",
       "sudo systemctl daemon-reload",
       "sudo systemctl restart consul.service",
       "sudo cat /opt/consul/node-id",
@@ -104,21 +104,21 @@ resource "proxmox_vm_qemu" "minio-node1" {
 # Create Minio Node 2
 
 resource "proxmox_vm_qemu" "minio-node2" {
-  count       = var.numberofvms
-  name        = "${var.yourinitials_node2}"
-  desc        = var.desc_node2
-  target_node = var.target_node
-  clone       = var.template_to_clone
-  os_type     = "cloud-init"
-  memory      = var.memory
-  cores       = var.cores
-  sockets     = var.sockets
-  scsihw      = "virtio-scsi-pci"
-  bootdisk    = "virtio0"
-  boot        = "cdn"
-  agent       = 1
+  count           = var.numberofvms
+  name            = var.yourinitials_node2
+  desc            = var.desc_node2
+  target_node     = var.target_node
+  clone           = var.template_to_clone
+  os_type         = "cloud-init"
+  memory          = var.memory
+  cores           = var.cores
+  sockets         = var.sockets
+  scsihw          = "virtio-scsi-pci"
+  bootdisk        = "virtio0"
+  boot            = "cdn"
+  agent           = 1
   additional_wait = var.additional_wait
-  clone_wait = var.clone_wait
+  clone_wait      = var.clone_wait
 
   ipconfig0 = "ip=dhcp"
 
@@ -129,35 +129,35 @@ resource "proxmox_vm_qemu" "minio-node2" {
 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.disk_size
   }
 
-# Attached first datadisk 
+  # Attached first datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
   }
 
-# Attached second datadisk 
+  # Attached second datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
   }
 
- # Attached third datadisk 
+  # Attached third datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
-  } 
+  }
 
-# Attached fourth datadisk 
+  # Attached fourth datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
   }
 
@@ -169,7 +169,7 @@ resource "proxmox_vm_qemu" "minio-node2" {
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/replace-name/${var.yourinitials_node2}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
-      "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl", 
+      "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl",
       "sudo systemctl daemon-reload",
       "sudo systemctl restart consul.service",
       "sudo cat /opt/consul/node-id",
@@ -190,21 +190,21 @@ resource "proxmox_vm_qemu" "minio-node2" {
 # Create Minio Node 3
 
 resource "proxmox_vm_qemu" "minio-node3" {
-  count       = var.numberofvms
-  name        = "${var.yourinitials_node3}"
-  desc        = var.desc_node3
-  target_node = var.target_node
-  clone       = var.template_to_clone
-  os_type     = "cloud-init"
-  memory      = var.memory
-  cores       = var.cores
-  sockets     = var.sockets
-  scsihw      = "virtio-scsi-pci"
-  bootdisk    = "virtio0"
-  boot        = "cdn"
-  agent       = 1
+  count           = var.numberofvms
+  name            = var.yourinitials_node3
+  desc            = var.desc_node3
+  target_node     = var.target_node
+  clone           = var.template_to_clone
+  os_type         = "cloud-init"
+  memory          = var.memory
+  cores           = var.cores
+  sockets         = var.sockets
+  scsihw          = "virtio-scsi-pci"
+  bootdisk        = "virtio0"
+  boot            = "cdn"
+  agent           = 1
   additional_wait = var.additional_wait
-  clone_wait = var.clone_wait
+  clone_wait      = var.clone_wait
 
   ipconfig0 = "ip=dhcp"
 
@@ -215,35 +215,35 @@ resource "proxmox_vm_qemu" "minio-node3" {
 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.disk_size
   }
 
-# Attached first datadisk 
+  # Attached first datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
   }
 
-# Attached second datadisk 
+  # Attached second datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
   }
 
- # Attached third datadisk 
+  # Attached third datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
-  } 
+  }
 
-# Attached fourth datadisk 
+  # Attached fourth datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
   }
 
@@ -255,7 +255,7 @@ resource "proxmox_vm_qemu" "minio-node3" {
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/replace-name/${var.yourinitials_node3}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
-      "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl", 
+      "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl",
       "sudo systemctl daemon-reload",
       "sudo systemctl restart consul.service",
       "sudo cat /opt/consul/node-id",
@@ -276,21 +276,21 @@ resource "proxmox_vm_qemu" "minio-node3" {
 # Create Minio Node 4
 
 resource "proxmox_vm_qemu" "minio-node4" {
-  count       = var.numberofvms
-  name        = "${var.yourinitials_node4}"
-  desc        = var.desc_node4
-  target_node = var.target_node
-  clone       = var.template_to_clone
-  os_type     = "cloud-init"
-  memory      = var.memory
-  cores       = var.cores
-  sockets     = var.sockets
-  scsihw      = "virtio-scsi-pci"
-  bootdisk    = "virtio0"
-  boot        = "cdn"
-  agent       = 1
+  count           = var.numberofvms
+  name            = var.yourinitials_node4
+  desc            = var.desc_node4
+  target_node     = var.target_node
+  clone           = var.template_to_clone
+  os_type         = "cloud-init"
+  memory          = var.memory
+  cores           = var.cores
+  sockets         = var.sockets
+  scsihw          = "virtio-scsi-pci"
+  bootdisk        = "virtio0"
+  boot            = "cdn"
+  agent           = 1
   additional_wait = var.additional_wait
-  clone_wait = var.clone_wait
+  clone_wait      = var.clone_wait
 
   ipconfig0 = "ip=dhcp"
 
@@ -301,35 +301,35 @@ resource "proxmox_vm_qemu" "minio-node4" {
 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.disk_size
   }
 
-# Attached first datadisk 
+  # Attached first datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
   }
 
-# Attached second datadisk 
+  # Attached second datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
   }
 
- # Attached third datadisk 
+  # Attached third datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
-  } 
+  }
 
-# Attached fourth datadisk 
+  # Attached fourth datadisk 
   disk {
     type    = "virtio"
-    storage = "${random_shuffle.datadisk.result[0]}"
+    storage = random_shuffle.datadisk.result[0]
     size    = var.data_disk_size
   }
 
@@ -341,7 +341,7 @@ resource "proxmox_vm_qemu" "minio-node4" {
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/replace-name/${var.yourinitials_node4}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
-      "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl", 
+      "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl",
       "sudo systemctl daemon-reload",
       "sudo systemctl restart consul.service",
       "sudo cat /opt/consul/node-id",

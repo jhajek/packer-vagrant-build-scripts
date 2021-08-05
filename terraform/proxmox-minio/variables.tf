@@ -39,21 +39,21 @@ variable "desc_node3" {}
 
 variable "desc_node4" {}
 
-variable "target_node"{}
+variable "target_node" {}
 
 variable "template_to_clone" {}
 
-variable "memory"{}
+variable "memory" {}
 
-variable "cores"{}
+variable "cores" {}
 
-variable "sockets"{}
+variable "sockets" {}
 
 variable "storage" {}
 
-variable "disk_size"{}
+variable "disk_size" {}
 
-variable "data_disk_size"{}
+variable "data_disk_size" {}
 
 variable "keypath" {}
 
