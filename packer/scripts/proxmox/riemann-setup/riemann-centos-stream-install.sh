@@ -29,9 +29,6 @@ sudo firewall-cmd --zone=public --add-port=5557/tcp --permanent
 wget https://github.com/riemann/riemann/releases/download/0.3.6/riemann-0.3.6-1.noarch-EL8.rpm
 sudo rpm -Uvh riemann-0.3.6-1.noarch-EL8.rpm
 
-# cloning source code examples for the book
-git clone https://github.com/turnbullpress/aom-code.git
-
 # Install leiningen on Centos 7 - needed for riemann syntax checker
 wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 chmod +x lein
