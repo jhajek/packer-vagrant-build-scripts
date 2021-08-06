@@ -41,7 +41,7 @@ source "proxmox-iso" "proxmox-riemanna-ubuntu" {
   ssh_timeout              = "20m"
   ssh_wait_timeout         = "1800s"
   template_description     = "A Packer template to create a Promox Template - Vanilla Ubuntu"
-  vm_name                  = "${var.VMNAME}"
+  vm_name                  = "${var.RIEMANNA}"
 }
 
 #################################################################
@@ -86,7 +86,7 @@ source "proxmox-iso" "proxmox-riemannb-centos-stream" {
   ssh_port                 = 22
   ssh_timeout              = "20m"
   ssh_wait_timeout         = "1800s"
-  vm_name                  = "${var.VMNAME}"
+  vm_name                  = "${var.RIEMANNB}"
 }
 
 #################################################################
@@ -131,7 +131,7 @@ source "proxmox-iso" "proxmox-riemannmc-ubuntu" {
   ssh_timeout              = "20m"
   ssh_wait_timeout         = "1800s"
   template_description     = "A Packer template to create a Promox Template - Vanilla Ubuntu"
-  vm_name                  = "${var.VMNAME}"
+  vm_name                  = "${var.RIEMANNMC}"
 }
 
 #################################################################
@@ -176,7 +176,7 @@ source "proxmox-iso" "proxmox-graphitea-ubuntu" {
   ssh_timeout              = "20m"
   ssh_wait_timeout         = "1800s"
   template_description     = "A Packer template to create a Promox Template - Vanilla Ubuntu"
-  vm_name                  = "${var.VMNAME}"
+  vm_name                  = "${var.GRAPHTIEA}"
 }
 
 #################################################################
@@ -221,7 +221,7 @@ source "proxmox-iso" "proxmox-graphiteb-centos-stream" {
   ssh_port                 = 22
   ssh_timeout              = "20m"
   ssh_wait_timeout         = "1800s"
-  vm_name                  = "${var.VMNAME}"
+  vm_name                  = "${var.GRAPHTIEB}"
 }
 
 #################################################################
@@ -266,7 +266,7 @@ source "proxmox-iso" "proxmox-graphitemc-ubuntu" {
   ssh_timeout              = "20m"
   ssh_wait_timeout         = "1800s"
   template_description     = "A Packer template to create a Promox Template - Vanilla Ubuntu"
-  vm_name                  = "${var.VMNAME}"
+  vm_name                  = "${var.GRAPHITEMC}"
 }
 
 build {

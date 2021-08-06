@@ -30,7 +30,7 @@ variable "DISKSIZE" {
 }
 
 variable "STORAGEPOOL" {
-  type = string
+  type    = string
   default = "datadisk5"
 }
 
@@ -39,14 +39,44 @@ variable "NUMBEROFCORES" {
   default = "1"
 }
 
-# This is the name of the Virtual Machine Template you want to create
-variable "VMNAME" {
-  type    = string
-  default = ""
-}
-
 variable "KEYNAME" {
   type = string
   # Name of public key to insert to the template 
   default = ""
+}
+
+# This is the name of the Virtual Machine Template you want to create
+variable "RIEMANNA" {
+  type    = string
+  default = "jrh-riemanna"
+}
+
+# This is the name of the Virtual Machine Template you want to create
+variable "RIEMANNB" {
+  type    = string
+  default = "jrh-riemannb"
+}
+
+# This is the name of the Virtual Machine Template you want to create
+variable "RIEMANNMC" {
+  type    = string
+  default = "jrh-riemannmc"
+}
+
+# This is the name of the Virtual Machine Template you want to create
+variable "GRAPHITEA" {
+  type    = string
+  default = "jrh-graphitea"
+}
+
+# This is the name of the Virtual Machine Template you want to create
+variable "GRAPHITEB" {
+  type    = string
+  default = "jrh-graphiteb"
+}
+
+# This is the name of the Virtual Machine Template you want to create
+variable "GRAPHITEMC" {
+  type    = string
+  default = "jrh-graphitemc"
 }
