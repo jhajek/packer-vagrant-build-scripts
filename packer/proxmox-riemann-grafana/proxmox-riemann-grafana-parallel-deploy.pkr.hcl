@@ -355,7 +355,7 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/graphite-setup/graphite-ubuntu-install.sh"]
+    scripts         = ["../scripts/proxmox/graphite-setup/graphitea-ubuntu-install.sh"]
     only            = ["proxmox-graphitea-ubuntu"]
   }
 
@@ -363,7 +363,7 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/riemann-setup/riemann-centos-stream-install.sh", "../scripts/proxmox/graphite-setup/graphiteb-centos-setup.sh"]
+    scripts         = ["../scripts/proxmox/graphite-setup/graphiteb-centos-setup.sh"]
     only            = ["proxmox-graphiteb-centos-stream"]
   }
 
@@ -371,7 +371,7 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/graphite-setup/graphite-ubuntu-install.sh"]
+    scripts         = ["../scripts/proxmox/graphite-setup/graphitemc-ubuntu-install.sh"]
     only            = ["proxmox-graphitemc-ubuntu"]
   }
 
