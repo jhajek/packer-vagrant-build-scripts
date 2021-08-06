@@ -7,8 +7,8 @@ git clone https://github.com/turnbullpress/aom-code.git
 
 sudo mv -v /home/vagrant/aom-code/4/riemann/riemann.config_riemannmc /etc/riemann/riemann.config
 
-sudo sed -i 's/graphitea/jrh-graphitemc' /home/vagrant/aom-code/4/riemann/examplecom/etc/graphite.clj
-sudo sed -i 's/productiona/jrh-productionmc' /home/vagrant/aom-code/4/riemann/examplecom/etc/graphite.clj
+sudo sed -i 's/graphitea/jrh-graphitemc.service.consul/' /home/vagrant/aom-code/4/riemann/examplecom/etc/graphite.clj
+sudo sed -i 's/productiona/jrh-productionmc.service.consul/' /home/vagrant/aom-code/4/riemann/examplecom/etc/graphite.clj
 
 # Install leiningen on Ubuntu - needed for riemann syntax checker
 sudo apt-get install -y leiningen
