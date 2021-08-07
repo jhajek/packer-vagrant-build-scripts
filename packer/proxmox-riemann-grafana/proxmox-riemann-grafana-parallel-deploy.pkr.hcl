@@ -328,10 +328,10 @@ build {
     only            = ["proxmox-riemanna-ubuntu", "proxmox-riemannmc-ubuntu", "proxmox-graphitea-ubuntu", "proxmox-graphitemc-ubuntu"]
   }
 
-    provisioner "shell" {
+  provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/centos8/post_install_prxmx_centos_8.sh", "../scripts/proxmox/centos8/post_install_prxmx-ssh-restrict-login.sh", "../scripts/proxmox/centos8/post_install_prxmx_install_hashicorp_consul.sh", "../scripts/proxmox/centos8/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
-    only            = ["proxmox-riemannb-centos-stream","proxmox-graphiteb-centos-stream"]
+    only            = ["proxmox-riemannb-centos-stream", "proxmox-graphiteb-centos-stream"]
   }
 
   # Run the configurations for each element in the network - Riemann A
