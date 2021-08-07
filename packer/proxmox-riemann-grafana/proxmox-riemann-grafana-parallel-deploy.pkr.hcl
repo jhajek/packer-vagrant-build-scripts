@@ -298,6 +298,17 @@ build {
   provisioner "file" {
     source      = "../scripts/proxmox/focal-ubuntu/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
+    only            = ["proxmox-riemanna-ubuntu", "proxmox-riemannmc-ubuntu", "proxmox-graphitea-ubuntu", "proxmox-graphitemc-ubuntu"]
+  }
+
+  ########################################################################################################################
+  # Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
+  ########################################################################################################################
+
+  provisioner "file" {
+    source      = "../scripts/proxmox/centos8/post_install_iptables-dns-adjustment.sh"
+    destination = "/home/vagrant/"
+    only        = ["proxmox-riemannb-centos-stream", "proxmox-graphiteb-centos-stream"]
   }
 
   # Command to move dns-adjustment script to a safer place
@@ -316,6 +327,18 @@ build {
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/focal-ubuntu/post_install_prxmx-firewall-configuration.sh"]
+    only            = ["proxmox-riemanna-ubuntu", "proxmox-riemannmc-ubuntu", "proxmox-graphitea-ubuntu", "proxmox-graphitemc-ubuntu"]
+  }
+
+  ########################################################################################################################
+  # This is the script that will open the default firewall ports, all ports except 22, 8301, and 8500 are locked down
+  # by default.  Edit this script if you want to open additional ports
+  ########################################################################################################################
+
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts         = ["../scripts/proxmox/centos8/post_install_prxmx-firewall-configuration.sh"]
+    only            = ["proxmox-riemannb-centos-stream", "proxmox-graphiteb-centos-stream"]
   }
 
   ########################################################################################################################
