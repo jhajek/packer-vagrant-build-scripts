@@ -8,7 +8,7 @@ resource "random_id" "id" {
 
 # https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/shuffle#example-usage
 resource "random_shuffle" "datadisk" {
-  input        = ["datadisk2", "datadisk3"]
+  input        = ["iscsi-1-1","iscsi-2-1","iscsi-3-1","iscsi-4-1","iscsi-5-1"]
   result_count = 1
 }
 
