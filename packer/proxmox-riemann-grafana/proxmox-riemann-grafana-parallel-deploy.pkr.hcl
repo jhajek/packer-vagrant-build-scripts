@@ -66,7 +66,7 @@ source "proxmox-iso" "proxmox-riemannb-centos-stream" {
   http_directory   = "./"
   http_port_max    = 9200
   http_port_min    = 9001
-  iso_checksum     = "sha256:79ba22aec5589fc9222d294d4079a0631576f6ba2c081952e81a4e5933126c74"
+  iso_checksum     = "sha256:25d707358113a000329861860957e37d970fff6ae16e14783c031889c756ec6a"
   iso_urls         = ["http://bay.uchicago.edu/centos/8-stream/isos/x86_64/CentOS-Stream-8-x86_64-20210706-boot.iso"]
   iso_storage_pool = "local"
   memory           = "${var.MEMORY}"
@@ -201,8 +201,8 @@ source "proxmox-iso" "proxmox-graphiteb-centos-stream" {
   http_directory   = "./"
   http_port_max    = 9200
   http_port_min    = 9001
-  iso_checksum     = "sha256:79ba22aec5589fc9222d294d4079a0631576f6ba2c081952e81a4e5933126c74"
-  iso_urls         = ["http://bay.uchicago.edu/centos/8-stream/isos/x86_64/CentOS-Stream-8-x86_64-20210706-boot.iso"]
+  iso_checksum     = "sha256:25d707358113a000329861860957e37d970fff6ae16e14783c031889c756ec6a"
+  iso_urls         = ["http://bay.uchicago.edu/centos/8-stream/isos/x86_64/CentOS-Stream-8-x86_64-20210803-boot.iso"]
   iso_storage_pool = "local"
   memory           = "${var.MEMORY}"
   network_adapters {
