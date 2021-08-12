@@ -17,8 +17,8 @@ source "proxmox-iso" "proxmox-centos-8-stream" {
   http_directory   = "./"
   http_port_max    = 9200
   http_port_min    = 9001
-  iso_checksum     = "sha256:25d707358113a000329861860957e37d970fff6ae16e14783c031889c756ec6a"
-  iso_urls         = ["http://bay.uchicago.edu/centos/8-stream/isos/x86_64/CentOS-Stream-8-x86_64-20210803-boot.iso"]
+  iso_checksum     = "sha256:7801f57e01a0a95cc5270ec99aa1bed81caace818b7c1ea0f0a98f5d87294c68"
+  iso_urls         = ["http://bay.uchicago.edu/centos/8-stream/isos/x86_64/CentOS-Stream-8-x86_64-20210811-boot.iso"]
   iso_storage_pool = "local"
   memory           = "${var.MEMORY}"
   network_adapters {
