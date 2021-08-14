@@ -29,6 +29,10 @@ source "proxmox-iso" "proxmox-focal-ubuntu-2004" {
     bridge = "vmbr0"
     model  = "virtio"
   }
+    network_adapters {
+    bridge = "vmbr2"
+    model  = "virtio"
+  }
   os                       = "l26"
   proxmox_url              = "${var.URL}"
   insecure_skip_tls_verify = true
