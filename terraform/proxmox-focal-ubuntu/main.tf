@@ -59,6 +59,7 @@ resource "proxmox_vm_qemu" "vanilla-server" {
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl",
       "sudo systemctl daemon-reload",
       "sudo systemctl restart consul.service",
+      "sudo systemctl restart post_install_iptables-dns-adjustment.service",
       "sudo cat /opt/consul/node-id",
       "sudo rm /opt/consul/node-id",
       "sudo systemctl restart consul"
