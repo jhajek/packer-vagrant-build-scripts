@@ -30,10 +30,16 @@ resource "proxmox_vm_qemu" "test" {
   clone_wait      = var.clone_wait
 
   ipconfig0 = "ip=dhcp"
+  ipconfig1 = "ip=dhcp"
 
   network {
     model  = "virtio"
     bridge = "vmbr0"
+  }
+
+  network {
+    model  = "virtio"
+    bridge = "vmbr1"
   }
 
   disk {
