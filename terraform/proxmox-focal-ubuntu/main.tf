@@ -12,7 +12,7 @@ resource "random_shuffle" "datadisk" {
   result_count = 1
 }
 
-resource "proxmox_vm_qemu" "test" {
+resource "proxmox_vm_qemu" "vanilla-server" {
   count           = var.numberofvms
   name            = "${var.yourinitials}-vm${count.index}"
   desc            = var.desc
