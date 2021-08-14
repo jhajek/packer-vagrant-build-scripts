@@ -26,6 +26,8 @@ autoinstall:
         ens18:
           dhcp4: true
           dhcp-identifier: mac
+        ens19:
+          dhcp4: true  
   ssh:
     allow-pw: true
     install-server: true
