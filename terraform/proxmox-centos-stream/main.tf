@@ -57,6 +57,8 @@ resource "proxmox_vm_qemu" "test" {
       "sudo sed -i 's/replace-name/${var.yourinitials}-vm${count.index}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl",
+      "IP=`hostname -I | awk '{print $1}'`",
+      "sudo sed -i "s/#bind_addr = \"0.0.0.0\"/bind_addr = \"${IP}\"/" /etc/consul.d/consul.hcl",
       "sudo systemctl daemon-reload",
       "sudo systemctl restart consul.service",
       "sudo cat /opt/consul/node-id",
