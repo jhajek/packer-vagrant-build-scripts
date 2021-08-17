@@ -58,7 +58,7 @@ resource "proxmox_vm_qemu" "vanilla-server" {
       "sudo sed -i 's/ubuntu-server/${var.yourinitials}-vm${count.index}/' /etc/hosts",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl",
-      "sudo sed -i 's/#bind_addr = \"0.0.0.0\"/bind_addr = \"{{GetInterfaceIP \\\"ens18\\\"}}\"/' /etc/consul.d/consul.hcl",
+      "sudo sed -i 's/#bind_addr = \"0.0.0.0\"/bind_addr = \"{{GetInterfaceIP \\\\"ens18\\\\"}}\"/' /etc/consul.d/consul.hcl",
       "sudo systemctl daemon-reload",
       "sudo systemctl restart consul.service",
       "sudo systemctl restart post_install_iptables-dns-adjustment.service",
