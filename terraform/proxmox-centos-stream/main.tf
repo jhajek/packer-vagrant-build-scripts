@@ -55,6 +55,7 @@ resource "proxmox_vm_qemu" "vanilla-centos" {
       "sudo hostnamectl set-hostname ${var.yourinitials}-vm${count.index}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/replace-name/${var.yourinitials}-vm${count.index}/' /etc/consul.d/system.hcl",
+      "sudo sed -i 's/ubuntu-server/${var.yourinitials}-vm${count.index}/' /etc/hosts",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl",
       "sudo sed -i 's/#bind_addr = \"0.0.0.0\"/bind_addr = \"{{GetInterfaceIP \\\"ens18\\\"}}\"/' /etc/consul.d/consul.hcl",
