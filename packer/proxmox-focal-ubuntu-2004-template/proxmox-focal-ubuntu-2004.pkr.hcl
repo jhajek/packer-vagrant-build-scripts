@@ -123,6 +123,17 @@ build {
   }
 
   ########################################################################################################################
+  # Script to change the bind_addr in Consul to the dynmaic Go lang call to
+  # Interface ens18
+  # https://www.consul.io/docs/troubleshoot/common-errors
+  ########################################################################################################################
+  
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts         = ["../scripts/proxmox/focal-ubuntu/post_install_change_consul_bind_interface.sh"]
+  }
+
+  ########################################################################################################################
   # This is a hack needed to be able to install Ubuntu 20.04 via Packer -- due to Ubuntu adopting Cloud-Init as the method for scripted 
   # installation
   ########################################################################################################################

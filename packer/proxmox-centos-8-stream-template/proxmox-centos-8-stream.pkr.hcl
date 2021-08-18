@@ -120,6 +120,17 @@ build {
   }
 
   ########################################################################################################################
+  # Script to change the bind_addr in Consul to the dynmaic Go lang call to
+  # Interface ens18
+  # https://www.consul.io/docs/troubleshoot/common-errors
+  ########################################################################################################################
+  
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts         = ["../scripts/proxmox/centos8/post_install_change_consul_bind_interface.sh"]
+  }
+
+  ########################################################################################################################
   # Uncomment this block to add your own custom bash install scripts
   # This block you can add your own shell scripts to customize the image you are creating
   ########################################################################################################################
