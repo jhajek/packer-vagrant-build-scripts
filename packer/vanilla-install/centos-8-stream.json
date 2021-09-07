@@ -81,7 +81,7 @@
   "variables": {
     "guest_additions": "disable",
     "iso_name": "CentOS-Stream-8-x86_64-20210126-boot.iso",
-    "iso_url": "http://bay.uchicago.edu/centos/8-stream/isos/x86_64/CentOS-Stream-8-x86_64-20210126-boot.iso",
+    "iso_url": "http://bay.uchicago.edu/centos/8-stream/isos/x86_64/CentOS-Stream-8-x86_64-20210902-boot.iso",
     "kickstart": "ks/centos-8-stream.cfg",
     "proxy": "{{ env `http_proxy` }}"
   }
