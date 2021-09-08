@@ -1,30 +1,30 @@
 
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
-source "virtualbox-iso" "centos-vanilla-1908-server" {
+source "virtualbox-iso" "centos-7-vanilla" {
   boot_command         = ["<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/centos-7-base.cfg<enter><wait>"]
   boot_wait            = "5s"
   communicator         = "ssh"
-  disk_size            = 20000
+  disk_size            = 10000
   guest_additions_mode = "disable"
   guest_os_type        = "RedHat_64"
   hard_drive_interface = "sata"
   http_directory       = "."
-  http_port_max        = 9001
   http_port_min        = 9001
-  iso_checksum         = "sha256:9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d"
-  iso_url              = "https://mirrors.edge.kernel.org/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso"
+  http_port_max        = 9100
+  iso_checksum         = "sha256:07b94e6b1a0b0260b94c83d6bb76b26bf7a310dc78d7a9c7432809fb9bc6194a"
+  iso_url              = "http://bay.uchicago.edu/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-Minimal-2009.iso"
   shutdown_command     = "echo 'vagrant' | sudo -S shutdown -P now"
   ssh_password         = "vagrant"
   ssh_pty              = "true"
   ssh_username         = "vagrant"
   ssh_wait_timeout     = "30m"
   vboxmanage           = [["modifyvm", "{{ .Name }}", "--memory", "2048"]]
-  vm_name              = "centos-vanilla-1908-server"
+  vm_name              = "centos-7"
 }
 
 build {
-  sources = ["source.virtualbox-iso.centos-vanilla-1908-server"]
+  sources = ["source.virtualbox-iso.centos-7-vanilla"]
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
@@ -33,6 +33,6 @@ build {
 
   post-processor "vagrant" {
     keep_input_artifact = false
-    output              = "../build/{{ .BuildName }}-<no value>-${local.timestamp}.box"
+    output              = "../build/{{.BuildName}}-{{.Provider}}-{{timestamp}}.box"
   }
 }
