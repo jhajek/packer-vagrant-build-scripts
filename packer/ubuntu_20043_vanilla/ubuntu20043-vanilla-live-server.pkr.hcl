@@ -16,10 +16,10 @@ source "virtualbox-iso" "ubuntu-20043-live-server" {
   shutdown_command        = "echo 'ubuntu' | sudo -S shutdown -P now"
   #ssh_handshake_attempts  = "80"
   ssh_wait_timeout        = "1800s"
-  ssh_password            = "ubuntu"
+  ssh_password            = "vagrant"
   ssh_port                = 2222
   ssh_timeout             = "20m"
-  ssh_username            = "ubuntu"
+  ssh_username            = "vagrant"
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "ubuntu-focal"
