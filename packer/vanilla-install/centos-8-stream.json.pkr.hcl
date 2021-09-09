@@ -1,7 +1,7 @@
 
 variable "guest_additions" {
   type    = string
-  default = "disable"
+  default = "enable"
 }
 
 variable "iso_name" {
