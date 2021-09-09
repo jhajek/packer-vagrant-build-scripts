@@ -19,11 +19,6 @@ variable "kickstart" {
   default = "ks/centos-8-stream.cfg"
 }
 
-variable "proxy" {
-  type    = string
-  default = "${env("http_proxy")}"
-}
-
 # Centos 8 Latest Checksum URl 
 # http://bay.uchicago.edu/centos/8-stream/isos/x86_64/CHECKSUM
 source "virtualbox-iso" "centos-8-stream-vanilla" {
@@ -55,7 +50,7 @@ build {
   sources = ["source.virtualbox-iso.centos-8-stream-vanilla"]
 
   provisioner "shell" {
-    environment_vars = ["http_proxy=${var.proxy}", "guest_additions_mode=${var.guest_additions}"]
+    environment_vars = ["guest_additions_mode=${var.guest_additions}"]
     scripts          = ["../scripts/post_install_vagrant-centos-8.sh"]
   }
 
