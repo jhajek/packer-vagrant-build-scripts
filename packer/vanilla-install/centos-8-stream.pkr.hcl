@@ -19,11 +19,6 @@ variable "kickstart" {
   default = "ks/centos-8-stream.cfg"
 }
 
-variable "headless" {
-  type    = bool
-  default = false
-}
-
 # Centos 8 Latest Checksum URl 
 # http://bay.uchicago.edu/centos/8-stream/isos/x86_64/CHECKSUM
 source "virtualbox-iso" "centos-8-stream-vanilla" {
@@ -46,6 +41,7 @@ source "virtualbox-iso" "centos-8-stream-vanilla" {
   ssh_username            = "vagrant"
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "2048"], ["modifyvm", "{{ .Name }}", "--cpus", "2"]]
   virtualbox_version_file = ".vbox_version"
+  headless                = "${var.headless_build}"
 }
 
 build {
