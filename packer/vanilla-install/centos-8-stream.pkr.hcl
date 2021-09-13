@@ -34,7 +34,6 @@ source "virtualbox-iso" "centos-8-stream-vanilla" {
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "RedHat_64"
   hard_drive_interface    = "sata"
-  headless                = false
   http_directory          = "."
   http_port_min           = 9001
   http_port_max           = 9100
