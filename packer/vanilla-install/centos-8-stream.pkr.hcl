@@ -20,7 +20,7 @@ variable "kickstart" {
 }
 
 variable "headless" {
-  type    = boolean
+  type    = bool
   default = false
 }
 
