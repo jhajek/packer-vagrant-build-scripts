@@ -1,7 +1,7 @@
 
 variable "guest_additions" {
   type    = string
-  default = "enable"
+  default = "upload"
 }
 
 variable "iso_name" {
@@ -17,6 +17,11 @@ variable "iso_url" {
 variable "kickstart" {
   type    = string
   default = "ks/centos-8-stream.cfg"
+}
+
+variable "headless" {
+  type    = boolean
+  default = false
 }
 
 # Centos 8 Latest Checksum URl 
