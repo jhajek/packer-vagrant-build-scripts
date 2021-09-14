@@ -87,7 +87,7 @@ build {
     }
 
   provisioner "shell" {
-    execute_command = "echo 'ubuntu' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     script          = "../scripts/post_install_ubuntu_2004_vagrant.sh"
     only            = ["ubuntu-riemanna","ubuntu-riemannmc"]
   }
