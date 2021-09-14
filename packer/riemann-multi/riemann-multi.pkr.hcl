@@ -22,7 +22,7 @@ source "virtualbox-iso" "ubuntu-riemanna" {
   ssh_username            = "vagrant"
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
   virtualbox_version_file = ".vbox_version"
-  vm_name                 = "ubuntu-focal"
+  vm_name                 = "ubuntu-riemanna"
   headless                = "${var.headless_build}"
 }
 
@@ -73,7 +73,7 @@ source "virtualbox-iso" "ubuntu-riemannmc" {
   ssh_username            = "vagrant"
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
   virtualbox_version_file = ".vbox_version"
-  vm_name                 = "ubuntu-focal"
+  vm_name                 = "ubuntu-riemannmc"
   headless                = "${var.headless_build}"
 }
 
