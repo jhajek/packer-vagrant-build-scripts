@@ -87,6 +87,7 @@ build {
   }
 
   provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts          = ["../scripts/post_install_vagrant-centos-8.sh"]
     only             = ["centos-riemannb"]
   }
