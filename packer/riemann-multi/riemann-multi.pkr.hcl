@@ -81,12 +81,6 @@ build {
   sources = ["source.virtualbox-iso.ubuntu-riemanna","source.virtualbox-iso.centos-riemannb","source.virtualbox-iso.ubuntu-riemannmc"]
 
   provisioner "shell" {
-    #inline_shebang  =  "#!/usr/bin/bash -e"
-    inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
-    only            = ["ubuntu-riemanna","ubuntu-riemannmc"]
-    }
-
-  provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     script          = "../scripts/post_install_ubuntu_2004_vagrant.sh"
     only            = ["ubuntu-riemanna","ubuntu-riemannmc"]
@@ -96,6 +90,12 @@ build {
     scripts          = ["../scripts/post_install_vagrant-centos-8.sh"]
     only             = ["centos-riemannb"]
   }
+
+  provisioner "shell" {
+    #inline_shebang  =  "#!/usr/bin/bash -e"
+    inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
+    only            = ["ubuntu-riemanna","ubuntu-riemannmc"]
+    }
 
   post-processor "vagrant" {
     keep_input_artifact = false
