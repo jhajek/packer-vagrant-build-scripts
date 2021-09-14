@@ -9,7 +9,7 @@ autoinstall:
     layout:
       name: direct
   packages:
-    - ubuntu-standard
+    #- ubuntu-standard
     - bc
     - curl
     - wget
