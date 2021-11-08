@@ -10,7 +10,7 @@ variable "aws_secret_key" {
   sensitive = true
 }
 
-variable "s3-bucket-name" {
+variable "s3_bucket_name" {
   # make sure to change default value to use your initials
   type =  string
   default = "ova-bucket-jrh"
