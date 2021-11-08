@@ -16,7 +16,6 @@ source "virtualbox-iso" "ubuntu-2004-ec2" {
   iso_urls                = ["http://mirrors.kernel.org/ubuntu-releases/20.04.3/ubuntu-20.04.3-live-server-amd64.iso"]
   shutdown_command        = "echo 'ubuntu'|sudo -S shutdown -P now"
   ssh_password            = "ubuntu"
-  ssh_wait_timeout        = "1800s"
   ssh_port                = 2222
   ssh_username            = "ubuntu"
   ssh_wait_timeout        = "10000s"
