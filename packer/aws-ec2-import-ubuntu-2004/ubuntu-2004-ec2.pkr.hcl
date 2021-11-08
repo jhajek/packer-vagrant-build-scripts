@@ -6,6 +6,7 @@ source "virtualbox-iso" "ubuntu-2004-ec2" {
   boot_wait               = "5s"
   disk_size               = 20000
   format                  = "ova"
+  http_directory          = "subiquity/http"
   guest_additions_mode    = "disable"
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "Ubuntu_64"
