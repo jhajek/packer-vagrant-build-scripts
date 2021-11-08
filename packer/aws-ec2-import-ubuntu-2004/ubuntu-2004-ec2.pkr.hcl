@@ -9,7 +9,6 @@ source "virtualbox-iso" "ubuntu-2004-ec2" {
   guest_additions_mode    = "disable"
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "Ubuntu_64"
-  http_directory          = "."
   http_port_max           = 9100
   http_port_min           = 9001
   iso_checksum            = "sha256:f8e3086f3cea0fb3fefb29937ab5ed9d19e767079633960ccb50e76153effc98"
