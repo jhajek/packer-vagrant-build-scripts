@@ -14,11 +14,11 @@ source "virtualbox-iso" "ubuntu-2004-ec2" {
   http_port_min           = 9001
   iso_checksum            = "sha256:f8e3086f3cea0fb3fefb29937ab5ed9d19e767079633960ccb50e76153effc98"
   iso_urls                = ["http://mirrors.kernel.org/ubuntu-releases/20.04.3/ubuntu-20.04.3-live-server-amd64.iso"]
-  shutdown_command        = "echo 'ubuntu'|sudo -S shutdown -P now"
+  shutdown_command        = "echo 'ubuntu'| sudo -S shutdown -P now"
   ssh_password            = "ubuntu"
   ssh_port                = 2222
   ssh_username            = "ubuntu"
-  ssh_wait_timeout        = "10000s"
+  ssh_wait_timeout        = "1800s"
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "2048"]]
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "ubuntu-2004-ec2"
