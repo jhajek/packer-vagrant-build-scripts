@@ -167,8 +167,31 @@ build {
     only            = ["virtualbox-iso.ubuntu-graphitea","virtualbox-iso.ubuntu-graphitemc","virtualbox-iso.ubuntu-riemanna","virtualbox-iso.ubuntu-riemannmc"]
     }
 
+variable "rsa_key_location" {
+  type = string
+  ###########
+  # MacOS
+  ###########
+  # On MacOS use this Source Path, assuming your user is named: palad
+  # default = "/Users/palad/.ssh/id_rsa_itmo-453-github-deploy"
+  #########
+  # Windows
+  #########
+  # On Windows use this syntax, assuming your user is named: palad
+  # On windows double "\" is needed to escape the escape
+  # https://xkcd.com/234/
+  # default = "C:\\Users\\palad\\.ssh\\id_rsa_itmo-453-github-deploy"
+  ###########
+  # Linux
+  ###########
+  # On Linux use this syntax, assuming your user is named: controller
+  # default = "/home/controller/.ssh/id_rsa_itmo-453-github-deploy"
+
+  default = ""
+}
+
   post-processor "vagrant" {
     keep_input_artifact = false
-    output              = "../build/{{ .BuildName }}-${local.timestamp}.box"
+    output              = "${var.build_artifact_location}{{ .BuildName }}-${local.timestamp}.box"
   }
 }
