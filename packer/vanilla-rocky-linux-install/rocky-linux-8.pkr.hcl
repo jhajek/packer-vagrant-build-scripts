@@ -1,3 +1,5 @@
+locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
+
 variable "iso_name" {
   type    = string
   default = "Rocky-8.4-x86_64-minimal.iso"
