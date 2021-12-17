@@ -14,7 +14,7 @@ lang en_US.UTF-8
 
 # Network information
 network  --bootproto=dhcp --device=ens18 --ipv6=no --activate
-network  --hostname=centos8-net.local
+network  --hostname=rockylinux85
 # Root password
 rootpw --iscrypted $6$qoazpFv0h6$1i0uxiM32aszgrgyYjv/2FLq73.TV2DCHOGi6nuiZoazu36Bewgb4hKarG9J3vwHxTpkdLQ10zeEt1J5XHG.Z/
 firewall --disabled
