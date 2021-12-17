@@ -9,8 +9,8 @@ autoinstall:
     layout:
       name: direct
   packages:
-    - ubuntu-standard
-    - ubuntu-server    
+    #- ubuntu-standard
+    - ubuntu-server
     - qemu-guest-agent
     - bc
     - curl
@@ -25,9 +25,11 @@ autoinstall:
       ethernets:
         ens18:
           dhcp4: true
+          dhcp6: false
           dhcp-identifier: mac
         ens19:
-          dhcp4: true  
+          dhcp4: true
+          dhco6: false
   ssh:
     allow-pw: true
     install-server: true
