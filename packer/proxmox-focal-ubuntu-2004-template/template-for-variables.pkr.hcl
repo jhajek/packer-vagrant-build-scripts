@@ -9,9 +9,17 @@ variable "NODENAME" {
   default = ""
 }
 
-variable "USERNAME" {}
+variable "USERNAME" {
+  sensitive = true
+  type   = string
+  default = ""
+}
 
-variable "PROXMOX_TOKEN" {}
+variable "PROXMOX_TOKEN" {
+  sensitive = true
+  type   = string
+  default = ""
+}
 
 variable "URL" {
   type = string
