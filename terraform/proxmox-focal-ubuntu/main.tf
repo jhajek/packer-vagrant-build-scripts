@@ -26,7 +26,6 @@ resource "proxmox_vm_qemu" "vanilla-server" {
   bootdisk        = "virtio0"
   boot            = "cdn"
   agent           = 1
-  clone_wait      = var.clone_wait
 
   ipconfig0 = "ip=dhcp"
   ipconfig1 = "ip=dhcp"
