@@ -14,7 +14,7 @@ template_to_clone = ""                    # The name of the template to clone
 memory            = 4096                  # Memory size of a VM
 cores             = 1                     # vCPU = cores * sockets
 sockets           = 1                     # vCPU = cores * sockets
-#storage           = ""                    # Which storage pool to use - example: local, local-lvm, disk1, etc
+storage           = ""                    # Which storage pool to use - example: local, local-lvm, disk1, etc
 disk_size         = "20G"                 # Disk size of a VM - min size must equal to the disk size of your clone image
 keypath           = "name-of-private-key" # The path to the private key you need to communicate with your instances
 clone_wait        = 60                    # Provider will wait clone_wait/2 seconds after a clone operation and clone_wait seconds after an UpdateConfig operation.
