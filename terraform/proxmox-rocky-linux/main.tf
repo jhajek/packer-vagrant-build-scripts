@@ -26,13 +26,11 @@ resource "proxmox_vm_qemu" "rocky-linux" {
   bootdisk        = "virtio0"
   boot            = "cdn"
   agent           = 1
-  additional_wait = var.additional_wait
-  clone_wait      = var.clone_wait
 
   ipconfig0 = "ip=dhcp"
   ipconfig1 = "ip=dhcp"
   ipconfig2 = "ip=dhcp"
-  
+
   network {
     model  = "virtio"
     bridge = "vmbr0"
