@@ -31,7 +31,8 @@ resource "proxmox_vm_qemu" "rocky-linux" {
 
   ipconfig0 = "ip=dhcp"
   ipconfig1 = "ip=dhcp"
-
+  ipconfig2 = "ip=dhcp"
+  
   network {
     model  = "virtio"
     bridge = "vmbr0"
