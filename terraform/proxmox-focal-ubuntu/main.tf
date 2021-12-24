@@ -42,7 +42,7 @@ resource "proxmox_vm_qemu" "vanilla-server" {
 
   network {
     model  = "virtio"
-    bridge = "vmbr3
+    bridge = "vmbr3"
   }
 
   disk {
