@@ -1,5 +1,5 @@
 ###############################################################################################
-# This template demonstrates a Terraform plan to deploy one Ubuntu Focal 20.04 instance.
+# This template demonstrates a Terraform plan to deploy one CentOS Stream instance.
 # Run this by typing: terraform apply -parallelism=1
 ###############################################################################################
 resource "random_id" "id" {
@@ -8,11 +8,11 @@ resource "random_id" "id" {
 
 # https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/shuffle#example-usage
 resource "random_shuffle" "datadisk" {
-  input        = ["datadisk1","datadisk2","datadisk3"]
+  input        = ["datadisk1","datadisk2","datadisk3","datadisk4","datadisk5"]
   result_count = 1
 }
 
-resource "proxmox_vm_qemu" "vanilla-server" {
+resource "proxmox_vm_qemu" "rocky-linux" {
   count           = var.numberofvms
   name            = "${var.yourinitials}-vm${count.index}"
   desc            = var.desc
@@ -20,12 +20,14 @@ resource "proxmox_vm_qemu" "vanilla-server" {
   clone           = var.template_to_clone
   os_type         = "cloud-init"
   memory          = var.memory
+  scsihw          = "virtio-scsi-pci"
   cores           = var.cores
   sockets         = var.sockets
-  scsihw          = "virtio-scsi-pci"
   bootdisk        = "virtio0"
   boot            = "cdn"
   agent           = 1
+  additional_wait = var.additional_wait
+  clone_wait      = var.clone_wait
 
   ipconfig0 = "ip=dhcp"
   ipconfig1 = "ip=dhcp"
@@ -42,8 +44,9 @@ resource "proxmox_vm_qemu" "vanilla-server" {
 
   network {
     model  = "virtio"
-    bridge = "vmbr3
+    bridge = "vmbr3"
   }
+
 
   disk {
     type    = "virtio"
@@ -58,13 +61,10 @@ resource "proxmox_vm_qemu" "vanilla-server" {
       "sudo hostnamectl set-hostname ${var.yourinitials}-vm${count.index}",
       "sudo sed -i 's/changeme/${random_id.id.dec}${count.index}/' /etc/consul.d/system.hcl",
       "sudo sed -i 's/replace-name/${var.yourinitials}-vm${count.index}/' /etc/consul.d/system.hcl",
-      "sudo sed -i 's/ubuntu-server/${var.yourinitials}-vm${count.index}/' /etc/hosts",
-      "sudo sed -i 's/FQDN/${var.yourinitials}-vm${count.index}.service.consul/' /etc/update-motd.d/999-consul-dns-message",
       "sudo sed -i 's/#datacenter = \"my-dc-1\"/datacenter = \"rice-dc-1\"/' /etc/consul.d/consul.hcl",
       "echo 'retry_join = [\"${var.consulip}\"]' | sudo tee -a /etc/consul.d/consul.hcl",
       "sudo systemctl daemon-reload",
       "sudo systemctl restart consul.service",
-      "sudo systemctl restart post_install_iptables-dns-adjustment.service",
       "sudo cat /opt/consul/node-id",
       "sudo rm /opt/consul/node-id",
       "sudo systemctl restart consul"
