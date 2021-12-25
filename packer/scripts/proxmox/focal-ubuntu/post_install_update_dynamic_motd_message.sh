@@ -11,7 +11,7 @@ sudo cat > /etc/update-motd.d/999-consul-dns-message <<'EOF'
 echo
 echo "############################################################"
 echo "This is an ITM Cloud Lab Elastic Instance."
-echo "This cloud provided dynamic DNS resolution."
+echo "This cloud provides dynamic DNS resolution."
 echo "Any instance in the cloud can be accessed by attaching the hostname to *.service.consul" 
 echo "Your Fully Qualified Domain Name is: FQDN"
 echo "The private meta-network attached to your instance: `hostname  -i | awk '{print $2}'`"
