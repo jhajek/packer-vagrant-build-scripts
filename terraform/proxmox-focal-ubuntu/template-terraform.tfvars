@@ -7,7 +7,7 @@ pm_timeout          = 300                            # (Optional; defaults to 30
 pm_log_file         = "terraform-plugin-proxmox.log" # (Optional; defaults to terraform-plugin-proxmox.log) If logging is enabled, the log file the provider will write logs to.
 
 yourinitials      = "" # Your initials or Hawk ID to add to the vms so they have a unique name
-numberofvms       = 3
+numberofvms       = 1
 desc              = ""                    # What is the purpose of the TF template
 target_node       = ""                    # Promox node to provision VMs
 template_to_clone = ""                    # The name of the template to clone
