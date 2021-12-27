@@ -43,7 +43,7 @@ resource "proxmox_vm_qemu" "rocky-linux" {
 
   network {
     model  = "virtio"
-    bridge = "vmbr3"
+    bridge = "vmbr2"
   }
 
 
