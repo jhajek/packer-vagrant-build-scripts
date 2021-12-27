@@ -30,6 +30,9 @@ autoinstall:
         ens19:
           dhcp4: true
           dhcp6: false
+        ens20:
+          dhcp4: true
+          dhcp6: false
   ssh:
     allow-pw: true
     install-server: true

@@ -12,11 +12,6 @@ resource "random_shuffle" "datadisk" {
   result_count = 1
 }
 
-resource "random_integer" "tag" {
-  min=10
-  max=4096
-}
-
 resource "proxmox_vm_qemu" "vanilla-server" {
   count           = var.numberofvms
   name            = "${var.yourinitials}-vm${count.index}"
@@ -39,7 +34,6 @@ resource "proxmox_vm_qemu" "vanilla-server" {
   network {
     model  = "virtio"
     bridge = "vmbr0"
-    tag = random_integer.tag.result
   }
 
   network {
