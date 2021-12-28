@@ -133,6 +133,17 @@ build {
     scripts         = ["../scripts/proxmox/centos8/post_install_change_consul_bind_interface.sh"]
   }
 
+  ############################################################################################
+  # Script to give a dynamic message about the consul DNS upon login
+  #
+  # https://ownyourbits.com/2017/04/05/customize-your-motd-login-message-in-debian-and-ubuntu/
+  #############################################################################################
+  
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts         = ["../scripts/proxmox/centos8/post_install_update_dynamic_motd_message.sh"]
+  }  
+
   ########################################################################################################################
   # Uncomment this block to add your own custom bash install scripts
   # This block you can add your own shell scripts to customize the image you are creating
