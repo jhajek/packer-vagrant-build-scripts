@@ -13,7 +13,7 @@ echo "############################################################"
 echo "This is an ITM Cloud Lab Elastic Instance."
 echo "This cloud provides dynamic DNS resolution."
 echo "Any instance in the cloud can be accessed by attaching the hostname to *.service.consul" 
-echo "Your Fully Qualified Domain Name is: FQDN"
+echo "Your Fully Qualified Domain Name is: `hostname`.service.consul"
 echo "The private meta-network attached to your instance: `hostname  -I | awk '{print $2}'`"
 echo "############################################################"
 echo
