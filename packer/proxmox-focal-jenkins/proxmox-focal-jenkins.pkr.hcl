@@ -168,7 +168,6 @@ build {
       execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
       scripts          = ["../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_install-pandoc.sh",
                           "../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_install-jdk.sh",
-                          "../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_install-jenkins.sh",
                           "../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_install-collectd.sh",
                           ]
     }
