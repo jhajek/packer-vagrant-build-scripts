@@ -87,7 +87,7 @@ build {
   ########################################################################################################################
 
   provisioner "file" {
-    source      = "../scripts/proxmox/focal-ubuntu/post_install_iptables-dns-adjustment.sh"
+    source      = "../scripts/proxmox/core-focal/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
   }
 
@@ -109,7 +109,7 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/focal-ubuntu/post_install_prxmx-firewall-configuration.sh"]
+    scripts         = ["../scripts/proxmox/core-focal/post_install_prxmx-firewall-configuration.sh"]
   }
 
   ########################################################################################################################
@@ -119,11 +119,11 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/focal-ubuntu/post_install_prxmx_ubuntu_2004.sh",
-                       "../scripts/proxmox/focal-ubuntu/post_install_prxmx_start-cloud-init.sh",
-                       "../scripts/proxmox/focal-ubuntu/post_install_prxmx-ssh-restrict-login.sh",
-                       "../scripts/proxmox/focal-ubuntu/post_install_prxmx_install_hashicorp_consul.sh",
-                       "../scripts/proxmox/focal-ubuntu/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
+    scripts         = ["../scripts/proxmox/core-focal/post_install_prxmx_ubuntu_2004.sh",
+                       "../scripts/proxmox/core-focal/post_install_prxmx_start-cloud-init.sh",
+                       "../scripts/proxmox/core-focal/post_install_prxmx-ssh-restrict-login.sh",
+                       "../scripts/proxmox/core-focal/post_install_prxmx_install_hashicorp_consul.sh",
+                       "../scripts/proxmox/core-focal/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
   }
 
   ########################################################################################################################
@@ -134,7 +134,7 @@ build {
   
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/focal-ubuntu/post_install_change_consul_bind_interface.sh"]
+    scripts         = ["../scripts/proxmox/core-focal/post_install_change_consul_bind_interface.sh"]
   }
   
   ############################################################################################
@@ -145,7 +145,7 @@ build {
   
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/focal-ubuntu/post_install_update_dynamic_motd_message.sh"]
+    scripts         = ["../scripts/proxmox/core-focal/post_install_update_dynamic_motd_message.sh"]
   }  
   
   

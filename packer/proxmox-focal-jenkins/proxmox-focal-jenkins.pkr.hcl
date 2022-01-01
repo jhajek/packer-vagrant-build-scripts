@@ -1,24 +1,28 @@
-# https://www.packer.io/docs/builders/proxmox/iso
-source "proxmox-iso" "proxmox-rockylinux-85" {
-  boot_command    = ["<tab> text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/rockylinux-85.ks<enter>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>"]
-  boot_wait       = "10s"
-  cores           = "${var.NUMBEROFCORES}"
-  node            = "${var.NODENAME}"
-  username        = "${var.USERNAME}"
-  token           = "${var.PROXMOX_TOKEN}"
-  cpu_type        = "host"
-  scsi_controller = "virtio-scsi-pci"
+locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
+
+# source blocks are generated from your builders; a source can be referenced in
+# build blocks. A build block runs provisioner and post-processors on a
+# source. Read the documentation for source blocks here:
+# https://www.packer.io/docs/from-1.5/blocks/source
+source "proxmox-iso" "proxmox-focal-jenkins" {
+  boot_command = ["<enter><enter><f6><esc><wait> ", "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/", "<enter><wait>"]
+  boot_wait    = "5s"
+  cores        = "${var.NUMBEROFCORES}"
+  node         = "${var.NODENAME}"
+  username     = "${var.USERNAME}"
+  token        = "${var.PROXMOX_TOKEN}"
+  cpu_type     = "host"
   disks {
     disk_size         = "${var.DISKSIZE}"
     storage_pool      = "${var.STORAGEPOOL}"
     storage_pool_type = "lvm"
     type              = "virtio"
   }
-  http_directory   = "./"
+  http_directory   = "subiquity/http"
   http_port_max    = 9200
   http_port_min    = 9001
-  iso_checksum     = "sha256:5a0dc65d1308e47b51a49e23f1030b5ee0f0ece3702483a8a6554382e893333c"
-  iso_urls         = ["https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.5-x86_64-boot.iso"]
+  iso_checksum     = "sha256:f8e3086f3cea0fb3fefb29937ab5ed9d19e767079633960ccb50e76153effc98"
+  iso_urls         = ["http://mirrors.kernel.org/ubuntu-releases/20.04.3/ubuntu-20.04.3-live-server-amd64.iso"]
   iso_storage_pool = "local"
   memory           = "${var.MEMORY}"
   network_adapters {
@@ -34,16 +38,15 @@ source "proxmox-iso" "proxmox-rockylinux-85" {
   cloud_init_storage_pool  = "local"
   ssh_password             = "vagrant"
   ssh_username             = "vagrant"
-  ssh_port                 = 22
+  ssh_port                 = 2222
   ssh_timeout              = "20m"
   ssh_wait_timeout         = "1800s"
+  template_description     = "A Packer template to create a Promox Template - Vanilla Ubuntu"
   vm_name                  = "${var.VMNAME}"
 }
 
 build {
-  description = "Build base RockyLinux 8.5"
-
-  sources = ["source.proxmox-iso.proxmox-rockylinux-85"]
+  sources = ["source.proxmox-iso.proxmox-focal-jenkins"]
 
   ########################################################################################################################
   # File provisioner will SCP your public key to the instance so you can connect over SSH via your 
@@ -84,7 +87,7 @@ build {
   ########################################################################################################################
 
   provisioner "file" {
-    source      = "../scripts/proxmox/core-rocky/post_install_iptables-dns-adjustment.sh"
+    source      = "../scripts/proxmox/core-focal/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
   }
 
@@ -106,7 +109,7 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/core-rocky/post_install_prxmx-firewall-configuration.sh"]
+    scripts         = ["../scripts/proxmox/core-focal/post_install_prxmx-firewall-configuration.sh"]
   }
 
   ########################################################################################################################
@@ -116,10 +119,11 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/core-rocky/post_install_prxmx_centos_8.sh",
-                       "../scripts/proxmox/core-rocky/post_install_prxmx-ssh-restrict-login.sh",
-                       "../scripts/proxmox/core-rocky/post_install_prxmx_install_hashicorp_consul.sh",
-                       "../scripts/proxmox/core-rocky/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
+    scripts         = ["../scripts/proxmox/core-focal/post_install_prxmx_ubuntu_2004.sh",
+                       "../scripts/proxmox/core-focal/post_install_prxmx_start-cloud-init.sh",
+                       "../scripts/proxmox/core-focal/post_install_prxmx-ssh-restrict-login.sh",
+                       "../scripts/proxmox/core-focal/post_install_prxmx_install_hashicorp_consul.sh",
+                       "../scripts/proxmox/core-focal/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
   }
 
   ########################################################################################################################
@@ -130,9 +134,9 @@ build {
   
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/core-rocky/post_install_change_consul_bind_interface.sh"]
+    scripts         = ["../scripts/proxmox/core-focal/post_install_change_consul_bind_interface.sh"]
   }
-
+  
   ############################################################################################
   # Script to give a dynamic message about the consul DNS upon login
   #
@@ -141,17 +145,32 @@ build {
   
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/core-rocky/post_install_update_dynamic_motd_message.sh"]
+    scripts         = ["../scripts/proxmox/core-focal/post_install_update_dynamic_motd_message.sh"]
   }  
+  
+  
+  ########################################################################################################################
+  # This is a hack needed to be able to install Ubuntu 20.04 via Packer -- due to Ubuntu adopting Cloud-Init as the method for scripted 
+  # installation
+  ########################################################################################################################
+
+  provisioner "shell" {
+    #inline_shebang  =  "#!/usr/bin/bash -e"
+    inline = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
+  }
 
   ########################################################################################################################
   # Uncomment this block to add your own custom bash install scripts
   # This block you can add your own shell scripts to customize the image you are creating
   ########################################################################################################################
 
-  #  provisioner "shell" {
-  #    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-  #    scripts          = ["../path/to/your/shell/script.sh"]
-  #  }
+    provisioner "shell" {
+      execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+      scripts          = ["../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_install-pandoc.sh",
+                          "../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_install-jdk.sh",
+                          "../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_install-jenkins.sh",
+                          "../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_install-collectd.sh",
+                          ]
+    }
 
 }

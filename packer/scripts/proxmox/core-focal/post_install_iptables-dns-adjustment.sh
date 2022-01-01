@@ -13,9 +13,11 @@ sudo iptables -t nat -A OUTPUT -d localhost -p tcp -m tcp --dport 53 -j REDIRECT
 sudo apt-get install -y nftables
 if [ -d /etc/iptables ]; then
   echo "Directory /etc/iptables exists... moving on\n"
+  echo "Directory /etc/iptables exists... moving on" | systemd-cat -t iptables-dns-adjustment -p info 
 else 
   sudo mkdir -p /etc/iptables
   echo "Directory /etc/iptables created succesfully.\n"
+  echo "Directory /etc/iptables created succesfully." | systemd-cat -t iptables-dns-adjustment -p info 
 fi
 sudo /sbin/iptables-save | sudo tee /etc/iptables/rules.v4 
 sudo iptables-restore-translate -f /etc/iptables/rules.v4 > ruleset.nft
