@@ -148,7 +148,16 @@ build {
     scripts         = ["../scripts/proxmox/core-focal/post_install_update_dynamic_motd_message.sh"]
   }  
   
+  ############################################################################################
+  # Script to install collectd dependencies for collecting hardware metrics
+  #
+  #############################################################################################
   
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts         = ["../scripts/proxmox/core-focal/post_install_prxmx_ubuntu_install-collectd.sh"]
+  }  
+
   ########################################################################################################################
   # This is a hack needed to be able to install Ubuntu 20.04 via Packer -- due to Ubuntu adopting Cloud-Init as the method for scripted 
   # installation
