@@ -143,6 +143,15 @@ build {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/core-rocky/post_install_update_dynamic_motd_message.sh"]
   }  
+  ############################################################################################
+  # Script to install and start collectd hardware metrics collection
+  #
+  #############################################################################################
+  
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts         = ["../scripts/proxmox/core-rocky/post_install_prxmx_install-collectd.sh"]
+  }  
 
   ########################################################################################################################
   # Uncomment this block to add your own custom bash install scripts
