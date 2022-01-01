@@ -6,13 +6,13 @@ pm_parallel         = 4                              # (Optional; defaults to 4)
 pm_timeout          = 600                            # (Optional; defaults to 300) Timeout value (seconds) for proxmox API calls.
 pm_log_file         = "terraform-plugin-proxmox.log" # (Optional; defaults to terraform-plugin-proxmox.log) If logging is enabled, the log file the provider will write logs to.
 
-yourinitials      = "jenkins" # Your initials or Hawk ID to add to the vms so they have a unique name
+yourinitials      = "docker" # Your initials or Hawk ID to add to the vms so they have a unique name
 numberofvms       = 1
 desc              = ""                    # What is the purpose of the TF template
 target_node       = ""                    # Promox node to provision VMs
 template_to_clone = ""                    # The name of the template to clone
-memory            = 4096                  # Memory size of a VM
-cores             = 1                     # vCPU = cores * sockets
+memory            = 16384                  # Memory size of a VM
+cores             = 4                     # vCPU = cores * sockets
 sockets           = 1                     # vCPU = cores * sockets
 storage           = ""                    # Which storage pool to use - example: local, local-lvm, disk1, etc
 disk_size         = "25G"                 # Disk size of a VM - min size must equal to the disk size of your clone image
