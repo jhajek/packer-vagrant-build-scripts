@@ -178,7 +178,8 @@ build {
       scripts          = ["../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_firewall-additions.sh",
                           "../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_install-pandoc.sh",
                           "../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_install-jdk.sh",
-                          "../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_install-jenkins.sh"
+                          "../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_install-jenkins.sh",
+                          "../scripts/proxmox/focal-jenkins/post_install_prxmx_ubuntu_github-release-tool.sh"
                          ]
     }
 
