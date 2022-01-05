@@ -25,4 +25,4 @@ storage            = ""                    # Which storage pool to use - example
 disk_size          = "50G"                 # Disk size of a VM - min size must equal to the disk size of your clone image
 data_disk_size     = "100G"                # Data disk that can be attached to the launched instance
 keypath            = "name-of-private-key" # The path to the private key you need to communicate with your instances
-consulip           = ""                    # IP address of consul master server
+consulip           = "192.168.182.33"                    # IP address of consul master server

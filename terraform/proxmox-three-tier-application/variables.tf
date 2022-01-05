@@ -1,8 +1,6 @@
 #https://registry.terraform.io/providers/Telmate/proxmox/latest/docs
 variable "pm_api_url" {}
 
-variable "yourinitials" {}
-
 variable "pm_api_token_id" {
   sensitive = true
 }
@@ -25,11 +23,7 @@ variable "pm_log_file" {}
 
 variable "numberofvms" {}
 
-variable "desc" {}
-
 variable "target_node" {}
-
-variable "template_to_clone" {}
 
 variable "memory" {}
 
@@ -44,3 +38,25 @@ variable "disk_size" {}
 variable "keypath" {}
 
 variable "consulip" {}
+
+variable "yourinitials-lb" {}
+
+variable "yourinitials-ws" {}
+
+variable "yourinitials-db" {}
+
+variable "desc-lb" {}
+
+variable "desc-ws" {}
+
+variable "desc-db" {}
+
+variable "data_disk_size" {}
+
+variable "template_to_clone-lb" {}
+
+variable "template_to_clone-ws" {}
+
+variable "template_to_clone-db" {}
+
+variable "numberofvms-ws" {}
