@@ -280,7 +280,7 @@ build {
   # temporary SSH port during installation
   provisioner "shell" {
     inline = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
-    only   = ["proxmox-focal-lb", "proxmox-focal-db"]]
+    only   = ["proxmox-focal-lb", "proxmox-focal-db"]
   }
 
 }
