@@ -204,7 +204,7 @@ resource "proxmox_vm_qemu" "focal-db" {
 
   disk {
     type    = "virtio"
-    storage = random_shuffle.datadisk.result[0]
+    storage = "datadisk4"
     size    = var.data_disk_size
   }
 
