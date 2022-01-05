@@ -2,7 +2,7 @@
 set -e
 set -v
 
-# Install dependencies to create a jenkins system
+# Install dependencies to create collectd
 sudo apt-get update
 # Install collectd for plugin management
 # Install Java dependencies
