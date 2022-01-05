@@ -196,11 +196,6 @@ build {
     only            = ["proxmox-focal-lb", "proxmox-focal-db"]
   }
 
-  ########################################################################################################################
-  # This is the script that will open the default firewall ports, all ports except 22, 8301, and 8500 are locked down
-  # by default.  Edit this script if you want to open additional ports
-  ########################################################################################################################
-
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/core-rocky/post_install_prxmx-firewall-configuration.sh"]
@@ -223,33 +218,6 @@ build {
     only            = ["proxmox-rocky-ws"]
   }
 
-  # Run the configurations for each element in the network - Focal Load Balancer
-
-  provisioner "shell" {
-    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/focal-lb/nginx-install.sh",
-                      "../scripts/proxmox/focal-lb/post_install_prxmx_ubuntu_firewall-additions.sh"]
-    only            = ["proxmox-focal-lb"]
-  }
-
-  # Run the configurations for each element in the network - Rocky Webservers
-
-  provisioner "shell" {
-    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/rocky-ws/nginx-install.sh",
-                      "../scripts/proxmox/rocky-ws/post_install_prxmx_rocky_firewall-additions.sh"]
-    only            = ["proxmox-rocky-ws"]
-  }
-
-  # Run the configurations for each element in the network - Focal Database
-
-  provisioner "shell" {
-    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/focal-db/db-install.sh",
-                      "../scripts/proxmox/focal-db/post_install_prxmx_ubuntu_firewall-additions.sh"]
-    only            = ["proxmox-focal-db"]
-  }
-
   ############################################################################################
   # Script to give a dynamic message about the consul DNS upon login
   #
@@ -261,12 +229,6 @@ build {
     scripts         = ["../scripts/proxmox/core-focal/post_install_update_dynamic_motd_message.sh"]
     only            = ["proxmox-focal-lb", "proxmox-focal-db"]
   }
-  
-  ############################################################################################
-  # Script to give a dynamic message about the consul DNS upon login
-  #
-  # https://ownyourbits.com/2017/04/05/customize-your-motd-login-message-in-debian-and-ubuntu/
-  #############################################################################################
   
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
@@ -285,11 +247,6 @@ build {
     only            = ["proxmox-focal-lb", "proxmox-focal-db"]
   } 
 
-  ############################################################################################
-  # Script to install collectd dependencies for collecting hardware metrics
-  #
-  #############################################################################################
-  
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/core-rocky/post_install_prxmx_install-collectd.sh"]
@@ -304,6 +261,43 @@ build {
   provisioner "shell" {
     inline = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
     only   = ["proxmox-focal-lb", "proxmox-focal-db"]
+  }
+
+  ########################################################################################################################
+  # These scripts are for customizing the templates where you can install software and configure it via shell script
+  ########################################################################################################################
+  
+  ########################################################################################################################
+  # Run the configurations for each element in the network - Focal Load Balancer
+  ########################################################################################################################
+  
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts         = ["../scripts/proxmox/focal-lb/nginx-install.sh",
+                      "../scripts/proxmox/focal-lb/post_install_prxmx_ubuntu_firewall-additions.sh"]
+    only            = ["proxmox-focal-lb"]
+  }
+
+  ########################################################################################################################
+  # Run the configurations for each element in the network - Rocky Webservers
+  ########################################################################################################################
+  
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts         = ["../scripts/proxmox/rocky-ws/nginx-install.sh",
+                      "../scripts/proxmox/rocky-ws/post_install_prxmx_rocky_firewall-additions.sh"]
+    only            = ["proxmox-rocky-ws"]
+  }
+
+  ########################################################################################################################
+  # Run the configurations for each element in the network - Focal Database
+  ########################################################################################################################
+
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts         = ["../scripts/proxmox/focal-db/db-install.sh",
+                      "../scripts/proxmox/focal-db/post_install_prxmx_ubuntu_firewall-additions.sh"]
+    only            = ["proxmox-focal-db"]
   }
 
 }
