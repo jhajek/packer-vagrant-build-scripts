@@ -141,14 +141,24 @@ source "proxmox-iso" "proxmox-focal-db" {
 }
 
 build {
+  ########################################################################################################################
+  # This command tells Packer what to build -- these values are defined in the source tags above
+  ########################################################################################################################  
   sources = ["source.proxmox-iso.proxmox-focal-lb", "source.proxmox-iso.proxmox-rocky-ws", "source.proxmox-iso.proxmox-focal-db"]
 
-  #Add provisioners to upload public key to all the VMs
+  ########################################################################################################################
+  # Add provisioners to upload public key to all the VMs
+  ########################################################################################################################
+  
   provisioner "file" {
     source      = "./${var.KEYNAME}"
     destination = "/home/vagrant/"
   }
+
+  ########################################################################################################################
   # Commands to move the public key copied to the vm via the File Provisioner into the authorized keys
+  ########################################################################################################################
+  
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     inline = [
@@ -159,13 +169,16 @@ build {
     ]
   }
 
-  #Add .hcl configuration file to register the systems DNS - base template
+  ########################################################################################################################
+  # Add .hcl configuration file to register the systems DNS - base template
+  ########################################################################################################################
+
   provisioner "file" {
     source      = "./system.hcl"
     destination = "/home/vagrant/"
   }
 
-   ########################################################################################################################
+  ########################################################################################################################
   # Add a post_install_iptables-dns-adjustment.sh to the system for consul dns lookup adjustment to the iptables
   ########################################################################################################################
 
