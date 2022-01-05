@@ -271,8 +271,21 @@ build {
     scripts         = ["../scripts/proxmox/core-focal/post_install_prxmx_ubuntu_install-collectd.sh"]
   } 
 
+  ############################################################################################
+  # Script to install collectd dependencies for collecting hardware metrics
+  #
+  #############################################################################################
+  
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts         = ["../scripts/proxmox/core-rocky/post_install_prxmx_install-collectd.sh"]
+  } 
+
+  ############################################################################################
   # This block is needed due to a bug using Packer and Cloud-Init on Ubuntu 20.04 to remove the
   # temporary SSH port during installation
+  #############################################################################################
+
   provisioner "shell" {
     inline = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
     only   = ["proxmox-focal-lb", "proxmox-focal-db"]
