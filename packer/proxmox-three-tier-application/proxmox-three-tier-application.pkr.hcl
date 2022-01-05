@@ -172,7 +172,6 @@ build {
   provisioner "file" {
     source      = "../scripts/proxmox/core-focal/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
-    only        = ["proxmox-focal-lb","promox-focal-db"]
   }
 
   ########################################################################################################################
@@ -184,7 +183,6 @@ build {
       "sudo mv /home/vagrant/post_install_iptables-dns-adjustment.sh /etc",
       "sudo chmod u+x /etc/post_install_iptables-dns-adjustment.sh"
     ]
-    only  = ["focal-rocky-ws"]
   }
 
   # Command to move dns-adjustment script to a safer place
