@@ -62,17 +62,17 @@ variable "KEYNAME" {
 # This is the name of the Virtual Machine Template you want to create
 variable "LBNAME" {
   type    = string
-  default = "jrh-lb"
+  default = "jrh-lb-template"
 }
 
 # This is the name of the Virtual Machine Template you want to create
 variable "WSNAME" {
   type    = string
-  default = "jrh-ws"
+  default = "jrh-ws-template"
 }
 
 # This is the name of the Virtual Machine Template you want to create
 variable "DBNAME" {
   type    = string
-  default = "jrh-db"
+  default = "jrh-db-template"
 }
