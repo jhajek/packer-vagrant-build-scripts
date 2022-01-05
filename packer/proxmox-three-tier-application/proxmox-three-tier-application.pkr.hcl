@@ -259,7 +259,20 @@ build {
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/core-focal/post_install_update_dynamic_motd_message.sh"]
-  }  
+    only            = ["proxmox-focal-lb", "proxmox-focal-db"]
+  }
+  
+  ############################################################################################
+  # Script to give a dynamic message about the consul DNS upon login
+  #
+  # https://ownyourbits.com/2017/04/05/customize-your-motd-login-message-in-debian-and-ubuntu/
+  #############################################################################################
+  
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    scripts         = ["../scripts/proxmox/core-rocky/post_install_update_dynamic_motd_message.sh"]
+    only            = ["proxmox-rocky-ws"]
+  }
   
   ############################################################################################
   # Script to install collectd dependencies for collecting hardware metrics
@@ -269,6 +282,7 @@ build {
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/core-focal/post_install_prxmx_ubuntu_install-collectd.sh"]
+    only            = ["proxmox-focal-lb", "proxmox-focal-db"]
   } 
 
   ############################################################################################
@@ -279,6 +293,7 @@ build {
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/core-rocky/post_install_prxmx_install-collectd.sh"]
+    only            = ["proxmox-rocky-ws"]
   } 
 
   ############################################################################################
