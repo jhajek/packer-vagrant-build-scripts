@@ -238,7 +238,7 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/core-rocky/post_install_prxmx_centos_8.sh",
+    scripts         = ["../scripts/proxmox/core-rocky/post_install_prxmx_rocky_85.sh",
                        "../scripts/proxmox/core-rocky/post_install_prxmx-ssh-restrict-login.sh", 
                        "../scripts/proxmox/core-rocky/post_install_prxmx_install_hashicorp_consul.sh",
                        "../scripts/proxmox/core-rocky/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
