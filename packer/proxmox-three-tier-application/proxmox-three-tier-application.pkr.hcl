@@ -192,7 +192,7 @@ build {
     provisioner "file" {
     source      = "../scripts/proxmox/core-rocky/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
-    only            = "proxmox-iso.proxmox-rocky-ws"
+    only            = ["proxmox-iso.proxmox-rocky-ws"]
   }
   
   ########################################################################################################################
