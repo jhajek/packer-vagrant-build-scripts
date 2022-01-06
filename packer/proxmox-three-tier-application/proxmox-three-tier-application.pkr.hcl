@@ -186,14 +186,8 @@ build {
   provisioner "file" {
     source      = "../scripts/proxmox/core-focal/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
-    only        = ["proxmox-focal-lb", "proxmox-focal-db"]
   }
-
-  provisioner "file" {
-    source      = "../scripts/proxmox/core-rocky/post_install_iptables-dns-adjustment.sh"
-    destination = "/home/vagrant/"
-    only        = ["proxmox-rocky-ws"]
-  }
+  
   ########################################################################################################################
   # Command to move dns-adjustment script so the Consul DNS service will start on boot/reboot
   ########################################################################################################################
