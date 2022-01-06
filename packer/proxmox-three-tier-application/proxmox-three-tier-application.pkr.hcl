@@ -231,9 +231,9 @@ build {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
     scripts         = ["../scripts/proxmox/core-focal/post_install_prxmx_ubuntu_2004.sh",
                        "../scripts/proxmox/core-focal/post_install_prxmx_start-cloud-init.sh", 
-                       "../scripts/proxmox/focal-ubuntu/post_install_prxmx-ssh-restrict-login.sh", 
-                       "../scripts/proxmox/focal-ubuntu/post_install_prxmx_install_hashicorp_consul.sh", 
-                       "../scripts/proxmox/focal-ubuntu/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
+                       "../scripts/proxmox/core-focal/post_install_prxmx-ssh-restrict-login.sh", 
+                       "../scripts/proxmox/core-focal/post_install_prxmx_install_hashicorp_consul.sh", 
+                       "../scripts/proxmox/core-focal/post_install_prxmx_update_dns_to_use_systemd_for_consul.sh"]
     only            = ["proxmox-iso.proxmox-focal-lb", "proxmox-iso.proxmox-focal-db"]
   }
 
@@ -313,7 +313,7 @@ build {
   
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    scripts         = ["../scripts/proxmox/rocky-ws/nginx-install.sh",
+    scripts         = ["../scripts/proxmox/rocky-ws/ws-install.sh",
                       "../scripts/proxmox/rocky-ws/post_install_prxmx_rocky_firewall-additions.sh"]
     only            = ["proxmox-iso.proxmox-rocky-ws"]
   }
