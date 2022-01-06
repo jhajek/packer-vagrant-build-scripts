@@ -188,7 +188,7 @@ build {
     destination = "/home/vagrant/"
     only            = ["proxmox-iso.proxmox-focal-lb", "proxmox-iso.proxmox-focal-db"] 
   }
-  proxmox-iso.
+
     provisioner "file" {
     source      = "../scripts/proxmox/core-rocky/post_install_iptables-dns-adjustment.sh"
     destination = "/home/vagrant/"
@@ -295,7 +295,7 @@ build {
   # These scripts are for customizing the templates where you can install 
   # software and configure it via shell script
   #############################################################################
-  
+
   ########################################################################################################################
   # Run the configurations for each element in the network - Focal Load Balancer
   ########################################################################################################################
