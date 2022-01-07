@@ -46,7 +46,7 @@ source "proxmox-iso" "proxmox-focal-grafana" {
 }
 
 build {
-  sources = ["source.proxmox-iso.proxmox-focal-jenkins"]
+  sources = ["source.proxmox-iso.proxmox-focal-grafana"]
 
   ########################################################################################################################
   # File provisioner will SCP your public key to the instance so you can connect over SSH via your 
