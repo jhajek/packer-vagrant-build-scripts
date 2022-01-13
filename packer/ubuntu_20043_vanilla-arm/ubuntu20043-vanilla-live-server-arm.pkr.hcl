@@ -1,0 +1,44 @@
+
+locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
+
+source "virtualbox-iso" "ubuntu-20043-live-server-arm" {
+  boot_command            = ["<enter><enter><f6><esc><wait> ", "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/", "<enter><wait>"]
+  boot_wait               = "5s"
+  disk_size               = 10000
+  parallels_tools_flavor   = "mac"
+  guest_os_type           = "ubuntu"
+  http_directory          = "subiquity/http"
+  http_port_max           = 9050
+  http_port_min           = 9001
+  iso_checksum            = "sha256:d6fea1f11b4d23b481a48198f51d9b08258a36f6024cb5cec447fe78379959ce"
+  iso_urls                = ["https://cdimage.ubuntu.com/releases/20.04/release/ubuntu-20.04.3-live-server-arm64.iso"]
+  shutdown_command        = "echo 'ubuntu' | sudo -S shutdown -P now"
+  #ssh_handshake_attempts  = "80"
+  ssh_wait_timeout        = "1800s"
+  ssh_password            = "vagrant"
+  ssh_port                = 2222
+  ssh_timeout             = "20m"
+  ssh_username            = "vagrant"
+  vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
+  vm_name                 = "ubuntu-focal"
+  headless                = "${var.headless_build}"
+}
+
+build {
+  sources = ["source.virtualbox-iso.ubuntu-20043-live-server-arm"]
+
+  provisioner "shell" {
+    #inline_shebang  =  "#!/usr/bin/bash -e"
+    inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
+    }
+
+  provisioner "shell" {
+    execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    script          = "../scripts/post_install_ubuntu_2004_vagrant-arm.sh"
+  }
+
+  post-processor "vagrant" {
+    keep_input_artifact = false
+    output              = "../build/{{ .BuildName }}-${local.timestamp}.box"
+  }
+}
