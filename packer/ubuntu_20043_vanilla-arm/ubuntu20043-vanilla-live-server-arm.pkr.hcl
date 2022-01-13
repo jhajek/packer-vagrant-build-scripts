@@ -1,7 +1,7 @@
 
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
-source "virtualbox-iso" "ubuntu-20043-live-server-arm" {
+source "parallels-iso" "ubuntu-20043-live-server-arm" {
   boot_command            = ["<enter><enter><f6><esc><wait> ", "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/", "<enter><wait>"]
   boot_wait               = "5s"
   disk_size               = 10000
@@ -25,7 +25,7 @@ source "virtualbox-iso" "ubuntu-20043-live-server-arm" {
 }
 
 build {
-  sources = ["source.virtualbox-iso.ubuntu-20043-live-server-arm"]
+  sources = ["source.parallels-iso.ubuntu-20043-live-server-arm"]
 
   provisioner "shell" {
     #inline_shebang  =  "#!/usr/bin/bash -e"
