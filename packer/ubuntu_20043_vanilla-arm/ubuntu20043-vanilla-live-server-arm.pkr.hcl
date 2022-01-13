@@ -5,7 +5,7 @@ source "virtualbox-iso" "ubuntu-20043-live-server-arm" {
   boot_command            = ["<enter><enter><f6><esc><wait> ", "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/", "<enter><wait>"]
   boot_wait               = "5s"
   disk_size               = 10000
-  parallels_tools_flavor   = "mac"
+  #parallels_tools_flavor  = "mac"
   guest_os_type           = "ubuntu"
   http_directory          = "subiquity/http"
   http_port_max           = 9050
