@@ -19,9 +19,9 @@ source "parallels-iso" "ubuntu-20043-live-server-arm" {
   ssh_port                = 2222
   ssh_timeout             = "20m"
   ssh_username            = "vagrant"
-  vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
+  #vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
   vm_name                 = "ubuntu-focal"
-  headless                = "${var.headless_build}"
+  #headless                = "${var.headless_build}"
 }
 
 build {
