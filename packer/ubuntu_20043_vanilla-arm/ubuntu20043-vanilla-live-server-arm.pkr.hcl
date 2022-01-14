@@ -20,7 +20,7 @@ source "parallels-iso" "ubuntu-20043-live-server-arm" {
   ssh_port                = 2222
   ssh_timeout             = "20m"
   ssh_username            = "vagrant"
-  prlctl                  = [["set", "{{.Name}}", "--memory", "${var.memory_amount}"]]
+  prlctl                  = [["set", "{{.Name}}", "--memsize", "${var.memory_amount}"]]
   prlctl_version_file     = ".prlctl_version"
   vm_name                 = "ubuntu-focal"
 }
