@@ -16,7 +16,7 @@ autoinstall:
     - git
     - ubuntu-server
     - cryptsetup
-    - build-essential
+    #- build-essential
     - libssl-dev
     - libreadline-dev
     - zlib1g-dev
