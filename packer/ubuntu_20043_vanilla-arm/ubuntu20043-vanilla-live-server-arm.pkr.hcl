@@ -20,6 +20,8 @@ source "parallels-iso" "ubuntu-20043-live-server-arm" {
   ssh_port                = 2222
   ssh_timeout             = "20m"
   ssh_username            = "vagrant"
+  # Hint to fix the problem of "initramfs unpacking failed" error
+  # https://askubuntu.com/questions/1269855/usb-installer-initramfs-unpacking-failed-decoding-failed
   prlctl                  = [["set", "{{.Name}}", "--memsize", "${var.memory_amount}"]]
   prlctl_version_file     = ".prlctl_version"
   vm_name                 = "ubuntu-focal"
