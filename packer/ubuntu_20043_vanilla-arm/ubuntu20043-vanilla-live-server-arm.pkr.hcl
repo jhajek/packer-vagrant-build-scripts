@@ -3,8 +3,7 @@ locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
 source "parallels-iso" "ubuntu-20043-live-server-arm" {
   # https://github.com/chef/bento/blob/main/packer_templates/ubuntu/ubuntu-20.04-arm64.json
-  # boot_command          = ["<esc>", "linux /casper/vmlinuz"," quiet"," autoinstall"," ds='nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/'","<enter>","initrd /casper/initrd <enter>","boot <enter>"]
-  boot_command            = ["<esc>", "autoinstall","<enter>","boot<enter>"]
+  boot_command          = ["<esc>", "linux /casper/vmlinuz"," quiet"," autoinstall"," ds='nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'","<enter>","initrd /casper/initrd <enter>","boot <enter>"]
   boot_wait               = "5s"
   disk_size               = 10000
   parallels_tools_flavor  = "lin"
@@ -21,6 +20,7 @@ source "parallels-iso" "ubuntu-20043-live-server-arm" {
   ssh_port                = 2222
   ssh_timeout             = "20m"
   ssh_username            = "vagrant"
+  prlctl                  = [["set", "{{.Name}}", "--memory", "${var.memory_amount}"]]
   prlctl_version_file     = ".prlctl_version"
   vm_name                 = "ubuntu-focal"
 }
