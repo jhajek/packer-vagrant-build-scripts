@@ -4,11 +4,11 @@ locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 source "virtualbox-iso" "ubuntu-20043-live-server" {
   boot_command            = ["<enter><enter><f6><esc><wait> ", "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/", "<enter><wait>"]
   boot_wait               = "5s"
-  disk_size               = 10000
+  disk_size               = 15000
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "Ubuntu_64"
   http_directory          = "subiquity/http"
-  http_port_max           = 9050
+  http_port_max           = 9200
   http_port_min           = 9001
   iso_checksum            = "sha256:f8e3086f3cea0fb3fefb29937ab5ed9d19e767079633960ccb50e76153effc98"
   iso_urls                = ["http://mirrors.kernel.org/ubuntu-releases/20.04.3/ubuntu-20.04.3-live-server-amd64.iso"]
