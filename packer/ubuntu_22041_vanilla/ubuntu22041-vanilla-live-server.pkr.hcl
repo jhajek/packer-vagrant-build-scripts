@@ -1,7 +1,7 @@
 
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
-source "virtualbox-iso" "ubuntu-22043-live-server" {
+source "virtualbox-iso" "ubuntu-22041-live-server" {
   #boot_command            = ["<enter><enter><f6><esc><wait> ", "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/", "<enter><wait>"]
   boot_command          = ["<esc>", "linux /casper/vmlinuz"," quiet"," autoinstall"," ds='nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'","<enter>","initrd /casper/initrd <enter>","boot <enter>"]
   boot_wait               = "5s"
@@ -27,7 +27,7 @@ source "virtualbox-iso" "ubuntu-22043-live-server" {
 }
 
 build {
-  sources = ["source.virtualbox-iso.ubuntu-22043-live-server"]
+  sources = ["source.virtualbox-iso.ubuntu-22041-live-server"]
 
   provisioner "shell" {
     #inline_shebang  =  "#!/usr/bin/bash -e"
