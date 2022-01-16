@@ -41,6 +41,6 @@ build {
 
   post-processor "vagrant" {
     keep_input_artifact = false
-    output              = "../build/{{ .BuildName }}-${local.timestamp}.box"
+    output              = "${var.build_artifact_location}{{ .BuildName }}-${local.timestamp}.box"
   }
 }
