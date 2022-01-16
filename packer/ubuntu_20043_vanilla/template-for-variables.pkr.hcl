@@ -5,5 +5,5 @@ variable "headless_build" {
 
 variable "memory_amount" {
   type =  string
-  default = "2048"
+  default = "4096"
 }
