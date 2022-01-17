@@ -5,7 +5,7 @@ locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 # source. Read the documentation for source blocks here:
 # https://www.packer.io/docs/from-1.5/blocks/source
 source "proxmox-iso" "proxmox-jammy-ubuntu-2204" {
-  boot_command = ["<cOn><cOff>", "<wait10>linux /casper/vmlinuz", " quiet", " autoinstall", " ds='nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'", "<enter>", "initrd /casper/initrd <enter>", "boot <enter>"]
+  boot_command = ["<cOn><cOff>", "<wait30>linux /casper/vmlinuz", " quiet", " autoinstall", " ds='nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'", "<enter>", "initrd /casper/initrd <enter>", "boot <enter>"]
   boot_wait    = "5s"
   cores        = "${var.NUMBEROFCORES}"
   node         = "${var.NODENAME}"
