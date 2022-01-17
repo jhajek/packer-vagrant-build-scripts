@@ -4,7 +4,7 @@
 
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-sudo yum -y install consul
+sudo yum -y install consul=1.11.0
 
 sudo mv -v /home/vagrant/system.hcl /etc/consul.d/
 sudo systemctl enable consul.service
