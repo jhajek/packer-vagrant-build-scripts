@@ -33,3 +33,4 @@ terraform.tfstate.backup
 # Exclude packer variable file
 variables.pkr.hcl
 consul.hcl
+*.pvm
