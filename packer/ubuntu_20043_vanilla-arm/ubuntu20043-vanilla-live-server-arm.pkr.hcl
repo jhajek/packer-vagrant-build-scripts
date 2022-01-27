@@ -33,12 +33,12 @@ build {
 
   provisioner "shell" {
     #inline_shebang  =  "#!/usr/bin/bash -e"
-    inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
+    #inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
     }
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    #script          = "../scripts/post_install_ubuntu_2004_vagrant-arm.sh"
+    script          = "../scripts/post_install_ubuntu_2004_vagrant-arm.sh"
   }
 
   post-processor "vagrant" {
