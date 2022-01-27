@@ -26,6 +26,7 @@ source "parallels-iso" "ubuntu-20043-live-server-arm-pvm" {
   prlctl                  = [["set", "{{.Name}}", "--memsize", "${var.memory_amount}"]]
   prlctl_version_file     = ".prlctl_version"
   vm_name                 = "ubuntu-focal-pvm"
+  output_directory        = "../build/"
 }
 
 build {
