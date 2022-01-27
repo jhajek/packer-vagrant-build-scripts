@@ -17,7 +17,7 @@ source "parallels-iso" "ubuntu-20043-live-server-arm" {
   #ssh_handshake_attempts  = "80"
   ssh_wait_timeout        = "1800s"
   ssh_password            = "vagrant"
-  ssh_port                = 2222
+  ssh_port                = 22
   ssh_timeout             = "20m"
   ssh_username            = "vagrant"
   parallels_tools_mode    = "upload"
@@ -38,7 +38,7 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    script          = "../scripts/post_install_ubuntu_2004_vagrant-arm.sh"
+    #script          = "../scripts/post_install_ubuntu_2004_vagrant-arm.sh"
   }
 
   post-processor "vagrant" {
