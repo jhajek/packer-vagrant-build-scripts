@@ -17,7 +17,7 @@ source "parallels-iso" "ubuntu-20043-live-server-arm" {
   #ssh_handshake_attempts  = "80"
   ssh_wait_timeout        = "1800s"
   ssh_password            = "vagrant"
-  ssh_port                = 22
+  ssh_port                = 2222
   ssh_timeout             = "20m"
   ssh_username            = "vagrant"
   parallels_tools_mode    = "upload"
@@ -31,10 +31,10 @@ source "parallels-iso" "ubuntu-20043-live-server-arm" {
 build {
   sources = ["source.parallels-iso.ubuntu-20043-live-server-arm"]
 
-  #provisioner "shell" {
+  provisioner "shell" {
     #inline_shebang  =  "#!/usr/bin/bash -e"
-    #inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
-    #}
+    inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
+    }
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
