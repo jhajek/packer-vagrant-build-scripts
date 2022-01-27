@@ -27,6 +27,7 @@ source "parallels-iso" "ubuntu-20043-live-server-arm-pvm" {
   prlctl_version_file     = ".prlctl_version"
   vm_name                 = "ubuntu-focal-pvm"
   output_directory        = "../build/"
+  skip_compaction         = false
 }
 
 build {
