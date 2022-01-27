@@ -31,10 +31,10 @@ source "parallels-iso" "ubuntu-20043-live-server-arm" {
 build {
   sources = ["source.parallels-iso.ubuntu-20043-live-server-arm"]
 
-  provisioner "shell" {
+  #provisioner "shell" {
     #inline_shebang  =  "#!/usr/bin/bash -e"
     #inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
-    }
+    #}
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
