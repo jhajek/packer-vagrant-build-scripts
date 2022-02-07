@@ -14,9 +14,8 @@ source "parallels-iso" "ubuntu-20043-live-server-arm" {
   iso_checksum            = "sha256:d6fea1f11b4d23b481a48198f51d9b08258a36f6024cb5cec447fe78379959ce"
   iso_urls                = ["https://cdimage.ubuntu.com/releases/20.04/release/ubuntu-20.04.3-live-server-arm64.iso"]
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
-  #ssh_handshake_attempts  = "80"
   ssh_wait_timeout        = "1800s"
-  ssh_password            = "vagrant"
+  ssh_password            = "${var.SSHPW}"
   ssh_port                = 2222
   ssh_timeout             = "20m"
   ssh_username            = "vagrant"
