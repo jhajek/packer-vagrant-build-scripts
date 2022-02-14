@@ -36,6 +36,7 @@ build {
 
   post-processor "vagrant" {
     keep_input_artifact = false
+    #compression_level = 9
     output              = "${var.build_artifact_location}{{ .BuildName }}-${local.timestamp}.box"
   }
 }
