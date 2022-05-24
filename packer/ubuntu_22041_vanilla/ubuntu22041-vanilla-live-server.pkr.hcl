@@ -11,8 +11,8 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   http_directory          = "subiquity/http"
   http_port_max           = 9200
   http_port_min           = 9001
-  iso_checksum            = "sha256:275c83c0de047a7bb8ac1d9285d133c96c6b8229cd19d18c4435cc5d536e38c9"
-  iso_urls                = ["http://cdimage.ubuntu.com/ubuntu-server/daily-live/current/jammy-live-server-amd64.iso"]
+  iso_checksum            = "sha256:84aeaf7823c8c61baa0ae862d0a06b03409394800000b3235854a6b38eb4856f"
+  iso_urls                = ["https://mirrors.edge.kernel.org/ubuntu-releases/22.04/ubuntu-22.04-live-server-amd64.iso"]
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   #ssh_handshake_attempts  = "80"
   ssh_wait_timeout        = "1800s"
@@ -22,7 +22,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   ssh_username            = "vagrant"
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
   virtualbox_version_file = ".vbox_version"
-  vm_name                 = "ubuntu-focal"
+  vm_name                 = "ubuntu-jammy"
   headless                = "${var.headless_build}"
 }
 
