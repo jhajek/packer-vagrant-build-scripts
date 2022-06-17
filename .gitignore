@@ -34,3 +34,4 @@ terraform.tfstate.backup
 variables.pkr.hcl
 consul.hcl
 *.pvm
+*.zip
