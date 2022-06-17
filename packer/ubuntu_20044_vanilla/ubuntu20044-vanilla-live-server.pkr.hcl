@@ -1,4 +1,18 @@
 
+#################################################################
+# Packer init command to get the latest proxmox plugin
+# run the command:  packer init . 
+# do this before you run the command: packer build .
+#################################################################
+packer {
+  required_plugins {
+    proxmox = {
+      version = ">= 1.0.4"
+      source  = "github.com/hashicorp/virtualbox"
+    }
+  }
+}
+
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
 source "virtualbox-iso" "ubuntu-20044-live-server" {
