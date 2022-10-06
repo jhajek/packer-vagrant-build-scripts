@@ -1,6 +1,16 @@
 
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
+packer {
+  required_plugins {
+    virtualbox = {
+      version = ">= 1.0.4"
+      source  = "github.com/hashicorp/virtualbox"
+    }
+  }
+}
+
+
 source "virtualbox-iso" "ubuntu-22041-live-server" {
   #boot_command            = ["<enter><enter><f6><esc><wait> ", "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/", "<enter><wait>"]
   boot_command          = ["<cOn><cOff>", "<wait5>linux /casper/vmlinuz"," quiet"," autoinstall"," ds='nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'","<enter>","initrd /casper/initrd <enter>","boot <enter>"]
@@ -11,8 +21,8 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   http_directory          = "subiquity/http"
   http_port_max           = 9200
   http_port_min           = 9001
-  iso_checksum            = "sha256:84aeaf7823c8c61baa0ae862d0a06b03409394800000b3235854a6b38eb4856f"
-  iso_urls                = ["https://mirrors.edge.kernel.org/ubuntu-releases/22.04/ubuntu-22.04-live-server-amd64.iso"]
+  iso_checksum            = "sha256:10f19c5b2b8d6db711582e0e27f5116296c34fe4b313ba45f9b201a5007056cb"
+  iso_urls                = ["https://mirrors.edge.kernel.org/ubuntu-releases/22.04.1/ubuntu-22.04.1-live-server-amd64.iso"]
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   #ssh_handshake_attempts  = "80"
   ssh_wait_timeout        = "1800s"
