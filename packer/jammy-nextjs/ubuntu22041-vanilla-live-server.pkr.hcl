@@ -30,7 +30,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   iso_urls                = ["https://mirrors.edge.kernel.org/ubuntu-releases/22.04.1/ubuntu-22.04.1-live-server-amd64.iso"]
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   #ssh_handshake_attempts  = "80"
-  ssh_wait_timeout        = "1800s"
+  ssh_wait_timeout        = "2500s"
   ssh_password            = "vagrant"
   ssh_timeout             = "40m"
   ssh_username            = "vagrant"
