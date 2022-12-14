@@ -32,7 +32,7 @@ autoinstall:
           dhcp4: true
           dhcp-identifier: mac
   ssh:
-    allow-pw: true
+    allow-pw: false
     install-server: true
   late-commands:
     - sed -i 's/^#*\(send dhcp-client-identifier\).*$/\1 = hardware;/' /target/etc/dhcp/dhclient.conf

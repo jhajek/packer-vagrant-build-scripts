@@ -36,7 +36,7 @@ source "virtualbox-iso" "jammy-nodejs" {
   ssh_username            = "vagrant"
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
   virtualbox_version_file = ".vbox_version"
-  vm_name                 = "ubuntu-jammy-nextjs"
+  vm_name                 = "jammy-nodejs"
   headless                = "${var.headless_build}"
 }
 
@@ -45,7 +45,7 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    script          = "../scripts/post_install_ubuntu_2204_vagrant.sh"
+    script          = "../scripts/post_install_ubuntu_2204_vagrant_nodejs"
   }
 
   post-processor "vagrant" {
