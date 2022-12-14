@@ -32,7 +32,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   #ssh_handshake_attempts  = "80"
   ssh_wait_timeout        = "1800s"
   ssh_password            = "vagrant"
-  ssh_timeout             = "30m"
+  ssh_timeout             = "40m"
   ssh_username            = "vagrant"
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
   virtualbox_version_file = ".vbox_version"
