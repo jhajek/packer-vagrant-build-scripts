@@ -45,7 +45,7 @@ build {
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
-    script          = "../scripts/post_install_ubuntu_2204_vagrant_nodejs"
+    script          = "../scripts/post_install_ubuntu_2204_vagrant_nodejs.sh"
   }
 
   post-processor "vagrant" {
