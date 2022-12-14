@@ -11,7 +11,7 @@ packer {
 }
 
 
-source "virtualbox-iso" "ubuntu-22041-live-server" {
+source "virtualbox-iso" "jammy-nodejs" {
   boot_command          = [
         "e<wait>",
         "<down><down><down>",
@@ -20,7 +20,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
         "<f10><wait>"
       ]
   boot_wait               = "5s"
-  disk_size               = 15000
+  disk_size               = 25000
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "Ubuntu_64"
   http_directory          = "subiquity/http"
@@ -41,7 +41,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
 }
 
 build {
-  sources = ["source.virtualbox-iso.ubuntu-22041-live-server"]
+  sources = ["source.virtualbox-iso.jammy-nodejs"]
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
