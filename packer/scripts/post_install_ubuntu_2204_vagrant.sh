@@ -21,3 +21,4 @@ echo "All Done!"
 # Add User customizations below here
 ##################################################
 
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs
