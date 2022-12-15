@@ -10,15 +10,16 @@ sudo groupadd admin
 sudo usermod -a -G admin vagrant
 
 # Installing Vagrant keys
-wget --no-check-certificate 'https://raw.githubusercontent.com/hashicorp/vagrant/main/keys/vagrant.pub'
-sudo mkdir -p /home/vagrant/.ssh
-sudo chown -R vagrant:vagrant /home/vagrant/.ssh
-cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
-sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
-echo "All Done!"
+# wget --no-check-certificate 'https://raw.githubusercontent.com/hashicorp/vagrant/main/keys/vagrant.pub'
+# sudo mkdir -p /home/vagrant/.ssh
+# sudo chown -R vagrant:vagrant /home/vagrant/.ssh
+# cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
+# sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
+# echo "All Done!"
 
 ##################################################
 # Add User customizations below here
 ##################################################
+# Install NodeJS 18 
 
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs
