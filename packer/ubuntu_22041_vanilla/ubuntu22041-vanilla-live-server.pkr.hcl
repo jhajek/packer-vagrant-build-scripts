@@ -27,7 +27,6 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   #ssh_handshake_attempts  = "80"
   ssh_wait_timeout        = "1800s"
   ssh_password            = "vagrant"
-  ssh_port                = 2222
   ssh_timeout             = "20m"
   ssh_username            = "vagrant"
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
@@ -38,11 +37,6 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
 
 build {
   sources = ["source.virtualbox-iso.ubuntu-22041-live-server"]
-
-  provisioner "shell" {
-    #inline_shebang  =  "#!/usr/bin/bash -e"
-    inline          = ["echo 'Resetting SSH port to default!'", "sudo rm /etc/ssh/sshd_config.d/packer-init.conf"]
-    }
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
