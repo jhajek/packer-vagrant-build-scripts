@@ -5,7 +5,7 @@ autoinstall:
     hostname: jammy-nextjs
     # Generate a new hashed password on the Linux Command Line: https://askubuntu.com/questions/1261451/how-to-generate-crypted-password-for-auto-install
     # printf 'vagrant' | openssl passwd -6 -salt 'qoazpFv0h6' -stdin
-    # The above command will generate the saled password of "vagrant"
+    # The above command will generate the salted password of "vagrant"
     password: '$6$qoazpFv0h6$1i0uxiM32aszgrgyYjv/2FLq73.TV2DCHOGi6nuiZoazu36Bewgb4hKarG9J3vwHxTpkdLQ10zeEt1J5XHG.Z/'
     username: vagrant
   early-commands:
