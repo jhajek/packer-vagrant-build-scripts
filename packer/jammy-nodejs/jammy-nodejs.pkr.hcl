@@ -29,11 +29,9 @@ source "virtualbox-iso" "jammy-nodejs" {
   iso_checksum            = "sha256:10f19c5b2b8d6db711582e0e27f5116296c34fe4b313ba45f9b201a5007056cb"
   iso_urls                = ["https://mirrors.edge.kernel.org/ubuntu-releases/22.04.1/ubuntu-22.04.1-live-server-amd64.iso"]
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
-  #ssh_handshake_attempts  = "80"
-  ssh_wait_timeout        = "2500s"
-  ssh_password            = "vagrant"
-  ssh_timeout             = "40m"
   ssh_username            = "vagrant"
+  ssh_password            = "${var.user-ssh-password}"
+  ssh_timeout             = "40m"
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "jammy-nodejs"

@@ -8,6 +8,12 @@ variable "memory_amount" {
   default = "4096"
 }
 
+variable "user-ssh-password" {
+  type = string
+  default = "vagrant"
+  sensitive = true
+}
+
 variable "build_artifact_location" {
  
  # If building on your local laptop use the ../build path

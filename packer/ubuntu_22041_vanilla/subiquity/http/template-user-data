@@ -2,7 +2,10 @@
 autoinstall:
   version: 1
   identity:
-    hostname: jammy-nextjs
+    hostname: ubuntu-server
+    # Generate a new hashed password on the Linux Command Line: https://askubuntu.com/questions/1261451/how-to-generate-crypted-password-for-auto-install
+    # printf 'vagrant' | openssl passwd -6 -salt 'qoazpFv0h6' -stdin
+    # The above command will generate the saled password of "vagrant"
     password: '$6$qoazpFv0h6$1i0uxiM32aszgrgyYjv/2FLq73.TV2DCHOGi6nuiZoazu36Bewgb4hKarG9J3vwHxTpkdLQ10zeEt1J5XHG.Z/'
     username: vagrant
   early-commands:
@@ -15,9 +18,9 @@ autoinstall:
     - sudo systemctl stop ssh    
   storage:
     layout:
-      name: lvm
+      name: direct
   packages:
-    - ubuntu-server-minimal
+    - ubuntu-server
     - bc
     - curl
     - wget
@@ -36,15 +39,10 @@ autoinstall:
     install-server: true
     # Adding the Vagrant initial insecure public key - that will be replaced, new key pair generated, upon launch
     authorized-keys:
-      - 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7gHzIw+niNltGEFHzD8+v1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoPkcmF0aYet2PkEDo3MlTBckFXPITAMzF8dJSIFo9D8HfdOV0IAdx4O7PtixWKn5y2hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL+GPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZEnDkbUvxhMmBYSdETk1rRgm+R4LOzFUGaHqHDLKLX+FIPKcF96hrucXzcWyLbIbEgE98OHlnVYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key'
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7gHzIw+niNltGEFHzD8+v1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoPkcmF0aYet2PkEDo3MlTBckFXPITAMzF8dJSIFo9D8HfdOV0IAdx4O7PtixWKn5y2hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL+GPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZEnDkbUvxhMmBYSdETk1rRgm+R4LOzFUGaHqHDLKLX+FIPKcF96hrucXzcWyLbIbEgE98OHlnVYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key'    
   late-commands:
     - sed -i 's/^#*\(send dhcp-client-identifier\).*$/\1 = hardware;/' /target/etc/dhcp/dhclient.conf
     - "echo 'Defaults:vagrant !requiretty' > /target/etc/sudoers.d/vagrant"
     - "echo 'vagrant ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/vagrant"
     - "chmod 440 /target/etc/sudoers.d/vagrant"
     - sudo systemctl start ssh
-
-
-
-
-
