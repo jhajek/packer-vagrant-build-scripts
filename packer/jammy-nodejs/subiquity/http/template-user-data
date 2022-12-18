@@ -46,8 +46,3 @@ autoinstall:
     - "echo 'vagrant ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/vagrant"
     - "chmod 440 /target/etc/sudoers.d/vagrant"
     - sudo systemctl start ssh
-
-
-
-
-
