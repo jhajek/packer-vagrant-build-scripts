@@ -12,7 +12,7 @@ packer {
 
 
 source "virtualbox-iso" "ubuntu-22041-live-server" {
-   "boot_command": [
+   boot_command = [
       "c",
       "linux /casper/vmlinuz --- autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/' ",
       "<enter><wait>",
