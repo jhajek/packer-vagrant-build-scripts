@@ -15,7 +15,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
         "e<wait>",
         "<down><down><down>",
         "<end><bs><bs><bs><bs><wait>",
-        "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",
+        "autoinstall ds=nocloud-net\\;s=http://127.0.0.1:{{ .HTTPPort }}/ ---<wait>",
         "<f10><wait>"
       ]
   #boot_command           = ["<cOn><cOff>", "<wait5>linux /casper/vmlinuz"," quiet"," autoinstall"," ds='nocloud-net\\;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'","<enter>","initrd /casper/initrd <enter>","boot <enter>"]
