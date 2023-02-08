@@ -16,7 +16,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   # https://github.com/rlaun/packer-ubuntu-22.04/blob/master/ubuntu-22.04.json
   boot_command = [
     "c",
-    "linux /casper/vmlinuz --- autoinstall ds='nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/' net.ifnames=0 ",
+    "linux /casper/vmlinuz --- autoinstall ds='nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/' ",
     "<enter><wait>",
     "initrd /casper/initrd<enter><wait>",
     "boot<enter>"
