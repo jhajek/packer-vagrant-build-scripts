@@ -11,14 +11,8 @@ packer {
 }
 
 source "virtualbox-iso" "ubuntu-22041-live-server" {
-  #boot_command            = ["<cOn><cOff>", "<wait5>linux /casper/vmlinuz"," quiet"," autoinstall"," ds='nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'","<enter>","initrd /casper/initrd <enter>","boot <enter>"]
-  boot_command = [
-        "e<wait>",
-        "<down><down><down><down><down>",
-        "<end><bs><bs><bs><bs><wait>",
-        "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",
-        "<f10><wait>"
-      ]
+  boot_command           = ["<cOn><cOff>", "<wait5>linux /casper/vmlinuz"," quiet"," autoinstall"," ds='nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'","<enter>","initrd /casper/initrd <enter>","boot <enter>"]
+  #boot_command            = [ "e<wait>","<down><down><down><down><down>","<end><bs><bs><bs><bs><wait>","autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>", "<f10><wait>"]
   boot_wait               = "5s"
   firmware                = "efi"
   hard_drive_interface    = "virtio"
