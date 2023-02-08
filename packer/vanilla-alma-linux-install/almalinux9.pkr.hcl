@@ -1,7 +1,7 @@
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
 source "virtualbox-iso" "alma-linux-9-vanilla" {
-  boot_command            = ["<tab> text ks.inst=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/almalinux9.cfg<enter>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>"]
+  boot_command            = ["<tab> text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/almalinux9.cfg<enter>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>"]
   boot_wait               = "10s"
   disk_size               = 15000
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
