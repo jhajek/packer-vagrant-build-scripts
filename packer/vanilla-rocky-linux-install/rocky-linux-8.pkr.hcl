@@ -12,8 +12,8 @@ source "virtualbox-iso" "rocky-linux-8-vanilla" {
   http_directory          = "."
   http_port_min           = 9001
   http_port_max           = 9100
-  iso_checksum            = "sha256:5a0dc65d1308e47b51a49e23f1030b5ee0f0ece3702483a8a6554382e893333c"
-  iso_urls                = ["https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.5-x86_64-boot.iso"]
+  iso_checksum            = "sha256:94402815f251d982e748dc3466517db13fa5f9ea58fad491dcbd2cc821a360a2"
+  iso_urls                = ["http://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.7-x86_64-boot.iso"]
   shutdown_command        = "echo 'vagrant' | sudo -S /sbin/poweroff"
   ssh_password            = "${var.SSHPW}"
   ssh_port                = 22
