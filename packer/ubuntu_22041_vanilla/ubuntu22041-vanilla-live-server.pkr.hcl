@@ -21,7 +21,8 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
     "initrd /casper/initrd<enter><wait>",
     "boot<enter>"
   ]
- 
+  net_device              = "virtio-net"
+  disk_interface          = "virtio"
   boot_wait               = "5s"
   disk_size               = 15000
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
