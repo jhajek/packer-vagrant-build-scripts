@@ -28,6 +28,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   ssh_username            = "vagrant"
   ssh_password            = "${var.user-ssh-password}"
   ssh_timeout             = "45m"
+  ssh_handshake_attempts  = 2000
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "ubuntu-jammy"
