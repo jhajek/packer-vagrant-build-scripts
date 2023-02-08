@@ -20,6 +20,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
         "<f10><wait>"
       ]
   boot_wait               = "5s"
+  firmware                = "efi"
   hard_drive_interface    = "virtio"
   disk_size               = 15000
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
