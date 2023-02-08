@@ -1,7 +1,7 @@
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
-# Centos 8 Latest Checksum URl 
-# http://bay.uchicago.edu/centos/8-stream/isos/x86_64/CHECKSUM
+# Centos 9 Latest Checksum URl 
+# http://download.rockylinux.org/pub/rocky/9/isos/x86_64/
 source "virtualbox-iso" "rocky-linux-8-vanilla" {
   boot_command            = ["<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/rocky-linux-8.cfg<enter>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>"]
   boot_wait               = "10s"
