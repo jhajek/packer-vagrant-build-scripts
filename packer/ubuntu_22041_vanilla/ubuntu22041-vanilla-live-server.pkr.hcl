@@ -23,7 +23,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   #boot_command           = ["<wait>","c","<wait>","linux /casper/vmlinuz autoinstall --- ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/","<enter><wait>","initrd /casper/initrd ","<enter><wait>","boot","<enter><wait>"]
   boot_wait               = "5s"
   #firmware               = "efi"
-  nic_type                = "82543GC"
+  #nic_type                = "82543GC"
   #hard_drive_interface    = ""
   disk_size               = 15000
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
