@@ -32,7 +32,7 @@ source "virtualbox-iso" "ubuntu-22041-server" {
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   ssh_username            = "vagrant"
   ssh_password            = "${var.user-ssh-password}"
-  ssh_timeout             = "25m"
+  ssh_timeout             = "45m"
   # Change to --nat-localhostreachable1 forced by https://github.com/hashicorp/packer/issues/12118
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"],["modifyvm", "{{.Name}}", "--nat-localhostreachable1", "on"]]
   virtualbox_version_file = ".vbox_version"
