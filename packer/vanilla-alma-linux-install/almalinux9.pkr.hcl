@@ -6,7 +6,6 @@ source "virtualbox-iso" "alma-linux-9-vanilla" {
   disk_size               = 15000
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "RedHat_64"
-  nic_type                = "82543GC"
   hard_drive_interface    = "sata"
   http_directory          = "."
   http_port_min           = 9001
