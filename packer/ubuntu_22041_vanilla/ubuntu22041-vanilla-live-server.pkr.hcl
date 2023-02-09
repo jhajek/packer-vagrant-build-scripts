@@ -27,7 +27,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   disk_size               = 15000
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "Ubuntu_64"
-  http_bind_address       = "0.0.0.0.
+  http_bind_address       = "0.0.0.0"
   http_directory          = "subiquity/http"
   http_port_max           = 9200
   http_port_min           = 9001
