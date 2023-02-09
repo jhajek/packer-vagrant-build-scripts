@@ -12,7 +12,7 @@ packer {
   }
 }
 
-source "virtualbox-iso" "ubuntu-22041-live-server" {
+source "virtualbox-iso" "ubuntu-22041-server" {
     boot_command = [
         "e<wait>",
         "<down><down><down>",
@@ -36,12 +36,12 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   # Change to --nat-localhostreachable1 forced by https://github.com/hashicorp/packer/issues/12118
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"],["modifyvm", "{{.Name}}", "--nat-localhostreachable1", "on"]]
   virtualbox_version_file = ".vbox_version"
-  vm_name                 = "ubuntu-jammy"
+  vm_name                 = "jammy-server"
   headless                = "${var.headless_build}"
 }
 
 build {
-  sources = ["source.virtualbox-iso.ubuntu-22041-live-server"]
+  sources = ["source.virtualbox-iso.ubuntu-22041-server"]
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
