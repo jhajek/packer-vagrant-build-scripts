@@ -38,7 +38,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   ssh_password            = "${var.user-ssh-password}"
   ssh_timeout             = "25m"
   #ssh_handshake_attempts  = 9000
-  vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
+  vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"],["modifyvm", "{{.Name}}", "--nat-localhostreachable1", "on"]]
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "ubuntu-jammy"
   headless                = "${var.headless_build}"
