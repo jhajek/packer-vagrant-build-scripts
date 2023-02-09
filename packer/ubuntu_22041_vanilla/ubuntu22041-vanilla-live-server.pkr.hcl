@@ -36,7 +36,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   ssh_username            = "vagrant"
   ssh_password            = "${var.user-ssh-password}"
-  ssh_timeout             = "45m"
+  ssh_timeout             = "25m"
   #ssh_handshake_attempts  = 9000
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"]]
   virtualbox_version_file = ".vbox_version"
