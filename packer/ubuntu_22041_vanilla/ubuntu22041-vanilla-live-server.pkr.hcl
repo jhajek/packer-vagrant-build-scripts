@@ -1,4 +1,6 @@
-
+###############################################################################################################
+# Packer Virtualbox-iso documentation: https://developer.hashicorp.com/packer/plugins/builders/virtualbox/iso
+###############################################################################################################
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
 packer {
@@ -18,13 +20,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
         "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",
         "<f10><wait>"
       ]
-  #boot_command           = ["<cOn><cOff>", "<wait5>linux /casper/vmlinuz"," quiet"," autoinstall"," ds='nocloud-net\\;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'","<enter>","initrd /casper/initrd <enter>","boot <enter>"]
-  #boot_command           = ["e<wait>","<down><down><down>","<end><bs><bs><bs><bs><wait>","quiet autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>", "<f10><wait25>"]
-  #boot_command           = ["<wait>","c","<wait>","linux /casper/vmlinuz autoinstall --- ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/","<enter><wait>","initrd /casper/initrd ","<enter><wait>","boot","<enter><wait>"]
   boot_wait               = "5s"
-  #firmware               = "efi"
-  #nic_type                = "82543GC"
-  #hard_drive_interface    = ""
   disk_size               = 15000
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "Ubuntu_64"
@@ -37,7 +33,7 @@ source "virtualbox-iso" "ubuntu-22041-live-server" {
   ssh_username            = "vagrant"
   ssh_password            = "${var.user-ssh-password}"
   ssh_timeout             = "25m"
-  #ssh_handshake_attempts  = 9000
+  # Change to --nat-localhostreachable1 forced by https://github.com/hashicorp/packer/issues/12118
   vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"],["modifyvm", "{{.Name}}", "--nat-localhostreachable1", "on"]]
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "ubuntu-jammy"
