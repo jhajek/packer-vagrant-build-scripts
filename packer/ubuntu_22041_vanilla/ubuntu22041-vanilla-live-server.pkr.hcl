@@ -33,8 +33,10 @@ source "virtualbox-iso" "ubuntu-22041-server" {
   ssh_username            = "vagrant"
   ssh_password            = "${var.user-ssh-password}"
   ssh_timeout             = "45m"
+  cpus                    = 2
+  memory                  = "${var.memory_amount}"
   # Change to --nat-localhostreachable1 forced by https://github.com/hashicorp/packer/issues/12118
-  vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "${var.memory_amount}"],["modifyvm", "{{.Name}}", "--nat-localhostreachable1", "on"]]
+  vboxmanage              = [["modifyvm", "{{.Name}}", "--nat-localhostreachable1", "on"]]
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "jammy-server"
   headless                = "${var.headless_build}"
