@@ -18,7 +18,9 @@ source "virtualbox-iso" "alma-linux-9-vanilla" {
   ssh_timeout             = "30m"
   ssh_username            = "vagrant"
   # Change forced by https://github.com/hashicorp/packer/issues/12118
-  vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "4096"], ["modifyvm", "{{ .Name }}", "--cpus", "1"],["modifyvm", "{{.Name}}", "--nat-localhostreachable1", "on"]]
+  cpus                    = 2
+  memory                  = "${var.memory_amount}"
+  vboxmanage              = [["modifyvm", "{{.Name}}", "--nat-localhostreachable1", "on"]]
   virtualbox_version_file = ".vbox_version"
   headless                = "${var.headless_build}"
 }
