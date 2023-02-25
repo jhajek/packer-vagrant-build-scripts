@@ -35,3 +35,5 @@ variables.pkr.hcl
 consul.hcl
 *.pvm
 *.zip
+id*
+variables*
