@@ -26,7 +26,7 @@ variable "build_artifact_location" {
 
 }
 
-variable "db_users" {
+variable "db_user" {
   type = string
   sensitive = true
   default = "REPLACE"
