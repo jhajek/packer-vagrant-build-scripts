@@ -8,6 +8,12 @@ variable "memory_amount" {
   default = "4096"
 }
 
+variable "user-ssh-password" {
+  type = string
+  default = "{{ vault `/secret/data/ssh` `SSHPASS`}}"
+  sensitive = true
+}
+
 variable "build_artifact_location" {
  
  # If building on your local laptop use the ../build path
@@ -18,4 +24,10 @@ variable "build_artifact_location" {
   # This is the default path on the build-server to place the .box files for download via a webserver
   # default = "/datadisk2/boxes/jrh-"
 
+}
+
+variable "db_user" {
+  type = string
+  sensitive = true
+  default = "{{ vault `/secret/data/db` `DBUSER`}}"
 }
