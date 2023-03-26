@@ -31,7 +31,7 @@ source "virtualbox-iso" "ubuntu-22041-server" {
   iso_urls                = ["https://mirrors.edge.kernel.org/ubuntu-releases/22.04.1/ubuntu-22.04.1-live-server-amd64.iso"]
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   ssh_username            = "vagrant"
-  ssh_password            = "${var.user-ssh-password}"
+  ssh_password            = "${local.user-ssh-password}"
   ssh_timeout             = "45m"
   cpus                    = 2
   memory                  = "${var.memory_amount}"
@@ -52,7 +52,7 @@ build {
 
   provisioner "shell" {
     inline = ["echo $DBUSER", "echo $DBUSER > /home/vagrant/TEST"]
-    environment_vars = ["DBUSER=${var.db_user}"]
+    environment_vars = ["DBUSER=${local.db_user}"]
   }
 
   post-processor "vagrant" {
