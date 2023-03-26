@@ -9,7 +9,7 @@ variable "memory_amount" {
 }
 
 locals {
-  user-ssh-password = {{ vault `/secret/data/ssh` `SSHPASS`}}
+  user-ssh-password = {{ vault /secret/data/ssh SSHPASS}}
   sensitive = true
 }
 
@@ -27,6 +27,6 @@ variable "build_artifact_location" {
 
 locals {
   sensitive = true
-  db_user = {{ vault `/secret/data/db` `DBUSER`}}
+  db_user = {{ vault /secret/data/db DBUSER}}
 
 }
