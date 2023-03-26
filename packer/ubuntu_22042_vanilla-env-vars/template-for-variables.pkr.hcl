@@ -8,9 +8,8 @@ variable "memory_amount" {
   default = "4096"
 }
 
-variable "user-ssh-password" {
-  type = string
-  default = "{{ vault `/secret/data/ssh` `SSHPASS`}}"
+locals {
+  user-ssh-password = {{ vault `/secret/data/ssh` `SSHPASS`}}
   sensitive = true
 }
 
@@ -26,8 +25,8 @@ variable "build_artifact_location" {
 
 }
 
-variable "db_user" {
-  type = string
+locals {
   sensitive = true
-  default = "{{ vault `/secret/data/db` `DBUSER`}}"
+  db_user = {{ vault `/secret/data/db` `DBUSER`}}
+
 }
