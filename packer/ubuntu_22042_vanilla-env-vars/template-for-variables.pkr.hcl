@@ -11,8 +11,7 @@ variable "memory_amount" {
 # Syntax
 # https://developer.hashicorp.com/packer/docs/templates/hcl_templates/functions/contextual/vault
 locals {
-  user-ssh-password = vault("/secret/data/ssh","SSHPASS")
-  sensitive = true
+  user-ssh-password = vault("/secret/data/team00-ssh","SSHPASS")
 }
 
 variable "build_artifact_location" {
@@ -30,7 +29,5 @@ variable "build_artifact_location" {
 # Syntax
 # https://developer.hashicorp.com/packer/docs/templates/hcl_templates/functions/contextual/vault
 locals {
-  sensitive = true
-  db_user = vault("/secret/data/db", "DBUSER")
-
+  db_user = vault("/secret/data/team00-db", "DBUSER")
 }
