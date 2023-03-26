@@ -12,7 +12,7 @@ packer {
   }
 }
 
-variables {
+"variables": {
   "db_user": "{{ vault `/secret/data/db` `DBUSER`}}",
   "user-ssh-password": "{{ vault `/secret/data/ssh` `SSHPASS`}}"
 }
