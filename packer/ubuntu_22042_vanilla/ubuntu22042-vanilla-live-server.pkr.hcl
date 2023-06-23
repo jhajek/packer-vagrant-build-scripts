@@ -21,7 +21,7 @@ source "virtualbox-iso" "ubuntu-22042-server" {
         "<f10><wait>"
       ]
   boot_wait               = "5s"
-  disk_size               = 15000
+  disk_size               = 35000
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "Ubuntu_64"
   http_directory          = "subiquity/http"
