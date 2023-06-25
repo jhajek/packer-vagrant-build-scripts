@@ -2,7 +2,7 @@
 autoinstall:
   version: 1
   identity:
-    hostname: ubuntu-server
+    hostname: pandoc
     # Generate a new hashed password on the Linux Command Line: https://askubuntu.com/questions/1261451/how-to-generate-crypted-password-for-auto-install
     # printf 'vagrant' | openssl passwd -6 -salt 'qoazpFv0h6' -stdin
     # The above command will generate the salted password of "vagrant"
