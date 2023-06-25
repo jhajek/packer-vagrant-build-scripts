@@ -9,7 +9,7 @@ variable "memory_amount" {
   default = "4096"
 }
 
-variable "SSHPW" {
+variable "user-ssh-password" {
   sensitive = true
   type = string
   default = ""
