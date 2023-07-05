@@ -31,7 +31,9 @@ if [ -e ./pandoc-3.1.3-1-amd64.deb ]
     rm ./pandoc-3.1.3-1-amd64.deb
 fi
 
-git clone https://github.com/jhajek/Linux-text-book-part-1.git
+sudo -u vagrant git clone https://github.com/jhajek/Linux-text-book-part-1.git
+
+
 
 wget http://packages.sil.org/sil.gpg
 sudo apt-key add sil.gpg
