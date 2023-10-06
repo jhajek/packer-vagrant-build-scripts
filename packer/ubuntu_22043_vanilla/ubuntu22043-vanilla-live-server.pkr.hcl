@@ -6,13 +6,13 @@ locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 packer {
   required_plugins {
     virtualbox = {
-      version = ">= 1.0.4"
       source  = "github.com/hashicorp/virtualbox"
+      version = "~> 1"
     }
   }
 }
 
-source "virtualbox-iso" "ubuntu-22042-server" {
+source "virtualbox-iso" "ubuntu-22043-server" {
     boot_command = [
         "e<wait>",
         "<down><down><down>",
@@ -27,7 +27,7 @@ source "virtualbox-iso" "ubuntu-22042-server" {
   http_directory          = "subiquity/http"
   http_port_max           = 9200
   http_port_min           = 9001
-  iso_checksum     = "sha256:5e38b55d57d94ff029719342357325ed3bda38fa80054f9330dc789cd2d43931"
+  iso_checksum     = "sha256:a4acfda10b18da50e2ec50ccaf860d7f20b389df8765611142305c0e911d16fd"
   iso_urls         = ["https://mirrors.edge.kernel.org/ubuntu-releases/22.04.2/ubuntu-22.04.2-live-server-amd64.iso"]
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   ssh_username            = "vagrant"
@@ -43,7 +43,7 @@ source "virtualbox-iso" "ubuntu-22042-server" {
 }
 
 build {
-  sources = ["source.virtualbox-iso.ubuntu-22042-server"]
+  sources = ["source.virtualbox-iso.ubuntu-22043-server"]
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
