@@ -29,6 +29,9 @@ source "virtualbox-iso" "ubuntu-22043-server" {
   http_port_min           = 9001
   firmware                = "efi"
   hard_drive_interface    = "virtio"
+  rtc_time_base           = "UTC"
+  # https://www.virtualbox.org/manual/ch06.html
+  nic_type                = "virtio"
   iso_checksum            = "sha256:a4acfda10b18da50e2ec50ccaf860d7f20b389df8765611142305c0e911d16fd"
   iso_urls                = ["http://mirrors.edge.kernel.org/ubuntu-releases/22.04.3/ubuntu-22.04.3-live-server-amd64.iso"]  
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
