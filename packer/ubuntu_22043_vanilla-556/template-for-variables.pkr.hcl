@@ -8,9 +8,9 @@ variable "memory_amount" {
   default = "4096"
 }
 
-  variable "use-ssh-password" {
+  variable "user-ssh-password" {
   type = string
-  deafult = ""
+  default = ""
   }
   
 variable "build_artifact_location" {
