@@ -28,7 +28,9 @@ source "virtualbox-iso" "rocky-linux-9-vanilla" {
   ssh_port                = 22
   ssh_timeout             = "30m"
   ssh_username            = "vagrant"
-  vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "4096"], ["modifyvm", "{{ .Name }}", "--cpus", "1"]]
+  cpus                    = 2
+  memory                  = "${var.memory_amount}"  
+  # vboxmanage              = [["modifyvm", "{{ .Name }}", "--memory", "4096"], ["modifyvm", "{{ .Name }}", "--cpus", "1"]]
   virtualbox_version_file = ".vbox_version"
   headless                = "${var.headless_build}"
 }
