@@ -11,17 +11,17 @@ packer {
 
 # Centos 9 Latest Checksum URl 
 # http://download.rockylinux.org/pub/rocky/9/isos/x86_64/
-source "virtualbox-iso" "rocky-linux-8-vanilla" {
+source "virtualbox-iso" "rocky-linux-9-vanilla" {
   boot_command            = ["<tab> text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks/rocky-linux-8.cfg<enter>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>", "<wait10><wait10><wait10>"]
   boot_wait               = "10s"
   disk_size               = 15000
   guest_additions_path    = "VBoxGuestAdditions_{{ .Version }}.iso"
   guest_os_type           = "RedHat_64"
-  hard_drive_interface    = "sata"
+  hard_drive_interface    = "virtio"
   http_directory          = "."
   http_port_min           = 9001
   http_port_max           = 9100
-  iso_checksum            = "sha256:11e42da96a7b336de04e60d05e54a22999c4d7f3e92c19ebf31f9c71298f5b42"
+  iso_checksum            = "file:http://download.rockylinux.org/pub/rocky/9/isos/x86_64/CHECKSUM"
   iso_urls                = ["http://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-x86_64-boot.iso"]
   shutdown_command        = "echo 'vagrant' | sudo -S /sbin/poweroff"
   ssh_password            = "${var.SSHPW}"
@@ -34,9 +34,9 @@ source "virtualbox-iso" "rocky-linux-8-vanilla" {
 }
 
 build {
-  description = "Build base Rocky Linux 8 x86_64"
+  description = "Build base Rocky Linux 9 x86_64"
 
-  sources = ["source.virtualbox-iso.rocky-linux-8-vanilla"]
+  sources = ["source.virtualbox-iso.rocky-linux-9-vanilla"]
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
