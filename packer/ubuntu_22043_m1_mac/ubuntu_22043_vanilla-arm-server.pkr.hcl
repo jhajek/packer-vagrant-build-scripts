@@ -5,9 +5,9 @@ locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 # This is the init block needed to initialize the plugin
 packer {
   required_plugins {
-    parallels = {
-      version = ">= 1.1.5"
-      source  = "github.com/hashicorp/parallels"
+    vagrant = {
+      source  = "github.com/hashicorp/vagrant"
+      version = "~> 1"
     }
   }
 }
@@ -15,8 +15,10 @@ packer {
 
 source "parallels-iso" "vanilla-server" {
   # https://github.com/chef/bento/blob/main/packer_templates/ubuntu/ubuntu-20.04-arm64.json
-  boot_command          = ["<esc>", "linux /casper/vmlinuz"," quiet"," autoinstall"," ds='nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'","<enter>","initrd /casper/initrd <enter>","boot <enter>"]
-  #boot_command          = ["<esc>", "c", "linux /casper/vmlinuz"," quiet"," autoinstall"," ds='nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'","<enter>","initrd /casper/initrd <enter>","boot <enter>"]
+  # For 20.04 Ubuntu Server
+  #boot_command          = ["<esc>", "linux /casper/vmlinuz"," quiet"," autoinstall"," ds='nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'","<enter>","initrd /casper/initrd <enter>","boot <enter>"]
+  # For 22.04 Ubuntu Server
+  boot_command          = ["<esc>", "c", "linux /casper/vmlinuz"," quiet"," autoinstall"," ds='nocloud-net;s=http://{{.HTTPIP}}:{{.HTTPPort}}/'","<enter>","initrd /casper/initrd <enter>","boot <enter>"]
   boot_wait               = "5s"
   disk_size               = 15000
   parallels_tools_flavor  = "lin"
