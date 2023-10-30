@@ -1,6 +1,8 @@
 
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
+# https://github.com/Parallels/packer-plugin-parallels
+# This is the init block needed to initialize the plugin
 packer {
   required_plugins {
     parallels = {
