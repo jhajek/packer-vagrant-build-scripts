@@ -8,19 +8,3 @@ set -v
 echo "%admin  ALL=NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/init-users
 sudo groupadd admin
 sudo usermod -a -G admin vagrant
-
-# Installing Vagrant keys
-# wget --no-check-certificate 'https://raw.githubusercontent.com/hashicorp/vagrant/main/keys/vagrant.pub'
-# sudo mkdir -p /home/vagrant/.ssh
-# sudo chown -R vagrant:vagrant /home/vagrant/.ssh
-# cat ./vagrant.pub >> /home/vagrant/.ssh/authorized_keys
-# sudo chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
-# echo "All Done!"
-
-##################################################
-# Add User customizations below here
-##################################################
-# Install NodeJS LTS
-
-curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get install -y nodejs
