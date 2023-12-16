@@ -9,6 +9,9 @@ packer {
       source  = "github.com/hashicorp/virtualbox"
       version = "~> 1"
     }
+      vagrant = {
+      version = "~> 1"
+      source = "github.com/hashicorp/vagrant"
   }
 }
 
