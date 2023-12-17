@@ -35,7 +35,7 @@ source "virtualbox-iso" "ubuntu-22043-server" {
   http_port_max           = 9200
   http_port_min           = 9001
   iso_checksum             = "file:http://mirrors.edge.kernel.org/ubuntu-releases/22.04.3/SHA256SUMS"
-  iso_urls                = ["http://mirrors.edge.kernel.org/ubuntu-releases/22.04.3/ubuntu-22.04.3-live-server-amd64.iso"]  
+  iso_urls                = ["https://mirrors.edge.kernel.org/ubuntu-releases/22.04.3/ubuntu-22.04.3-live-server-amd64.iso"]  
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   ssh_username            = "vagrant"
   ssh_password            = "${var.user-ssh-password}"
