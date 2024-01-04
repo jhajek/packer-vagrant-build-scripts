@@ -1,6 +1,0 @@
-{
-    "database-root-password": "foo",
-    "moodle-database-user-password": "bar",
-    "backup-user-database-password": "up",
-    "moodle-admin-password": "down"
-}
