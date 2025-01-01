@@ -34,8 +34,8 @@ source "virtualbox-iso" "ubuntu-24041-server" {
   http_directory          = "subiquity/http"
   http_port_max           = 9200
   http_port_min           = 9001
-  iso_checksum             = "file:https://cdimage.ubuntu.com/ubuntu-server/daily-live/current/SHA256SUMS"
-  iso_urls                = ["https://cdimage.ubuntu.com/ubuntu-server/daily-live/current/noble-live-server-amd64.iso"]  
+  iso_checksum             = "file:https://mirrors.edge.kernel.org/ubuntu-releases/24.04.1/SHA256SUMS"
+  iso_urls                = ["https://mirrors.edge.kernel.org/ubuntu-releases/24.04.1/ubuntu-24.04.1-desktop-amd64.iso"]  
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   ssh_username            = "vagrant"
   ssh_password            = "${var.user-ssh-password}"
