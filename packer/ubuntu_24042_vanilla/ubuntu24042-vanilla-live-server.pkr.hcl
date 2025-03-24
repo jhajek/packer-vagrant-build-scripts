@@ -19,7 +19,7 @@ packer {
   }
 }
 
-source "virtualbox-iso" "ubuntu-24041-server" {
+source "virtualbox-iso" "ubuntu-24042-server" {
     boot_command = [
         "e<wait>",
         "<down><down><down>",
@@ -34,8 +34,8 @@ source "virtualbox-iso" "ubuntu-24041-server" {
   http_directory          = "subiquity/http"
   http_port_max           = 9200
   http_port_min           = 9001
-  iso_checksum             = "file:https://mirrors.edge.kernel.org/ubuntu-releases/24.04.1/SHA256SUMS"
-  iso_urls                = ["https://mirrors.edge.kernel.org/ubuntu-releases/24.04.1/ubuntu-24.04.1-live-server-amd64.iso"]  
+  iso_checksum             = "file:https://mirrors.edge.kernel.org/ubuntu-releases/24.04.2/SHA256SUMS"
+  iso_urls                = ["https://mirrors.edge.kernel.org/ubuntu-releases/24.04.2/ubuntu-24.04.2-live-server-amd64.iso"]  
   shutdown_command        = "echo 'vagrant' | sudo -S shutdown -P now"
   ssh_username            = "vagrant"
   ssh_password            = "${var.user-ssh-password}"
@@ -50,7 +50,7 @@ source "virtualbox-iso" "ubuntu-24041-server" {
 }
 
 build {
-  sources = ["source.virtualbox-iso.ubuntu-24041-server"]
+  sources = ["source.virtualbox-iso.ubuntu-24042-server"]
 
   provisioner "shell" {
     execute_command = "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
